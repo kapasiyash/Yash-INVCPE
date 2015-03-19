@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/images/widgets"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15557"
+   kind="dir"
+   committed-date="2015-02-06T07:46:11.965271Z"/>
+<entry
+   name="downarrow_g.png"
+   checksum="5f0757d1274aa108aae31a9aa97520bb"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="downdownarrow_g.png"
+   checksum="991ce7fff49359fba89ed99effb153b2"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="leftarrow_g.png"
+   checksum="c56e3005b114b7ef91de645eea510483"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="leftleftarrow_g.png"
+   checksum="942c9885565c6218b5a09105795ed39a"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="rightarrow_g.png"
+   checksum="1a2c7fafe011acf5a84a0c740ee43736"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="rightrightarrow_g.png"
+   checksum="76c287416b6f5e966d00d6fb61a728dc"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="uparrow_g.png"
+   checksum="0451d61357f98b4994e9631412bab64d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="upuparrow_g.png"
+   checksum="72f6643e39481cf1d58e0366bcc40efc"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+</wc-entries>

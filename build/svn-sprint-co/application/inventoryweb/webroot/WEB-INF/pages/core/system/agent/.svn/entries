@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/WEB-INF/pages/core/system/agent"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15558"
+   kind="dir"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="create-agent-schedule.zul"
+   checksum="325fedd0129c7559d9dbb7229ebac033"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="delete-agent-schedule.zul"
+   checksum="22f6b50837ff570e5b10142fafcbaaea"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="search-agent-runin-queue.zul"
+   checksum="245695b7ba7afec62deefb4ad427dace"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="search-agent-schedule.zul"
+   checksum="22e0386e07f2a596d5b126532978d837"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="search-agent.zul"
+   checksum="c02cc624ef40f5fb00599168d69efd4b"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="update-agent-parameter.zul"
+   checksum="671172948c3cc282e54e14c3309e9890"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="update-agent-schedule.zul"
+   checksum="2f9414e80b8f1cec66d6059e16744052"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="view-agent-schedule.zul"
+   checksum="ce1cf05cf9c00d08e747a8d8f01eb7f6"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="view-agent.zul"
+   checksum="b925ba4484215d7ebe39020bafcd5910"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="view-history.zul"
+   checksum="e652039a1f66047fe5ecbba929ce6889"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="view-popup-history.zul"
+   checksum="d4f7517012cbfd2590ddb9d57154c07a"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/lib/findbug/doc/customers"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15540"
+   kind="dir"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="ITAsoftware.png"
+   checksum="5b2e45615d364af8c036b9ee14b88e9c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="geoLocation.png"
+   checksum="49b54f423282887966144a1d3bcc0381"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="geoMap.png"
+   checksum="b7c8b8989fd2a3e89a41ed4bb7aaebdb"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="glassfish.png"
+   checksum="a3fded1638874844577c35fc05f14681"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="google.png"
+   checksum="1e38b8e048644f972e88e4de552b2b63"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="logo_umd.png"
+   checksum="f7118320d2557384914d05a3fe0750e3"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="nsf.png"
+   checksum="47e06127745179638f307e884b07c2d6"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="sat4j.png"
+   checksum="f05df96b6c29028800ef87821d026e38"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="sleepycat.png"
+   checksum="cfdc427e835ecb01caf74a91ef6d62d0"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="sun.png"
+   checksum="f4fe67a0cd9b4961abf900ebd9d5cccc"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+</wc-entries>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/session/inventorymgt"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16448"
+   kind="dir"
+   committed-date="2015-03-13T06:05:31.965283Z"/>
+<entry
+   name="BatchManagementSessionBean.java"
+   checksum="f37c08049c3a900f2afd1ba3fc4e2c89"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="BatchManagementSessionBeanLocal.java"
+   checksum="07524ccc2f370b6c7674dbbdd6de907b"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventoryManagementSessionBean.java"
+   checksum="0c9e94da3e4e6a1236e5087f0c4dbc2f"
+   last-author="rinkal.sadariya"
+   committed-rev="16448"
+   text-time="2015-03-13T06:05:31.000000Z"
+   kind="file"
+   committed-date="2015-03-13T06:05:31.965283Z"/>
+<entry
+   name="InventoryManagementSessionBeanLocal.java"
+   checksum="3ba7591851c591e0b69e8f772ec0d3ff"
+   last-author="rinkal.sadariya"
+   committed-rev="16448"
+   text-time="2015-03-13T06:05:31.000000Z"
+   kind="file"
+   committed-date="2015-03-13T06:05:31.965283Z"/>
+</wc-entries>

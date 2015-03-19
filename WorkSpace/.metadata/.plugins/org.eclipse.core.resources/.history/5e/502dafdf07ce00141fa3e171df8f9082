@@ -1,0 +1,7 @@
+package com.elitecore.cpe.bl.vo.system.threshold;
+
+import java.io.Serializable;
+
+public class ThresholdVO implements Serializable {
+
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/WEB-INF/pages/core/system/userwarehousemap"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16482"
+   kind="dir"
+   committed-date="2015-03-16T07:20:33.188526Z"/>
+<entry
+   name="user-warehouse-mapping.zul"
+   checksum="426399f0a86a77b4104da419874ce9c6"
+   last-author="yash.kapasi"
+   text-time="2015-03-16T07:20:33.000000Z"
+   committed-rev="16482"
+   kind="file"
+   committed-date="2015-03-16T07:20:33.188526Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="v_dualListbox.zul"
+   checksum="0120c476ed344b2e8ed5ac195c643cf9"
+   last-author="rinkal.sadariya"
+   committed-rev="16334"
+   text-time="2015-03-09T03:27:51.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:27:51.797663Z"/>
+</wc-entries>

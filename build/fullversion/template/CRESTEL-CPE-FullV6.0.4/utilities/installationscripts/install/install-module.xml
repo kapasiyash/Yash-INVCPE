@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<project name="bundleinstall-provisioning" default="all" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+
+	<property name="module.db.schema" value="jispbilcorbilling" />
+	
+	<property name="module.home" value="${crestel.home}" />
+	<property name="module.dbscripts.dir" value="${module.home}/dbscripts" />
+	<property name="module.current.installationscripts.dir" value="${module.home}/utilities/installationscripts" />
+	<property name="module.current.coreinstall.version.file" value="${module.current.installationscripts.dir}/coreinstall/coreinstall.properties" />
+	<property name="module.current.install.version.file" value="${module.current.installationscripts.dir}/install/install.properties" />
+	
+	
+	<property name="module.installation.dir" value="${installation.dir}" />
+	<property name="module.upgrade.installationscripts.dir" value="${module.installation.dir}/installationscripts" />
+	<property name="module.upgrade.coreinstall.version.file" value="${module.upgrade.installationscripts.dir}/coreinstall/coreinstall.properties" />
+	<property name="module.upgrade.install.version.file" value="${module.upgrade.installationscripts.dir}/install/install.properties" />
+	
+	<property name="module.upgrade.prepostinstallation.dir" value="${module.installation.dir}/installationscripts" />
+	<property name="targetupgrade.dir" value="${installation.dir}/targetupgrade" />
+	
+	<property file="${module.installation.dir}/version.info"/>
+	<property file="${module.upgrade.prepostinstallation.dir}/prepostinstall.properties" />
+	
+	<property name="versioninfo.output.file" value="versioninfo.out"/>
+	
+	
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+	
+	<import file="${module.home}/utilities/installationscripts/coreinstall/coreinstall.xml"/>
+
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+	
+	<target name="upgrade">
+
+		<property name="temp-deploymentprop.dir" value="${crestel.home}/upgrade/tempdeploymentprop" />
+		
+		<mkdir dir="${temp-deploymentprop.dir}"/>
+		
+		<copy todir="${temp-deploymentprop.dir}" overwrite="true">
+			<fileset dir="${crestel.home}/utilities/installationscripts/">
+				<include name="**/deploy-*.properties"/>
+			</fileset>
+		</copy>
+
+
+		
+		<mkdir dir="${crestel.home}/dbscripts" />
+		<copy todir="${crestel.home}/dbscripts" overwrite="true">
+			<fileset dir="${installation.dir}/dbscripts">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		
+		
+		<mkdir dir="${crestel.home}/utilities" />
+		<copy todir="${crestel.home}/utilities" overwrite="true">
+			<fileset dir="${installation.dir}/utilities">
+				<include name="**/*"/>
+				<exclude name="**/installationscripts/install/*.*" />
+				<exclude name="**/installationscripts/install/*.*" />
+				<exclude name="**/installationscripts/coreinstall/*.*" />
+			</fileset>
+		</copy>
+
+		<copy todir="${crestel.home}/utilities/installationscripts/" overwrite="true">
+			<fileset dir="${temp-deploymentprop.dir}">
+				<include name="**/deploy-*.properties"/>
+			</fileset>
+		</copy>
+		
+		<delete dir="${temp-deploymentprop.dir}"/>
+
+                <fixcrlf srcdir="${crestel.home}/upgrade" eol="unix" eof="remove" includes="**/*.sh,**/*.xml,**/*.properties" />
+                <fixcrlf srcdir="${crestel.home}/dbscripts" eol="unix" eof="remove" includes="**/*.sh,**/*.xml,**/*.properties" />
+                <fixcrlf srcdir="${crestel.home}/utilities" eol="unix" eof="remove" includes="**/*.sh,**/*.xml,**/*.properties" />
+                
+                <chmod dir="${crestel.home}/upgrade" perm="ug+rwx" includes="**/*.sh"/>
+                <chmod dir="${crestel.home}/dbscripts" perm="ug+rwx" includes="**/*.sh"/>
+                <chmod dir="${crestel.home}/utilities" perm="ug+rwx" includes="**/*.sh"/>
+	
+	</target>
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition ends      -->
+	<!-- ******************************** -->
+	
+</project> 
+

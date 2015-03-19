@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/js/tour"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15557"
+   kind="dir"
+   committed-date="2015-02-06T07:46:11.965271Z"/>
+<entry
+   name="jquery-1.10.1.js"
+   checksum="cf923294d30b968ee2cdb6be91617885"
+   last-author="yash.kapasi"
+   committed-rev="15557"
+   text-time="2015-02-06T07:46:11.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"/>
+<entry
+   name="jquery.cookie.js"
+   checksum="4b7c7535da1eb13278a644bd21a05dce"
+   last-author="yash.kapasi"
+   committed-rev="15557"
+   text-time="2015-02-06T07:46:11.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"/>
+<entry
+   name="jquery.joyride-2.1.js"
+   checksum="e6b71ddf033c16d2d2eefc60ca3ef133"
+   last-author="yash.kapasi"
+   committed-rev="15557"
+   text-time="2015-02-06T07:46:11.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"/>
+<entry
+   name="modernizr.mq.js"
+   checksum="cbe74df3a5751a848c3d1aad5652f88d"
+   last-author="yash.kapasi"
+   committed-rev="15557"
+   text-time="2015-02-06T07:46:11.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"/>
+</wc-entries>

@@ -1,0 +1,62 @@
+<zk>
+<window  id="searchWareHouseType"  style="overflow: visible;" width="100%" height="100%"  
+		apply="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseTypeComposer">
+		 <include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="Warehouse Management"/>
+	<tabbox width="100%" height="100%" tabscroll="false" id="searchWarehouseTypeTabbox">
+	<tabs>
+		<tab  label="${labels.warehousetype.searchtitle}" id="searchTab"/>
+	</tabs>
+
+<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;" sclass="main-cont">
+								<vlayout style="padding-left: 5px; padding-top: 2px;" width="100%">			
+										<grid id="warehousegrid" width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+										<columns>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											<column width="160px"></column>
+											<column width="240px"></column>
+										</columns>
+										<rows>
+											<row>
+												<cell>
+													<label value="${labels.warehousetype.name}"></label>
+													<label value="" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <textbox id="txtName" width="140" maxlength="100" /></cell>
+											</row>
+											
+										
+										</rows>
+										</grid>
+										
+										<separator bar="false" />
+										<separator bar="false" />
+										<hbox>
+											<button id="btnSearch" type="button" label="${labels.global.searchBtn}" mold="trendy" width="140px" />
+											<button id="btnCreate" type="button" label="${labels.global.createBtn}" mold="trendy" width="140px" visible="false"/>
+											<button id="btnCancel" type="button" label="${labels.global.cancelBtn}"  mold="trendy" width="140px" />
+										</hbox>
+										<separator bar="false" />
+										<separator bar="false" />
+										<separator bar="false" />
+										<listbox id="searchResultGrid" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="99%">
+											<listhead sizable="true">
+												<listheader label="${labels.global.sr.no}" width="55px" />
+												<listheader label="${labels.warehousetype.name}" width="30%"  />
+												<listheader label="${labels.srt.description}" width="50%" sort="auto(description)" />
+												<listheader label="${labels.global.createDate}" width="20%" sort="auto(createDate)" />
+												<listheader label="${labels.global.view}"  width="45px"  />
+											</listhead>
+										</listbox>
+										<separator bar="false" />
+										<separator bar="false" />
+								<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+			</tabpanel>
+		</tabpanels>
+		</tabbox> 
+
+</window>
+</zk>

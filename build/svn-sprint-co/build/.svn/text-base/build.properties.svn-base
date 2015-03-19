@@ -1,0 +1,13 @@
+
+#SCHEMA SPY 
+db.host=192.168.0.123
+db.port=1521
+db.sid=nicedev
+db.username=CRESTELCPE
+db.password=CRESTELCPE
+
+#FINDBUG
+findbug.dir=findbug
+
+#JUNIT
+test.report.dir=junit

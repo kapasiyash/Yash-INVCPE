@@ -1,0 +1,19 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="updatesWarehouse" apply="com.elitecore.cpe.web.composer.master.warehouse.tree.SingleWareHouseTreeComposer">
+<vlayout width="800px">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.warehouse.viewhierarchy}" style="font-weight: bold;" />
+			</div>
+			
+			<vlayout id="singleTreeView">
+			
+			</vlayout>
+						
+			<separator bar="false" />
+			<separator bar="false" />
+			
+</vlayout>
+</hlayout>
+</zk>

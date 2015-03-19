@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/fullversion"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16460"
+   kind="dir"
+   committed-date="2015-03-16T06:47:58.359664Z"/>
+<entry
+   name="CRESTEL-CPE-DBFullV6.0.3.tar.gz"
+   checksum="fe17d8689127d683cb396696f9615ba6"
+   last-author="yash.kapasi"
+   text-time="2015-03-16T06:47:58.000000Z"
+   committed-rev="16460"
+   kind="file"
+   committed-date="2015-03-16T06:47:58.359664Z"
+   prop-time="2015-03-16T09:20:05.000000Z"/>
+<entry
+   name="CRESTEL-CPE-DBFullV6.0.4"
+   kind="dir"/>
+<entry
+   name="CRESTEL-CPE-FullV6.0.3.tar.gz"
+   checksum="853f2bdddaf853c012d1041ab8e8cdfe"
+   last-author="yash.kapasi"
+   text-time="2015-03-16T06:47:58.000000Z"
+   committed-rev="16460"
+   kind="file"
+   committed-date="2015-03-16T06:47:58.359664Z"
+   prop-time="2015-03-16T09:20:04.000000Z"/>
+<entry
+   name="CRESTEL-CPE-FullV6.0.4"
+   kind="dir"/>
+<entry
+   name="template"
+   kind="dir"/>
+</wc-entries>

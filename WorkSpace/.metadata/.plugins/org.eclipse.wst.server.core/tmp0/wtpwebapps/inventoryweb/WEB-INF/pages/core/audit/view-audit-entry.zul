@@ -1,0 +1,35 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:c="client">
+<tabbox id="searchAuditTabbox" width="100%" height="100%" tabscroll="true">
+	<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 20px; overflow: auto;" sclass="main-cont">
+	<hlayout id="viewAuditEntryLayout" height="100%" width="100%" apply="com.elitecore.cpe.web.composer.audit.ViewAuditEntryComposer">
+					<vlayout width="800px">
+					<separator bar="false"/>
+						<div sclass="sectionTitle">
+							<label value="${labels.aev.title}" style="font-weight: bold;" />
+						</div>
+						<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%">
+							<grid width="790px"  oddRowSclass="non-odd" sclass="viewGrid" zclass="none" >
+								<columns>
+									<column width="150px"></column>
+									<column width="245px"></column>
+									<column width="150px"></column>
+									<column width="245px"></column>
+								</columns>
+								<rows id="rows">
+								
+								</rows>
+							</grid>
+						</hlayout>
+						<separator bar="false" />
+						
+						<separator bar="false" />
+						<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+					
+	</hlayout>
+	</tabpanel>
+			</tabpanels>
+		</tabbox>
+</zk>

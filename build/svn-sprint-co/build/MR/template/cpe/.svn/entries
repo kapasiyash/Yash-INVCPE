@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/MR/template/cpe"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16473"
+   kind="dir"
+   committed-date="2015-03-16T06:51:00.055877Z"/>
+<entry
+   name="Installfiles.txt"
+   checksum="ed94b5302825192222b198510995cf48"
+   last-author="yash.kapasi"
+   committed-rev="16463"
+   text-time="2015-03-16T06:48:16.000000Z"
+   kind="file"
+   committed-date="2015-03-16T06:48:16.593532Z"/>
+<entry
+   name="delete"
+   kind="dir"/>
+<entry
+   name="installationscripts"
+   kind="dir"/>
+<entry
+   name="new"
+   kind="dir"/>
+<entry
+   name="readme.xml"
+   checksum="c5776d57e7258faf2a9a49f94bfa0356"
+   last-author="yash.kapasi"
+   text-time="2015-03-16T06:48:16.000000Z"
+   committed-rev="16463"
+   kind="file"
+   committed-date="2015-03-16T06:48:16.593532Z"
+   prop-time="2015-03-16T09:20:06.000000Z"/>
+<entry
+   name="update"
+   kind="dir"/>
+<entry
+   name="version.info"
+   checksum="96648708ce9e39f03ac8053c88bc0efb"
+   last-author="yash.kapasi"
+   committed-rev="16463"
+   text-time="2015-03-16T06:48:16.000000Z"
+   kind="file"
+   committed-date="2015-03-16T06:48:16.593532Z"/>
+<entry
+   name="version.info.ftl"
+   checksum="a1b97e3976302e63a7be049a63b7093a"
+   last-author="yash.kapasi"
+   committed-rev="16463"
+   text-time="2015-03-16T06:48:16.000000Z"
+   kind="file"
+   committed-date="2015-03-16T06:48:16.593532Z"/>
+</wc-entries>

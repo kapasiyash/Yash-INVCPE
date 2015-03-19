@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<project name="install" default="install" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+
+	<property file="${basedir}/build.properties"/>
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpath="ant-contrib-0.6.jar"/>			
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!-- Checks Argument     	          -->
+	<!-- ******************************** -->
+
+	<target name="arg-check" unless="file.name">
+		<echo message="Checking input arguments" level="debug" />
+		<echo message="ERROR: Installation file name not provided" level="error"/>
+		<fail message="USAGE: install.sh {file name}"/>	
+	</target>
+
+	<!-- ******************************** -->
+	<!-- Checks File presnt    	          -->
+	<!-- ******************************** -->
+
+	<target name="file-check" >
+		<echo message="Checking file at path: ${file.path}/${file.name}" level="debug" />
+		
+		<available file="${file.path}/${file.name}" property="tar.gz.present"/>	
+		<if>
+			<not>
+				<isset property="tar.gz.present" />
+			</not>	
+			<then>
+				<echo message="ERROR: ${file.path}/${file.name} is not available." level="error"/>
+				<fail message="ERROR: ${file.path}/${file.name} is not available. Please check if correct file name is given in argument"/>				
+			</then>
+		</if>
+	</target>
+
+
+	<!-- ******************************** -->
+	<!-- Unzip tar.gz        	          -->
+	<!-- ******************************** -->
+	
+	<target name="unzip-tar.gz"  description="Unzips upgrade.tar.gz file" >
+	
+		<echo message="Extracting file : ${file.path}/${file.name} to ${installation.dir}" level="debug" />
+		
+		<basename property="file.base.name" file="${file.name}" suffix=".tar.gz"/>
+		
+		<trycatch>
+			<try>	
+				<mkdir dir="${installation.dir}" />
+				<gunzip src="${file.path}/${file.name}" dest="${basedir}"/>
+				<untar src="${basedir}/${file.base.name}.tar" dest="${installation.dir}"/>
+				<touch>
+				    <fileset dir="${installation.dir}"/>
+				</touch>
+				<delete file="${basedir}/${file.base.name}.tar"/>
+			</try>
+			<catch>
+				<echo message="ERROR: Error in extracting file ${file.path}/${file.name} to ${installation.dir}" level="error"/>
+				<fail message="ERROR: Error in extracting file ${file.path}/${file.name} to ${installation.dir}. Please check if file is not corrupted"/>
+			</catch>
+		</trycatch>
+	</target>
+	
+	<target name="upgrade-module-version" description="Upgrade Version">
+	
+		<echo message="Installing module: ${module.name}. Please wait..."  />
+		
+		<trycatch property="error.message" reference="error.object">
+			<try>
+			
+				<echo message="Calling pre upgrade version" level="debug" />
+				<ant antfile="${crestel.home}/modules/${module.name}/utilities/installationscripts/install/install-module.xml" target="pre-upgrade-version" inheritAll="true" />
+				
+				<echo message="Calling upgrade version" level="debug" />
+				<ant antfile="${crestel.home}/modules/${module.name}/utilities/installationscripts/install/install-module.xml" target="upgrade-version" inheritAll="true" />
+				
+				<echo message="Calling post upgrade version" level="debug" />
+				<ant antfile="${crestel.home}/modules/${module.name}/utilities/installationscripts/install/install-module.xml" target="post-upgrade-version" inheritAll="true" />
+			</try>	
+			<catch>
+				<delete dir="${installation.dir}"/>
+				<echo message="ERROR: Installation of module '${module.name}' failed" level="error"/>
+				<property name="err.obj" refid="error.object" />
+				<fail message="Installation of module '${module.name}' failed. Root cause:${error.message}, Error Object=${err.obj}"/>
+			</catch>
+		</trycatch>
+	</target>
+
+	<target name="install-version" depends="arg-check, file-check, unzip-tar.gz" >
+
+		<echo message="Installation started. Please wait..."  />
+			
+		<echo message="Installation dir: ${installation.dir}" level="debug" />
+		
+		<property file="${installation.dir}/installation.info"/>
+
+		<trycatch property="error.message" reference="error.object">
+			<try>
+		
+				<foreach list="${module.list}" param="module.name" target="upgrade-module-version" inheritall="true">
+				</foreach>
+				
+		                <if>
+		                        <available file="${installation.dir}/version.info"/>
+		                        <then>
+		                                <antcall target="do-version-entries"/>
+		                        </then>
+		                </if>
+				<mkdir dir="${file.path}/successbuilds"/>
+				<echo message="Moving file ${file.name} to path ${file.path}/successbuilds" />
+				<move todir="${file.path}/successbuilds">
+					<fileset dir="${file.path}">
+					        <include name="${file.name}" />
+					</fileset>
+				</move>
+				<delete dir="${installation.dir}"/>				
+			</try>	
+			<catch>
+				<mkdir dir="${file.path}/failbuilds"/>
+				<echo message="Moving file ${file.name} to path ${file.path}/failbuilds" />
+				<move todir="${file.path}/failbuilds">
+					<fileset dir="${file.path}">
+					        <include name="${file.name}" />
+					</fileset>
+				</move>
+				<fail message="${error.message}, Error Object=${err.obj}"/>
+			</catch>
+		</trycatch>
+		
+		
+	</target>
+	
+	 <target name="do-version-entries">
+	 	
+	       <property environment="env"/>
+	       
+	       <property file="${installation.dir}/version.info"/>
+
+               <echo message="Updating database version : ${version.number}" level="info" />
+                
+               <property name="current.db.version" value="${version.number}"/>
+                <property name="current.version" value="${version.number}"/>
+               
+               <propertycopy name="db.schema.password" from="${copmonent.db.schema}.password" />
+               
+               <echo message="In update-installed-version" level="debug"/>
+		
+	       <echo message="Updating version : ${current.version}" level="info" />
+		
+		<trycatch property="error.message" reference="error.object">
+			<try>
+				<sql
+				    driver="oracle.jdbc.driver.OracleDriver"
+                                    url="${database.url}"
+                                    userid="${copmonent.db.schema}${database.env}"
+                                    password="${db.schema.password}"
+                                    showheaders="false"
+                                    print="true"
+				>
+					insert into 
+							tbltversionhistory(versionnumber, hostname, modulename, installationdate) 
+					values
+							('${current.version}','${env.HOSTNAME}','${component.name}',sysdate);
+							
+					insert into 
+                                                        tbltversionhistory(versionnumber, hostname, modulename, installationdate) 
+                                    	values
+                                                        ('${current.db.version}','${env.HOSTNAME}','${component.name}-DB',sysdate);
+				</sql>
+				
+				<echo message="Version history updated" level="info"/>
+				
+				<sql
+				    driver="oracle.jdbc.driver.OracleDriver"
+                                    url="${database.url}"
+                                    userid="${copmonent.db.schema}${database.env}"
+                                    password="${db.schema.password}"
+                                    showheaders="false"
+                                    print="true"
+				    output="result.properties"
+				>
+					select 
+						'installed.version.number=' || currentversionnumber 
+					from 
+						tblmversion 
+					where 
+						modulename = '${component.name}' and
+						hostname = '${env.HOSTNAME}' and
+						rownum=1;
+				</sql>
+				
+				<property file="result.properties" />
+
+				<if>
+					<isset property="installed.version.number" />
+					<then>
+						<sql
+						    driver="oracle.jdbc.driver.OracleDriver"
+		                                    url="${database.url}"
+		                                    userid="${copmonent.db.schema}${database.env}"
+                                    		    password="${db.schema.password}"
+		                                    showheaders="false"
+		                                    print="true"
+						>
+							update 
+								tblmversion 
+							set 
+								currentversionnumber='${current.version}',
+								installationdate=sysdate 
+							where 
+								modulename='${component.name}' and 
+								hostname='${env.HOSTNAME}';
+							
+							update 
+								tblmversion 
+							set 
+								currentversionnumber='${current.db.version}',
+								installationdate=sysdate 
+							where 
+								modulename='${component.name}-DB' and 
+								hostname='${env.HOSTNAME}';
+						</sql>
+						
+						<echo message="Version record updated from ${installed.version.number} to ${current.version}" level="info"/>
+					</then>
+					<else>
+						<sql
+						    driver="oracle.jdbc.driver.OracleDriver"
+		                                    url="${database.url}"
+		                                    userid="${copmonent.db.schema}${database.env}"
+                                   		    password="${db.schema.password}"
+		                                    showheaders="false"
+		                                    print="true"
+						>
+							insert into 
+								tblmversion(currentversionnumber, hostname, modulename, installationdate) 
+							values
+									('${current.version}','${env.HOSTNAME}','${component.name}',sysdate);
+									
+							insert into 
+                                                        	tblmversion(currentversionnumber, hostname, modulename, installationdate) 
+                                            		values
+                                                        		('${current.db.version}','${env.HOSTNAME}','${component.name}-DB',sysdate);    
+						</sql>
+						
+						<echo message="Version record inserted with ${current.version} version" level="info"/>
+					</else>
+				</if>
+				
+			</try>
+			<catch>
+				<echo message="Error : Update of version data failed" level="error"/>
+				<fail message="Update of version data failed. Trying to update version to ${current.version}"/>
+			</catch>
+		</trycatch>
+        </target>
+
+	<target name="install">
+		<foreach list="${file.list}" param="file.name" target="install-version" inheritall="true">
+		</foreach>
+	</target>	
+</project> 

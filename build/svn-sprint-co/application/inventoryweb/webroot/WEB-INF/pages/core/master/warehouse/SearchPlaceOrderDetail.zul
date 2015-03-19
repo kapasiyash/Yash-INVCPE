@@ -1,0 +1,118 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="transferInventorySummary" 
+		apply="com.elitecore.cpe.web.composer.master.warehouse.SearchPlaceOrderDetailComposer">
+		
+<vlayout width="800px" height="100%">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.warehouse.searchplaceordertitle}" style="font-weight: bold;" />
+			</div>
+			
+			<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+					<columns>
+						<column width="160px"></column>
+						<column width="240px"></column>
+						<column width="160px"></column>
+						<column width="240px"></column>
+					</columns>
+					<rows>
+	
+						<row>
+							<cell>
+								<label value="${labels.inventory.orderno}"></label>
+							</cell>
+							<cell colspan="3" > <textbox id="txtOrderNo" width="140" maxlength="100"  /></cell>
+						</row>
+						<row  align="top">
+						<cell>
+							<label value="${labels.warehouse.orderfrom}"/>
+								
+							</cell>
+							<cell>
+								<datebox id="orderfrom" readonly="true" format="${$composer.dateFormat}"   constraint="no future : Please select valid date." />
+							</cell>
+							<cell>
+								<label value="${labels.warehouse.orderto}"/>
+								
+							</cell>
+							<cell>
+								<datebox id="orderto" readonly="true" format="${$composer.dateFormat}"   constraint="no future : Please select valid date."  />
+							</cell>
+						</row>
+					</rows>
+			</grid>
+						
+			<separator bar="false" />
+			
+			<hbox>
+				<button id="btnSearch" mold="trendy" label="${labels.global.searchBtn}" width="140px"/>
+			</hbox>
+			<separator bar="false" />
+			<vlayout>
+			<tabbox width="100%"  tabscroll="false" id="viewPlaceOrderSummaryTabBox" visible="false">
+		<tabs>
+			<tab  label="${labels.warehouse.providerdetail}" id="searchTab2"/>
+			<tab  label="${labels.warehouse.requestordetail}" id="searchTab1"/>
+		</tabs>
+		<tabpanels  width="100%">
+		
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;"   >
+				<vlayout style="padding-left: 0px; padding-top: 2px;" width="100%">
+					<listbox id="searchPlaceOrderGrid1" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+									style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="99%">
+									
+						<listhead sizable="true">
+												<listheader label="${labels.global.sr.no}" width="45px" />
+												<listheader label="${labels.inventory.orderno}" width="18%" sort="auto(orderNo)" />
+												<listheader label="${labels.inventory.currentwh}" width="15%" sort="auto(fromwarehouse)" />
+												<listheader label="${labels.inventory.newwh}" width="15%" sort="auto(towarehouse)" />
+												<listheader label="${labels.item.type}" width="22%"  sort="auto(resourceType)"/>
+												<listheader label="${labels.item.subtype}"  width="17%" sort="auto(resourceSubtype)" />
+												<listheader label="${labels.inventory.qty}"  width="65px" sort="auto(quantity)" />
+												<listheader label="${labels.cis.status}"  width="15%"  sort="auto(status)"/>
+												<listheader label="${labels.global.actions}"  width="65px"  />
+												<listheader label="${labels.inventoryplaceorder.action}"  width="65px"  />
+											<!-- <listheader label="${labels.global.createDate}"  width="10%"  /> -->	
+											<!-- <listheader label="${labels.global.edit}"  width="10%"  />
+												<listheader label="${labels.global.deleteBtn}"  width="10%"  /> -->	
+											</listhead>
+					</listbox>	
+						</vlayout>
+						<separator bar="false" />
+						<separator bar="false" />
+				</tabpanel>
+				
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;" >
+				<vlayout style="padding-left: 0px; padding-top: 2px;" width="100%">
+					
+			<listbox id="searchPlaceOrderGrid" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="99%">
+											<listhead sizable="true">
+												<listheader label="${labels.global.sr.no}" width="45px" />
+												<listheader label="${labels.inventory.orderno}" width="15%" sort="auto(orderNo)"/>
+												<listheader label="${labels.inventory.currentwh}" width="15%"  sort="auto(fromwarehouse)"/>
+												<listheader label="${labels.inventory.newwh}" width="15%" sort="auto(towarehouse)" />
+												<listheader label="${labels.item.type}" width="15%"  sort="auto(resourceType)"/>
+												<listheader label="${labels.item.subtype}"  width="17%"  sort="auto(resourceSubtype)"/>
+												<listheader label="${labels.inventory.qty}"  width="65px" sort="auto(quantity)" />
+												<listheader label="${labels.cis.status}"  width="15%"  sort="auto(status)"/>
+												<listheader label="${labels.global.actions}"  width="65px"  />
+											<!-- <listheader label="${labels.global.createDate}"  width="10%"  /> -->	
+											<!-- <listheader label="${labels.global.edit}"  width="10%"  />
+												<listheader label="${labels.global.deleteBtn}"  width="10%"  /> -->	
+											</listhead>
+										</listbox>
+					</vlayout>	
+						<separator bar="false" />
+						<separator bar="false" />
+				</tabpanel>
+				
+		</tabpanels>
+		</tabbox> 
+		<separator bar="false" />
+		<separator bar="false" />
+		</vlayout>
+</vlayout>
+</hlayout>
+</zk>

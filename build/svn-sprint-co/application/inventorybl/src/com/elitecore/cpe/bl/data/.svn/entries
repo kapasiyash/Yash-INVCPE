@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/data"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16442"
+   kind="dir"
+   committed-date="2015-03-13T03:42:53.509935Z"/>
+<entry
+   name="common"
+   kind="dir"/>
+<entry
+   name="notification"
+   kind="dir"/>
+<entry
+   name="system"
+   kind="dir"/>
+</wc-entries>

@@ -1,0 +1,39 @@
+<zk>
+<window  id=""  style="overflow: visible;" width="100%" height="100%" 
+		apply="com.elitecore.cpe.web.composer.inventory.search.ViewInventoryBatchSummaryComposer">
+<!--  	<tabbox width="100%" height="100%" tabscroll="false" id="searchInventoryTabbox">   -->
+<!-- 	<tabs> -->
+<!-- 		<tab id="createLPTab" label="${labels.inventory.searchtitle}" /> -->
+<!-- 	</tabs> -->
+
+<!-- <tabpanels height="100%" width="100%"> -->
+<!-- 				<tabpanel style="padding-top: 10px; padding-left: 20px;overflow:auto;" sclass="main-cont" height="100%">  -->
+				<hlayout height="100%" width="100%" style="overflow: visible;">
+					<vlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%">
+						<hlayout width="100%">
+							<vlayout width="100%" height="100%" >
+								
+										<listbox id="searchResultGrid" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd" height="100%" width="99%">
+											<!-- <listhead sizable="true">
+												<listheader label="${labels.global.sr.no}" width="20%" />
+												<listheader label="CPE Batch" width="40%"  />
+												<listheader label="Inventory ID" width="30%"  />
+												<listheader label="Status"  width="40%"  />
+												<listheader label="MAC Address"  width="40%"  />
+												<listheader label="Searial Number"  width="40%"  />
+											</listhead>  -->
+										</listbox>
+										<separator bar="false" />
+										<separator bar="false" />
+								</vlayout>
+						</hlayout>
+						<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+				</hlayout>
+<!-- 			</tabpanel> -->
+<!-- 		</tabpanels> -->
+<!-- 		</tabbox>  -->
+
+</window>
+</zk>

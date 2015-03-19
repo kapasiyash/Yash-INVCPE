@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/util/logger"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15558"
+   kind="dir"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="BLLogger.java"
+   checksum="3a8e4961f2556acf97733a6dbaa5816d"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="DefaultLogger.java"
+   checksum="abd7f6ce7b61c706feddb7f096861c5f"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ILogger.java"
+   checksum="7b23d75671781e5be304d6a3409c58a3"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="Logger.java"
+   checksum="ceb5a7b74575f358620690c48ec4134c"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

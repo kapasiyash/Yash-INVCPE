@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<project name="Web" default="all" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!-- Unit target definition ends      -->
+	<!-- ******************************** -->
+
+	<target name="init">
+		<delete dir="${crestel.home}/wars/registration"/>
+		<delete dir="${crestel.home}/wars/registrationx"/>
+		<delete dir="${crestel.home}/wars/renewal"/>
+		<delete dir="${crestel.home}/wars/renewalx"/>
+		<delete dir="${crestel.home}/wars/reselleraccount"/>
+		
+		<echo message="Post Build"/>
+		<copy todir="${crestel.home}/modules/web/versions" overwrite="true">
+			<fileset dir="${crestel.home}/modules/web/utilities/installationscripts">
+				<include name="build-version-install.xml"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="all" >
+		<antcall target="init"/>
+	</target>
+</project> 

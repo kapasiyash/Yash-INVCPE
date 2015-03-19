@@ -1,0 +1,1209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="2.0.1" sequence="0" timestamp="1426495623385" analysisTimestamp="1426495623396" release="">
+  <Project projectName="">
+    <Jar>/home/elitecore/Project/Partner-CPE_branch/CrestelCPE-MTNICE/Sprint-4/build/release/${env.BUILD_NUMBER}/inventorybl.jar</Jar>
+    <SrcDir>/home/elitecore/Project/Partner-CPE_branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src</SrcDir>
+  </Project>
+  <BugInstance type="REC_CATCH_EXCEPTION" priority="2" abbrev="REC" category="STYLE" instanceHash="37b74661a9508561ef007313f12c2df8" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="17">
+    <ShortMessage>Exception is caught when Exception is not thrown</ShortMessage>
+    <LongMessage>Exception is caught when Exception is not thrown in com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent.runAgentTask(BaseSchedule, BaseEntity, BaseEnityEnvParameter, BaseMasterEnityEnvParameter)</LongMessage>
+    <Class classname="com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent" name="runAgentTask" signature="(Lcom/elitecore/cpe/bl/agents/base/BaseSchedule;Lcom/elitecore/cpe/bl/agents/base/BaseEntity;Lcom/elitecore/cpe/bl/agents/base/BaseEnityEnvParameter;Lcom/elitecore/cpe/bl/agents/base/BaseMasterEnityEnvParameter;)Z" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent"/>
+      <Message>In method com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent.runAgentTask(BaseSchedule, BaseEntity, BaseEnityEnvParameter, BaseMasterEnityEnvParameter)</Message>
+    </Method>
+    <SourceLine classname="com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent" startBytecode="709" endBytecode="709">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="NP_LOAD_OF_KNOWN_NULL_VALUE" priority="2" abbrev="NP" category="STYLE" instanceHash="3672159b43a00f43a2b1940abe111ec4" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="16">
+    <ShortMessage>Load of known null value</ShortMessage>
+    <LongMessage>Load of known null value in com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent.runAgentTask(BaseSchedule, BaseEntity, BaseEnityEnvParameter, BaseMasterEnityEnvParameter)</LongMessage>
+    <Class classname="com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent" name="runAgentTask" signature="(Lcom/elitecore/cpe/bl/agents/base/BaseSchedule;Lcom/elitecore/cpe/bl/agents/base/BaseEntity;Lcom/elitecore/cpe/bl/agents/base/BaseEnityEnvParameter;Lcom/elitecore/cpe/bl/agents/base/BaseMasterEnityEnvParameter;)Z" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent" startBytecode="0" endBytecode="130"/>
+      <Message>In method com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent.runAgentTask(BaseSchedule, BaseEntity, BaseEnityEnvParameter, BaseMasterEnityEnvParameter)</Message>
+    </Method>
+    <SourceLine classname="com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent" startBytecode="267" endBytecode="267">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="REC_CATCH_EXCEPTION" priority="2" abbrev="REC" category="STYLE" instanceHash="15f795d177c396ced2f26114a064b2a8" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="17">
+    <ShortMessage>Exception is caught when Exception is not thrown</ShortMessage>
+    <LongMessage>Exception is caught when Exception is not thrown in com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade.changeInventorySubStatus(ChangeInventorySubStatusVO, IBLSession)</LongMessage>
+    <Class classname="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade" name="changeInventorySubStatus" signature="(Lcom/elitecore/cpe/bl/vo/inventorymgt/ChangeInventorySubStatusVO;Lcom/elitecore/cpe/core/IBLSession;)V" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade"/>
+      <Message>In method com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade.changeInventorySubStatus(ChangeInventorySubStatusVO, IBLSession)</Message>
+    </Method>
+    <SourceLine classname="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade" startBytecode="447" endBytecode="447">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="REC_CATCH_EXCEPTION" priority="2" abbrev="REC" category="STYLE" instanceHash="e7a297975414e5a851622bdd90fb8bc9" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="17">
+    <ShortMessage>Exception is caught when Exception is not thrown</ShortMessage>
+    <LongMessage>Exception is caught when Exception is not thrown in com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade.calculateThreasholdValue(Long, Long, Long, Long)</LongMessage>
+    <Class classname="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade" name="calculateThreasholdValue" signature="(Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;)Lcom/elitecore/cpe/bl/data/notification/NotificationData;" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade"/>
+      <Message>In method com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade.calculateThreasholdValue(Long, Long, Long, Long)</Message>
+    </Method>
+    <SourceLine classname="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade" startBytecode="781" endBytecode="781">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="REC_CATCH_EXCEPTION" priority="2" abbrev="REC" category="STYLE" instanceHash="3a3a2e4bc50582ea4e5f63fef766cf8b" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="17">
+    <ShortMessage>Exception is caught when Exception is not thrown</ShortMessage>
+    <LongMessage>Exception is caught when Exception is not thrown in com.elitecore.cpe.bl.facade.ws.WSFacade.reserveInventory(BookCPERequestData, IBLSession)</LongMessage>
+    <Class classname="com.elitecore.cpe.bl.facade.ws.WSFacade" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.facade.ws.WSFacade">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.bl.facade.ws.WSFacade</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.bl.facade.ws.WSFacade" name="reserveInventory" signature="(Lcom/elitecore/cpe/bl/ws/data/input/request/BookCPERequestData;Lcom/elitecore/cpe/core/IBLSession;)Ljava/util/List;" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.facade.ws.WSFacade"/>
+      <Message>In method com.elitecore.cpe.bl.facade.ws.WSFacade.reserveInventory(BookCPERequestData, IBLSession)</Message>
+    </Method>
+    <SourceLine classname="com.elitecore.cpe.bl.facade.ws.WSFacade" startBytecode="1283" endBytecode="1283">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING" priority="1" abbrev="SQL" category="SECURITY" instanceHash="9d82dcdb053a95aceafa041b6e0a3b77" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="10">
+    <ShortMessage>A prepared statement is generated from a nonconstant String</ShortMessage>
+    <LongMessage>A prepared statement is generated from a nonconstant String in com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.getInventoryDetails(InventoryDetailsRequestData, String, int) </LongMessage>
+    <Class classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" name="getInventoryDetails" signature="(Lcom/elitecore/cpe/bl/ws/data/input/request/InventoryDetailsRequestData;Ljava/lang/String;I)Lcom/sun/rowset/CachedRowSetImpl;" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" startBytecode="0" endBytecode="419"/>
+      <Message>In method com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.getInventoryDetails(InventoryDetailsRequestData, String, int)</Message>
+    </Method>
+    <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" startBytecode="866" endBytecode="866">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING" priority="1" abbrev="SQL" category="SECURITY" instanceHash="76d173d2b0353076edc850b8affbfde" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="10">
+    <ShortMessage>A prepared statement is generated from a nonconstant String</ShortMessage>
+    <LongMessage>A prepared statement is generated from a nonconstant String in com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchInventory(SearchInventoryVO) </LongMessage>
+    <Class classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" name="searchInventory" signature="(Lcom/elitecore/cpe/bl/vo/inventorymgt/SearchInventoryVO;)Lcom/sun/rowset/CachedRowSetImpl;" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" startBytecode="0" endBytecode="399"/>
+      <Message>In method com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchInventory(SearchInventoryVO)</Message>
+    </Method>
+    <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" startBytecode="825" endBytecode="825">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING" priority="1" abbrev="SQL" category="SECURITY" instanceHash="e08b0719d5357fdd7aa00964f47ef501" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="10">
+    <ShortMessage>A prepared statement is generated from a nonconstant String</ShortMessage>
+    <LongMessage>A prepared statement is generated from a nonconstant String in com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchTransferInventorySummary(SearchTransferInventory) </LongMessage>
+    <Class classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" name="searchTransferInventorySummary" signature="(Lcom/elitecore/cpe/bl/vo/inventorymgt/SearchTransferInventory;)Ljava/util/List;" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" startBytecode="0" endBytecode="388"/>
+      <Message>In method com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchTransferInventorySummary(SearchTransferInventory)</Message>
+    </Method>
+    <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" startBytecode="518" endBytecode="518">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING" priority="1" abbrev="SQL" category="SECURITY" instanceHash="b9f332b29398be499edd472d99ff598e" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="10">
+    <ShortMessage>A prepared statement is generated from a nonconstant String</ShortMessage>
+    <LongMessage>A prepared statement is generated from a nonconstant String in com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchValidInventoryUploadData(String, String, Boolean) </LongMessage>
+    <Class classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" name="searchValidInventoryUploadData" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;)Lcom/sun/rowset/CachedRowSetImpl;" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" startBytecode="0" endBytecode="193"/>
+      <Message>In method com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchValidInventoryUploadData(String, String, Boolean)</Message>
+    </Method>
+    <SourceLine classname="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" startBytecode="321" endBytecode="321">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING" priority="1" abbrev="SQL" category="SECURITY" instanceHash="493f7c09616b4f24d09169655bb543dd" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="10">
+    <ShortMessage>A prepared statement is generated from a nonconstant String</ShortMessage>
+    <LongMessage>A prepared statement is generated from a nonconstant String in com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean.searchTransferInventoryOrderDetail(SearchTransferInventory) </LongMessage>
+    <Class classname="com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean" name="searchTransferInventoryOrderDetail" signature="(Lcom/elitecore/cpe/bl/vo/inventorymgt/SearchTransferInventory;)Ljava/util/List;" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean" startBytecode="0" endBytecode="377"/>
+      <Message>In method com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean.searchTransferInventoryOrderDetail(SearchTransferInventory)</Message>
+    </Method>
+    <SourceLine classname="com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean" startBytecode="476" endBytecode="476">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="INT_VACUOUS_BIT_OPERATION" priority="2" abbrev="INT" category="STYLE" instanceHash="8ccf3ef507f56aba3f3d1f3c0dea8dbc" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="17">
+    <ShortMessage>Vacuous bit mask operation on integer value</ShortMessage>
+    <LongMessage>Vacuous iand operation on $L3 in com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.body(int[], int, int)</LongMessage>
+    <Class classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt" primary="true">
+      <SourceLine classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt" name="body" signature="([III)[I" isStatic="true" primary="true">
+      <SourceLine classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt"/>
+      <Message>In method com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.body(int[], int, int)</Message>
+    </Method>
+    <String value="iand">
+      <Message>Value iand</Message>
+    </String>
+    <LocalVariable name="?" register="3" pc="104" role="LOCAL_VARIABLE_UNKNOWN">
+      <Message>Local variable stored in JVM register 3</Message>
+    </LocalVariable>
+    <SourceLine classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt" startBytecode="104" endBytecode="104">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="INT_VACUOUS_BIT_OPERATION" priority="2" abbrev="INT" category="STYLE" instanceHash="a1882eee2447cf80fc8efaf320087d80" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="17">
+    <ShortMessage>Vacuous bit mask operation on integer value</ShortMessage>
+    <LongMessage>Vacuous iand operation on $L5 in com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.des_set_key(byte[])</LongMessage>
+    <Class classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt" primary="true">
+      <SourceLine classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt" name="des_set_key" signature="([B)[I" isStatic="true" primary="true">
+      <SourceLine classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt"/>
+      <Message>In method com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.des_set_key(byte[])</Message>
+    </Method>
+    <String value="iand">
+      <Message>Value iand</Message>
+    </String>
+    <LocalVariable name="?" register="5" pc="435" role="LOCAL_VARIABLE_UNKNOWN">
+      <Message>Local variable stored in JVM register 5</Message>
+    </LocalVariable>
+    <SourceLine classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt" startBytecode="435" endBytecode="435">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="INT_VACUOUS_BIT_OPERATION" priority="2" abbrev="INT" category="STYLE" instanceHash="fb11ac8c35b9b27cae735fc00d81585a" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="17">
+    <ShortMessage>Vacuous bit mask operation on integer value</ShortMessage>
+    <LongMessage>Vacuous iand operation on &lt;Unknown&gt; in com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.des_set_key(byte[])</LongMessage>
+    <Class classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt" primary="true">
+      <SourceLine classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt">
+        <Message>In &lt;Unknown&gt;</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt" name="des_set_key" signature="([B)[I" isStatic="true" primary="true">
+      <SourceLine classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt"/>
+      <Message>In method com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.des_set_key(byte[])</Message>
+    </Method>
+    <String value="iand">
+      <Message>Value iand</Message>
+    </String>
+    <SourceLine classname="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt" startBytecode="399" endBytecode="399">
+      <Message>In &lt;Unknown&gt;</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="STYLE">
+    <Description>Dodgy code</Description>
+  </BugCategory>
+  <BugCategory category="SECURITY">
+    <Description>Security</Description>
+  </BugCategory>
+  <BugPattern type="INT_VACUOUS_BIT_OPERATION" abbrev="INT" category="STYLE">
+    <ShortDescription>Vacuous bit mask operation on integer value</ShortDescription>
+    <Details><![CDATA[
+
+<p> This is an integer bit operation (and, or, or exclusive or) that doesn't do any useful work
+(e.g., <code>v & 0xffffffff</code>).
+
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING" abbrev="SQL" category="SECURITY" cweid="89">
+    <ShortDescription>A prepared statement is generated from a nonconstant String</ShortDescription>
+    <Details><![CDATA[
+
+  <p>The code creates an SQL prepared statement from a nonconstant String.
+If unchecked, tainted data from a user is used in building this String, SQL injection could
+be used to make the prepared statement do something unexpected and undesirable.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="NP_LOAD_OF_KNOWN_NULL_VALUE" abbrev="NP" category="STYLE">
+    <ShortDescription>Load of known null value</ShortDescription>
+    <Details><![CDATA[
+
+  <p> The variable referenced at this point is known to be null due to an earlier
+   check against null. Although this is valid, it might be a mistake (perhaps you
+intended to refer to a different variable, or perhaps the earlier check to see if the
+variable is null should have been a check to see if it was nonnull).
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="REC_CATCH_EXCEPTION" abbrev="REC" category="STYLE" cweid="396">
+    <ShortDescription>Exception is caught when Exception is not thrown</ShortDescription>
+    <Details><![CDATA[
+  
+  <p>
+  This method uses a try-catch block that catches Exception objects, but Exception is not
+  thrown within the try block, and RuntimeException is not explicitly caught.  It is a common bug pattern to
+  say try { ... } catch (Exception e) { something } as a shorthand for catching a number of types of exception
+  each of whose catch blocks is identical, but this construct also accidentally catches RuntimeException as well,
+  masking potential bugs.
+  </p>
+  
+     ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="SQL">
+    <Description>Potential SQL Problem</Description>
+  </BugCode>
+  <BugCode abbrev="INT">
+    <Description>Suspicious integer expression</Description>
+  </BugCode>
+  <BugCode abbrev="NP" cweid="476">
+    <Description>Null pointer dereference</Description>
+  </BugCode>
+  <BugCode abbrev="REC">
+    <Description>RuntimeException capture</Description>
+  </BugCode>
+  <Errors errors="0" missingClasses="98">
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.request.BookCPERequestData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.request.InventoryDetailsRequestData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.request.MarkCPEAsFaultyRequestVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.request.ReleaseCPERequestVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.request.ResourceAvailibilityRequestData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.response.CPEResponseVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.response.InventoryDetailsResponseData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusResponseVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.response.ResourceAvailibilityResponseData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.vo.CPEInventoryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.vo.InventoryAttributeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.vo.InventoryDetailVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.vo.InventoryRequestVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.vo.InventoryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.vo.ReserveAllocateRequestVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.input.vo.ResourceAvailibilityVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.ws.data.util.InventoryMgtResponseCode</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.AgentRunDetails</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.IAgent</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.IAgentSchedule</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.data.AgentServiceSummaryData</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.entities.IAgentRunEntity</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.entities.IAgentRunMasterEntity</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.managers.IAgentManager</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.providers.DefaultAgentManagerProvider</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.providers.DefaultAgentWorkerProvider</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.utils.AgentErrorObject</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.utils.AgentResultObject</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.utils.IAgentMasterEntityEnvParameterList</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.utils.IAgentRunEnvParameterList</MissingClass>
+    <MissingClass>com.elitecore.utility.agentframework.worker.IAgentWorker</MissingClass>
+    <MissingClass>javax.ejb.ActivationConfigProperty</MissingClass>
+    <MissingClass>javax.ejb.EJB</MissingClass>
+    <MissingClass>javax.ejb.Local</MissingClass>
+    <MissingClass>javax.ejb.MessageDriven</MissingClass>
+    <MissingClass>javax.ejb.Remote</MissingClass>
+    <MissingClass>javax.ejb.SessionContext</MissingClass>
+    <MissingClass>javax.ejb.Stateless</MissingClass>
+    <MissingClass>javax.ejb.TransactionAttribute</MissingClass>
+    <MissingClass>javax.ejb.TransactionAttributeType</MissingClass>
+    <MissingClass>javax.ejb.TransactionManagement</MissingClass>
+    <MissingClass>javax.ejb.TransactionManagementType</MissingClass>
+    <MissingClass>javax.jms.JMSException</MissingClass>
+    <MissingClass>javax.jms.Message</MissingClass>
+    <MissingClass>javax.jms.MessageListener</MissingClass>
+    <MissingClass>javax.jms.ObjectMessage</MissingClass>
+    <MissingClass>javax.jms.Queue</MissingClass>
+    <MissingClass>javax.jms.QueueConnection</MissingClass>
+    <MissingClass>javax.jms.QueueConnectionFactory</MissingClass>
+    <MissingClass>javax.jms.QueueSender</MissingClass>
+    <MissingClass>javax.jms.QueueSession</MissingClass>
+    <MissingClass>javax.mail.Address</MissingClass>
+    <MissingClass>javax.mail.Authenticator</MissingClass>
+    <MissingClass>javax.mail.Message</MissingClass>
+    <MissingClass>javax.mail.Message$RecipientType</MissingClass>
+    <MissingClass>javax.mail.PasswordAuthentication</MissingClass>
+    <MissingClass>javax.mail.Session</MissingClass>
+    <MissingClass>javax.mail.Transport</MissingClass>
+    <MissingClass>javax.mail.internet.InternetAddress</MissingClass>
+    <MissingClass>javax.mail.internet.MimeMessage</MissingClass>
+    <MissingClass>javax.persistence.CascadeType</MissingClass>
+    <MissingClass>javax.persistence.Column</MissingClass>
+    <MissingClass>javax.persistence.Entity</MissingClass>
+    <MissingClass>javax.persistence.EntityManager</MissingClass>
+    <MissingClass>javax.persistence.FetchType</MissingClass>
+    <MissingClass>javax.persistence.GeneratedValue</MissingClass>
+    <MissingClass>javax.persistence.GenerationType</MissingClass>
+    <MissingClass>javax.persistence.Id</MissingClass>
+    <MissingClass>javax.persistence.JoinColumn</MissingClass>
+    <MissingClass>javax.persistence.JoinTable</MissingClass>
+    <MissingClass>javax.persistence.Lob</MissingClass>
+    <MissingClass>javax.persistence.LockModeType</MissingClass>
+    <MissingClass>javax.persistence.ManyToMany</MissingClass>
+    <MissingClass>javax.persistence.ManyToOne</MissingClass>
+    <MissingClass>javax.persistence.NamedQueries</MissingClass>
+    <MissingClass>javax.persistence.NamedQuery</MissingClass>
+    <MissingClass>javax.persistence.NoResultException</MissingClass>
+    <MissingClass>javax.persistence.OneToMany</MissingClass>
+    <MissingClass>javax.persistence.OneToOne</MissingClass>
+    <MissingClass>javax.persistence.PersistenceContext</MissingClass>
+    <MissingClass>javax.persistence.Query</MissingClass>
+    <MissingClass>javax.persistence.SequenceGenerator</MissingClass>
+    <MissingClass>javax.persistence.Table</MissingClass>
+    <MissingClass>junit.framework.TestCase</MissingClass>
+    <MissingClass>oracle.sql.TIMESTAMP</MissingClass>
+    <MissingClass>org.apache.commons.net.PrintCommandListener</MissingClass>
+    <MissingClass>org.apache.commons.net.ProtocolCommandListener</MissingClass>
+    <MissingClass>org.apache.commons.net.ftp.FTPClient</MissingClass>
+    <MissingClass>org.apache.commons.net.ftp.FTPReply</MissingClass>
+    <MissingClass>org.apache.log4j.Level</MissingClass>
+    <MissingClass>org.apache.log4j.Logger</MissingClass>
+    <MissingClass>org.hibernate.annotations.Cache</MissingClass>
+    <MissingClass>org.hibernate.annotations.CacheConcurrencyStrategy</MissingClass>
+    <MissingClass>org.hibernate.exception.ConstraintViolationException</MissingClass>
+    <MissingClass>org.jboss.mx.util.MBeanServerLocator</MissingClass>
+    <MissingClass>org.junit.Before</MissingClass>
+    <MissingClass>org.junit.Test</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Mon, 16 Mar 2015 14:17:03 +0530" total_classes="398" referenced_classes="512" total_bugs="13" total_size="26409" num_packages="121" vm_version="20.13-b02" cpu_seconds="60.75" clock_seconds="33.29" peak_mbytes="451.05" alloc_mbytes="816.00" gc_seconds="2.17" priority_2="8" priority_1="5">
+    <FileStats path="&lt;Unknown&gt;" bugCount="0" size="53"/>
+    <FileStats path="com/elitecore/cpe/bl/agents/&lt;Unknown&gt;" bugCount="0" size="31"/>
+    <FileStats path="com/elitecore/cpe/bl/agents/base/&lt;Unknown&gt;" bugCount="0" size="215"/>
+    <FileStats path="com/elitecore/cpe/bl/agents/customs/&lt;Unknown&gt;" bugCount="2" size="274" bugHash="a397839d870203bcfb0e12d979ff748a"/>
+    <FileStats path="com/elitecore/cpe/bl/agents/manager/&lt;Unknown&gt;" bugCount="0" size="25"/>
+    <FileStats path="com/elitecore/cpe/bl/agents/provider/&lt;Unknown&gt;" bugCount="0" size="21"/>
+    <FileStats path="com/elitecore/cpe/bl/agents/service/&lt;Unknown&gt;" bugCount="0" size="15"/>
+    <FileStats path="com/elitecore/cpe/bl/agents/worker/&lt;Unknown&gt;" bugCount="0" size="205"/>
+    <FileStats path="com/elitecore/cpe/bl/constants/inventorymgt/&lt;Unknown&gt;" bugCount="0" size="45"/>
+    <FileStats path="com/elitecore/cpe/bl/constants/master/&lt;Unknown&gt;" bugCount="0" size="26"/>
+    <FileStats path="com/elitecore/cpe/bl/constants/notification/&lt;Unknown&gt;" bugCount="0" size="27"/>
+    <FileStats path="com/elitecore/cpe/bl/constants/policy/&lt;Unknown&gt;" bugCount="0" size="177"/>
+    <FileStats path="com/elitecore/cpe/bl/constants/system/&lt;Unknown&gt;" bugCount="0" size="54"/>
+    <FileStats path="com/elitecore/cpe/bl/constants/system/audit/&lt;Unknown&gt;" bugCount="0" size="237"/>
+    <FileStats path="com/elitecore/cpe/bl/constants/system/parameter/&lt;Unknown&gt;" bugCount="0" size="36"/>
+    <FileStats path="com/elitecore/cpe/bl/constants/user/&lt;Unknown&gt;" bugCount="0" size="19"/>
+    <FileStats path="com/elitecore/cpe/bl/controller/system/&lt;Unknown&gt;" bugCount="0" size="35"/>
+    <FileStats path="com/elitecore/cpe/bl/data/common/&lt;Unknown&gt;" bugCount="0" size="45"/>
+    <FileStats path="com/elitecore/cpe/bl/data/notification/&lt;Unknown&gt;" bugCount="0" size="151"/>
+    <FileStats path="com/elitecore/cpe/bl/data/system/agent/&lt;Unknown&gt;" bugCount="0" size="24"/>
+    <FileStats path="com/elitecore/cpe/bl/data/system/audit/&lt;Unknown&gt;" bugCount="0" size="316"/>
+    <FileStats path="com/elitecore/cpe/bl/data/system/internal/&lt;Unknown&gt;" bugCount="0" size="216"/>
+    <FileStats path="com/elitecore/cpe/bl/data/system/systemparameter/&lt;Unknown&gt;" bugCount="0" size="129"/>
+    <FileStats path="com/elitecore/cpe/bl/data/system/user/&lt;Unknown&gt;" bugCount="0" size="129"/>
+    <FileStats path="com/elitecore/cpe/bl/delegates/&lt;Unknown&gt;" bugCount="0" size="105"/>
+    <FileStats path="com/elitecore/cpe/bl/delegates/inventorymgt/&lt;Unknown&gt;" bugCount="0" size="128"/>
+    <FileStats path="com/elitecore/cpe/bl/delegates/master/&lt;Unknown&gt;" bugCount="0" size="202"/>
+    <FileStats path="com/elitecore/cpe/bl/delegates/notification/&lt;Unknown&gt;" bugCount="0" size="51"/>
+    <FileStats path="com/elitecore/cpe/bl/delegates/system/agent/&lt;Unknown&gt;" bugCount="0" size="125"/>
+    <FileStats path="com/elitecore/cpe/bl/delegates/system/audit/&lt;Unknown&gt;" bugCount="0" size="57"/>
+    <FileStats path="com/elitecore/cpe/bl/delegates/system/internal/&lt;Unknown&gt;" bugCount="0" size="46"/>
+    <FileStats path="com/elitecore/cpe/bl/delegates/system/systemparameter/&lt;Unknown&gt;" bugCount="0" size="25"/>
+    <FileStats path="com/elitecore/cpe/bl/delegates/system/user/&lt;Unknown&gt;" bugCount="0" size="23"/>
+    <FileStats path="com/elitecore/cpe/bl/delegates/transfer/&lt;Unknown&gt;" bugCount="0" size="35"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/bss/acl/&lt;Unknown&gt;" bugCount="0" size="67"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/bss/user/&lt;Unknown&gt;" bugCount="0" size="125"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/core/&lt;Unknown&gt;" bugCount="0" size="45"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/core/configuration/notification/&lt;Unknown&gt;" bugCount="0" size="310"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/core/expr/&lt;Unknown&gt;" bugCount="0" size="23"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/inventorymgt/&lt;Unknown&gt;" bugCount="0" size="1006"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/master/&lt;Unknown&gt;" bugCount="0" size="628"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/system/agent/&lt;Unknown&gt;" bugCount="0" size="295"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/system/agent/history/&lt;Unknown&gt;" bugCount="0" size="166"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/system/agent/schedule/&lt;Unknown&gt;" bugCount="0" size="147"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/system/audit/&lt;Unknown&gt;" bugCount="0" size="269"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/system/internal/&lt;Unknown&gt;" bugCount="0" size="119"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/system/systemparameter/&lt;Unknown&gt;" bugCount="0" size="154"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/system/userwarehouse/&lt;Unknown&gt;" bugCount="0" size="30"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/transfer/&lt;Unknown&gt;" bugCount="0" size="32"/>
+    <FileStats path="com/elitecore/cpe/bl/entity/inventory/user/&lt;Unknown&gt;" bugCount="0" size="18"/>
+    <FileStats path="com/elitecore/cpe/bl/exception/&lt;Unknown&gt;" bugCount="0" size="83"/>
+    <FileStats path="com/elitecore/cpe/bl/exception/agent/&lt;Unknown&gt;" bugCount="0" size="8"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/&lt;Unknown&gt;" bugCount="0" size="28"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/batch/&lt;Unknown&gt;" bugCount="0" size="13"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/bss/user/&lt;Unknown&gt;" bugCount="0" size="167"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/inventorymgt/&lt;Unknown&gt;" bugCount="1" size="2457" bugHash="a09596f46ce52e7c47fb44ecd77e72e3"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/inventorytransfer/&lt;Unknown&gt;" bugCount="0" size="365"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/master/attribute/&lt;Unknown&gt;" bugCount="0" size="129"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/master/item/&lt;Unknown&gt;" bugCount="0" size="695"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/master/warehouse/&lt;Unknown&gt;" bugCount="1" size="1101" bugHash="8b41158ab01b171377ca056a3fc7cb80"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/notification/&lt;Unknown&gt;" bugCount="0" size="371"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/system/agent/&lt;Unknown&gt;" bugCount="0" size="939"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/system/audit/&lt;Unknown&gt;" bugCount="0" size="799"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/system/internal/&lt;Unknown&gt;" bugCount="0" size="298"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/system/systemparameter/&lt;Unknown&gt;" bugCount="0" size="123"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/system/user/&lt;Unknown&gt;" bugCount="0" size="42"/>
+    <FileStats path="com/elitecore/cpe/bl/facade/ws/&lt;Unknown&gt;" bugCount="1" size="834" bugHash="9de7068a1f729fefd926e9e618db3eea"/>
+    <FileStats path="com/elitecore/cpe/bl/factory/base/&lt;Unknown&gt;" bugCount="0" size="5"/>
+    <FileStats path="com/elitecore/cpe/bl/factory/system/user/&lt;Unknown&gt;" bugCount="0" size="27"/>
+    <FileStats path="com/elitecore/cpe/bl/message/&lt;Unknown&gt;" bugCount="0" size="81"/>
+    <FileStats path="com/elitecore/cpe/bl/session/&lt;Unknown&gt;" bugCount="0" size="73"/>
+    <FileStats path="com/elitecore/cpe/bl/session/bss/user/&lt;Unknown&gt;" bugCount="0" size="33"/>
+    <FileStats path="com/elitecore/cpe/bl/session/inventorymgt/&lt;Unknown&gt;" bugCount="4" size="1517" bugHash="a56b50161f2eb09f8cb53e85a9cb6403"/>
+    <FileStats path="com/elitecore/cpe/bl/session/inventorytransfer/&lt;Unknown&gt;" bugCount="1" size="164" bugHash="7f8999328e419ce7e8955a076e50ca36"/>
+    <FileStats path="com/elitecore/cpe/bl/session/master/attribute/&lt;Unknown&gt;" bugCount="0" size="125"/>
+    <FileStats path="com/elitecore/cpe/bl/session/master/item/&lt;Unknown&gt;" bugCount="0" size="382"/>
+    <FileStats path="com/elitecore/cpe/bl/session/master/warehouse/&lt;Unknown&gt;" bugCount="0" size="375"/>
+    <FileStats path="com/elitecore/cpe/bl/session/notification/&lt;Unknown&gt;" bugCount="0" size="204"/>
+    <FileStats path="com/elitecore/cpe/bl/session/system/agent/&lt;Unknown&gt;" bugCount="0" size="579"/>
+    <FileStats path="com/elitecore/cpe/bl/session/system/audit/&lt;Unknown&gt;" bugCount="0" size="245"/>
+    <FileStats path="com/elitecore/cpe/bl/session/system/internal/&lt;Unknown&gt;" bugCount="0" size="174"/>
+    <FileStats path="com/elitecore/cpe/bl/session/system/systemparameter/&lt;Unknown&gt;" bugCount="0" size="64"/>
+    <FileStats path="com/elitecore/cpe/bl/session/user/&lt;Unknown&gt;" bugCount="0" size="20"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/configuration/notification/&lt;Unknown&gt;" bugCount="0" size="158"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/core/expr/&lt;Unknown&gt;" bugCount="0" size="17"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/inventorymgt/&lt;Unknown&gt;" bugCount="0" size="1036"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/inventorymgt/migration/&lt;Unknown&gt;" bugCount="0" size="151"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/inventorytransfer/&lt;Unknown&gt;" bugCount="0" size="184"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/master/&lt;Unknown&gt;" bugCount="0" size="781"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/master/warehouse/&lt;Unknown&gt;" bugCount="0" size="19"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/system/agent/&lt;Unknown&gt;" bugCount="0" size="638"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/system/audit/&lt;Unknown&gt;" bugCount="0" size="282"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/system/dashboard/&lt;Unknown&gt;" bugCount="0" size="24"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/system/user/&lt;Unknown&gt;" bugCount="0" size="89"/>
+    <FileStats path="com/elitecore/cpe/bl/vo/system/userwarehousemapping/&lt;Unknown&gt;" bugCount="0" size="16"/>
+    <FileStats path="com/elitecore/cpe/core/&lt;Unknown&gt;" bugCount="0" size="91"/>
+    <FileStats path="com/elitecore/cpe/core/base/&lt;Unknown&gt;" bugCount="0" size="143"/>
+    <FileStats path="com/elitecore/cpe/core/controller/&lt;Unknown&gt;" bugCount="0" size="13"/>
+    <FileStats path="com/elitecore/cpe/util/&lt;Unknown&gt;" bugCount="0" size="264"/>
+    <FileStats path="com/elitecore/cpe/util/encryption/&lt;Unknown&gt;" bugCount="0" size="61"/>
+    <FileStats path="com/elitecore/cpe/util/encryption/asciicrypt/&lt;Unknown&gt;" bugCount="0" size="181"/>
+    <FileStats path="com/elitecore/cpe/util/encryption/elitecrypt/&lt;Unknown&gt;" bugCount="0" size="37"/>
+    <FileStats path="com/elitecore/cpe/util/encryption/md5/&lt;Unknown&gt;" bugCount="0" size="370"/>
+    <FileStats path="com/elitecore/cpe/util/encryption/plaintext/&lt;Unknown&gt;" bugCount="0" size="6"/>
+    <FileStats path="com/elitecore/cpe/util/encryption/unixcrypt/&lt;Unknown&gt;" bugCount="3" size="965" bugHash="f1681fcd16fe322c2f36b6aa6bb872dc"/>
+    <FileStats path="com/elitecore/cpe/util/expr/cron/&lt;Unknown&gt;" bugCount="0" size="770"/>
+    <FileStats path="com/elitecore/cpe/util/expr/cron/exception/&lt;Unknown&gt;" bugCount="0" size="8"/>
+    <FileStats path="com/elitecore/cpe/util/ftp/&lt;Unknown&gt;" bugCount="0" size="28"/>
+    <FileStats path="com/elitecore/cpe/util/logger/&lt;Unknown&gt;" bugCount="0" size="203"/>
+    <FileStats path="com/elitecore/cpe/util/notification/&lt;Unknown&gt;" bugCount="0" size="114"/>
+    <FileStats path="com/elitecore/test/agent/&lt;Unknown&gt;" bugCount="0" size="129"/>
+    <FileStats path="com/elitecore/test/attributemgt/&lt;Unknown&gt;" bugCount="0" size="47"/>
+    <FileStats path="com/elitecore/test/audit/&lt;Unknown&gt;" bugCount="0" size="23"/>
+    <FileStats path="com/elitecore/test/base/&lt;Unknown&gt;" bugCount="0" size="12"/>
+    <FileStats path="com/elitecore/test/inventorymgt/&lt;Unknown&gt;" bugCount="0" size="25"/>
+    <FileStats path="com/elitecore/test/migration/&lt;Unknown&gt;" bugCount="0" size="31"/>
+    <FileStats path="com/elitecore/test/resource/&lt;Unknown&gt;" bugCount="0" size="72"/>
+    <FileStats path="com/elitecore/test/resourcesubtype/&lt;Unknown&gt;" bugCount="0" size="35"/>
+    <FileStats path="com/elitecore/test/resourcetype/&lt;Unknown&gt;" bugCount="0" size="31"/>
+    <FileStats path="com/elitecore/test/warehouse/&lt;Unknown&gt;" bugCount="0" size="54"/>
+    <FileStats path="com/elitecore/test/warehousetype/&lt;Unknown&gt;" bugCount="0" size="45"/>
+    <PackageStats package="" total_bugs="0" total_types="7" total_size="53">
+      <ClassStats class="DemoExecutorUsage" sourceFile="&lt;Unknown&gt;" interface="false" size="23" bugs="0"/>
+      <ClassStats class="InvokeAll" sourceFile="&lt;Unknown&gt;" interface="false" size="11" bugs="0"/>
+      <ClassStats class="InvokeAll$1" sourceFile="&lt;Unknown&gt;" interface="false" size="1" bugs="0"/>
+      <ClassStats class="InvokeAll$Task1" sourceFile="&lt;Unknown&gt;" interface="false" size="5" bugs="0"/>
+      <ClassStats class="InvokeAll$Task2" sourceFile="&lt;Unknown&gt;" interface="false" size="5" bugs="0"/>
+      <ClassStats class="TestOne" sourceFile="&lt;Unknown&gt;" interface="false" size="4" bugs="0"/>
+      <ClassStats class="TestTwo" sourceFile="&lt;Unknown&gt;" interface="false" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.agents" total_bugs="0" total_types="3" total_size="31">
+      <ClassStats class="com.elitecore.cpe.bl.agents.AgentData" sourceFile="&lt;Unknown&gt;" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.AgentInitializationException" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.AgentRunContext" sourceFile="&lt;Unknown&gt;" interface="true" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.agents.base" total_bugs="0" total_types="8" total_size="215">
+      <ClassStats class="com.elitecore.cpe.bl.agents.base.AgentBase" sourceFile="&lt;Unknown&gt;" interface="false" size="37" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.base.BaseAgent" sourceFile="&lt;Unknown&gt;" interface="false" size="6" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.base.BaseAgentRun" sourceFile="&lt;Unknown&gt;" interface="false" size="20" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.base.BaseEnityEnvParameter" sourceFile="&lt;Unknown&gt;" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.base.BaseEntity" sourceFile="&lt;Unknown&gt;" interface="false" size="20" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.base.BaseMasterEnityEnvParameter" sourceFile="&lt;Unknown&gt;" interface="false" size="20" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.base.BaseMasterEntity" sourceFile="&lt;Unknown&gt;" interface="false" size="41" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.base.BaseSchedule" sourceFile="&lt;Unknown&gt;" interface="false" size="52" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.agents.customs" total_bugs="2" total_types="2" total_size="274" priority_2="2">
+      <ClassStats class="com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent" sourceFile="&lt;Unknown&gt;" interface="false" size="161" bugs="1" priority_2="1"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent" sourceFile="&lt;Unknown&gt;" interface="false" size="113" bugs="1" priority_2="1"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.agents.manager" total_bugs="0" total_types="1" total_size="25">
+      <ClassStats class="com.elitecore.cpe.bl.agents.manager.AgentManager" sourceFile="&lt;Unknown&gt;" interface="false" size="25" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.agents.provider" total_bugs="0" total_types="2" total_size="21">
+      <ClassStats class="com.elitecore.cpe.bl.agents.provider.AgentManagerProvider" sourceFile="&lt;Unknown&gt;" interface="false" size="13" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.provider.AgentWorkerProvider" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.agents.service" total_bugs="0" total_types="2" total_size="15">
+      <ClassStats class="com.elitecore.cpe.bl.agents.service.AgentServiceManager" sourceFile="&lt;Unknown&gt;" interface="false" size="2" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.agents.service.IAgentServiceManager" sourceFile="&lt;Unknown&gt;" interface="true" size="13" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.agents.worker" total_bugs="0" total_types="1" total_size="205">
+      <ClassStats class="com.elitecore.cpe.bl.agents.worker.AgentWorker" sourceFile="&lt;Unknown&gt;" interface="false" size="205" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.constants.inventorymgt" total_bugs="0" total_types="1" total_size="45">
+      <ClassStats class="com.elitecore.cpe.bl.constants.inventorymgt.InventoryStatusConstants" sourceFile="&lt;Unknown&gt;" interface="false" size="45" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.constants.master" total_bugs="0" total_types="1" total_size="26">
+      <ClassStats class="com.elitecore.cpe.bl.constants.master.EntityConstants" sourceFile="&lt;Unknown&gt;" interface="false" size="26" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.constants.notification" total_bugs="0" total_types="1" total_size="27">
+      <ClassStats class="com.elitecore.cpe.bl.constants.notification.NotificationConstants" sourceFile="&lt;Unknown&gt;" interface="false" size="27" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.constants.policy" total_bugs="0" total_types="2" total_size="177">
+      <ClassStats class="com.elitecore.cpe.bl.constants.policy.CPECommonConstants" sourceFile="&lt;Unknown&gt;" interface="false" size="159" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.constants.policy.UniqueConstraintConstants" sourceFile="&lt;Unknown&gt;" interface="false" size="18" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.constants.system" total_bugs="0" total_types="2" total_size="54">
+      <ClassStats class="com.elitecore.cpe.bl.constants.system.AgentConstants" sourceFile="&lt;Unknown&gt;" interface="false" size="51" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.constants.system.DataSourceConstant" sourceFile="&lt;Unknown&gt;" interface="false" size="3" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.constants.system.audit" total_bugs="0" total_types="2" total_size="237">
+      <ClassStats class="com.elitecore.cpe.bl.constants.system.audit.AuditConstants" sourceFile="&lt;Unknown&gt;" interface="false" size="217" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.constants.system.audit.AuditTagConstant" sourceFile="&lt;Unknown&gt;" interface="false" size="20" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.constants.system.parameter" total_bugs="0" total_types="1" total_size="36">
+      <ClassStats class="com.elitecore.cpe.bl.constants.system.parameter.SystemParameterConstants" sourceFile="&lt;Unknown&gt;" interface="false" size="36" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.constants.user" total_bugs="0" total_types="1" total_size="19">
+      <ClassStats class="com.elitecore.cpe.bl.constants.user.UserConstants" sourceFile="&lt;Unknown&gt;" interface="false" size="19" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.controller.system" total_bugs="0" total_types="2" total_size="35">
+      <ClassStats class="com.elitecore.cpe.bl.controller.system.BSSUserAuthController" sourceFile="&lt;Unknown&gt;" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.controller.system.CPEUserAuthController" sourceFile="&lt;Unknown&gt;" interface="false" size="19" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.data.common" total_bugs="0" total_types="2" total_size="45">
+      <ClassStats class="com.elitecore.cpe.bl.data.common.ComboBoxData" sourceFile="&lt;Unknown&gt;" interface="false" size="14" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.common.ComboData" sourceFile="&lt;Unknown&gt;" interface="false" size="31" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.data.notification" total_bugs="0" total_types="5" total_size="151">
+      <ClassStats class="com.elitecore.cpe.bl.data.notification.DocumentTemplateDetailWrapperdata" sourceFile="&lt;Unknown&gt;" interface="false" size="24" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.notification.DocumentTemplateWrapperdata" sourceFile="&lt;Unknown&gt;" interface="false" size="54" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.notification.MessageTagWrapperData" sourceFile="&lt;Unknown&gt;" interface="false" size="22" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.notification.NotificationData" sourceFile="&lt;Unknown&gt;" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.notification.SMSDocumentTemplateDetailWrapperData" sourceFile="&lt;Unknown&gt;" interface="false" size="19" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.data.system.agent" total_bugs="0" total_types="1" total_size="24">
+      <ClassStats class="com.elitecore.cpe.bl.data.system.agent.AgentScheduleProcedureWrapperData" sourceFile="&lt;Unknown&gt;" interface="false" size="24" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.data.system.audit" total_bugs="0" total_types="7" total_size="316">
+      <ClassStats class="com.elitecore.cpe.bl.data.system.audit.AuditEntryData" sourceFile="&lt;Unknown&gt;" interface="false" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.system.audit.AuditQueueData" sourceFile="&lt;Unknown&gt;" interface="false" size="43" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.system.audit.AuditSummary" sourceFile="&lt;Unknown&gt;" interface="false" size="58" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.system.audit.AuditSummaryDetail" sourceFile="&lt;Unknown&gt;" interface="false" size="53" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.system.audit.ConfigureAuditWrapperData" sourceFile="&lt;Unknown&gt;" interface="false" size="48" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.system.audit.EntityTypeEnum" sourceFile="&lt;Unknown&gt;" interface="false" size="29" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.system.audit.WebServiceAuditData" sourceFile="&lt;Unknown&gt;" interface="false" size="52" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.data.system.internal" total_bugs="0" total_types="3" total_size="216">
+      <ClassStats class="com.elitecore.cpe.bl.data.system.internal.SystemActionData" sourceFile="&lt;Unknown&gt;" interface="false" size="74" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.system.internal.SystemModuleData" sourceFile="&lt;Unknown&gt;" interface="false" size="68" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.system.internal.SystemModuleGroupData" sourceFile="&lt;Unknown&gt;" interface="false" size="74" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.data.system.systemparameter" total_bugs="0" total_types="2" total_size="129">
+      <ClassStats class="com.elitecore.cpe.bl.data.system.systemparameter.SystemParameterGroupWrapperData" sourceFile="&lt;Unknown&gt;" interface="false" size="45" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.system.systemparameter.SystemParameterWrapperData" sourceFile="&lt;Unknown&gt;" interface="false" size="84" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.data.system.user" total_bugs="0" total_types="2" total_size="129">
+      <ClassStats class="com.elitecore.cpe.bl.data.system.user.AdminUserWrapperData" sourceFile="&lt;Unknown&gt;" interface="false" size="69" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.data.system.user.UserData" sourceFile="&lt;Unknown&gt;" interface="false" size="60" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.delegates" total_bugs="0" total_types="2" total_size="105">
+      <ClassStats class="com.elitecore.cpe.bl.delegates.BaseBusinessDelegate" sourceFile="&lt;Unknown&gt;" interface="false" size="79" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.delegates.CPEDelegateFactory" sourceFile="&lt;Unknown&gt;" interface="false" size="26" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.delegates.inventorymgt" total_bugs="0" total_types="1" total_size="128">
+      <ClassStats class="com.elitecore.cpe.bl.delegates.inventorymgt.InventoryManagementBD" sourceFile="&lt;Unknown&gt;" interface="false" size="128" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.delegates.master" total_bugs="0" total_types="3" total_size="202">
+      <ClassStats class="com.elitecore.cpe.bl.delegates.master.AttributeBD" sourceFile="&lt;Unknown&gt;" interface="false" size="27" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.delegates.master.ItemBD" sourceFile="&lt;Unknown&gt;" interface="false" size="89" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.delegates.master.WareHouseBD" sourceFile="&lt;Unknown&gt;" interface="false" size="86" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.delegates.notification" total_bugs="0" total_types="1" total_size="51">
+      <ClassStats class="com.elitecore.cpe.bl.delegates.notification.NotificationBD" sourceFile="&lt;Unknown&gt;" interface="false" size="51" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.delegates.system.agent" total_bugs="0" total_types="1" total_size="125">
+      <ClassStats class="com.elitecore.cpe.bl.delegates.system.agent.SystemAgentBD" sourceFile="&lt;Unknown&gt;" interface="false" size="125" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.delegates.system.audit" total_bugs="0" total_types="1" total_size="57">
+      <ClassStats class="com.elitecore.cpe.bl.delegates.system.audit.ConfigureAuditBD" sourceFile="&lt;Unknown&gt;" interface="false" size="57" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.delegates.system.internal" total_bugs="0" total_types="1" total_size="46">
+      <ClassStats class="com.elitecore.cpe.bl.delegates.system.internal.SystemInternalBD" sourceFile="&lt;Unknown&gt;" interface="false" size="46" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.delegates.system.systemparameter" total_bugs="0" total_types="1" total_size="25">
+      <ClassStats class="com.elitecore.cpe.bl.delegates.system.systemparameter.SystemParameterBD" sourceFile="&lt;Unknown&gt;" interface="false" size="25" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.delegates.system.user" total_bugs="0" total_types="1" total_size="23">
+      <ClassStats class="com.elitecore.cpe.bl.delegates.system.user.UserBD" sourceFile="&lt;Unknown&gt;" interface="false" size="23" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.delegates.transfer" total_bugs="0" total_types="1" total_size="35">
+      <ClassStats class="com.elitecore.cpe.bl.delegates.transfer.InventoryTransferBD" sourceFile="&lt;Unknown&gt;" interface="false" size="35" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.bss.acl" total_bugs="0" total_types="1" total_size="67">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.bss.acl.BSSACLGroup" sourceFile="&lt;Unknown&gt;" interface="false" size="67" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.bss.user" total_bugs="0" total_types="1" total_size="125">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.bss.user.BSSUser" sourceFile="&lt;Unknown&gt;" interface="false" size="125" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.core" total_bugs="0" total_types="1" total_size="45">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.core.PrimaryKey" sourceFile="&lt;Unknown&gt;" interface="false" size="45" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.core.configuration.notification" total_bugs="0" total_types="6" total_size="310">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.DocumentCategory" sourceFile="&lt;Unknown&gt;" interface="false" size="50" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.DocumentTemplate" sourceFile="&lt;Unknown&gt;" interface="false" size="96" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.DocumentTemplateDetail" sourceFile="&lt;Unknown&gt;" interface="false" size="28" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.MessageTag" sourceFile="&lt;Unknown&gt;" interface="false" size="34" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.NotificationAudit" sourceFile="&lt;Unknown&gt;" interface="false" size="80" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.SMSDocumentTemplateDetail" sourceFile="&lt;Unknown&gt;" interface="false" size="22" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.core.expr" total_bugs="0" total_types="1" total_size="23">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.core.expr.ConstraintExpression" sourceFile="&lt;Unknown&gt;" interface="false" size="23" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.inventorymgt" total_bugs="0" total_types="17" total_size="1006">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.BatchData" sourceFile="&lt;Unknown&gt;" interface="false" size="62" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.BatchSummaryData" sourceFile="&lt;Unknown&gt;" interface="false" size="51" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InvalidInventoryData" sourceFile="&lt;Unknown&gt;" interface="false" size="36" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryData" sourceFile="&lt;Unknown&gt;" interface="false" size="172" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryReserveData" sourceFile="&lt;Unknown&gt;" interface="false" size="52" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryReserveDetailData" sourceFile="&lt;Unknown&gt;" interface="false" size="29" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryStatusData" sourceFile="&lt;Unknown&gt;" interface="false" size="36" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryStatusLogData" sourceFile="&lt;Unknown&gt;" interface="false" size="57" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryStatusTransition" sourceFile="&lt;Unknown&gt;" interface="false" size="30" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventorySubStatusData" sourceFile="&lt;Unknown&gt;" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventorySubStatusTransition" sourceFile="&lt;Unknown&gt;" interface="false" size="24" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.OrderData" sourceFile="&lt;Unknown&gt;" interface="false" size="125" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.ResourceAttributeRel" sourceFile="&lt;Unknown&gt;" interface="false" size="18" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.TransferOrderData" sourceFile="&lt;Unknown&gt;" interface="false" size="81" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.TransferOrderDetailData" sourceFile="&lt;Unknown&gt;" interface="false" size="51" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.WarehouseInventoryStatusData" sourceFile="&lt;Unknown&gt;" interface="false" size="98" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.inventorymgt.WarehouseInventoryStatusHistoryData" sourceFile="&lt;Unknown&gt;" interface="false" size="52" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.master" total_bugs="0" total_types="9" total_size="628">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.master.AttributeData" sourceFile="&lt;Unknown&gt;" interface="false" size="74" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.master.AttributeTransData" sourceFile="&lt;Unknown&gt;" interface="false" size="35" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.master.ConfigureThresholdData" sourceFile="&lt;Unknown&gt;" interface="false" size="89" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.master.ItemData" sourceFile="&lt;Unknown&gt;" interface="false" size="126" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.master.ResourceCategory" sourceFile="&lt;Unknown&gt;" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.master.ResourceSubTypeData" sourceFile="&lt;Unknown&gt;" interface="false" size="53" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.master.ResourceTypeData" sourceFile="&lt;Unknown&gt;" interface="false" size="48" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.master.WarehouseData" sourceFile="&lt;Unknown&gt;" interface="false" size="112" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.master.WarehouseTypeData" sourceFile="&lt;Unknown&gt;" interface="false" size="59" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.system.agent" total_bugs="0" total_types="5" total_size="295">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.agent.AgentParam" sourceFile="&lt;Unknown&gt;" interface="false" size="44" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.agent.ExecutionStatus" sourceFile="&lt;Unknown&gt;" interface="false" size="31" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.agent.ExecutionType" sourceFile="&lt;Unknown&gt;" interface="false" size="47" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.agent.SystemAgent" sourceFile="&lt;Unknown&gt;" interface="false" size="119" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.agent.SystemAgentParameter" sourceFile="&lt;Unknown&gt;" interface="false" size="54" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.system.agent.history" total_bugs="0" total_types="2" total_size="166">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.agent.history.SystemAgentRunDetail" sourceFile="&lt;Unknown&gt;" interface="false" size="97" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.agent.history.SystemAgentRunQueue" sourceFile="&lt;Unknown&gt;" interface="false" size="69" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.system.agent.schedule" total_bugs="0" total_types="2" total_size="147">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.agent.schedule.SystemAgentSchedule" sourceFile="&lt;Unknown&gt;" interface="false" size="117" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.agent.schedule.SystemAgentScheduleParameter" sourceFile="&lt;Unknown&gt;" interface="false" size="30" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.system.audit" total_bugs="0" total_types="6" total_size="269">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.audit.AuditEntry" sourceFile="&lt;Unknown&gt;" interface="false" size="58" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.audit.DataTagsData" sourceFile="&lt;Unknown&gt;" interface="false" size="27" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.audit.MessageTemplateData" sourceFile="&lt;Unknown&gt;" interface="false" size="27" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.audit.SystemAudit" sourceFile="&lt;Unknown&gt;" interface="false" size="56" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.audit.ViewAuditData" sourceFile="&lt;Unknown&gt;" interface="false" size="48" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.audit.WebServiceAuditEntry" sourceFile="&lt;Unknown&gt;" interface="false" size="53" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.system.internal" total_bugs="0" total_types="2" total_size="119">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.internal.SystemAction" sourceFile="&lt;Unknown&gt;" interface="false" size="75" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.internal.SystemModule" sourceFile="&lt;Unknown&gt;" interface="false" size="44" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.system.systemparameter" total_bugs="0" total_types="3" total_size="154">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.systemparameter.SysPrmCustomFieldType" sourceFile="&lt;Unknown&gt;" interface="false" size="35" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.systemparameter.SystemParameter" sourceFile="&lt;Unknown&gt;" interface="false" size="79" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.systemparameter.SystemParameterGroup" sourceFile="&lt;Unknown&gt;" interface="false" size="40" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.system.userwarehouse" total_bugs="0" total_types="1" total_size="30">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.system.userwarehouse.UserWarehouseMapping" sourceFile="&lt;Unknown&gt;" interface="false" size="30" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.transfer" total_bugs="0" total_types="1" total_size="32">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.transfer.InventoryTransferOrderStatus" sourceFile="&lt;Unknown&gt;" interface="false" size="32" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.entity.inventory.user" total_bugs="0" total_types="1" total_size="18">
+      <ClassStats class="com.elitecore.cpe.bl.entity.inventory.user.EncryptionType" sourceFile="&lt;Unknown&gt;" interface="false" size="18" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.exception" total_bugs="0" total_types="8" total_size="83">
+      <ClassStats class="com.elitecore.cpe.bl.exception.AccessDeniedException" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.exception.AccountBlockedException" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.exception.CreateBLException" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.exception.NoSuchControllerException" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.exception.PasswordExpiredException" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.exception.SearchBLException" sourceFile="&lt;Unknown&gt;" interface="false" size="27" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.exception.TechnicalException" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.exception.UpdateBLException" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.exception.agent" total_bugs="0" total_types="1" total_size="8">
+      <ClassStats class="com.elitecore.cpe.bl.exception.agent.AgentServiceException" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade" total_bugs="0" total_types="2" total_size="28">
+      <ClassStats class="com.elitecore.cpe.bl.facade.BaseDataConversionUtils" sourceFile="&lt;Unknown&gt;" interface="false" size="6" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.BaseFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="22" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.batch" total_bugs="0" total_types="5" total_size="13">
+      <ClassStats class="com.elitecore.cpe.bl.facade.batch.BatchManagementFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="6" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.batch.BatchManagementFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.batch.BatchManagementFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.batch.BatchManagementUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="4" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.batch.IBatchManagementFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.bss.user" total_bugs="0" total_types="4" total_size="167">
+      <ClassStats class="com.elitecore.cpe.bl.facade.bss.user.BSSUserFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="161" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.bss.user.BSSUserFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.bss.user.BSSUserFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.bss.user.IBSSUserFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.inventorymgt" total_bugs="1" total_types="7" total_size="2457" priority_2="1">
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorymgt.IInventoryManagementFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="1629" bugs="1" priority_2="1"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="779" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementUtil$1" sourceFile="&lt;Unknown&gt;" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementUtil$2" sourceFile="&lt;Unknown&gt;" interface="false" size="7" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.inventorytransfer" total_bugs="0" total_types="4" total_size="365">
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorytransfer.IInventoryTransferFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorytransfer.InventoryTransferFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="355" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorytransfer.InventoryTransferFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.inventorytransfer.InventoryTransferFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.master.attribute" total_bugs="0" total_types="5" total_size="129">
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.attribute.AttributeFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="88" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.attribute.AttributeFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.attribute.AttributeFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.attribute.AttributeUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.attribute.IAttributeFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="6" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.master.item" total_bugs="0" total_types="5" total_size="695">
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.item.IItemFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="24" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.item.ItemFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="418" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.item.ItemFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.item.ItemFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.item.ItemUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="251" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.master.warehouse" total_bugs="1" total_types="9" total_size="1101" priority_2="1">
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.warehouse.IWarehouseFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="25" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="543" bugs="1" priority_2="1"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="509" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil$1" sourceFile="&lt;Unknown&gt;" interface="false" size="4" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil$2" sourceFile="&lt;Unknown&gt;" interface="false" size="4" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil$3" sourceFile="&lt;Unknown&gt;" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil$4" sourceFile="&lt;Unknown&gt;" interface="false" size="7" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.notification" total_bugs="0" total_types="6" total_size="371">
+      <ClassStats class="com.elitecore.cpe.bl.facade.notification.INotificationFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="12" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.notification.NotificationDataConversionUtils" sourceFile="&lt;Unknown&gt;" interface="false" size="122" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.notification.NotificationFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="200" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.notification.NotificationFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.notification.NotificationFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.notification.SystemNotificationQueueHandler" sourceFile="&lt;Unknown&gt;" interface="false" size="35" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.system.agent" total_bugs="0" total_types="5" total_size="939">
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.agent.ISystemAgentFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="42" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.agent.SystemAgentDataConversionUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="273" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.agent.SystemAgentFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="622" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.agent.SystemAgentFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.agent.SystemAgentFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.system.audit" total_bugs="0" total_types="7" total_size="799">
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.audit.AuditDataConversionUtilities" sourceFile="&lt;Unknown&gt;" interface="false" size="296" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.audit.ISystemAuditFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="13" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.audit.SystemAuditFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="414" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.audit.SystemAuditFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.audit.SystemAuditFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.audit.SystemAuditQueueHandler" sourceFile="&lt;Unknown&gt;" interface="false" size="39" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.audit.WebServiceAuditQueueHandler" sourceFile="&lt;Unknown&gt;" interface="false" size="35" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.system.internal" total_bugs="0" total_types="5" total_size="298">
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.internal.ISystemInternalFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="11" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.internal.SystemInternalDataConversionUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="42" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.internal.SystemInternalFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="243" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.internal.SystemInternalFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.internal.SystemInternalFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.system.systemparameter" total_bugs="0" total_types="4" total_size="123">
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.systemparameter.ISystemParameterFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="5" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.systemparameter.SystemParameterFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="116" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.systemparameter.SystemParameterFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.systemparameter.SystemParameterFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.system.user" total_bugs="0" total_types="4" total_size="42">
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.user.IUserFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="4" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.user.UserFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="36" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.user.UserFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.system.user.UserFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.facade.ws" total_bugs="1" total_types="5" total_size="834" priority_2="1">
+      <ClassStats class="com.elitecore.cpe.bl.facade.ws.IWSFacade" sourceFile="&lt;Unknown&gt;" interface="true" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.ws.WSFacade" sourceFile="&lt;Unknown&gt;" interface="false" size="765" bugs="1" priority_2="1"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.ws.WSFacadeLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.ws.WSFacadeRemote" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.facade.ws.WSFacadeUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="59" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.factory.base" total_bugs="0" total_types="1" total_size="5">
+      <ClassStats class="com.elitecore.cpe.bl.factory.base.BaseFactory" sourceFile="&lt;Unknown&gt;" interface="false" size="5" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.factory.system.user" total_bugs="0" total_types="1" total_size="27">
+      <ClassStats class="com.elitecore.cpe.bl.factory.system.user.UserFactory" sourceFile="&lt;Unknown&gt;" interface="false" size="27" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.message" total_bugs="0" total_types="4" total_size="81">
+      <ClassStats class="com.elitecore.cpe.bl.message.SystemAuditMessageListener" sourceFile="&lt;Unknown&gt;" interface="false" size="51" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.message.SystemAuditMessageListener$MyRunnable" sourceFile="&lt;Unknown&gt;" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.message.SystemNotificationMessageListener" sourceFile="&lt;Unknown&gt;" interface="false" size="11" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.message.WebServiceAuditMessageListener" sourceFile="&lt;Unknown&gt;" interface="false" size="12" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session" total_bugs="0" total_types="1" total_size="73">
+      <ClassStats class="com.elitecore.cpe.bl.session.BaseSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="73" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.bss.user" total_bugs="0" total_types="2" total_size="33">
+      <ClassStats class="com.elitecore.cpe.bl.session.bss.user.BSSUserSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="29" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.bss.user.BSSUserSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.inventorymgt" total_bugs="4" total_types="4" total_size="1517" priority_1="4">
+      <ClassStats class="com.elitecore.cpe.bl.session.inventorymgt.BatchManagementSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="57" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.inventorymgt.BatchManagementSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="1415" bugs="4" priority_1="4"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="38" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.inventorytransfer" total_bugs="1" total_types="2" total_size="164" priority_1="1">
+      <ClassStats class="com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="154" bugs="1" priority_1="1"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="10" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.master.attribute" total_bugs="0" total_types="2" total_size="125">
+      <ClassStats class="com.elitecore.cpe.bl.session.master.attribute.AttributeSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="112" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.master.attribute.AttributeSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="13" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.master.item" total_bugs="0" total_types="2" total_size="382">
+      <ClassStats class="com.elitecore.cpe.bl.session.master.item.ItemSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="361" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.master.item.ItemSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="21" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.master.warehouse" total_bugs="0" total_types="2" total_size="375">
+      <ClassStats class="com.elitecore.cpe.bl.session.master.warehouse.WarehouseSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="353" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.master.warehouse.WarehouseSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="22" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.notification" total_bugs="0" total_types="2" total_size="204">
+      <ClassStats class="com.elitecore.cpe.bl.session.notification.NotificationSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="191" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.notification.NotificationSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="13" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.system.agent" total_bugs="0" total_types="2" total_size="579">
+      <ClassStats class="com.elitecore.cpe.bl.session.system.agent.SystemAgentSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="537" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.system.agent.SystemAgentSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="42" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.system.audit" total_bugs="0" total_types="2" total_size="245">
+      <ClassStats class="com.elitecore.cpe.bl.session.system.audit.SystemAuditSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="231" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.system.audit.SystemAuditSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="14" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.system.internal" total_bugs="0" total_types="2" total_size="174">
+      <ClassStats class="com.elitecore.cpe.bl.session.system.internal.SystemInternalSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="160" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.system.internal.SystemInternalSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="14" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.system.systemparameter" total_bugs="0" total_types="2" total_size="64">
+      <ClassStats class="com.elitecore.cpe.bl.session.system.systemparameter.SystemParameterSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="57" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.system.systemparameter.SystemParameterSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="7" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.session.user" total_bugs="0" total_types="2" total_size="20">
+      <ClassStats class="com.elitecore.cpe.bl.session.user.UserSessionBean" sourceFile="&lt;Unknown&gt;" interface="false" size="18" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.session.user.UserSessionBeanLocal" sourceFile="&lt;Unknown&gt;" interface="true" size="2" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.configuration.notification" total_bugs="0" total_types="4" total_size="158">
+      <ClassStats class="com.elitecore.cpe.bl.vo.configuration.notification.CheckValidDateForTemplateVO" sourceFile="&lt;Unknown&gt;" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.configuration.notification.NotificationCategoryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="27" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.configuration.notification.SearchDocumentTemplateVO" sourceFile="&lt;Unknown&gt;" interface="false" size="59" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.configuration.notification.ViewDocumentTemplateVO" sourceFile="&lt;Unknown&gt;" interface="false" size="40" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.core.expr" total_bugs="0" total_types="1" total_size="17">
+      <ClassStats class="com.elitecore.cpe.bl.vo.core.expr.ConstraintExpressionVO" sourceFile="&lt;Unknown&gt;" interface="false" size="17" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.inventorymgt" total_bugs="0" total_types="20" total_size="1036">
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.BatchSummaryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="56" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.BulkChangeInventoryStatusVO" sourceFile="&lt;Unknown&gt;" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.ChangeInventoryStatusVO" sourceFile="&lt;Unknown&gt;" interface="false" size="26" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.ChangeInventorySubStatusVO" sourceFile="&lt;Unknown&gt;" interface="false" size="35" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.InventoryBatchViewVO" sourceFile="&lt;Unknown&gt;" interface="false" size="22" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.InventoryDetailVO" sourceFile="&lt;Unknown&gt;" interface="false" size="153" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.InventoryStatusLogVO" sourceFile="&lt;Unknown&gt;" interface="false" size="48" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.InventoryUploadVO" sourceFile="&lt;Unknown&gt;" interface="false" size="37" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.InventoryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="15" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.InventoryWrapperVO" sourceFile="&lt;Unknown&gt;" interface="false" size="21" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.PlaceOrderNotificationEmailVO" sourceFile="&lt;Unknown&gt;" interface="false" size="52" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.PlaceOrderVO" sourceFile="&lt;Unknown&gt;" interface="false" size="138" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.ResourceAttributeVO" sourceFile="&lt;Unknown&gt;" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.SearchInventoryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="84" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.SearchTransferInventory" sourceFile="&lt;Unknown&gt;" interface="false" size="80" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.SearchWarehouseInventoryStatusVO" sourceFile="&lt;Unknown&gt;" interface="false" size="18" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.ThresholdNotificationEmailVO" sourceFile="&lt;Unknown&gt;" interface="false" size="39" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.ThresholdNotificationVO" sourceFile="&lt;Unknown&gt;" interface="false" size="11" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.TransferInventorySummaryViewVO" sourceFile="&lt;Unknown&gt;" interface="false" size="62" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.WarehouseInventoryStatusVO" sourceFile="&lt;Unknown&gt;" interface="false" size="88" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.inventorymgt.migration" total_bugs="0" total_types="3" total_size="151">
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.migration.AttributeMigrationVO" sourceFile="&lt;Unknown&gt;" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.migration.InventoryMigrationResponseVO" sourceFile="&lt;Unknown&gt;" interface="false" size="22" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorymgt.migration.InventoryMigrationVO" sourceFile="&lt;Unknown&gt;" interface="false" size="113" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.inventorytransfer" total_bugs="0" total_types="5" total_size="184">
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorytransfer.CancelTransferOrderVO" sourceFile="&lt;Unknown&gt;" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorytransfer.CheckInventoryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="40" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO" sourceFile="&lt;Unknown&gt;" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO$InventoryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="44" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.inventorytransfer.ViewTransferInventoryDetailVO" sourceFile="&lt;Unknown&gt;" interface="false" size="52" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.master" total_bugs="0" total_types="14" total_size="781">
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.AttributeVO" sourceFile="&lt;Unknown&gt;" interface="false" size="76" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.ConfigureThresholdVO" sourceFile="&lt;Unknown&gt;" interface="false" size="89" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.ItemVO" sourceFile="&lt;Unknown&gt;" interface="false" size="111" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.ResourceCategoryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.ResourceSubTypeVO" sourceFile="&lt;Unknown&gt;" interface="false" size="24" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.ResourceTypeVO" sourceFile="&lt;Unknown&gt;" interface="false" size="24" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.SearchResourceSubTypeVO" sourceFile="&lt;Unknown&gt;" interface="false" size="55" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.SearchResourceTypeVO" sourceFile="&lt;Unknown&gt;" interface="false" size="47" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.ThresholdStatusVO" sourceFile="&lt;Unknown&gt;" interface="false" size="46" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.UpdateResourceSubTypeVO" sourceFile="&lt;Unknown&gt;" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.UpdateResourceTypeVO" sourceFile="&lt;Unknown&gt;" interface="false" size="29" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.WareHouseSummaryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="50" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.WarehouseTypeVO" sourceFile="&lt;Unknown&gt;" interface="false" size="65" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.WarehouseVO" sourceFile="&lt;Unknown&gt;" interface="false" size="117" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.master.warehouse" total_bugs="0" total_types="1" total_size="19">
+      <ClassStats class="com.elitecore.cpe.bl.vo.master.warehouse.CreateWareHouseTreeVO" sourceFile="&lt;Unknown&gt;" interface="false" size="19" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.system.agent" total_bugs="0" total_types="15" total_size="638">
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.AgentParameterVO" sourceFile="&lt;Unknown&gt;" interface="false" size="37" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.AgentScheduleParamVO" sourceFile="&lt;Unknown&gt;" interface="false" size="15" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.AgentScheduleVO" sourceFile="&lt;Unknown&gt;" interface="false" size="48" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.AgentServiceVO" sourceFile="&lt;Unknown&gt;" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.AgentVO" sourceFile="&lt;Unknown&gt;" interface="false" size="100" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.PreUpdateAgentParamVO" sourceFile="&lt;Unknown&gt;" interface="false" size="40" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.SearchAgentRunInQueueVO" sourceFile="&lt;Unknown&gt;" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.SearchAgentScheduleVO" sourceFile="&lt;Unknown&gt;" interface="false" size="69" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.SystemAgentParamVO" sourceFile="&lt;Unknown&gt;" interface="false" size="44" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.SystemAgentVO" sourceFile="&lt;Unknown&gt;" interface="false" size="76" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.UpdateAgentParameterVO" sourceFile="&lt;Unknown&gt;" interface="false" size="44" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.UpdateAgentScheduleVO" sourceFile="&lt;Unknown&gt;" interface="false" size="15" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.ViewAgentRunHistoryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="44" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.ViewAgentScheduleVO" sourceFile="&lt;Unknown&gt;" interface="false" size="52" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.agent.ViewVO" sourceFile="&lt;Unknown&gt;" interface="false" size="15" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.system.audit" total_bugs="0" total_types="7" total_size="282">
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.audit.SearchAuditPaggingVO" sourceFile="&lt;Unknown&gt;" interface="false" size="28" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.audit.SearchAuditVO" sourceFile="&lt;Unknown&gt;" interface="false" size="74" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.audit.SearchAuditWrapper" sourceFile="&lt;Unknown&gt;" interface="false" size="11" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.audit.SearchWsAuditVO" sourceFile="&lt;Unknown&gt;" interface="false" size="37" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.audit.ViewAuditEntryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="28" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.audit.ViewAuditVO" sourceFile="&lt;Unknown&gt;" interface="false" size="56" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.audit.ViewWsAuditEntryVO" sourceFile="&lt;Unknown&gt;" interface="false" size="48" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.system.dashboard" total_bugs="0" total_types="1" total_size="24">
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.dashboard.SearchAdminDashBoardVO" sourceFile="&lt;Unknown&gt;" interface="false" size="24" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.system.user" total_bugs="0" total_types="2" total_size="89">
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.user.SearchUserVO" sourceFile="&lt;Unknown&gt;" interface="false" size="40" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.user.UserVO" sourceFile="&lt;Unknown&gt;" interface="false" size="49" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.bl.vo.system.userwarehousemapping" total_bugs="0" total_types="1" total_size="16">
+      <ClassStats class="com.elitecore.cpe.bl.vo.system.userwarehousemapping.UserWarehouseVO" sourceFile="&lt;Unknown&gt;" interface="false" size="16" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.core" total_bugs="0" total_types="6" total_size="91">
+      <ClassStats class="com.elitecore.cpe.core.IBDSessionContext" sourceFile="&lt;Unknown&gt;" interface="true" size="3" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.core.IBLSession" sourceFile="&lt;Unknown&gt;" interface="true" size="12" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.core.InternalBLSession" sourceFile="&lt;Unknown&gt;" interface="false" size="63" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.core.InternalBLSession$1" sourceFile="&lt;Unknown&gt;" interface="false" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.core.InternalBLSession$BLSessionContextImp" sourceFile="&lt;Unknown&gt;" interface="false" size="11" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.core.SessionAccessControl" sourceFile="&lt;Unknown&gt;" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.core.base" total_bugs="0" total_types="2" total_size="143">
+      <ClassStats class="com.elitecore.cpe.core.base.BaseBL" sourceFile="&lt;Unknown&gt;" interface="false" size="120" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.core.base.BaseWebServiceBL" sourceFile="&lt;Unknown&gt;" interface="false" size="23" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.core.controller" total_bugs="0" total_types="2" total_size="13">
+      <ClassStats class="com.elitecore.cpe.core.controller.BaseController" sourceFile="&lt;Unknown&gt;" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.core.controller.Controller" sourceFile="&lt;Unknown&gt;" interface="true" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util" total_bugs="0" total_types="7" total_size="264">
+      <ClassStats class="com.elitecore.cpe.util.CSVDataExporter" sourceFile="&lt;Unknown&gt;" interface="false" size="68" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.DateAndTimeFormateUtility" sourceFile="&lt;Unknown&gt;" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.ElapseCalculator" sourceFile="&lt;Unknown&gt;" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.GeneralUtility" sourceFile="&lt;Unknown&gt;" interface="false" size="21" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.JAXBUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.TransactionNoteBuilder" sourceFile="&lt;Unknown&gt;" interface="false" size="104" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.ValidityUtils" sourceFile="&lt;Unknown&gt;" interface="false" size="24" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.encryption" total_bugs="0" total_types="5" total_size="61">
+      <ClassStats class="com.elitecore.cpe.util.encryption.DecryptionNotSupportedException" sourceFile="&lt;Unknown&gt;" interface="false" size="3" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.encryption.DefaultEncryption" sourceFile="&lt;Unknown&gt;" interface="false" size="6" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.encryption.IEncryption" sourceFile="&lt;Unknown&gt;" interface="true" size="4" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.encryption.NoSuchEncryptionException" sourceFile="&lt;Unknown&gt;" interface="false" size="3" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.encryption.PasswordEncryption" sourceFile="&lt;Unknown&gt;" interface="false" size="45" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.encryption.asciicrypt" total_bugs="0" total_types="2" total_size="181">
+      <ClassStats class="com.elitecore.cpe.util.encryption.asciicrypt.AsciiEncryption" sourceFile="&lt;Unknown&gt;" interface="false" size="12" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.encryption.asciicrypt.EncryptDecrypt" sourceFile="&lt;Unknown&gt;" interface="false" size="169" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.encryption.elitecrypt" total_bugs="0" total_types="2" total_size="37">
+      <ClassStats class="com.elitecore.cpe.util.encryption.elitecrypt.EliteCryptEncryption" sourceFile="&lt;Unknown&gt;" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.encryption.elitecrypt.EncryptCRC" sourceFile="&lt;Unknown&gt;" interface="false" size="30" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.encryption.md5" total_bugs="0" total_types="4" total_size="370">
+      <ClassStats class="com.elitecore.cpe.util.encryption.md5.MD5" sourceFile="&lt;Unknown&gt;" interface="false" size="285" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.encryption.md5.MD5Encryption" sourceFile="&lt;Unknown&gt;" interface="false" size="6" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.encryption.md5.MesgDigest" sourceFile="&lt;Unknown&gt;" interface="true" size="6" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.encryption.md5.MesgDigestUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="73" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.encryption.plaintext" total_bugs="0" total_types="1" total_size="6">
+      <ClassStats class="com.elitecore.cpe.util.encryption.plaintext.PlainTextEncryption" sourceFile="&lt;Unknown&gt;" interface="false" size="6" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.encryption.unixcrypt" total_bugs="3" total_types="2" total_size="965" priority_2="3">
+      <ClassStats class="com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt" sourceFile="&lt;Unknown&gt;" interface="false" size="960" bugs="3" priority_2="3"/>
+      <ClassStats class="com.elitecore.cpe.util.encryption.unixcrypt.UnixCryptEncryption" sourceFile="&lt;Unknown&gt;" interface="false" size="5" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.expr.cron" total_bugs="0" total_types="17" total_size="770">
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.AlwaysTrueValueMatcher" sourceFile="&lt;Unknown&gt;" interface="false" size="3" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.DateBuilder" sourceFile="&lt;Unknown&gt;" interface="false" size="276" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.DateBuilder$1" sourceFile="&lt;Unknown&gt;" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.DateBuilder$IntervalUnit" sourceFile="&lt;Unknown&gt;" interface="false" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.DayOfMonthValueMatcher" sourceFile="&lt;Unknown&gt;" interface="false" size="21" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.IntArrayValueMatcher" sourceFile="&lt;Unknown&gt;" interface="false" size="13" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.Predictor" sourceFile="&lt;Unknown&gt;" interface="false" size="86" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.SchedulingPattern" sourceFile="&lt;Unknown&gt;" interface="false" size="207" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.SchedulingPattern$DayOfMonthValueParser" sourceFile="&lt;Unknown&gt;" interface="false" size="5" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.SchedulingPattern$DayOfWeekValueParser" sourceFile="&lt;Unknown&gt;" interface="false" size="12" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.SchedulingPattern$HourValueParser" sourceFile="&lt;Unknown&gt;" interface="false" size="2" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.SchedulingPattern$MinuteValueParser" sourceFile="&lt;Unknown&gt;" interface="false" size="2" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.SchedulingPattern$MonthValueParser" sourceFile="&lt;Unknown&gt;" interface="false" size="14" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.SchedulingPattern$SimpleValueParser" sourceFile="&lt;Unknown&gt;" interface="false" size="14" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.SchedulingPattern$ValueParser" sourceFile="&lt;Unknown&gt;" interface="true" size="4" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.SchedulingPatternBuilder" sourceFile="&lt;Unknown&gt;" interface="false" size="60" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.ValueMatcher" sourceFile="&lt;Unknown&gt;" interface="true" size="2" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.expr.cron.exception" total_bugs="0" total_types="1" total_size="8">
+      <ClassStats class="com.elitecore.cpe.util.expr.cron.exception.InvalidPatternException" sourceFile="&lt;Unknown&gt;" interface="false" size="8" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.ftp" total_bugs="0" total_types="1" total_size="28">
+      <ClassStats class="com.elitecore.cpe.util.ftp.FTPUploader" sourceFile="&lt;Unknown&gt;" interface="false" size="28" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.logger" total_bugs="0" total_types="5" total_size="203">
+      <ClassStats class="com.elitecore.cpe.util.logger.BLLogger" sourceFile="&lt;Unknown&gt;" interface="false" size="58" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.logger.BLLogger$LogLevel" sourceFile="&lt;Unknown&gt;" interface="false" size="39" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.logger.DefaultLogger" sourceFile="&lt;Unknown&gt;" interface="false" size="53" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.logger.ILogger" sourceFile="&lt;Unknown&gt;" interface="true" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.logger.Logger" sourceFile="&lt;Unknown&gt;" interface="false" size="44" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.util.notification" total_bugs="0" total_types="3" total_size="114">
+      <ClassStats class="com.elitecore.cpe.util.notification.NotificationUtil" sourceFile="&lt;Unknown&gt;" interface="false" size="100" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.notification.NotificationUtil$1" sourceFile="&lt;Unknown&gt;" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.util.notification.NotificationUtil$2" sourceFile="&lt;Unknown&gt;" interface="false" size="7" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.agent" total_bugs="0" total_types="2" total_size="129">
+      <ClassStats class="com.elitecore.test.agent.AgentTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.test.agent.SystemAgentTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="96" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.attributemgt" total_bugs="0" total_types="1" total_size="47">
+      <ClassStats class="com.elitecore.test.attributemgt.AttributeTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="47" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.audit" total_bugs="0" total_types="1" total_size="23">
+      <ClassStats class="com.elitecore.test.audit.AuditTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="23" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.base" total_bugs="0" total_types="1" total_size="12">
+      <ClassStats class="com.elitecore.test.base.BaseTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="12" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.inventorymgt" total_bugs="0" total_types="1" total_size="25">
+      <ClassStats class="com.elitecore.test.inventorymgt.InventoryTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="25" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.migration" total_bugs="0" total_types="1" total_size="31">
+      <ClassStats class="com.elitecore.test.migration.MigrationTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="31" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.resource" total_bugs="0" total_types="1" total_size="72">
+      <ClassStats class="com.elitecore.test.resource.ResourceTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="72" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.resourcesubtype" total_bugs="0" total_types="1" total_size="35">
+      <ClassStats class="com.elitecore.test.resourcesubtype.ResourceSubTypeTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="35" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.resourcetype" total_bugs="0" total_types="1" total_size="31">
+      <ClassStats class="com.elitecore.test.resourcetype.ResourceTypeTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="31" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.warehouse" total_bugs="0" total_types="1" total_size="54">
+      <ClassStats class="com.elitecore.test.warehouse.WarehouseTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="54" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.test.warehousetype" total_bugs="0" total_types="1" total_size="45">
+      <ClassStats class="com.elitecore.test.warehousetype.WarehouseTypeTestCase" sourceFile="&lt;Unknown&gt;" interface="false" size="45" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="2332" invocations="4525" avgMicrosecondsPerInvocation="515" maxMicrosecondsPerInvocation="397388" standardDeviationMircosecondsPerInvocation="7262"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="2041" invocations="4525" avgMicrosecondsPerInvocation="451" maxMicrosecondsPerInvocation="84837" standardDeviationMircosecondsPerInvocation="2126"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="2034" invocations="4767" avgMicrosecondsPerInvocation="426" maxMicrosecondsPerInvocation="106280" standardDeviationMircosecondsPerInvocation="2174"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="1782" invocations="4785" avgMicrosecondsPerInvocation="372" maxMicrosecondsPerInvocation="83957" standardDeviationMircosecondsPerInvocation="2036"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="1685" invocations="4517" avgMicrosecondsPerInvocation="373" maxMicrosecondsPerInvocation="62361" standardDeviationMircosecondsPerInvocation="1805"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="1381" invocations="4526" avgMicrosecondsPerInvocation="305" maxMicrosecondsPerInvocation="254626" standardDeviationMircosecondsPerInvocation="3894"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="1194" invocations="512" avgMicrosecondsPerInvocation="2333" maxMicrosecondsPerInvocation="69348" standardDeviationMircosecondsPerInvocation="6797"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="1192" invocations="512" avgMicrosecondsPerInvocation="2329" maxMicrosecondsPerInvocation="74362" standardDeviationMircosecondsPerInvocation="7182"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="1176" invocations="1331" avgMicrosecondsPerInvocation="883" maxMicrosecondsPerInvocation="59895" standardDeviationMircosecondsPerInvocation="2871"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="1062" invocations="1684" avgMicrosecondsPerInvocation="630" maxMicrosecondsPerInvocation="25483" standardDeviationMircosecondsPerInvocation="1637"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="707" invocations="4525" avgMicrosecondsPerInvocation="156" maxMicrosecondsPerInvocation="210146" standardDeviationMircosecondsPerInvocation="3167"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DefaultEncodingDetector" totalMilliseconds="636" invocations="398" avgMicrosecondsPerInvocation="1598" maxMicrosecondsPerInvocation="359207" standardDeviationMircosecondsPerInvocation="18075"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="605" invocations="5111" avgMicrosecondsPerInvocation="118" maxMicrosecondsPerInvocation="16967" standardDeviationMircosecondsPerInvocation="681"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="571" invocations="512" avgMicrosecondsPerInvocation="1115" maxMicrosecondsPerInvocation="33263" standardDeviationMircosecondsPerInvocation="3595"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="407" invocations="512" avgMicrosecondsPerInvocation="795" maxMicrosecondsPerInvocation="30747" standardDeviationMircosecondsPerInvocation="2537"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNullDeref$CheckCallSitesAndReturnInstructions" totalMilliseconds="403" invocations="4517" avgMicrosecondsPerInvocation="89" maxMicrosecondsPerInvocation="173153" standardDeviationMircosecondsPerInvocation="2593"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="349" invocations="76475" avgMicrosecondsPerInvocation="4" maxMicrosecondsPerInvocation="10056" standardDeviationMircosecondsPerInvocation="98"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="333" invocations="398" avgMicrosecondsPerInvocation="838" maxMicrosecondsPerInvocation="12111" standardDeviationMircosecondsPerInvocation="1716"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="329" invocations="398" avgMicrosecondsPerInvocation="827" maxMicrosecondsPerInvocation="14718" standardDeviationMircosecondsPerInvocation="1928"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="316" invocations="4965" avgMicrosecondsPerInvocation="63" maxMicrosecondsPerInvocation="36298" standardDeviationMircosecondsPerInvocation="647"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindSelfComparison" totalMilliseconds="314" invocations="398" avgMicrosecondsPerInvocation="791" maxMicrosecondsPerInvocation="206209" standardDeviationMircosecondsPerInvocation="10338"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DumbMethods" totalMilliseconds="301" invocations="398" avgMicrosecondsPerInvocation="758" maxMicrosecondsPerInvocation="21970" standardDeviationMircosecondsPerInvocation="2223"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.RuntimeExceptionCapture" totalMilliseconds="293" invocations="398" avgMicrosecondsPerInvocation="737" maxMicrosecondsPerInvocation="25095" standardDeviationMircosecondsPerInvocation="2270"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="280" invocations="398" avgMicrosecondsPerInvocation="704" maxMicrosecondsPerInvocation="43824" standardDeviationMircosecondsPerInvocation="3945"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.UnreadFields" totalMilliseconds="277" invocations="398" avgMicrosecondsPerInvocation="698" maxMicrosecondsPerInvocation="13343" standardDeviationMircosecondsPerInvocation="1562"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="273" invocations="724" avgMicrosecondsPerInvocation="377" maxMicrosecondsPerInvocation="23522" standardDeviationMircosecondsPerInvocation="1560"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="267" invocations="4512" avgMicrosecondsPerInvocation="59" maxMicrosecondsPerInvocation="13947" standardDeviationMircosecondsPerInvocation="419"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="261" invocations="398" avgMicrosecondsPerInvocation="657" maxMicrosecondsPerInvocation="12537" standardDeviationMircosecondsPerInvocation="1667"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.SerializableIdiom" totalMilliseconds="249" invocations="398" avgMicrosecondsPerInvocation="628" maxMicrosecondsPerInvocation="13092" standardDeviationMircosecondsPerInvocation="1547"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.URLProblems" totalMilliseconds="247" invocations="398" avgMicrosecondsPerInvocation="622" maxMicrosecondsPerInvocation="18201" standardDeviationMircosecondsPerInvocation="1837"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="236" invocations="512" avgMicrosecondsPerInvocation="461" maxMicrosecondsPerInvocation="27218" standardDeviationMircosecondsPerInvocation="1850"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="215" invocations="1204" avgMicrosecondsPerInvocation="179" maxMicrosecondsPerInvocation="15694" standardDeviationMircosecondsPerInvocation="953"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

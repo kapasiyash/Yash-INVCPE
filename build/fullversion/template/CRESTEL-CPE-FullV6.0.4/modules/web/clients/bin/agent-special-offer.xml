@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<project name="SpecialOffer" default="Special-Offer" basedir=".">
+    <description>
+        Special Offer
+    </description>
+  
+<property file="${basedir}/agent.properties"/>
+
+<!-- Path that is common to both the local machine and system-->
+<path id="agent.class.path">
+    <fileset dir="${operationsmanager.home}/WEB-INF/lib">
+		<include name="*.jar" />
+    </fileset>
+    
+</path>
+
+<target name="Special-Offer"  depends="" description="Run to Apply Special Offer" >
+	<java classname="com.elitecore.billing.agent.SpecialOfferAgent" 
+		classpathref="agent.class.path" 
+		classpath="."
+		failonerror="true" >
+	</java>
+</target>
+
+
+</project>

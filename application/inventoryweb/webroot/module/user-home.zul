@@ -1,0 +1,83 @@
+<?meta http-equiv="X-UA-Compatible" content="IE=8" ?>
+<!-- 
+/**
+ * This is a ZK Page of Main Page layout of Crestel AR Integrator
+ * Created by Yash Kapasi
+ * Elitecore Technologies Ltd
+ * Created on: 14-Feb-2014
+ */
+ -->
+<?page id="mainLayoutPage" title="CRESTEL Inventory- Elitecore Technologies Pvt. Ltd."?>
+<?link rel="shortcut icon" href="/images/crestel_favicon.ico" type="image/x-icon"?>
+<?link rel="stylesheet" type="text/css" href="/css/crestel_main_layout.css"?>
+<zk xmlns:w="http://www.zkoss.org/2005/zk/client">
+
+<window id="homeWin" style="padding: 0px; margin: 0px; overflow:auto;" apply="com.elitecore.cpe.web.composer.MainLayoutComposer" height="100%" width="100%" >
+
+<borderlayout id="main" >
+	<north border="none" size="78px" >
+		<div>
+		
+				<vlayout xmlns:n="native">
+					<n:table width="98%" border="0" cellspacing="0" cellpadding="0">			
+						<n:tr>
+							<n:td><image src="/images/jispbilling.png" width="172" height="78" tooltiptext="Crestel Inventory- Elitecore Technologies Ltd." /></n:td>
+							<n:td background="../images/header-bkgd.jpg" width="44" valign="top" align="left" height="40" style="background-repeat:repeat-x; "><image src="/images/header-curve.jpg" /></n:td>
+							<n:td background="../images/header-bkgd.jpg" width="550" valign="middle" align="right" height="60" style="background-repeat:repeat-x; "><label id="userLabel" sclass="blue-text-bold"></label></n:td> 
+							<n:td background="../images/header-bkgd.jpg" width="550" valign="middle" align="right" height="60" style="background-repeat:repeat-x; ">
+								<!-- <label id="lastLoginLabel" sclass="blue-text-bold"></label> -->
+			                	<div zclass="top-nav"  id="topNavDiv" visible="false"/>
+							</n:td>
+							<n:td align="left" valign="top" width="34" height="40"><image src="/images/left-headercurve.jpg" style="background-repeat:repeat-x; "/></n:td>							
+							<n:td align="left" valign="top" background="../images/header-curve-bkgd.jpg" width="222" height="40" style="background-repeat:repeat-x; " >								
+								<n:table width="98%" border="0" cellspacing="0" cellpadding="0" >
+									<n:tr><n:td><space spacing="0px" /></n:td></n:tr>
+									<n:tr style="background-repeat:repeat-x; ">
+										<n:td align="center"><n:a href="user-home.zul"><image id="homeImg" src="/images/home.jpg" border="0" /></n:a></n:td>
+										<n:td><image id="backImg" src="/images/back.jpg" border="0" w:onClick="javascript:history.go(-1)" /></n:td>
+										<n:td><image id="forwardImg" src="/images/forward.jpg" border="0" w:onClick="javascript:history.go(1)" /></n:td>
+										<n:td><n:a href="javascript:void(0)"><image id="refreshImg" src="/images/refresh.jpg" border="0" /></n:a></n:td>
+										<n:td><n:a href="#"><image id="stopImg" src="/images/stop.jpg" border="0" /></n:a></n:td>
+          								<n:td><n:a href="javascript:window.print(); " ><image id="printImg" src="/images/print.jpg" border="0" /></n:a></n:td>
+          								<!--  <n:td><n:a href="#" ><image id="aboutusImg" src="/images/aboutus.jpg" border="0" /></n:a></n:td>
+		  								<n:td><n:a href="#" ><image id="profileImg" src="/images/profile.jpg" border="0" /></n:a></n:td>          								          													
+          								<n:td><n:a target="_blank" href="#" ><image id="helpImg" src="/images/help.jpg" border="0" /></n:a></n:td> -->
+									</n:tr>					
+								</n:table>
+							</n:td>							
+						</n:tr>			
+					</n:table>
+				</vlayout>				
+			</div>
+	</north>
+	<west id="westPanel" border="none" title="Crestel Inventory" size="172px" minsize="100" maxsize="500" collapsible="true" autoscroll="true" style="background-color: #005197; color: #FFFFFF; ">
+	<!-- 																						   ^ Add collapsible="true" for using collapsing menu style -->
+		<panel height="100%" border="none" style="background-color: #005197; color: #FFFFFF; ">
+			<toolbar style="background-color: #005197; color: #FFFFFF; " align="center">
+				<textbox id="searchBox" focus="true" width="125px" tooltiptext="Crestel SmartSearch ° - Type here to search the menu items"/> <space spacing="1px" /> 
+				<image width="18px" height="16px" src="/images/crestel_menu_search.png" align="center" tooltiptext="Type in SmartSearch Textbox to search the menu items" />
+			</toolbar>			
+			<panelchildren id="leftNavPanelChildren" style="padding-bottom: 0px; background-color: #005197; overflow:auto;" >
+						
+			</panelchildren>			
+			
+		</panel>
+	</west>
+	
+	<center border="none" style="padding-left: 2px; padding-right: 1px; padding-bottom: 1px; height: 100%; background-color: #FFFFFF;" id="mainCenter">
+				
+				<div id="moduleContent" height="100%" width="100%" style="padding-top: 5px;">
+				<include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="WELCOME"/>
+				<vlayout height="500px">
+				</vlayout>
+				 <include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul"  />
+				</div>
+			
+				
+    </center> 
+  	
+</borderlayout>
+				
+
+</window>
+</zk>

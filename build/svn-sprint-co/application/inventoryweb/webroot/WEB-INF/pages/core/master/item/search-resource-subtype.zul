@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<window id="searchResourceSubTypeWin" style="padding: 0px; margin: 0px;" height="100%" width="100%" apply="com.elitecore.cpe.web.composer.master.item.SearchResourceSubTypeComposer ">
+ <include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="Resource"/>
+		<tabbox id="searchResourceSubTypeTabbox" width="100%" height="100%" tabscroll="false">
+			<tabs>
+				<tab label="${labels.srst.title}" id="searchTab"/>
+			</tabs>
+			<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;" sclass="main-cont">
+				<vlayout style="padding-left: 5px; padding-top: 2px;" width="100%">
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="155px"></column>
+							<column width="245px"></column>
+							<column width="155px"></column>
+							<column width="245px"></column>
+						</columns>
+						<rows>
+							<row>
+									<cell>
+										<label value="${labels.crst.type}"></label>
+									</cell>
+									<cell colspan="3" > 
+									<combobox id="comboResourceType" width="155px" readonly="true" />
+									</cell>
+								</row>
+								<row spans="1, 3" align="top">
+								<cell>
+									<label value="${labels.crst.name}" style="text-align: left;" />
+								</cell>
+								<textbox id="txtName" width="150px" maxlength="20" />
+							</row>
+							
+						</rows>
+					</grid>
+					<separator bar="false" />
+					<separator bar="false" />
+					<hbox>
+						<button id="btnCreate" width="140px" mold="trendy" label="${labels.global.createBtn}" visible="false"/>
+						<button id="btnSearch" type="button" label="${labels.global.searchBtn}" mold="trendy" width="140px" />
+						<button id="btnCancel" type="button" label="${labels.global.cancelBtn}" mold="trendy" width="140px" />
+					</hbox>
+					<separator bar="false" />
+					<separator bar="false" />
+					<separator bar="false" />
+					<listbox id="searchResultGrid" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}" width="99%" style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd">
+						<listhead sizable="true">
+						<listheader label="${labels.global.sr.no}" width="55px" />
+							<listheader label="${labels.crst.name}" width="15%" sort="auto(name)" />
+							<listheader label="${labels.srst.typename}" width="25%" sort="auto(resourceTypeName)" />
+							<!-- <listheader label="${labels.srst.alias}" width="15%" sort="auto(alias)" /> -->
+							<listheader label="${labels.srst.description}" width="40%" sort="auto(description)" />
+							<listheader label="${labels.global.createDate}" width="12%" sort="auto(createDate)" />
+							<listheader  label="${labels.global.view}" width="55px"/>
+						</listhead>
+					</listbox>
+					<separator bar="false" />
+					<separator bar="false" />
+		<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					
+					</vlayout>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

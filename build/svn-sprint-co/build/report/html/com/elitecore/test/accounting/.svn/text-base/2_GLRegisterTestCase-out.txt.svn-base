@@ -1,0 +1,26 @@
+************* inside lookup - start *****************
+************* inside lookup - start *****************
+GLRE000003	GL Test
+GLRE000005	GLTEST1
+GLRE000004	dfgdfghbh
+GLRE000006	GL ADSL 1M
+GLRE000007	GLADSL
+GLRE000010	GLOnline
+GLRE000011	GL DIrect Debit
+GLRE000002	GL Regis Test
+GLRE000008	GLYELLOW1
+GLRE000009	PHONEBOOK 2012
+GL Register Deleted Successfully.
+GL Register Created Successfully.
+GLRegister-->GLRE000003
+GLRegister-->GLRE000005
+GLRegister-->GLRE000004
+GLRegister-->GLRE000006
+GLRegister-->GLRE000007
+GLRegister-->GLRE000010
+GLRegister-->GLRE000011
+GLRegister-->GLRE000002
+GLRegister-->GLRE000008
+GLRegister-->GLRE000009
+Junit Start
+

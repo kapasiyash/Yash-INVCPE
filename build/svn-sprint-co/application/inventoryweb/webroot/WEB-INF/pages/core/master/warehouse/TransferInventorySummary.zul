@@ -1,0 +1,117 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="transferInventorySummary" 
+		apply="com.elitecore.cpe.web.composer.master.warehouse.TransferInventorySummaryComposer">
+		
+<vlayout width="800px" height="100%">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.warehouse.transferInventorySummarytitle}" style="font-weight: bold;" />
+			</div>
+			
+			<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+					<columns>
+						<column width="160px"></column>
+						<column width="240px"></column>
+						<column width="160px"></column>
+						<column width="240px"></column>
+					</columns>
+					<rows>
+	
+						<row>
+							<cell>
+								<label value="${labels.warehouse.orderNo}"></label>
+							</cell>
+							<cell colspan="3" > <textbox id="txtOrderNo" width="140" maxlength="100"  /></cell>
+						</row>
+						<row  align="top">
+						<cell>
+							<label value="${labels.warehouse.orderfrom}"/>
+								
+							</cell>
+							<cell>
+								<datebox id="orderfrom" readonly="true" format="${$composer.dateFormat}"   constraint="no future : Please select valid date." />
+							</cell>
+							<cell>
+								<label value="${labels.warehouse.orderto}"/>
+								
+							</cell>
+							<cell>
+								<datebox id="orderto" readonly="true" format="${$composer.dateFormat}"   constraint="no future : Please select valid date."  />
+							</cell>
+						</row>
+					</rows>
+			</grid>
+						
+			<separator bar="false" />
+			
+			<hbox>
+				<button id="btnSearch" mold="trendy" label="${labels.global.searchBtn}" width="140px"/>
+			</hbox>
+			<separator bar="false" />
+			<vlayout>
+			<tabbox width="100%"  tabscroll="false" id="viewTransferInventorySummaryTabBox" visible="false">
+		<tabs>
+			<tab  label="${labels.warehouse.transferordetail}" id="searchTab1"/>
+			<tab  label="${labels.warehouse.transfererdetail}" id="searchTab2"/>
+		</tabs>
+		<tabpanels  width="100%">
+		
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;" >
+				<vlayout style="padding-left: 0px; padding-top: 2px;" width="100%">
+					<listbox id="searchResultGrid" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+									style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="99%" >
+									
+						<listhead sizable="true">
+							<listheader label="${labels.global.sr.no}" width="55px" />
+							
+							<listheader label="${labels.warehouse.orderNo}" width="25%"  />
+							<listheader label="${labels.inventory.currentwh}" width="25%"  />
+							<listheader label="${labels.inventory.newwh}" width="20%"  />
+							<listheader label="${labels.warehouse.totaltransfer}" width="18%"  />
+							<listheader label="${labels.warehouse.accepted}" width="18%"  />
+							<listheader label="${labels.warehouse.rejected}"  width="19%"  />
+							<listheader label="${labels.inventory.orderStatus}" width="20%"  />
+							
+							<listheader label="${labels.inventory.cancelAction}"  width="60px"  />
+							<listheader label="${labels.inventory.RejectAction}"  width="60px"  />
+							
+						</listhead>
+					</listbox>	
+					</vlayout>	
+						<separator bar="false" />
+						<separator bar="false" />
+				</tabpanel>
+				
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;"   >
+				<vlayout style="padding-left: 0px; padding-top: 2px;" width="100%">
+					<listbox id="searchResultGrid1" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+									style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="99%">
+									
+						<listhead sizable="true">
+							<listheader label="${labels.global.sr.no}" width="55px" />
+							
+							<listheader label="${labels.warehouse.orderNo}" width="25%"  />
+							<listheader label="${labels.inventory.currentwh}" width="25%"  />
+							<listheader label="${labels.inventory.newwh}" width="20%"  />
+							<listheader label="${labels.warehouse.totaltransfer}" width="18%"  />
+							<listheader label="${labels.warehouse.accepted}" width="18%"  />
+							<listheader label="${labels.warehouse.rejected}"  width="19%"  />
+							<listheader label="${labels.inventory.orderStatus}" width="20%"  />
+							
+							<listheader label="${labels.global.actions}"  width="65px"  />
+							
+						</listhead>
+					</listbox>	
+						</vlayout>
+						<separator bar="false" />
+						<separator bar="false" />
+				</tabpanel>
+		</tabpanels>
+		</tabbox> 
+		<separator bar="false" />
+		<separator bar="false" />
+		</vlayout>
+</vlayout>
+</hlayout>
+</zk>

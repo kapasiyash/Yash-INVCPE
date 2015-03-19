@@ -1,0 +1,87 @@
+************* inside lookup - start *****************
+[ 26-Jun-2014 06:14:03 ] [ TRACE ] [main] [ AGENT-TC ] :  inside testgetAgentServiceSummary  
+************* inside lookup - start *****************
+com.elitecore.utility.agentframework.data.AgentServiceSummaryData
+ActiveAgentRuns 0
+ActiveEntityAgentRuns 0
+ActiveMasterEntiyAgentRuns 0
+AgentEntityRunsInQueues 0
+AgentMasterEntiyRunsInQueues 0
+AgentRunsInQueues 0
+TotalAgentRuns 2
+TotalEntityAgentRuns 50
+TotalMasterEntiyAgentRuns 10
+AgentEntityRunsWaitingForQueue 0
+AgentMasterEntityRunsWaitingForQueue 0
+AgentRunsWaitingForQueue 0
+Class class com.elitecore.utility.agentframework.data.AgentServiceSummaryData
+com.elitecore.utility.agentframework.data.AgentServiceSummaryData@32602b6b
+[ 26-Jun-2014 06:14:04 ] [ TRACE ] [main] [ AGENT-TC ] :  inside testgetMonitorShortDescription  
+<p>Description for <b>AlphaMonitor</b> - Last Updated  Thu Jun 26 12:49:57 IST 2014<p><p><b>Entity_POOL</b>
+<br> Pool Size : 50
+<br> Required Pool Size : 50
+<br> Dead Threads : 0
+<br> Threads Destroyed : 0
+<br> Threads Created : 0
+<br> Current Pool Size : 50
+<p><b>Agent_POOL</b>
+<br> Pool Size : 2
+<br> Required Pool Size : 2
+<br> Dead Threads : 0
+<br> Threads Destroyed : 0
+<br> Threads Created : 0
+<br> Current Pool Size : 2
+<p><b>MasterEntity_POOL</b>
+<br> Pool Size : 10
+<br> Required Pool Size : 10
+<br> Dead Threads : 0
+<br> Threads Destroyed : 0
+<br> Threads Created : 0
+<br> Current Pool Size : 10
+<p><b>BetaMonitor</b> is alive.
+ <br> <p>Description for <b>BetaMonitor</b> - Last Updated  Thu Jun 26 12:49:57 IST 2014<p><p><b>AlphaMonitor</b> is alive.
+
+[ 26-Jun-2014 06:14:04 ] [ TRACE ] [main] [ AGENT-TC ] :  inside teststopScheduleByAgentRunId  
+[ 26-Jun-2014 06:14:04 ] [ TRACE ] [main] [ AGENT-TC ] :  inside testgetServiceState  
+null
+[ 26-Jun-2014 06:14:04 ] [ TRACE ] [main] [ AGENT-TC ] :  inside testgetAgentServiceThreadPools  
+{MasterEntity=<table border='0'>
+<tr><td>Name                   </td><td>:</td><td>MasterEntity_POOL</td></tr>
+<tr><td>Pool State             </td><td>:</td><td>Running</td></tr>
+<tr><td>Pool Size              </td><td>:</td><td>10</td></tr>
+<tr><td>Current Pool Size      </td><td>:</td><td>10</td></tr>
+<tr><td>Task under execution   </td><td>:</td><td>0</td></tr>
+<tr><td>Maximum queue size     </td><td>:</td><td>12</td></tr>
+<tr><td>Current queue size     </td><td>:</td><td>0</td></tr>
+<tr><td>Task waiting for queue </td><td>:</td><td>0</td></tr>
+</table>
+, Entity=<table border='0'>
+<tr><td>Name                   </td><td>:</td><td>Entity_POOL</td></tr>
+<tr><td>Pool State             </td><td>:</td><td>Running</td></tr>
+<tr><td>Pool Size              </td><td>:</td><td>50</td></tr>
+<tr><td>Current Pool Size      </td><td>:</td><td>50</td></tr>
+<tr><td>Task under execution   </td><td>:</td><td>0</td></tr>
+<tr><td>Maximum queue size     </td><td>:</td><td>52</td></tr>
+<tr><td>Current queue size     </td><td>:</td><td>0</td></tr>
+<tr><td>Task waiting for queue </td><td>:</td><td>0</td></tr>
+</table>
+, Agent=<table border='0'>
+<tr><td>Name                   </td><td>:</td><td>Agent_POOL</td></tr>
+<tr><td>Pool State             </td><td>:</td><td>Running</td></tr>
+<tr><td>Pool Size              </td><td>:</td><td>2</td></tr>
+<tr><td>Current Pool Size      </td><td>:</td><td>2</td></tr>
+<tr><td>Task under execution   </td><td>:</td><td>0</td></tr>
+<tr><td>Maximum queue size     </td><td>:</td><td>4</td></tr>
+<tr><td>Current queue size     </td><td>:</td><td>0</td></tr>
+<tr><td>Task waiting for queue </td><td>:</td><td>0</td></tr>
+</table>
+}
+[ 26-Jun-2014 06:14:04 ] [ TRACE ] [main] [ AGENT-TC ] :  inside testgetAgentRunStates  
+[]
+[ 26-Jun-2014 06:14:05 ] [ TRACE ] [main] [ AGENT-TC ] :  inside testdoThreadMonitoring  
+[ 26-Jun-2014 06:14:05 ] [ TRACE ] [main] [ AGENT-TC ] :  inside teststopAgentRunByScheduleId  
+[ 26-Jun-2014 06:14:05 ] [ TRACE ] [main] [ AGENT-TC ] :  inside teststopAgentRunByName  
+[ 26-Jun-2014 06:14:05 ] [ TRACE ] [main] [ AGENT-TC ] :  inside testgetAgentManagerDetails  
+{}
+Junit Start
+

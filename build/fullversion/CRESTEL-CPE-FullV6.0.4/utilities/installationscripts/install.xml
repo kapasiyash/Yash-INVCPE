@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<project name="install" default="install" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+
+	<property file="${basedir}/build.properties"/>
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpath="ant-contrib-0.6.jar"/>			
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+
+        <target name="display-current-version">
+                <ant antfile="${crestel.home}/utilities/installationscripts/install/install-module.xml" target="display-current-version" inheritAll="true" />
+        </target>
+
+	<!-- ******************************** -->
+	<!-- Checks Argument     	          -->
+	<!-- ******************************** -->
+
+	<target name="arg-check" unless="file.name">
+		<echo message="Checking input arguments" level="debug" />
+		<echo message="ERROR: Installation file name not provided" level="error"/>
+		<fail message="USAGE: install.sh {file name}"/>	
+	</target>
+
+	<!-- ******************************** -->
+	<!-- Checks File presnt    	          -->
+	<!-- ******************************** -->
+
+	<target name="file-check" >
+		<echo message="Checking file at path: ${file.path}/${file.name}" level="debug" />
+		
+		<available file="${file.path}/${file.name}" property="tar.gz.present"/>	
+		<if>
+			<not>
+				<isset property="tar.gz.present" />
+			</not>	
+			<then>
+				<echo message="ERROR: ${file.path}/${file.name} is not available." level="error"/>
+				<fail message="ERROR: ${file.path}/${file.name} is not available. Please check if correct file name is given in argument"/>				
+			</then>
+		</if>
+	</target>
+
+
+	<!-- ******************************** -->
+	<!-- Unzip tar.gz        	          -->
+	<!-- ******************************** -->
+	
+	<target name="unzip-tar.gz"  description="Unzips upgrade.tar.gz file" >
+	
+		<echo message="Extracting file : ${file.path}/${file.name}z to ${installation.dir}" level="debug" />
+		
+		<basename property="file.base.name" file="${file.name}" suffix=".tar.gz"/>
+		
+		<trycatch>
+			<try>	
+				<mkdir dir="${installation.dir}" />
+				<gunzip src="${file.path}/${file.name}" dest="${basedir}"/>
+				<untar src="${basedir}/${file.base.name}.tar" dest="${installation.dir}"/>
+				<touch>
+				    <fileset dir="${installation.dir}"/>
+				</touch>
+				<delete file="${basedir}/${file.base.name}.tar"/>
+			</try>
+			<catch>
+				<echo message="ERROR: Error in extracting file ${file.path}/${file.name} to ${installation.dir}" level="error"/>
+				<fail message="ERROR: Error in extracting file ${file.path}/${file.name} to ${installation.dir}. Please check if file is not corrupted"/>
+			</catch>
+		</trycatch>
+	</target>
+	
+	<target name="upgrade-module-version" description="Upgrade Version">
+	
+		<echo message="Installing module: ${module.name}. Please wait..."  />
+		
+		<trycatch property="error.message" reference="error.object">
+			<try>
+			
+				<echo message="Calling pre upgrade version" level="debug" />
+				<ant antfile="${crestel.home}/modules/${module.name}/utilities/installationscripts/install/install-module.xml" target="pre-upgrade-version" inheritAll="true" />
+				
+				<echo message="Calling upgrade version" level="debug" />
+				<ant antfile="${crestel.home}/modules/${module.name}/utilities/installationscripts/install/install-module.xml" target="upgrade-version" inheritAll="true" />
+				
+				<echo message="Calling post upgrade version" level="debug" />
+				<ant antfile="${crestel.home}/modules/${module.name}/utilities/installationscripts/install/install-module.xml" target="post-upgrade-version" inheritAll="true" />
+			</try>	
+			<catch>
+				<delete dir="${installation.dir}"/>
+				<echo message="ERROR: Installation of module '${module.name}' failed" level="error"/>
+				<property name="err.obj" refid="error.object" />
+				<fail message="Installation of module '${module.name}' failed. Root cause:${error.message}, Error Object=${err.obj}"/>
+			</catch>
+		</trycatch>
+	</target>
+	
+	<target name="install-version" depends="arg-check, file-check, unzip-tar.gz" >
+	
+		<echo message="Installation started. Please wait..."  />
+		
+		<echo message="Installation dir: ${installation.dir}" level="debug" />
+		
+		<trycatch property="error.message" reference="error.object">
+			<try>
+
+				<echo message="Calling pre upgrade version of bundle" level="debug" />
+				<ant antfile="${crestel.home}/utilities/installationscripts/install/install-module.xml" target="pre-upgrade-version" inheritAll="true" />
+				
+				<echo message="Calling upgrade version of bundle" level="debug" />
+				<ant antfile="${crestel.home}/utilities/installationscripts/install/install-module.xml" target="upgrade-version" inheritAll="true" />
+
+				<property file="${installation.dir}/installation.info"/>
+				
+				<foreach list="${module.list}" param="module.name" target="upgrade-module-version" inheritall="true">
+				</foreach>
+				
+				<echo message="Calling post upgrade version of bundle" level="debug" />
+				<ant antfile="${crestel.home}/utilities/installationscripts/install/install-module.xml" target="post-upgrade-version" inheritAll="true" />
+
+			</try>	
+			<catch>
+				<delete dir="${installation.dir}"/>
+				<echo message="ERROR: Installation of version bundle failed" level="error"/>
+				<property name="err.obj" refid="error.object" />
+				<fail message="${error.message}, Error Object=${err.obj}"/>
+			</catch>
+		</trycatch>
+		
+		
+		<delete dir="${installation.dir}"/>		
+	</target>
+
+	<target name="install">
+		<foreach list="${file.list}" param="file.name" target="install-version" inheritall="true">
+		</foreach>
+	</target>	
+	
+</project> 

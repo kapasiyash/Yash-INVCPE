@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/entity/inventory/core/configuration/notification"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16442"
+   kind="dir"
+   committed-date="2015-03-13T03:42:53.509935Z"/>
+<entry
+   name="DocumentCategory.java"
+   checksum="b894f3103c7389625d3fd8a3c362e81f"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="DocumentTemplate.java"
+   checksum="9976070273464d026c6138f5b575000c"
+   last-author="rinkal.sadariya"
+   committed-rev="16442"
+   text-time="2015-03-13T03:42:53.000000Z"
+   kind="file"
+   committed-date="2015-03-13T03:42:53.509935Z"/>
+<entry
+   name="DocumentTemplateDetail.java"
+   checksum="bdf2ab71333de6f90b66e6adb425f26a"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="MessageTag.java"
+   checksum="6dee8dada6a5189d6888f7cb9ffba46b"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="NotificationAudit.java"
+   checksum="04b02e8d887820f21d2937d272d6f053"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SMSDocumentTemplateDetail.java"
+   checksum="dcfc13c20c48e20097964fdbd6486ce9"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

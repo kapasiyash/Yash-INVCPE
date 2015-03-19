@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/facade/system/internal"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16442"
+   kind="dir"
+   committed-date="2015-03-13T03:42:53.509935Z"/>
+<entry
+   name="ISystemInternalFacade.java"
+   checksum="7a57ade2194c4521ce0353a89b4d5be5"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SystemInternalDataConversionUtil.java"
+   checksum="5669f55e47b775f222ac62a2c4f110e3"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SystemInternalFacade.java"
+   checksum="849b6b94734ae7ae8e0e249e0a6d6562"
+   last-author="rinkal.sadariya"
+   committed-rev="16442"
+   text-time="2015-03-13T03:42:53.000000Z"
+   kind="file"
+   committed-date="2015-03-13T03:42:53.509935Z"/>
+<entry
+   name="SystemInternalFacadeLocal.java"
+   checksum="eeba1edf7e7fdc43f7e4323bb38e1f95"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SystemInternalFacadeRemote.java"
+   checksum="ccc92a20480f7367c1e9490ba04f4ea7"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

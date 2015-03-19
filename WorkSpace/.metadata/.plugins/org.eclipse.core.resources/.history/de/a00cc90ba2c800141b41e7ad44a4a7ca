@@ -1,0 +1,232 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk >
+	<hlayout id="updateTemplateWin" height="100%" width="100%" style="padding: 0px; margin: 0px;" apply="com.elitecore.cpe.web.configuration.notification.UpdateDocumentTemplateComposer">
+		
+				 <vlayout width="800px" id="page1">
+             <div sclass="sectionTitle"><label value="${labels.udt.bdTitle}" style="font-weight: bold;"/></div>
+             	<vlayout width="800px" >
+					 <hlayout style="padding-left: 5px; padding-top: 2px;" width="100%">
+                 <grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+               <columns>
+                   <column width="160px"></column>
+                   <column width="240px"></column>
+                   <column width="160px"></column>
+                   <column width="240px"></column>
+                </columns>
+                <rows>
+                 
+                   <row  align="top">
+                    	<cell>
+                       	<label value="${labels.udt.emailTemplate}" style="text-align: left;" />
+                       	<label value="*" style="color:red;" />
+                     	</cell>
+                       <cell colspan="3">
+                       	<combobox id="comboEmailTemplate" width='200px' constraint="no empty, strict:Please select Yes If You Want To Create Email Template " readonly="true">
+                       		<comboitem label="Yes" value="Y"/>
+							<comboitem label="No"  value="N"/>
+						</combobox>
+                       </cell>
+                   </row>
+                   <row  align="top">
+                    	<cell>
+                       	<label value="${labels.udt.smsTemplate}" style="text-align: left;" />
+                       	<label value="*" style="color:red;" />
+                     	</cell>
+                       <cell colspan="3">
+                       	<combobox id="comboSMSTemplate" width='200px' constraint="no empty, strict:Please select Yes If You Want To Create SMS Template " readonly="true" disabled="true">
+                       		<comboitem label="Yes" value="Y"/>
+							<comboitem label="No"  value="N"/>
+						</combobox>
+                       </cell>
+                   </row>
+                   
+               </rows>
+           </grid>
+             </hlayout>
+             <separator bar="false" />
+        </vlayout>
+        <separator bar="false" />
+         <hbox>
+            <button id="btnNext1" type="button" label="${labels.global.nextBtn}" mold="trendy" width="140px" />
+            <!-- <button id="btnCancel1" type="button" label="${labels.global.cancelBtn}" mold="trendy" width="140px" onClick="updateTemplateWin.detach()"/> -->
+        </hbox>
+		<separator bar="false" />
+		<separator bar="false" />
+		</vlayout>
+		
+		
+		<vlayout width="800px"  id="page2" visible="false">
+			<div sclass="sectionTitle"><label value="Update Email Template" style="font-weight: bold;"/></div>
+			<hlayout style="padding-left: 5px; padding-top: 2px;"  >
+             	<grid width="770px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+		           <columns>
+		               <column width="180px"></column>
+		               <column width="180px"></column>
+		               <column width="180px"></column>
+		               <column width="180px"></column>
+		           </columns>
+                   <rows>
+                   
+                    <row>
+                       	<div>
+                       		<separator height="15px" ></separator>
+                       	</div>
+                       </row>
+                        <row  spans="4" style=" background-color">
+                        <cell>
+                        	<div sclass="sectionTitle" height="22px" ><label value="${labels.cdt.editor}" style="font-weight: bold;"/>
+                         	<label value="${labels.cdt.messageTag}" style="padding-left: 410px;" />
+                          	<combobox id="comboMessageTagEmailForSubject" readonly="true" width="180px"  />
+                         	</div>
+                        </cell>
+                     </row>
+                     <row spans="4" >
+                        <cell>
+                        	<div>
+                       		<separator height="10px" ></separator>
+                       	</div>
+                        </cell>
+                     </row>
+                   
+                       <row  align="center" spans="1,3">
+                      		<cell align="left">
+                           	<label value="${labels.udt.subject}" />
+                           	<label value="*" style="color:red;" />
+                           </cell>
+                           <cell align="left">
+                          		 <textbox id="txtSubject" multiline="true" height="40px" width='500px' maxlength="255" constraint="no empty:Please Enter Subject"/>
+                           </cell>
+                       </row>
+                       <row>
+                       	<div>
+                       		<separator height="15px" ></separator>
+                       	</div>
+                       </row>
+                        <row  spans="4" style=" background-color">
+                        <cell>
+                        	<div sclass="sectionTitle" height="22px" ><label value="${labels.udt.editor}" style="font-weight: bold;"/>
+                         	<label value="${labels.udt.messageTag}" style="padding-left: 410px;" />
+                          	<combobox id="comboMessageTagEmail" readonly="true" width="180px"  />
+                         	</div>
+                        </cell>
+                     </row>
+                     <row spans="4" >
+                        <cell>
+                        	<div>
+                       		<separator height="10px" ></separator>
+                       	</div>
+                        </cell>
+                     </row>
+                       <row   spans="4" >
+                        <cell>
+                            <ckeditor id="emailCKEditorUpdate"  width="705px"></ckeditor>
+                            
+                        </cell>
+                       </row>
+                   </rows>
+                </grid>
+                 <script >
+   			<![CDATA[
+			function populateCkEditorUpdate(data){
+				
+					var cke = '${emailCKEditorUpdate.uuid}';
+					cke = cke+"-cnt";
+			      	CKEDITOR.instances[cke].insertText(data);
+			        
+              }  
+			 ]]>
+   </script>
+              </hlayout>
+            <separator bar="false" />
+	            <hbox>
+	        		<button id="btnBack2" type="button" label="${labels.global.previousBtn}" mold="trendy"  width="140px"/>
+	            	<button id="btnFinish2" type="button" label="${labels.global.nextBtn}"   mold="trendy" width="140px" />
+	            	<!-- <button id="btnCancel2" type="button" label="${labels.global.cancelBtn}" mold="trendy" width="140px" onClick="updateTemplateWin.detach()"/> -->
+	         	</hbox>
+	         	<separator bar="false" />
+	         	<separator bar="false" />
+		</vlayout>
+		
+		
+		<vlayout width="800px" id="page3" visible="false">
+		 <div sclass="sectionTitle"><label value="Create SMS Template" style="font-weight: bold;"/></div>
+         	<hlayout style="padding-left: 5px; padding-top: 2px;" >
+             	<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+		           <columns>
+		               <column width="780px"></column>
+		           </columns>
+                   <rows>
+                   
+                        <row  spans="4" style=" background-color">
+                        <cell>
+                        	<div sclass="sectionTitle" height="22px" ><label value="${labels.cdt.editor}" style="font-weight: bold;"/>
+                         	<label value="${labels.udt.messageTag}" style="padding-left: 410px;" />
+                          	<combobox id="comboMessageTagSMS" readonly="true" width="180px"  />
+                         	</div>
+                        </cell>
+                     </row>
+                     <row spans="4" >
+                        <cell>
+                        	<div>
+                       		<separator height="10px" ></separator>
+                       	</div>
+                        </cell>
+                     </row>
+                   		<row>
+                   			<cell>
+	                   			<label value="SMS Text"></label>
+	                        	<label value="*" style="color:red;" />
+                   			</cell>
+                   		</row>
+                       <row>
+                        <cell>
+                        
+                            <textbox id="txtAreaSMS" multiline="true" height="200px" width="500px"></textbox>
+                        </cell>
+                       </row>
+                   </rows>
+                </grid>
+              </hlayout>
+           	  <separator bar="false" />
+               <hbox>
+	        	<button id="btnBack3" type="button" label="${labels.global.previousBtn}" mold="trendy" width="140px" />
+	            <button id="btnFinish3" type="button" label="${labels.global.finish}"   mold="trendy" width="140px"/>
+	            <!-- <button id="btnCancel3" type="button" label="${labels.global.cancelBtn}" mold="trendy" width="140px" onClick="updateTemplateWin.detach()"/> -->
+	         </hbox>
+	         <separator bar="false" />
+	         <separator bar="false" />
+        </vlayout>
+		 <separator bar="false" />
+		<separator bar="false" />
+				
+		<script>
+  <![CDATA[
+function insertAtCursor(myField, myValue) {
+    //IE support
+    if (document.selection) {
+        myField.focus();
+        sel = document.selection.createRange();
+        sel.text = myValue;
+        zk.Widget.$('$txtSubject').setValue(sel.text); 
+    }
+    //MOZILLA and others
+    else if (myField.selectionStart || myField.selectionStart == '0') {
+        var startPos = myField.selectionStart;
+        var endPos = myField.selectionEnd;
+        myField.value = myField.value.substring(0, startPos)
+            + myValue
+            + myField.value.substring(endPos, myField.value.length);
+        zk.Widget.$('$txtSubject').setValue(myField.value); 
+    } else {
+        myField.value += myValue;
+        zk.Widget.$('$txtSubject').setValue(myField.value); 
+    }
+}    
+    ]]>
+  </script>
+ 
+	</hlayout>
+	 <separator bar="false" />
+		<separator bar="false" /> <separator bar="false" />
+		<separator bar="false" />
+</zk>

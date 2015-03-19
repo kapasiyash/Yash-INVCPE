@@ -1,0 +1,115 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="configureThreshold" apply="com.elitecore.cpe.web.composer.master.warehouse.ConfigureThresholdComposer">
+  
+<vlayout width="800px">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.warehouse.configureThresholdtitle}" style="font-weight: bold;" />
+			</div>
+			
+			<div id="thresholdConfigDiv">
+				<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								<row>
+									<cell>
+										<label value="${labels.item.type}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell><combobox readonly="true" id="cmbResourceType" width="145px" maxlength="100" constraint="no empty : Please Select Resource Type"/></cell>
+									<cell>
+											<label value="${labels.item.subtype}"></label>
+											
+									</cell>
+									<cell  > <combobox readonly="true" id="cmbResourceSubType" width="145px" maxlength="100" /></cell>
+								</row>
+								
+								<row>
+									<cell>
+											<label value="${labels.threshold.type}"></label>
+											<label value="*" style="color:red;" />
+									</cell>
+									<cell > <combobox readonly="true" id="cmbThresholdType" width="145px" maxlength="100" constraint="no empty : Please Select Threshold Type" /></cell>
+									
+									<cell>
+										<label value="${labels.threshold.value}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell ><intbox id="txtThreshold" width="140px" maxlength="5" constraint="no empty,no negative : Please enter valid Threshold Value "  /></cell>
+									
+								</row>
+								
+								
+								<row>
+									<cell>
+										<label value="${labels.threshold.email}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell ><textbox id="txtEmail" width="140px"   maxlength="50" constraint="/^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/: Please enter valid Email Address "  /></cell>
+									<cell>
+										<label value="${labels.threshold.mobile}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell ><textbox id="txtMobile" width="140px" maxlength="12"  constraint="/^\+*[0-9][0-9]*$/ : Please enter valid Mobile number "  />
+									<image id="tooltip" tooltip="mobile" src="/images/QuestionmarkButton.png"/>
+									</cell>
+									
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.threshold.quantity}"></label>
+									</cell>
+									<cell colspan="3" ><intbox id="txtQuantity" width="140px" maxlength="5" constraint="no negative : Please enter valid Quantity Value "  /></cell>
+								</row>
+							</rows>
+						</grid>
+						<hbox>
+						<separator bar="false" />
+						<separator bar="false" />
+				<button id="btnAddNew" mold="trendy" label="Add New" width="140px"/>
+				<button id="btnSave" mold="trendy" label="Save" width="140px" visible="false"/>
+				<button id="btnSubmit" mold="trendy" label="Submit" width="140px" visible="true"/>
+			<!--  	<button id="cancelBtn" mold="trendy" label="${labels.global.cancelBtn}" onClick="updatesEvent.detach();" width="140px"/> -->
+			</hbox>
+			<separator bar="false" />
+			<separator bar="false" />
+			<listbox id="configThresholdGrid" visible="true"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd" height="100%" width="99%">
+											<listhead sizable="true">
+												<listheader label="${labels.global.sr.no}" width="55px" />
+												<listheader label="${labels.item.type}" width="22%"  />
+												<listheader label="${labels.item.subtype}" width="22%"  />
+												<listheader label="${labels.threshold.type}" width="22%"  />
+												<listheader label="${labels.threshold.value}"  width="22%"  />
+												<listheader label="${labels.threshold.quantity}"  width="22%"  />
+												<listheader label="${labels.threshold.email}"  width="22%"  />
+												<listheader label="${labels.threshold.mobile}"  width="22%"  />
+												<listheader label="${labels.global.edit}"  width="55px"  />
+<!-- 												<listheader label="${labels.global.deleteBtn}"  width="60px"  />
+ -->											</listhead>
+										</listbox>
+						<separator bar="false" />
+		<label id="lblMessageforinv" visible="true" value="Note : Please, note that &quot;Save&quot;  button will save updated Threshold data in result grid, it will not update data in database. To update data in database need to click on &quot;Submit&quot; button once data is saved in result grid to reflect data in database." style="text-align: left;color: red;" />
+			<separator bar="false" />
+			<separator bar="false" />
+			<separator bar="false" />
+			<separator bar="false" />
+			</div>
+			<div id="thresholdNoConfig" visible="false">
+				Not Available any Inventory
+			</div>
+</vlayout>
+</hlayout>
+ <popup id="mobile" width="300px">
+        <html><![CDATA[
+            Note: please enter Mobile Number with country code 
+            <br/><font color="red">ie. +230zyyyxxxx</font>
+        ]]></html>
+    </popup>
+</zk>

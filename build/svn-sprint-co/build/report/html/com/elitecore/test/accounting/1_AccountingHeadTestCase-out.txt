@@ -1,0 +1,35 @@
+************* inside lookup - start *****************
+************* inside lookup - start *****************
+No Record FOund for Id ->ACCH000001
+ACCH000002	ACCHead test1
+ACCH000019	ADSL 1M
+ACCH000013	Retained tax
+ACCH000020	ADSL
+ACCH000021	YELLOTEL
+ACCH000022	MT BIZ 2013 2014
+ACCH000004	Customer Deposit Account
+ACCH000005	Cash At Safe
+ACCH000006	Debtor
+ACCH000007	Revenue
+ACCH000008	Tax
+ACCH000009	Deferred  Income
+ACCH000014	Refund of deposit and overpayment
+ACCH000015	Direct Debit Clearing Account
+ACCH000017	sfi
+Accounting Head-->ACCHead test1 ACC2
+Accounting Head-->ADSL 1M ADSL 1M
+Accounting Head-->Retained tax RETTAX
+Accounting Head-->ADSL ADSL
+Accounting Head-->YELLOTEL YELLOTEL
+Accounting Head-->MT BIZ 2013 2014 MT BIZ 2013 2014
+Accounting Head-->Customer Deposit Account CUSTDEPACC
+Accounting Head-->Cash At Safe CASHATSAFE
+Accounting Head-->Debtor DEBTOR
+Accounting Head-->Revenue REVENUE
+Accounting Head-->Tax TAX
+Accounting Head-->Deferred  Income DEFINCOME
+Accounting Head-->Refund of deposit and overpayment REFDEP
+Accounting Head-->Direct Debit Clearing Account DDCACC
+Accounting Head-->sfi ACC1
+Junit Start
+

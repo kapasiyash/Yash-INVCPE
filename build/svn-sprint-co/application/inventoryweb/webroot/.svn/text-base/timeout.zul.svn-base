@@ -1,0 +1,101 @@
+<?page id="loginZul" title="Crestel AR Integrator"?>
+
+<?link rel="stylesheet" type="text/css" href="/css/car.css"?>
+<?link rel="shortcut icon" href="/images/car/favicon.ico" type="image/x-icon"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<style>
+		html,body{margin:0;padding:0}
+		.main-sec { 
+		background-repeat:repeat-x; background-color: ##F5F5F5; color:
+		black; 
+		}
+		
+		.lbl1{
+			font-size: 18px;
+			color: #555555; 
+			font-weight: bold;
+		}
+		
+		.lbl2{
+			font-size:14px;
+			color: #555555; font-weight: normal;
+		}
+		
+		.lbl3{
+			font-size:12px;
+			color: #555555; 
+		}
+		
+	</style>
+	<window apply="com.elitecore.cpe.web.common.TimeoutComposer" height="100%">
+		<borderlayout >
+           	<north height="32px" border="none" sclass="login_top1" style="padding-top: 0px; padding-left:0px;">
+           	  <image src="/images/car/lnr.png"/>
+           	</north>
+			<center border="none">
+				<borderlayout >
+				<center border="none" sclass="login_top1">
+					<vlayout sclass="main-sec" height="100%">
+						<hlayout style="padding-top:20px;padding-left:20px;text-align:center;">
+							<vlayout>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <label sclass="lbl2" value="The page or component you request is no longer available. This is normally caused by session timeout." />
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <hlayout>
+                                    <button id="btnOK" type="button" label="Ok, Take Me to Login Page" mold="trendy" />
+                                </hlayout>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                
+                               
+							</vlayout>
+						</hlayout>
+					</vlayout>
+				</center>
+					</borderlayout>
+			</center>
+                    <south height="196px" border="none" sclass="login_btm"> 
+                        <borderlayout>
+                            <center sclass="login_btm" border="none"></center>
+                            <south height="96px" border="none"> 
+                        <borderlayout>
+                            <center sclass="login_btm1" border="none"></center>
+                            <west width="246px" border="none" sclass="login_btm1" style="padding-left: 0px;"> <image src="/images/car/logo-crestel.png"/></west>
+                            <east width="550px" border="none" sclass="login_btm1">
+                                <vlayout style="text-align: right; padding-top:25px" spacing="0">
+                                  <hlayout style="padding-right: 15px;">
+                                  <image src="/images/car/logo-icon.png"/>
+                                  </hlayout>
+                                  <hlayout>
+                                  <image src="/images/car/line.png"/>
+                                  </hlayout>
+                                  <hlayout style="padding-right: 15px; padding-top: 5px;">
+                                  <label value="© Copyright 2012 Elitecore Technologies Pvt. Ltd. All Rights Reserved" style="color: #FFF9ED; font-size: 10px;"></label>
+                                  </hlayout>
+                                </vlayout>
+                              
+                           </east>
+                        </borderlayout>
+                    </south>
+                           
+                        </borderlayout>
+                    </south>
+			
+		</borderlayout>
+	</window>
+</zk>

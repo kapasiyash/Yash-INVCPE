@@ -1,0 +1,550 @@
+/*
+ CSS for Crestel Main Layout.
+ By Hushen Savani
+ Elitecore Technologies Ltd
+ Created on: 07-May-2013
+*/
+
+/* Scroll Bars */
+::-webkit-scrollbar {
+width: 10px;
+height: 10px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+height: 0px;
+display: block;
+background-color: transparent;
+}
+
+::-webkit-scrollbar-track-piece {
+/* background-color: #3b3b3b; */
+-webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+height: 50px;
+background-color: #666;
+border: 1px solid #eee;
+-webkit-border-radius: 6px;
+}
+
+/* Blue Bold Text */
+.blue-text-bold { 
+	font-family: Arial; 
+	font-size: 12px; 
+	color: #00477F; 
+	border: #CCCCCC solid; 
+	font-weight: bold; 
+	padding-left: 5px; 
+	border-width: 0px 0px 0px
+}
+
+
+.word div.z-listbox-header th.z-listheader, div.z-listbox-header th.z-auxheader ,div.z-listbox-header th.z-listheader-label{
+	word-wrap: break-word;	
+	border: none;
+    background-color: #EEF8FE;
+    text-align:center;
+}
+
+.formList div.z-listbox-header tr.z-listhead, div.z-listbox-header tr.z-auxhead {
+    border: 1px solid #000000;
+    background-color: blue;
+    white-space: normal;
+    word-wrap:break-word;
+}
+.formList div.z-listbox-header th.z-listheader, div.z-listbox-header th.z-auxheader {
+    background-color: #EEF8FE;
+    height: 12px;
+    white-space: normal;
+    word-wrap:break-word;
+    border-color: -moz-use-text-color #CFCFCF #CFCFCF white;
+    border-image: none;
+    border-style: none solid solid;
+    border-width: 0 1px 1px;
+}
+
+.custList div.z-listbox-header tr.z-listhead, div.z-listbox-header tr.z-auxhead {
+    border: 1px solid #000000;
+    background-color: blue;
+    font-size: 10px;
+}
+
+div.z-dottree {
+background-color: #EEF8FE;
+}
+
+.custList div.z-listbox-header th.z-listheader div.z-listheader-cnt, div.z-listbox-header th.z-auxheader div.z-listheader-cnt{
+    background-color: #EEF8FE;
+    height: 12px;
+    font-size: 10px;
+    border-color: -moz-use-text-color #CFCFCF #CFCFCF white;
+    border-image: none;
+    border-style: none solid solid;
+    border-width: 0 1px 1px;
+}
+
+/* Header and Search Toolbar in Menu */
+.z-west, 
+.z-west-header,
+.z-toolbar
+{
+	background-color: #005197;
+	color: #FFFFFF;	
+	background-image: none;
+	border-top: 0px solid #FFFFFF;
+	border-bottom: 0px solid #FFFFFF;
+}
+
+/* Vertical Menubar */
+.z-menubar-ver
+{
+	background-color: #005197;
+	color: #FFFFFF;	
+	background-image: none;
+	border-top: 0px solid #FFFFFF;
+	border-bottom: 0px solid #FFFFFF;
+}
+
+/* Menu, Menu Item Background */
+.z-menu,
+.z-menuitem
+{
+	background-color: #005197;
+	color: #FFFFFF;
+}
+
+
+/* Closed menubar */
+.z-west-colpsd {
+	background-color: #005197;
+	color: #FFFFFF;
+	left: 0px !important;
+	border: 0px solid #005197;
+}
+
+/* Mouse over on Closed Menubar */
+.z-west-colpsd-over {
+	background-color: #005197 !important;
+	color: #FFFFFF;
+	left: 0px !important;
+	border: 0px solid #005197 !important;
+}
+
+/* Root Menu Styling */
+.z-menuitem-inner-m .z-menuitem-btn,
+.z-menubar-ver .z-menu-btn,
+.z-menu-body .z-menu-inner-m .z-menu-btn {
+  	background-color: #005197;
+  	color: #FFFFFF;
+  	border-bottom: 1px solid #007DC6;
+  	width: 130px;
+  	display: block;
+	/* line-height: 17px; */
+	outline-style: none;
+	outline-width: 0;
+	padding: 2px 2px 2px 3px;
+	white-space: nowrap;
+}
+
+/* For single menus in root */
+.z-menuitem .z-menuitem-cnt .z-menuitem-inner-r,
+.z-menuitem .z-menuitem-cnt .z-menuitem-inner-m,
+.z-menuitem .z-menuitem-cnt .z-menuitem-inner-l,
+.z-menuitem .z-menuitem-btn
+{		
+		background-color: #005197;
+  		color: #FFFFFF;
+		background-image: none;
+		text-align: left;							
+}
+
+.z-menupopup .z-menuitem {
+	background-color: #005197;
+  	color: #FFFFFF;
+	background-image: none;
+}
+
+
+.z-menuitem .z-menuitem-over {
+	background-color: #032C4D;
+  	color: #FFFFFF;
+	background-image: none;
+}
+
+.z-treecell {
+	/*background-color: #005197;*/
+  	color: #FFFFFF;
+	background-image: none;
+}
+
+.z-tabpanels .z-tabpanel {
+	/* background-color: #005197; */
+  	color: #000000;
+  	background-image: none;
+  	padding-left:20px;
+}
+
+div.z-tree {
+    background: none;
+    overflow: hidden;
+    background-color: #005197;
+  	color: #FFFFFF !important;
+    border: 0px;
+}
+
+.z-tree-body {
+	background-color: #005197 !important;
+  	color: #FFFFFF !important;
+  	background-image: none;
+}
+
+.z-tree .z-treecell .z-tree-body {	
+	background-color: #005197;
+  	color: #FFFFFF;
+  	background-image: none;
+	padding: 0px; 
+	margin: 0px; 
+	border: 0px;	
+}
+
+/* Root Menu Hover */
+.z-menu .z-menu-body-seld .z-menu-inner-m,
+.z-menu .z-menu-body-seld .z-menu-inner-l,
+.z-menu .z-menu-body-seld .z-menu-inner-r,
+.z-menu .z-menu-body-seld .z-menu-btn
+{		
+		background-color: #032C4D;
+  		color: #FFFFFF;
+		background-image: none; 
+} 
+
+/* Single Menu in Root Hover */
+.z-menuitem .z-menuitem-body-over .z-menuitem-inner-m,
+.z-menuitem .z-menuitem-body-over .z-menuitem-inner-l,
+.z-menuitem .z-menuitem-body-over .z-menuitem-inner-r,
+.z-menuitem .z-menuitem-body-over .z-menuitem-btn
+{		
+		background-color: #032C4D;
+  		color: #FFFFFF;
+		background-image: none; 
+}
+
+/* Menu Item Styling */
+.z-menupopup-cnt .z-menu a.z-menu-cnt, .z-menupopup-cnt .z-menuitem a.z-menuitem-cnt {
+	color: #FFFFFF !important;
+	background-color: #005197;
+  	border-bottom: 1px solid #007DC6;
+	display: block;
+	line-height: 17px;
+	outline-style: none;
+	outline-width: 0;
+	padding: 2px 21px 2px 3px;
+	white-space: nowrap;		
+}
+
+.z-menuitem .z-menuitem-cl,
+.z-menuitem .z-menuitem-cr,
+.z-menuitem .z-menuitem-cm
+ {
+	background-color: #005197;
+  	color: #FFFFFF;
+	background-image: none;
+}
+
+.z-menupopup-cnt .z-menu-over a.z-menu-cnt, 
+.z-menupopup-cnt .z-menuitem-over a.z-menuitem-cnt
+ {
+	color: #FFFFFF;
+	background-color: #032C4D  !important;	
+}
+
+.z-menupopup-cnt .z-menuitem-over .z-menuitem-cl, .z-menupopup-cnt .z-menuitem-over .z-menuitem-cr, .z-menupopup-cnt .z-menuitem-over .z-menuitem-cm, .z-menupopup-cnt .z-menu-over .z-menu-cl, .z-menupopup-cnt .z-menu-over .z-menu-cr, .z-menupopup-cnt .z-menu-over .z-menu-cm {
+background-repeat: no-repeat;
+background-position: 0 0;
+background-image: none;
+background-color: #032C4D  !important;	
+}
+
+.z-treerow .z-treerow-over {
+	border-bottom: 1px solid #007DC6;
+}
+
+div.z-treefooter-cnt, div.z-treecell-cnt, div.z-treecol-cnt {
+border: 0;
+margin: 0;
+padding: 0;
+font-family: arial, sans-serif;
+font-size: 12px;
+font-weight: normal;
+color: #FFFFFF;
+border-bottom: 1px solid #007DC6;
+border-style: none;
+}
+
+span.z-tree-ico, span.z-tree-line, span.checkmark-spacer {
+width: 0px !important;
+height: 18px;
+vertical-align: top;
+display: inline-block;
+}
+
+.z-tabpanel {
+	border: 0;
+}
+
+
+.z-treecell {
+	border: 1px solid transparent !important;
+	border-left: 0px solid #FFF !important;	
+}
+
+.mainMenuTree tr.z-treerow-over > td.z-treecell {
+	border: 1px solid !important;
+	border-left: 0px solid #FFF !important;
+	background-image: none !important;
+	background-color: #032C4D  !important;	
+	border: 1px solid transparent !important;
+	border-left: 0px solid #FFF !important;	
+}
+
+/*.z-menupopup-cnt .z-menu .z-menu-cnt-img {
+background: transparent no-repeat right center;
+background-image: url(/Zk_Menu/zkau/web/9c42f903/zul/img/menu/arrow.gif);
+}*/
+
+.z-loading-indicator {
+			height: 45px;
+			height: 50px;
+			border: 0px solid #005197;
+			background-color: white;						
+}
+
+.z-loading-indicator, .z-apply-loading-indicator {
+background-color: #FFFFFF !important;
+color: #005197 !important;
+white-space: nowrap !important;
+}
+
+.z-apply-loading-icon, .z-loading-icon, .z-renderdefer {
+height: 45px;
+width: 50px;
+background: transparent no-repeat center !important;
+background-image: url(../images/crestel_progressbox.gif) !important;
+}
+
+body {
+margin: 0;
+padding: 0 0px !important;
+}
+
+.main-cont {
+ 
+ background-color: #FFFFFF;
+ 
+}
+
+
+
+.viewGrid {
+    border-style: solid;
+    border-color: #E1E1E1;
+    border-top-width: 0px; 
+    border-left-width: 0px; 
+    border-bottom-width: 1px; 
+    border-right-width: 1px; 
+    
+}
+
+
+.footerfont .z-label {
+	color: #949494 !important;
+	font-weight:none;
+}
+
+.footerfont   a{
+	color: #949494 !important;
+	text-decoration: underline;
+	font-weight:normal; !important;
+}
+
+.gridclass div.z-grid-body tr.z-row td.z-row-inner,tr.z-row-over, tr.z-row .z-cell{
+	padding: 0px 0px 0px 0px;
+	margin:0px;
+	background-color:#fff !important;
+	border-style:none !important;
+
+}
+
+.z-row-over {
+	background-color:#fff !important;
+}
+
+.gridclass div.z-grid-body tr.z-row td.z-row-inner{
+	border-spacing:0px;
+}
+
+
+.header{
+ 	background-image: url('../images/header-gradient.jpg');
+ 
+}
+
+form-grid tr.z-row-over > td.z-row-inner {
+    border-bottom: 1px solid #fff !important;
+    border-top: 1px solid #fff !important;
+}
+form-grid tr.z-row-over > td.z-row-inner, tr.z-row-over > .z-cell {
+    background-image: none !important;
+}
+
+.gridclass > tr.z-row-over > td.z-row-inner {
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+}
+.gridclass tr.z-row-over > td.z-row-inner, tr.z-row-over > .z-cell {
+    background-image: none;
+}
+
+.form-grid > tr.z-row-over > td.z-row-inner {
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+}
+.form-grid tr.z-row-over > td.z-row-inner, tr.z-row-over > .z-cell {
+    background-image: none;
+}
+
+tr.z-grid-odd > td.z-row-inner, tr.z-grid-odd > .z-cell {
+   
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+}
+
+
+tr.z-grid-odd > td.z-row-inner, tr.z-grid-odd > .z-cell, tr.z-grid-odd {
+    background: none repeat scroll 0 0 white;
+}
+
+
+tr.z-row-over > td.z-row-inner {
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
+tr.z-row-over > td.z-row-inner, tr.z-row-over > .z-cell {
+    background-image: none !important;
+}
+
+.headerfont{
+	font-family: Arial;
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight: bold;
+	position: relative;
+	top: 8px;
+}
+
+.viewGrid tr.z-row td.z-row-inner  { 
+	background-image: url("");
+    padding-left: 2px;
+    padding-right: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+	border-spacing: 0px;
+	
+	border-style: solid;
+	border-color: #E1E1E1;
+    border-top-width: 1px; 
+    border-left-width: 1px; 
+    border-bottom-width: 0px; 
+    border-right-width: 0px; 
+    background:#FFFFFF;
+}
+
+
+.sectionTitle {
+    padding-top: 4px;
+    padding-left: 4px;
+    
+    width: 100%;
+    height: 18px;
+    background-color: #E8E8E8;
+    color: #1F1A17;
+}
+
+
+.top-nav{
+	width: 100%;
+	text-align: center;
+    margin:0px 10px 0px 0px;
+    
+}
+
+
+.top-nav ul{
+    display:inline;
+    float:right;
+    margin: 0px;
+    padding: 0px;
+}
+
+.top-nav li{
+    display:inline;
+    float:left;
+}
+
+
+.top-nav li a img{
+    display:block;
+    margin:0px auto 3px auto;
+}
+
+
+.top-nav ul:hover li a{
+    background:none !important;
+    -moz-box-shadow:inset 0 0 0px #33485a !important;
+    -webkit-box-shadow:inset 0 0 0px #33485a !important;
+    box-shadow:inset 0 0 0px #33485a !important;
+}
+
+
+.top-nav li a{
+    padding:3px 0px 3px 0px;
+    height:32px;
+    float:left;
+    color:#000000;
+    width:95px;
+    text-align:center;
+    font:12px Calibri;
+    text-decoration:none;
+    /*margin:0px 6px;*/
+    /*text-shadow: 2px 2px 1px #4a687d;*/
+}
+
+
+.top-nav li:last-child a{margin-right:0px;}
+
+
+.top-nav ul li a:hover, .top-nav ul li a:active, .active{
+    background-color:#01519A !important;
+    color:#FBFAF8;
+    -moz-box-shadow: inset 0 0 5px #FFFFFF !important;
+    -webkit-box-shadow: inset 0 0 5px #FFFFFF !important;
+    box-shadow: inset 0 0 5px #FFFFFF !important;
+}
+
+
+.top-nav ul li a:active, .active{}
+
+
+
+
+
+
+
+
+
+

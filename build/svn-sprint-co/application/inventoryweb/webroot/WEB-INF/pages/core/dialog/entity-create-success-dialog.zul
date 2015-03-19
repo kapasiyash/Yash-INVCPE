@@ -1,0 +1,13 @@
+<window id="successDialogWin" border="normal" width="800px" mode="modal" closable="true" position="center,center" apply="com.elitecore.car.web.core.dialog.EntityCreateSuccessDialogComposer" >
+    <vlayout style="padding-top: 5px; padding-left: 10px; padding-right: 10px;">
+        <hlayout><label id="messageLabel"/></hlayout>
+        <separator/>
+        <div sclass="viewActionTitle"><label value="Basic Details" style="font-weight: bold;"/></div>
+        <div id="basicDetailContentDiv"/>
+        <separator/>
+        <hlayout style="text-align: left;">
+            <button label="Ok" mold="trendy" id="btnOk" width="80px"/>
+        </hlayout>
+        <separator/>
+    </vlayout>
+</window>

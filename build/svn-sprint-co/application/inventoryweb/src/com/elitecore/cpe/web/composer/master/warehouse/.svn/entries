@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/src/com/elitecore/cpe/web/composer/master/warehouse"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16479"
+   kind="dir"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="CancelPlaceOrderComposer.java"
+   checksum="3035f1f0573fd93c7dbc6fc640ad9031"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="CancelTransferInventoryComposer.java"
+   checksum="aaaf2b46e63a7ece2b3805d9c9892bd4"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ConfigureThresholdComposer.java"
+   checksum="d09dfd68c0018a93ec48e7f52af3195d"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="CreateWarehouseComposer.java"
+   checksum="b3524dd155d84c9f17bfd09f6ba59817"
+   last-author="rinkal.sadariya"
+   committed-rev="16331"
+   text-time="2015-03-09T03:25:01.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:25:01.781209Z"/>
+<entry
+   name="CreateWarehouseTypeComposer.java"
+   checksum="46f833c527ab5fb78fc14d8c69581084"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="DeleteThresholdComposer.java"
+   checksum="9f5d5a9089b920eae7ef085dfb0618ee"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="DeleteWarehouseComposer.java"
+   checksum="92fe6f0735101823ca44a9495ac84232"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="PlaceOrderComposer.java"
+   checksum="1d2c89b8cae5810e2418d3dacb01d830"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="RejectTransferInventoryComposer.java"
+   checksum="53c37ead8f865d05634cfba5b584b1ae"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchPlaceOrderDetailComposer.java"
+   checksum="3cd1cae936214f9bf08ba4a1fdf0cce3"
+   last-author="yash.kapasi"
+   committed-rev="15869"
+   text-time="2015-02-13T04:41:43.000000Z"
+   kind="file"
+   committed-date="2015-02-13T04:41:43.866465Z"/>
+<entry
+   name="SearchWarehouseComposer.java"
+   checksum="65daec03fe35d1cf4eee46c8f929cc59"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="SearchWarehouseSummaryComposer.java"
+   checksum="ae8d1fd581e29f4714a982d492e4a4c0"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchWarehouseTypeComposer.java"
+   checksum="e965482ecc344ebba253d4860c2c4361"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="TransferInventorySummaryComposer.java"
+   checksum="9612ada3d81d7244bb9a012ef405222d"
+   last-author="yash.kapasi"
+   committed-rev="15869"
+   text-time="2015-02-13T04:41:43.000000Z"
+   kind="file"
+   committed-date="2015-02-13T04:41:43.866465Z"/>
+<entry
+   name="TransferPlaceOrderComposer.java"
+   checksum="cc3902725bbe0bc358c7759e284eab50"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="UpdateWarehouseComposer.java"
+   checksum="aa28ae5b224bad82aa70fd0b60a402e9"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="UpdateWarehouseTypeComposer.java"
+   checksum="a757165895ad22d82d340ea204b9cb0c"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="ViewPlaceOrderDetailComposer.java"
+   checksum="21c19e2eccb44de1b95a026247a17b63"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ViewPlaceOrderTransferComposer.java"
+   checksum="7acd9f13c2ebe543934aba98e547ac47"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ViewTransferInventoryComposer.java"
+   checksum="edcf8fce4cfc75a0c8ac0608903946e5"
+   last-author="yash.kapasi"
+   committed-rev="16288"
+   text-time="2015-03-04T07:27:37.000000Z"
+   kind="file"
+   committed-date="2015-03-04T07:27:37.714349Z"/>
+<entry
+   name="ViewTransferInventoryComposerOLD.java"
+   checksum="4d097063d039ff41c32c9f9837a50b8c"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="ViewWarehouseComposer.java"
+   checksum="09688c6b4cc0f3b95e655ecd0fbf50cc"
+   last-author="rinkal.sadariya"
+   committed-rev="16435"
+   text-time="2015-03-13T03:31:48.000000Z"
+   kind="file"
+   committed-date="2015-03-13T03:31:48.450552Z"/>
+<entry
+   name="ViewWarehouseTypeComposer.java"
+   checksum="3ac867f29f8943b49939cac2fe46ab1c"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="tree"
+   kind="dir"/>
+</wc-entries>

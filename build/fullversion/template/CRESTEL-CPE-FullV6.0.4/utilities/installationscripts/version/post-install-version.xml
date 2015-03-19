@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<project name="Billing" default="all" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  	<classpath>
+			<pathelement location="${crestel.home}/lib/ant/ant-contrib-0.6.jar"/>
+	  	</classpath>
+	</taskdef>
+
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!-- Unit target definition ends      -->
+	<!-- ******************************** -->
+
+	<target name="init">
+		<copy todir="${crestel.home}/upgrade" flatten="true" overwrite="true">
+			<fileset dir="${crestel.home}/utilities/installationscripts/version">
+				<include name="*.sh"/>
+				<include name="*.bat"/>
+				<include name="build-version-install.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="replace-db.env">
+		<property file="${crestel.home}/upgrade/build.properties"/>
+        	<replace dir="${crestel.home}/dbscripts/hotfixes" value="${db.env}">
+		  	<include name="5.1.2.10-30_55_RAT_Rating.sql"/>
+		  	<include name="5.1.2.10-30_55_BIL_TwoSysParam_Synonym_DBC#12892.sql"/>
+		  	<replacetoken>{db.env}</replacetoken>
+		</replace>
+
+	</target>
+
+	<target name="all" >
+		<!--<antcall target="replace-db.env"/>-->
+		<antcall target="init"/>
+	</target>
+</project> 

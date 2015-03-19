@@ -1,0 +1,15 @@
+<html xmlns:string="xalan://java.lang.String" xmlns:lxslt="http://xml.apache.org/xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Standard Output from AttributeTestCase</title>
+</head>
+<body>
+<pre>Load from properties file.
+************* inside lookup - start *****************
+************* inside lookup - start *****************
+AttributeVO [attributeId=2, name=Serial Number, usedBy=Resource, createdate=2014-09-04 16:51:12.0, updatedate=2014-10-16 17:22:59.0, createdby=Admin Admin, updatedby=Admin Admin, systemgenerated=N, mandatory=Y, unique=N, dataType=String, dataValue=null, reason=null]
+AttributeVO [attributeId=1, name=MAC Address, usedBy=Resource, createdate=2014-09-04 16:27:26.0, updatedate=2015-01-09 16:39:03.0, createdby=Admin Admin, updatedby=Admin Admin, systemgenerated=N, mandatory=Y, unique=Y, dataType=String, dataValue=null, reason=null]
+Junit Start
+</pre>
+</body>
+</html>

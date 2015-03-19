@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/vo/configuration/notification"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16441"
+   kind="dir"
+   committed-date="2015-03-13T03:41:54.531843Z"/>
+<entry
+   name="CheckValidDateForTemplateVO.java"
+   checksum="0da9e6cd8a29fc275bbe5c6e86b360de"
+   last-author="rinkal.sadariya"
+   committed-rev="16441"
+   text-time="2015-03-13T03:41:54.000000Z"
+   kind="file"
+   committed-date="2015-03-13T03:41:54.531843Z"/>
+<entry
+   name="NotificationCategoryVO.java"
+   checksum="02c043d160bed94989e6bb8d1e21580a"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchDocumentTemplateVO.java"
+   checksum="ddc09cbb712f27402ce9241954f52f33"
+   last-author="rinkal.sadariya"
+   committed-rev="16330"
+   text-time="2015-03-09T03:23:30.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:23:30.401117Z"/>
+<entry
+   name="ViewDocumentTemplateVO.java"
+   checksum="f0f4ce77c5a5bb8bd023584d4c75f2c8"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

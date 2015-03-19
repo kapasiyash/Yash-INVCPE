@@ -1,0 +1,222 @@
+
+.subpool {
+	border: 1px solid #346789;
+	box-shadow: 2px 2px 19px #aaa;
+	 -o-box-shadow: 2px 2px 19px #aaa;
+	-webkit-box-shadow: 2px 2px 19px #aaa;
+	-moz-box-shadow: 2px 2px 19px #aaa;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	opacity: 0.8;
+	filter: alpha(opacity = 80);
+	background-color: #ffffff;
+	font-family: helvetica;
+	padding: 0.5em;
+	font-size: 0.9em;
+	z-index: 2;
+}
+
+.readnode {
+	text-align: center;
+	z-index: 20;
+	position: absolute;
+	background-color: transparent;
+	color: black;
+	font-family: helvetica;
+	cursor: pointer;
+}
+
+.node {
+	text-align: center;
+	z-index: 20;
+	position: relative;
+	background-color:transparent;
+	color: black;
+	font-family: helvetica;
+	cursor: pointer;
+}
+
+.decisionnode{
+	width: 35px;
+	height: 35px;
+	background-image:url('../images/wf/exor.png');
+	background-repeat: no-repeat;
+}
+
+.splitnode{
+	width: 35px;
+	height: 35px;
+	background-image:url('../images/wf/parallel.png');
+	background-repeat: no-repeat;
+}
+.joinnode{
+	width: 35px;
+	height: 35px;
+	background-image:url('../images/wf/parallel.png');
+	background-repeat: no-repeat;
+}
+
+.activity {
+	border: 1px solid #346789;
+	box-shadow: 2px 2px 19px #aaa;
+	-o-box-shadow: 2px 2px 19px #aaa;
+	-webkit-box-shadow: 2px 2px 19px #aaa;
+	-moz-box-shadow: 2px 2px 19px #aaa;
+	-moz-border-radius: 4px;
+	border-radius: 6px;
+	opacity: 0.8;
+	filter: alpha(opacity = 80);
+	width: 60px;
+	height: 60px;
+	background-repeat: no-repeat;
+	font-size:8px;
+}
+
+.activity:hover {
+	box-shadow: 2px 2px 19px #444;
+	-o-box-shadow: 2px 2px 19px #444;
+	-webkit-box-shadow: 2px 2px 19px #444;
+	-moz-box-shadow: 2px 2px 19px #444;
+	opacity: 0.6;
+	filter: alpha(opacity = 60);
+}
+
+.startnode {
+	width: 35px;
+	height:35px;
+	background-image: url('../images/wf/start.png');
+	background-repeat: no-repeat;
+}
+
+.endnode {
+	width:35px;
+	height: 35px;
+	background-image: url('../images/wf/end.png');
+	background-repeat: no-repeat;
+}
+
+.active {
+	/* border: 1px dotted green; */
+}
+
+.hover {
+	border: 1px dotted red;
+}
+
+._jsPlumb_connector {
+	z-index: 4;
+}
+
+._jsPlumb_endpoint,.endpointTargetLabel,.endpointSourceLabel {
+	z-index: 21;
+	cursor: pointer;
+}
+
+.hl {
+	border: 3px solid red;
+}
+
+#debug {
+	position: absolute;
+	background-color: black;
+	color: red;
+	z-index: 5000
+}
+
+.aLabel {
+	
+}
+.main-cont {
+ 
+ background-color: #FFFFFF;
+ 
+}
+.pointer-label{
+	
+	background-color: #eeeff4;
+	padding: 0.4em;
+	font: 12px sans-serif;
+	color: #000;
+	z-index: 21;
+	border: 1px dotted gray;	
+	opacity: 0.8;
+	filter: alpha(opacity = 80);
+}
+
+element.style {
+    height: 157px;
+    width: 355px;
+}
+.ui-widget-content {
+    background: url("images/ui-bg_flat_75_ffffff_40x100.png") repeat-x scroll 50% 50% #FFFFFF;
+    border: 1px solid #AAAAAA;
+    color: #222222;
+}
+.ui-resizable {
+    position: relative;
+}
+element.style {
+    z-index: 90;
+}
+.ui-resizable-e {
+    cursor: e-resize;
+    height: 100%;
+    right: -5px;
+    top: 0;
+    width: 7px;
+}
+.ui-resizable-handle {
+    display: block;
+    font-size: 0.1px;
+    position: absolute;
+}
+
+element.style {
+    z-index: 90;
+}
+.ui-resizable-s {
+    bottom: -5px;
+    cursor: s-resize;
+    height: 7px;
+    left: 0;
+    width: 100%;
+}
+.ui-resizable-handle {
+    display: block;
+    font-size: 0.1px;
+    position: absolute;
+}
+element.style {
+    z-index: 90;
+}
+.ui-icon, .ui-widget-content .ui-icon {
+    background-image: url("images/ui-icons_222222_256x240.png");
+}
+.ui-icon-gripsmall-diagonal-se {
+    background-position: -64px -224px;
+}
+.ui-icon, .ui-widget-content .ui-icon {
+    background-image: url("images/ui-icons_222222_256x240.png");
+}
+.ui-icon {
+    height: 16px;
+    width: 16px;
+}
+.ui-resizable-se {
+    bottom: 1px;
+    cursor: se-resize;
+    height: 12px;
+    right: 1px;
+    width: 12px;
+}
+.ui-resizable-handle {
+    display: block;
+    font-size: 0.1px;
+    position: absolute;
+}
+.ui-icon {
+    background-repeat: no-repeat;
+    display: block;
+    overflow: hidden;
+    text-indent: -99999px;
+}

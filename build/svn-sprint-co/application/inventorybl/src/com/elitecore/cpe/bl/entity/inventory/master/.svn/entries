@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/entity/inventory/master"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16330"
+   kind="dir"
+   committed-date="2015-03-09T03:23:30.401117Z"/>
+<entry
+   name="AttributeData.java"
+   checksum="82ca67ba0763577dac5c88438a7bc910"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="AttributeTransData.java"
+   checksum="7d94d77d77ea7671c7a704eba63c8ef0"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ConfigureThresholdData.java"
+   checksum="94c513a38f70d3c1ed123e04d257f105"
+   last-author="rinkal.sadariya"
+   committed-rev="16330"
+   text-time="2015-03-09T03:23:30.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:23:30.401117Z"/>
+<entry
+   name="ItemData.java"
+   checksum="3ce19ce67f671a7189e3a9515add9e77"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ResourceCategory.java"
+   checksum="096788439fc4f97bd76ae3b1d6a43569"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ResourceSubTypeData.java"
+   checksum="cc1e4bc67e3d1ca33aa4740df32cfe92"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ResourceTypeData.java"
+   checksum="93ade4c0fea1e8698f08b256bfe732f1"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="WarehouseData.java"
+   checksum="3c73077853dc3e483c8aa9d5f3916a6c"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="WarehouseTypeData.java"
+   checksum="c4950e20612692daff6ef6bf6fdbbf61"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

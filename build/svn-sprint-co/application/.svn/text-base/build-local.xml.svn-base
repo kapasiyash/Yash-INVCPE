@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<project name="clnr-build" default="build-app" basedir=".">
+
+	<property file="${basedir}/build.properties"/>	
+	<property name="appdir" location="../application/"/>	
+	
+	<property name="lib" location="lib"/>	
+	<property name="doc" location="doc"/>		
+	<property name="build" location="build"/>		
+	<property name="dist" location="dist"/>		
+	<property name="release" location="release"/>		
+	<property name="findbug" location="${lib}/findbug"/>			    
+    <property name="builder.name" value="hemang.rami" ></property>  	
+	
+	<property name="fullversion.release"  location="fullversion"/>
+	
+	<property name="project" value="Crestel Loyalty &amp; Retention"/>	
+	<property name="bl-module-name" value="clnrbl"/>	
+	<property name="exec-web-module-name" value="clnrweb"/>	
+	
+			
+	<property name="bl-module-app-dir" location="${appdir}/${bl-module-name}"/>	
+	<property name="exec-web-module-app-dir" location="${appdir}/${exec-web-module-name}"/>	
+	
+	<property name="bl-module-build-dir" location="${build}/${bl-module-name}"/>	
+	<property name="exec-web-module-build-dir" location="${build}/${exec-web-module-name}"/>	
+	
+	
+	<property environment="env"/> 
+	<property name="clnr.svn.rev" value="${env.BUILD_NUMBER}"/>    
+		
+    <tstamp prefix="info">  
+        <format property="current-date" pattern="d-MMMM-yyyy" locale="en" ></format>  
+        <format property="current-time" pattern="hh:mm:ss a z" locale="en" ></format>  
+        <format property="year-month-day" pattern="yyyy-MM-dd" locale="en" ></format>  
+    </tstamp>  
+	
+	<path id="classpath">
+        <fileset dir="${lib}" includes="**/*.jar"/>		
+    </path>
+		
+	<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" >  
+		<classpath refid="classpath"></classpath>  
+	</taskdef>
+	
+	<target name="clean" >
+		<delete dir="${doc}" />
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+		<delete dir="${svn.checkout.dir}" />
+	</target>	
+		
+	<target name="init" >		
+		<mkdir dir="${release}" />
+		<mkdir dir ="${fullversion.release}" />
+		<mkdir dir="${release}/${clnr.svn.rev}" />
+		<mkdir dir="${doc}" />
+		<mkdir dir="${build}" />
+		<mkdir dir="${dist}" />		
+		<mkdir dir="${svn.checkout.dir}" />
+	</target>	
+	
+	 <target name="checkout" >
+		 <subant target="checkout">
+            <filelist dir="${basedir}" files="build-checkout.xml"/>
+        </subant>
+	 </target> 
+	
+	 <target name="commit-fullversion" >
+		<subant target="commit-fullversions" inheritall="true">
+            <filelist dir="${basedir}" files="build-checkout.xml" />
+        </subant>
+	 </target>
+    <target name="compile" >  
+        
+		<echo message="Compiling Business Layer Source"/>
+		<mkdir dir="${build}/${bl-module-name}" />
+        <javac  srcdir="${bl-module-app-dir}/src"  destdir="${build}/${bl-module-name}"  classpathref="classpath" >								
+		</javac>
+		
+		<echo message="Compiling Business Layer Test Case Source"/>
+		 <javac  srcdir="${bl-module-app-dir}/src"  destdir="${build}/${bl-module-name}"  classpathref="classpath" >								
+		</javac>
+		
+		<echo message="Compiling Web Layer Source"/>
+		<mkdir dir="${build}/${exec-web-module-name}" />
+		<javac  srcdir="${exec-web-module-app-dir}/src"  destdir="${build}/${exec-web-module-name}" 
+	
+	includeantruntime="false"
+				debug="on"
+				debuglevel="lines,vars,source"
+	
+		classpathref="classpath" >
+			<classpath>
+				<fileset dir="${exec-web-module-app-dir}/webroot/WEB-INF/lib">
+				  <include name="**/*.jar"/>
+				  <include name="**/*.zip"/>
+				</fileset>           
+				<fileset dir="${basedir}/lib">
+					<include name="**/*.jar"/>
+					<include name="**/*.zip"/>
+				</fileset>
+				<pathelement location="${build}/${bl-module-name}"/>
+          </classpath>			
+		</javac>
+				
+    </target>  
+	
+	<target name="prepare-java-doc" >  		
+		<javadoc sourcepath="${bl-module-app-dir}/src" destdir="${doc}/clnrbl/" classpathref="classpath" 
+		 author="true"
+         use="true"
+         windowtitle="CLNRBL-DOCS" group="BL com.elitecore.clnr.bl*,Core com.elitecore.clnr.core*,Util com.elitecore.clnr.util*" >   														
+		<doctitle><![CDATA[<h1>Crestel Loyalty & Retention Managment </h1>]]></doctitle>
+		<bottom><![CDATA[<i>Copyright &#169; 2013 Elitecore Technologies Pvt.Ltd. All Rights Reserved.</i>]]></bottom>
+		<tag name="todo" scope="all" description="To do:"/>
+    </javadoc>
+	</target>  
+
+	<target name="make-binaries" >      
+		
+		<echo message="Creating Business Layer JAR"/>		
+		<jar destfile="${release}/${clnr.svn.rev}/clnrbl.jar" basedir="${bl-module-build-dir}">  
+			 <fileset dir="${bl-module-app-dir}/src">
+                 <include name="META-INF/persistence.xml"/>
+				 <include name="META-INF/jboss-service.xml"/>
+             </fileset>
+			<manifest>                  
+				<attribute name="Built-By"      value="Elitecore Technologies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Created-By"    value="Elitecore Techonolgies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Built-On" value="${info.current-date}" ></attribute>  
+				<attribute name="Built-At" value="${info.current-time}" ></attribute>  
+				<attribute name="version"  value="CRESTELLNR 1.0"/>
+			</manifest>  
+		</jar>  
+				
+			
+		<echo message="Creating Web Layer JAR"/>			
+		<jar destfile="${release}/${clnr.svn.rev}/clnrweb.jar" basedir="${exec-web-module-build-dir}">  
+			<manifest>                  
+				<attribute name="Built-By"      value="Elitecore Technologies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Created-By"    value="Elitecore Techonolgies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Built-On" value="${info.current-date}" ></attribute>  
+				<attribute name="Built-At" value="${info.current-time}" ></attribute>  
+				<attribute name="version"  value="CRESTELLNR-1.0"/>
+			</manifest>  
+		</jar>  
+
+		<copy file="${release}/${clnr.svn.rev}/clnrweb.jar" todir="${exec-web-module-app-dir}/webroot/WEB-INF/lib" />	
+	
+		
+		<echo message="Creating Enterprise Archieve"/>		
+		<jar jarfile="${release}/${clnr.svn.rev}/clnrapp.ear">
+            <fileset dir="${release}/${clnr.svn.rev}/">
+                <include name="clnrbl.jar"/>
+            </fileset>
+            <manifest>
+				<attribute name="Built-By"      value="Elitecore Technologies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Created-By"    value="Elitecore Techonolgies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Built-On" value="${info.current-date}" ></attribute>  
+				<attribute name="Built-At" value="${info.current-time}" ></attribute>  
+				<attribute name="version"  value="CRESTELLNR-1.0"/>
+            </manifest>
+        </jar>
+		
+		
+		<copy file="${release}/${clnr.svn.rev}/clnrbl.jar" todir="${exec-web-module-app-dir}/webroot/WEB-INF/lib" />
+		
+		<echo message="Creating Web Layer Archieve"/>		
+		
+		<jar jarfile="${release}/${clnr.svn.rev}/crestellnr.war">
+			<fileset dir="${exec-web-module-app-dir}/webroot">
+				<include name="**/**/*.*"/>
+			</fileset>
+			
+			 <manifest>
+				<attribute name="Built-By"      value="Elitecore Technologies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Created-By"    value="Elitecore Techonolgies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Built-On" value="${info.current-date}" ></attribute>  
+				<attribute name="Built-At" value="${info.current-time}" ></attribute>  
+				<attribute name="version"  value="CRESTELWF-5.2.0-${clnr.svn.rev}"/>
+            </manifest>
+		</jar>	
+		
+		<echo message="Creating Client Archieve"/>
+		<jar destfile="${release}/${clnr.svn.rev}/clnr-client.jar"
+		     basedir="${build}/${bl-module-name}"  includes="**"   
+	 	     excludes="**/session/**,**/*Facade.class/**,**/controller/**,**/factory/**,**/mdb/**,**/*Util*.class/**"/>
+	
+		
+	</target>	
+	
+	
+	<!--- Making Database full version -->
+	
+	<property name="fullversion" value="${basedir}/fullversion" />
+	<property name="fullversion.tempalate" value="${fullversion}/template" />
+	<property name="template.dbfull" value="${fullversion.tempalate}/CRESTEL-LNR-DBFullV6.0.1" />
+	<property name="template.lnrfull" value="${fullversion.tempalate}/CRESTEL-LNR-FullV6.0.1" />
+	<property name="template.lnrodsfull" value="${fullversion.tempalate}/CRESTEL-LNRODS-DBFullV6.0.1" />
+	<property name="dbfull" value="${fullversion}/CRESTEL-LNR-DBFullV6.0.1" />
+	<property name="lnrfull" value="${fullversion}/CRESTEL-LNR-FullV6.0.1" />
+	<property name="lnrodsfull" value="${fullversion}/CRESTEL-LNRODS-DBFullV6.0.1" />
+	
+	<target name="make-database-fullversion">
+		<delete dir="${dbfull}"/>
+		<mkdir dir="${dbfull}" />
+		<copy  todir="${dbfull}" >
+			<fileset dir="${template.dbfull}" >
+				<include name="**/**/*" />
+			</fileset>
+		</copy>
+		<echo message="Making Database Fullversion" />
+		<echo message="Copying SQL Files" />
+		
+		
+		<copy  todir="${dbfull}/CRESTEL-LNR-DBFullV6.0.1" >
+			<fileset dir="${bl-module-app-dir}/setup" >
+				<include name="*.sql" />
+				<exclude name="data-sources.sql" />
+				<exclude name="synomnys.sql" />
+			</fileset>
+		</copy>
+		<echo message="Compressing Database Fullversion" />
+		<tar compression="gzip" destfile="${dbfull}.tar.gz">
+			<tarfileset dir="${dbfull}/" >
+				<include name="**/**/*"/>					
+			</tarfileset>
+		</tar>
+		
+		<echo message="Moving to Release" />
+		
+	
+		
+	</target>
+	
+	<target name="make-odsdb-fullversion" >
+		<delete dir="${lnrodsfull}"/>
+		<mkdir dir="${lnrodsfull}" />
+		<copy  todir="${lnrodsfull}" >
+			<fileset dir="${template.lnrodsfull}" >
+				<include name="**/**/*" />
+			</fileset>
+		</copy>
+		<echo message="Making ODS Fullversion" />
+		<echo message="Copying SQL Files" />
+		
+		<copy file="${bl-module-app-dir}/setup/data-sources.sql" todir="${lnrodsfull}/CRESTEL-LNRODS-DBFullV6.0.1" >
+		</copy>
+		<echo message="Compressing ODS Database Fullversion" />
+		<tar compression="gzip" destfile="${lnrodsfull}.tar.gz">
+			<tarfileset dir="${lnrodsfull}/" >
+				<include name="**/**/*"/>					
+			</tarfileset>
+		</tar>
+		
+	
+		
+	</target>
+	
+	<target name="make-lnr-fullversion" >
+		<delete dir="${lnrfull}"/>
+		<mkdir dir="${lnrfull}" />
+		<copy  todir="${lnrfull}" >
+			<fileset dir="${template.lnrfull}" >
+				<include name="**/**/*" />
+			</fileset>
+		</copy>
+		<echo message="Making Crestel LNR Fullversion" />
+		<echo message="Copying SQL Files" />
+		
+		<copy todir="${lnrfull}/lib" >
+			<fileset dir="${bl-module-app-dir}/lib" >
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+		
+		<copy file="${release}/${clnr.svn.rev}/clnrapp.ear" todir="${lnrfull}/modules/lnr/ear" />
+		
+		<copy  todir="${lnrfull}/modules/lnr/clients/sar" >
+				<fileset  dir="${bl-module-app-dir}/lib">
+						<include name="*.sar" />
+				</fileset>
+		</copy>
+		
+		<copy file="${release}/${clnr.svn.rev}/crestellnr.war" todir="${lnrfull}/modules/web/clients/web" />
+		
+		<echo message="Compressing Crestel LNR Fullversion" />
+		
+		<tar compression="gzip" destfile="${lnrfull}.tar.gz">
+			<tarfileset dir="${lnrfull}/" >
+				<include name="**/**/*"/>					
+			</tarfileset>
+		</tar>
+	
+	</target>
+	
+	<target name="make-fullversion" > 
+		<antcall target="make-database-fullversion" />
+		<antcall target="make-odsdb-fullversion" />
+		<antcall target="make-lnr-fullversion" />
+		
+	</target> 
+	
+	<target name="prepare-db-doc">
+		<delete dir="${doc}/db-docs" />
+		<mkdir dir="${doc}/db-docs" />
+		<java jar="${lib}/schemaspy/schemaSpy_5.0.0.jar" output="${doc}/db-docs/output.log" error="${doc}/db-docs/error.log" fork="true">				  		 		  		  
+		  
+		  <arg line="-t orathin"/>
+		  <arg line="-host ${db.host}"/>
+		  <arg line="-port ${db.port}"/>
+		  <arg line="-db ${db.sid}"/>
+		  <arg line="-u ${db.username}"/>
+		  <arg line="-p ${db.password}"/>
+		  <arg line="-cp ${lib}/jdbc/oracle9i.jar"/>
+		  <arg line="-o ${doc}/db-docs"/>		  
+		</java>
+	</target>
+	
+	
+	<target name="findbug" >    		
+		<delete dir="${findbug.dir}" />
+		<mkdir  dir="${findbug.dir}" />
+		<findbugs home="${findbug}"  output="xml:withMessages" outputFile="${findbug.dir}/findbugs-clnr-bl.xml" excludeFilter="${findbug}/findbugsExclude.xml" >          
+			<sourcePath path="${bl-module-app-dir}/src"  />				 
+			<class location="${release}/${clnr.svn.rev}/clnrbl.jar"></class>  
+		</findbugs>  		
+
+
+		<!-- <findbugs home="${findbug}"   output="html" stylesheet="fancy-hist.xsl" outputFile="${findbug.dir}/findbugs-clnr-bl.html" excludeFilter="${findbug}/findbugsExclude.xml" >          
+			<sourcePath path="${bl-module-app-dir}/src"  />				 
+			<class location="${release}/${clnr.svn.rev}/clnrbl.jar"></class>  
+		</findbugs>  		 -->
+		
+
+		<findbugs home="${findbug}"  output="xml:withMessages" outputFile="${findbug.dir}/findbugs-clnr-web.xml" excludeFilter="${findbug}/findbugsWebExclude.xml" >          
+			<sourcePath path="${exec-web-module-app-dir}/src"  />				 			
+			<class location="${release}/${clnr.svn.rev}/clnrweb.jar"></class>  
+		</findbugs>  		
+
+		<!-- <findbugs home="${findbug}"   output="html" stylesheet="fancy-hist.xsl" outputFile="${findbug.dir}/findbugs-clnr-web.html" excludeFilter="${findbug}/findbugsWebExclude.xml" >          
+			<sourcePath path="${exec-web-module-app-dir}/src"  />				 			
+			<class location="${release}/${clnr.svn.rev}/clnrweb.jar"></class>  
+		</findbugs>  	-->	
+
+	</target>
+		
+	<target name="build-app">
+		<antcall target="clean"/>
+		<antcall target="init"/>	
+		<antcall target="compile"/>	
+		<antcall target="make-binaries"/>
+		<antcall target="make-fullversion"/>
+		<antcall target="prepare-java-doc"/> 
+		<antcall target="findbug"/>
+	</target>
+	
+</project>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/facade/ws"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16330"
+   kind="dir"
+   committed-date="2015-03-09T03:23:30.401117Z"/>
+<entry
+   name="IWSFacade.java"
+   checksum="10b7a7e408ae1f576881f614169f646b"
+   last-author="rinkal.sadariya"
+   committed-rev="16330"
+   text-time="2015-03-09T03:23:30.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:23:30.401117Z"/>
+<entry
+   name="WSFacade.java"
+   checksum="cbd1518e6b2ada65b4093e2abccdf92f"
+   last-author="rinkal.sadariya"
+   committed-rev="16330"
+   text-time="2015-03-09T03:23:30.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:23:30.401117Z"/>
+<entry
+   name="WSFacadeLocal.java"
+   checksum="726160f8ef85af7deac94b49592d6607"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="WSFacadeRemote.java"
+   checksum="5b289605fd67156f56043323177cbe64"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="WSFacadeUtil.java"
+   checksum="2a36980675f5b2257cb2aa11ec067f64"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

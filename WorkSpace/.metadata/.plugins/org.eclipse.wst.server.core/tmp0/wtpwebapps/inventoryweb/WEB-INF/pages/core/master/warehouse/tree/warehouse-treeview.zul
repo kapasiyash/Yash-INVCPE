@@ -1,0 +1,35 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="auditconfiguration" height="100%" width="100%" apply="com.elitecore.cpe.web.composer.master.warehouse.tree.WareHouseTreeViewComposer">
+<include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="WareHouse Management"/>
+<tabbox width="100%" height="100%" tabscroll="true" id="acTabbox">
+        <tabs>
+        <tab id="WareHouseTreeView" label="${labels.warehousetree.title}"/>
+        </tabs>
+        <tabpanels height="100%" width="100%">
+            <tabpanel style="padding-top: 10px; padding-left: 0px;overflow:auto" sclass="main-cont" >
+               
+                <vlayout width="100%">
+                    <hbox>
+                    <button id="btnCollapseAll" type="button" label="CollapseAll" mold="trendy" width="140px"/>
+                    <button id="btnExpandAll" type="button"  label="ExpandAll" mold="trendy" width="140px"/>
+                </hbox>                              
+                    <div sclass="sectionTitle" width="800px"><label value="${labels.warehousetree.tree}" style="font-weight: bold;"/></div>            
+	       			<div id="viewActionContent" width="800px"/>
+	 
+       
+               
+                <separator bar="false" />
+               <separator bar="false" />
+                    
+                <include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+                  </vlayout> 
+                  <separator bar="false" />
+               <separator bar="false" />
+           </tabpanel>
+           
+         </tabpanels>              
+    </tabbox>
+    
+</window>
+</zk>

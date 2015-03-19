@@ -1,0 +1,104 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="updatesWarehouse" apply="com.elitecore.cpe.web.composer.master.warehouse.UpdateWarehouseComposer">
+<vlayout width="800px">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.warehouse.updatwarehousetitle}" style="font-weight: bold;" />
+			</div>
+			
+			<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								<row>
+									<cell>
+										<label value="${labels.warehouse.name}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <textbox id="txtName" width="140px" maxlength="50" constraint="no empty,/^[a-zA-Z0-9 ]*/ : Please enter valid alphanumeic Warehouse Name."/></cell>
+								</row>
+								<row>
+												<cell>
+													<label value="${labels.warehouse.warehouseCode}"></label>
+												</cell>
+												<cell colspan="3" > <textbox id="txtWareHouseCodeName" width="140px" maxlength="50" constraint="/^[a-zA-Z0-9 ]*/  : Please enter proper alphanumeric Warehouse Code."/></cell>
+											</row>
+								<row id="parentRow">
+									<cell>
+											<label value="${labels.warehouse.parentwhname}"></label>
+											<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <combobox id="cmbParentWHname" width="145px" maxlength="50" constraint="no empty : Please enter Parent Warehouse."/></cell>
+								</row>
+								<row>
+										<cell>
+											<label value="${labels.warehouse.warehouseType}"></label>
+											<label value="*" style="color:red;" />
+										</cell>
+										<cell colspan="3" > <combobox id="cmbWHTypename" width="145px" maxlength="50" constraint="no empty : Please Select WarehouseType."/></cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.global.location}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <textbox id="txtLocation" width="140px" maxlength="20" constraint="no empty : Please enter Location Name."/></cell>
+								</row>
+								<row>
+												<cell>
+													<label value="${labels.warehouse.owner}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <textbox id="txtOwner" width="140px" maxlength="50" constraint="no empty : Please enter Owner Name."/></cell>
+								</row>
+								<row>
+												<cell>
+													<label value="${labels.warehouse.contactNo}"></label>
+													
+												</cell>
+												<cell colspan="3" > <textbox id="txtContactNo" width="140px" maxlength="15" constraint="/(?:^\+*[0-9][0-9]*)?/ : Please enter Valid Contact Number."/></cell>
+								</row>
+								<row>
+											<cell>
+													<label value="${labels.warehouse.emailId}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+											<cell colspan="3" > <textbox id="txtEmailId" width="140px" maxlength="50" constraint="no empty,/.+@.+\.[a-z]+/ : Please enter Valid Email Address."/></cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.global.description}"></label>
+										<!-- 	<label value="*" style="color:red;" /> -->
+									</cell>
+									<cell colspan="3" > <textbox id="txtDesc"  width="140" multiline="true"  cols="40" maxlength="255"  rows="3"  /></cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.global.reason}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <textbox id="txtReason"  width="140" multiline="true"  cols="40" maxlength="255"  rows="3" constraint="no empty : Please enter Reason."  /></cell>
+								</row>
+								
+							
+							</rows>
+						</grid>
+						
+						
+						
+			<separator bar="false" />
+			<separator bar="false" />
+			<hbox>
+				<button id="btnUpdate" mold="trendy" label="${labels.global.updateBtn}" width="140px"/>
+				<button id="cancelBtn" mold="trendy" label="Cancel" onClick="updatesWarehouse.detach();" width="140px"/>
+			</hbox>
+			<separator bar="false" />
+			<separator bar="false" />
+</vlayout>
+</hlayout>
+</zk>

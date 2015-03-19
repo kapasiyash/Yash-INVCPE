@@ -1,0 +1,162 @@
+<?page id="loginZul" title="Crestel Inventory"?>
+
+<?link rel="stylesheet" type="text/css" href="/css/clnr.css"?>
+<?link rel="shortcut icon" href="/images/clnr/favicon.ico" type="image/x-icon"?>
+<?link rel="stylesheet" type="text/css" href="/css/billling.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/login.css"?>
+<zk xmlns:h="native">
+<window id="loginWin" height="100%" apply="com.elitecore.cpe.web.system.user.UserLoginComposer">
+
+<h:html>
+<h:head>
+<h:title>CRESTEL LOGIN</h:title>
+
+
+<h:LINK REL ="stylesheet" TYPE="text/css" HREF="css/billling.css" />
+
+</h:head>
+<h:body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" scroll="No" >
+
+
+<h:TABLE border="0" cellpadding="0" cellspacing="0" bgcolor="#005197" width="100%" height="100% " > 
+  <h:tr>
+    <h:td colspan="2" bgcolor="#000000" height="10"></h:td>
+  </h:tr>
+  <h:tr>
+  <h:td align="left" valign="top"><h:img src="images/top_left.jpg" width="260" height="54"/></h:td>  
+  <h:td align="right" valign="top"><h:img src="images/elitecore-product.jpg" width="263" height="54" usemap="#Map" border="0"/> 
+   
+  </h:td>
+  </h:tr>
+	<h:tr>
+		<h:td colspan="10" align="center" class="white-header"> </h:td>
+    </h:tr>  
+  <h:tr>
+    <h:td height="10" align="center" colspan="2"><h:font class="login-error-message" >
+	
+	</h:font></h:td>
+  </h:tr>  
+	<h:tr>
+		<h:td colspan="10" align="center" class="white-header"> </h:td>
+    </h:tr>    
+  <h:tr>
+	  <h:td colspan="2" align="center" valign="top"><h:table width="666" border="0" cellspacing="0" cellpadding="0">
+		  <h:tr>
+			<h:td colspan="2"><h:img src="images/box_top.jpg" width="666" height="19"/></h:td>
+		  </h:tr>
+		  <h:tr>
+			<h:td colspan="2" bgcolor="#FFFFFB"><h:table width="100%" border="0" cellpadding="0" cellspacing="0" class="border">
+				<h:tr>
+				  <h:td height="180" align="left" bgcolor="#FFFFFF"><h:table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<h:tr>
+					
+					  <h:td width="55%" align="center">
+					  
+					  	<h:table width="234" border="0" cellspacing="0" cellpadding="0">
+							<h:tr>
+								<h:td height="84" colspan="3" valign="top" background="images/loginbox_top.jpg">
+									<h:table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<h:tr>
+								  			<h:td height="55" colspan="2"> </h:td>
+										</h:tr>
+										<h:tr>
+								  			<h:td width="38%"> </h:td>
+								  			<h:td width="62%" class="footer"> </h:td>
+										</h:tr>
+									</h:table>
+								</h:td>
+						  	</h:tr>
+						  	<h:tr>
+								<h:td width="92" height="34" valign="top" background="images/loginbox_left.jpg">
+									<h:table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<h:tr>
+								  			<h:td width="21%" height="30" align="center" class="footer"> </h:td>
+								  			<h:td width="79%" align="left" class="text">Login</h:td> 
+										</h:tr>
+										<h:tr>
+											  <h:td height="15" align="center" class="footer"> </h:td>
+											  <h:td height="15" align="left" class="text">Password</h:td> 
+										</h:tr>
+										<h:tr>
+											<h:td height="4"></h:td>
+											<h:td></h:td>								
+										</h:tr>
+										
+									</h:table>
+								</h:td>
+								<h:td  width="127" height="34" bgcolor="#0D679B">
+									<h:table width="90%" border="0" cellspacing="0" cellpadding="0">
+										<h:tr>
+								  			<h:td height="15"  bgcolor="#0D679B">
+								  			<!-- <h:input name="txtUsername" id="txtUsername" type="text" class="input_box"  maxlength="20" /> -->
+								  			<textbox id="txtUsername"  name="txtUsername" onCreate="self.focus()" sclass="input_box"/>
+								  			</h:td>								  
+										</h:tr>
+										<h:tr>
+								  			<h:td height="4"><h:img src="images/loginbox_sep.jpg" width="127" height="4" /></h:td>
+										</h:tr>
+										<h:tr>
+								  			<h:td height="15"  bgcolor="#004681">
+								  			<!-- <h:input name="txtPassword" id="txtPassword" type="password" class="input_box"  maxlength="20" /> -->
+								  			<textbox id="txtPassword"  type="password" name="txtPassword" sclass="input_box"/>
+								  			</h:td>								  
+										</h:tr>	
+										
+									</h:table>
+								</h:td>
+								<h:td width="15" height="34" bgcolor="#0D679B" background="images/loginbox_right_top.jpg">
+									<h:table width="100%" height="100%"  border="0" cellspacing="0" cellpadding="0">
+										<h:tr height="100%">
+								  			<h:td height="100%" valign="bottom">
+								  				<h:img src="images/loginbox_right_top.jpg" width="15" height="34" />
+								  			</h:td>								  
+										</h:tr>
+									</h:table>
+								</h:td>
+						  	</h:tr>
+						  
+						  	<h:tr>
+								<h:td height="52" colspan="3" valign="top">
+									<h:table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<h:tr>
+									  		<h:td width="80%" ><image src="images/loginbox_left_bot.jpg" width="192" height="56"/></h:td>
+									  		<h:td width="20%" align="right" >
+									  		
+									  		<!-- <h:input type="button" id="btnLogin" src="images/loginbox_right_bot.jpg" width="44" height="52" border="0" /> -->
+									  		<!-- <button id="btnLogin" type="button" image="/images/loginbox_right_bot.jpg"  width="44" height="52" style="border:0"/> -->
+									  		<image id="btnLogin" width="100%" src="/images/loginbox_right_bot.jpg" style="cursor: pointer" ></image>
+									  		</h:td>
+										</h:tr>
+									</h:table>
+								</h:td>
+							</h:tr>
+							
+						</h:table>
+					
+					 </h:td>
+					  <h:td width="45%"><h:img src="images/sitra-biglogo.jpg" width="199" height="150"/></h:td>
+					</h:tr>					
+				  </h:table>
+				 </h:td>
+				</h:tr>
+			
+                </h:table></h:td>
+              </h:tr>
+              <h:tr>
+                <h:td colspan="2"><h:img src="images/box_bot.jpg" width="666" height="19"/></h:td>
+              </h:tr>
+              <h:tr>
+                <h:td height="7" colspan="2"></h:td>
+              </h:tr>	
+
+ </h:table>
+ </h:td></h:tr></h:TABLE>
+
+
+</h:body>
+
+   </h:html> 
+   </window>
+</zk>
+
+

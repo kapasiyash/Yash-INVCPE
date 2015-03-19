@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<project name="Billing" default="all" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+
+
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+
+	<target name="init">
+
+		<property file="${crestel.home}/upgrade/build.properties" />
+		<property name="lib.dir" value="${crestel.home}/lib"/>
+		<property environment="env"/>
+		
+		<echo message="IGNORE SQL ERRORS" />
+		<sql
+		    driver="oracle.jdbc.driver.OracleDriver"
+		    url="${database.url}"
+		    userid="jispbilcorbilling${db.env}"
+		    password="jispbilcorbilling${db.env}"
+		    classpath="${lib.dir}/jdbc/oracle9i.jar"
+		    onerror="continue"
+		    print="true"
+		    
+		>
+
+			update tblmversion set currentversionnumber='5.1.2.10-30.099' where currentversionnumber='5.1.2.10-30.99' and modulename='Billing[Bill]';
+			
+			UPDATE TBLTVERSIONHISTORY SET VERSIONNUMBER='5.1.2.10-30.099' WHERE versionnumber='5.1.2.10-30.99' and MODULENAME='Billing[Bill]';
+		
+		</sql>
+		
+	</target>
+
+	<!-- ******************************** -->
+	<!-- Unit target definition ends      -->
+	<!-- ******************************** -->
+
+	<target name="all" >
+		<antcall target="init"/>
+	</target>
+</project> 

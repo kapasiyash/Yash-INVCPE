@@ -1,0 +1,89 @@
+************* inside lookup - start *****************
+************* inside lookup - start *****************
+Data Class Created Successfully..!!!
+Event -->Credit Note Disp EVDA000056
+Event -->Credit Note Disp Resp EVDA000057
+Event -->Redeem Payment Req EVDA000046
+Event -->Redeem Payment Resp EVDA000047
+Event -->Redeem Payment Disp EVDA000048
+Event -->Redeem Payment Disp Resp EVDA000049
+Event -->Generate Bill Req EVDA000058
+Event -->Generate Bill Resp EVDA000059
+Event -->Generate Bill Disp EVDA000060
+Event -->Generate Bill Disp Resp EVDA000061
+Event -->Write Off Req EVDA000062
+Event -->Write Off Resp EVDA000063
+Event -->Write Off Disp EVDA000064
+Event -->Write Off Disp Resp EVDA000065
+Event -->Credit Note Req EVDA000054
+Event -->Credit Note Res EVDA000055
+Event -->CashChequeDisp EVDA000040
+Event -->CashChequeDispResp EVDA000041
+Event -->CashChequeReq EVDA000038
+Event -->CashChequeResp EVDA000039
+Event -->CreditDebitPaymentDisp EVDA000044
+Event -->CreditDebitPaymentDispResp EVDA000045
+Event -->CreditDebitPaymentReq EVDA000042
+Event -->CreditDebitPaymentResp EVDA000043
+Event -->Direct Debit Payment Disp EVDA000036
+Event -->Direct Debit Payment Disp Resp EVDA000037
+Event -->Direct Debit Payment Req EVDA000034
+Event -->Direct Debit Payment Resp EVDA000035
+Event -->Online Payment Disp EVDA000032
+Event -->Online Payment Disp Resp EVDA000033
+Event -->Online Payment Req EVDA000030
+Event -->Online Payment Resp EVDA000031
+Event -->Debit Note Billing Req EVDA000050
+Event -->Debit Note Billing Resp EVDA000051
+Event -->Debit Note Billing Disp EVDA000052
+Event -->Debit Note Billing Disp Resp EVDA000053
+Event -->Advance Payment Req EVDA000066
+Event -->Advance Payment Resp EVDA000067
+Event -->Advance Payment Disp EVDA000068
+Event -->Advance Payment Disp Resp EVDA000069
+Pre Update Data Class-->demo demo
+Data Class Details Found
+Data Class Deleted SuccessFully
+Data Class-->null null
+Data Class-->Credit Note Disp Credit Note Disp
+Data Class-->Credit Note Disp Resp Credit Note Disp Resp
+Data Class-->Redeem Payment Req Redeem Payment Req
+Data Class-->Redeem Payment Resp Redeem Payment Resp
+Data Class-->Redeem Payment Disp Redeem Payment Disp
+Data Class-->Redeem Payment Disp Resp Redeem Payment Disp Resp
+Data Class-->Generate Bill Req Generate Bill Req
+Data Class-->Generate Bill Resp Generate Bill Resp
+Data Class-->Generate Bill Disp Generate Bill Disp
+Data Class-->Generate Bill Disp Resp Generate Bill Disp Resp
+Data Class-->Write Off Req Write Off Req
+Data Class-->Write Off Resp Write Off Resp
+Data Class-->Write Off Disp Write Off Disp
+Data Class-->Write Off Disp Resp Write Off Disp Resp
+Data Class-->Credit Note Req Credit Note Req
+Data Class-->Credit Note Res Credit Note Res
+Data Class-->CashChequeDisp CashChequeDisp
+Data Class-->CashChequeDispResp CashChequeDispResp
+Data Class-->CashChequeReq CashChequeReq
+Data Class-->CashChequeResp CashChequeResp
+Data Class-->CreditDebitPaymentDisp CreditDebitPaymentDisp
+Data Class-->CreditDebitPaymentDispResp CreditDebitPaymentDispResp
+Data Class-->CreditDebitPaymentReq CreditDebitPaymentReq
+Data Class-->CreditDebitPaymentResp CreditDebitPaymentResp
+Data Class-->Direct Debit Payment Disp Direct Debit Payment Disp
+Data Class-->Direct Debit Payment Disp Resp Direct Debit Payment Disp Resp
+Data Class-->Direct Debit Payment Req Direct Debit Payment Req
+Data Class-->Direct Debit Payment Resp Direct Debit Payment Resp
+Data Class-->Online Payment Disp Online Payment Disp
+Data Class-->Online Payment Disp Resp Online Payment Disp Resp
+Data Class-->Online Payment Req Online Payment Req
+Data Class-->Online Payment Resp Online Payment Resp
+Data Class-->Debit Note Billing Req Debit Note Billing Req
+Data Class-->Debit Note Billing Resp Debit Note Billing Resp
+Data Class-->Debit Note Billing Disp Debit Note Billing Disp
+Data Class-->Debit Note Billing Disp Resp Debit Note Billing Disp Resp
+Data Class-->Advance Payment Req Advance Payment Req
+Data Class-->Advance Payment Resp Advance Payment Resp
+Data Class-->Advance Payment Disp Advance Payment Disp
+Data Class-->Advance Payment Disp Resp Advance Payment Disp Resp
+Junit Start
+

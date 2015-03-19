@@ -1,0 +1,86 @@
+<zk>
+<window  id="searchWareHouse"  style="overflow: visible;" width="100%" height="100%"  
+		apply="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseComposer">
+		 <include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="Warehouse Management"/>
+	<tabbox width="100%" height="100%" tabscroll="false" id="searchWarehouseTabbox">
+	<tabs>
+		<tab  label="${labels.warehouse.searchtitle}" id="searchTab"/>
+	</tabs>
+
+<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;" sclass="main-cont">
+				<vlayout style="padding-left: 5px; padding-top: 2px;padding-bottom: 50px;" width="100%">
+										<grid id="warehousegrid" width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+										<columns>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											<column width="160px"></column>
+											<column width="240px"></column>
+										</columns>
+										<rows>
+											<row>
+												<cell>
+													<label value="${labels.warehouse.name}"></label>
+													<label value="" style="color:red;" />
+												</cell>
+												<cell  > <textbox id="txtName" width="140px" maxlength="100" /></cell>
+												<cell>
+													<label value="${labels.global.location}"></label>
+													<label value="" style="color:red;" />
+												</cell>
+												<cell > <textbox id="txtLocation" width="140px" maxlength="100" /></cell>
+											</row>
+										
+										<row>
+										<cell>
+													<label value="${labels.warehouse.warehouseCode}"></label>
+													<label value="" style="color:red;" />
+												</cell>
+												<cell  > <textbox id="txtWarehouseCode" width="140px" maxlength="100" /></cell>
+										
+									<cell>
+											<label value="${labels.warehousetype.name}"></label>
+											
+									</cell>
+									<cell  > <combobox id="cmbWarehouseType" width="145px" maxlength="100"  /></cell>
+								</row>
+										</rows>
+										</grid>
+										
+										<separator bar="false" />
+										<separator bar="false" />
+										<hbox>
+											<button id="btnSearch" type="button" label="${labels.global.searchBtn}" mold="trendy" width="140px" />
+											<button id="btnCreate" type="button" label="${labels.global.createBtn}" mold="trendy" width="140px" visible="false"/>
+											<button id="btnCancel" type="button" label="${labels.global.cancelBtn}"  mold="trendy" width="140px" />
+										</hbox>
+										<separator bar="false" />
+										<separator bar="false" />
+										<separator bar="false" />
+										<listbox id="searchResultGrid" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="99%">
+											<listhead sizable="true">
+												<listheader label="${labels.global.sr.no}" width="55px" />
+												<listheader label="${labels.warehouse.name}" width="10%" sort="auto(name)" />
+												<listheader label="${labels.warehouse.parentwhname}" width="10%" sort="auto(parentWarehouseName)" />
+												<listheader label="${labels.warehouse.warehouseType}" width="10%"  />
+												<listheader label="${labels.global.location}" width="15%" sort="auto(location)" />
+												<listheader label="${labels.warehouse.owner}"  width="10%" sort="auto(owner)" />
+												<listheader label="${labels.warehouse.contactNo}"  width="10%"  />
+												<listheader label="${labels.warehouse.emailId}"  width="15%"  />
+												<listheader label="${labels.global.createDate}"  width="10%" sort="auto(createDate)" />
+												<listheader label="${labels.global.view}"  width="55px"  />
+												
+											</listhead>
+										</listbox>
+										<separator bar="false" />
+										<separator bar="false" />
+										<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />	
+							</vlayout>
+							
+			</tabpanel>
+		</tabpanels>
+		</tabbox> 
+	 
+</window>
+</zk>

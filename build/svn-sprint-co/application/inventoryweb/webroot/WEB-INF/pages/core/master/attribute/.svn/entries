@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/WEB-INF/pages/core/master/attribute"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15558"
+   kind="dir"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="CreateAttribute.zul"
+   checksum="1eb2fc0aab05dfc9f4d398b0495520bb"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchAttribute.zul"
+   checksum="7ed77cc6b347b8a43e2bb6d63fa6a472"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="UpdateAttribute.zul"
+   checksum="aaaa606e1964270901258c1cace8213e"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ViewAttribute.zul"
+   checksum="f12f5add8d40fe7b0679e95833ffe78b"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

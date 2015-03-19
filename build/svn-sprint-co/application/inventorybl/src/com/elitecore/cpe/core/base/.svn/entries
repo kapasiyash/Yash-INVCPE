@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/core/base"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16287"
+   kind="dir"
+   committed-date="2015-03-04T07:27:26.635701Z"/>
+<entry
+   name="BaseBL.java"
+   checksum="dba33bc7d7cbc803354c77c8133bd36d"
+   last-author="yash.kapasi"
+   committed-rev="16287"
+   text-time="2015-03-04T07:27:26.000000Z"
+   kind="file"
+   committed-date="2015-03-04T07:27:26.635701Z"/>
+<entry
+   name="BaseWebServiceBL.java"
+   checksum="972b2d2f0260d705c5a17e3f68eb624a"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

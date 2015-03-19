@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/WEB-INF/pages/core"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16482"
+   kind="dir"
+   committed-date="2015-03-16T07:20:33.188526Z"/>
+<entry
+   name="audit"
+   kind="dir"/>
+<entry
+   name="common"
+   kind="dir"/>
+<entry
+   name="configuration"
+   kind="dir"/>
+<entry
+   name="dashboard"
+   kind="dir"/>
+<entry
+   name="dialog"
+   kind="dir"/>
+<entry
+   name="inventory"
+   kind="dir"/>
+<entry
+   name="master"
+   kind="dir"/>
+<entry
+   name="om"
+   kind="dir"/>
+<entry
+   name="system"
+   kind="dir"/>
+<entry
+   name="user"
+   kind="dir"/>
+</wc-entries>

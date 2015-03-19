@@ -1,0 +1,328 @@
+!SESSION 2015-02-13 10:38:20.087 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-02-13 10:45:02.079
+!MESSAGE OK
+!SESSION 2015-02-25 14:18:50.606 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data /home/elitecore/Project/Partner-CPE_branch/CrestelCPE-MTNICE/Sprint-4/WorkSpace -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-02-25 14:19:46.105
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-25 14:20:03.826
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-25 15:01:29.931
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-25 16:47:27.584
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-25 18:36:29.606
+!MESSAGE OK
+!SESSION 2015-02-26 10:57:09.824 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-02-26 10:58:31.482
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-26 10:58:48.199
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-26 12:27:23.908
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-26 12:28:32.082
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-26 12:53:24.727
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-26 15:04:12.876
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-26 16:47:23.207
+!MESSAGE OK
+!SESSION 2015-02-27 10:30:22.644 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-02-27 10:33:00.414
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-27 10:33:04.305
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-27 11:37:03.275
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-27 11:54:48.130
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-27 17:17:23.963
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-27 19:09:00.448
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-27 19:26:36.843
+!MESSAGE OK
+!SESSION 2015-02-28 10:42:20.543 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-02-28 10:47:55.023
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-28 11:41:03.671
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-28 11:47:39.693
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-28 11:49:03.022
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-02-28 11:58:17.075
+!MESSAGE OK
+!SESSION 2015-03-02 16:02:41.860 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data /home/elitecore/Project/Partner-CPE_branch/CrestelCPE-MTNICE/Sprint-4/WorkSpace -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-02 16:03:49.544
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-02 17:32:58.326
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-02 18:08:42.033
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-02 18:36:28.083
+!MESSAGE OK
+!SESSION 2015-03-03 12:06:54.676 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data /home/elitecore/Project/Partner-CPE_branch/CrestelCPE-MTNICE/Sprint-4/WorkSpace -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-03 12:09:43.700
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-03 12:10:04.906
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-03 14:17:05.624
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-03 15:01:50.715
+!MESSAGE OK
+!SESSION 2015-03-05 11:46:37.145 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-05 12:25:50.597
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-05 14:54:02.214
+!MESSAGE OK
+!SESSION 2015-03-09 11:05:24.352 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-09 11:07:06.684
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 15:13:02.849
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 15:50:33.009
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 15:54:57.755
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 15:55:14.933
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 16:19:12.655
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 16:25:40.988
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 16:56:22.356
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 16:57:48.083
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 17:19:00.567
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 17:21:29.696
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-09 18:10:34.104
+!MESSAGE OK
+!SESSION 2015-03-11 14:29:31.561 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-11 16:29:29.525
+!MESSAGE OK
+!SESSION 2015-03-12 10:13:01.144 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-12 10:15:27.157
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-12 11:02:57.949
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-12 15:38:36.819
+!MESSAGE OK
+!SESSION 2015-03-13 10:31:42.192 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-13 10:34:53.798
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-13 11:17:07.365
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-13 11:36:52.196
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-13 11:37:14.264
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-13 11:37:17.185
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-13 14:27:53.947
+!MESSAGE OK
+!SESSION 2015-03-16 10:27:55.469 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-16 11:12:23.779
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-16 16:08:29.114
+!MESSAGE OK
+!SESSION 2015-03-17 15:12:42.911 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-17 15:14:46.439
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-17 15:28:41.673
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-17 15:44:11.655
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-17 16:13:42.207
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-17 17:12:29.350
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-17 18:03:09.555
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-17 18:22:49.315
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-17 18:34:28.347
+!MESSAGE OK
+!SESSION 2015-03-18 16:21:27.722 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data /home/elitecore/Project/Partner-CPE_branch/CrestelCPE-MTNICE/Sprint-4/WorkSpace -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-18 16:22:29.050
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-18 16:22:31.754
+!MESSAGE OK
+!SESSION 2015-03-19 11:42:18.152 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.7.0_09-icedtea
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data /home/elitecore/Project/Partner-CPE_branch/CrestelCPE-MTNICE/Sprint-4/WorkSpace -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY unknown 0 0 2015-03-19 11:43:22.780
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-19 11:43:34.873
+!MESSAGE OK
+
+!ENTRY unknown 0 0 2015-03-19 16:13:15.271
+!MESSAGE OK

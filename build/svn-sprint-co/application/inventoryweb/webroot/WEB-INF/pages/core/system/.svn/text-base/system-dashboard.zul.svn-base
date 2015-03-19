@@ -1,0 +1,23 @@
+<zk>
+<window id="userconfigurationwin" border="none" height="100%" width="100%" >
+<include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="System Configuration"/>
+        <tabbox width="100%" height="100%" tabscroll="false" id="userconfigurationtabbox" >        
+            <tabs>
+                <tab label="${labels.global.system}" />
+            </tabs>
+            <tabpanels height="100%" width="100%">
+                <tabpanel id="panel" style="padding-top: 10px; padding-left: 10px; padding-right: 10px; background-color: #FFFFFF; overflow: auto;" sclass="main-cont" >
+                <vlayout id="mainLayout" style="min-width:1000px;padding-right:10px;">
+	           		
+	           		<vlayout id="dashboardMainVlayout" width="100%">
+				    <vlayout id="dashboardDataPanel">
+				    </vlayout>
+				   <!--  <image src="/images/car/ajax-loader.gif" id="loaderImage" tooltip="DashBoard Loading" style="padding-left :350px;padding-top :200px" ></image> -->
+	                    <separator width="20px"/>
+	                    <include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+	                </vlayout> 
+	            </vlayout>
+                </tabpanel>
+            </tabpanels>
+        </tabbox>
+    </window></zk>

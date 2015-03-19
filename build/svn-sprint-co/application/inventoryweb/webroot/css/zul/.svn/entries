@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/css/zul"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15557"
+   kind="dir"
+   committed-date="2015-02-06T07:46:11.965271Z"/>
+<entry
+   name="calendar.css"
+   checksum="a8fc022737d0b6c0438f097f6602a858"
+   last-author="yash.kapasi"
+   committed-rev="15557"
+   text-time="2015-02-06T07:46:11.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"/>
+<entry
+   name="zksample2.css"
+   checksum="cabde3fd15b6e25e6e721d44df1c754d"
+   last-author="yash.kapasi"
+   committed-rev="15557"
+   text-time="2015-02-06T07:46:11.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"/>
+</wc-entries>

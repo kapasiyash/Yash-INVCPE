@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/lib/findbug"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15540"
+   kind="dir"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="README.txt"
+   checksum="f9e27409c87d0bbba67cab797b3c1d35"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="bin"
+   kind="dir"/>
+<entry
+   name="doc"
+   kind="dir"/>
+<entry
+   name="findbugs-ant.jar"
+   checksum="6d8255ea46cf970b293edf8f9f3eaae4"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:40.000000Z"/>
+<entry
+   name="findbugs.jar"
+   checksum="d3e7c731eb2a60bf3c3c65433b3728d4"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:41.000000Z"/>
+<entry
+   name="findbugsExclude.xml"
+   checksum="35f50f32b4ada65f68f7f7b428ee13a7"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:40.000000Z"/>
+<entry
+   name="findbugsWebExclude.xml"
+   checksum="0d1e4bbb44b8a2ceb254c88a47e00272"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:40.000000Z"/>
+<entry
+   name="lib"
+   kind="dir"/>
+<entry
+   name="optionalPlugin"
+   kind="dir"/>
+<entry
+   name="plugin"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+</wc-entries>

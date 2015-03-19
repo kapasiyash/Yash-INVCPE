@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/lib/findbug/doc"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15540"
+   kind="dir"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="AddingDetectors.txt"
+   checksum="120d20de3f811dc5dc97c8fd91af440d"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="Changes.html"
+   checksum="dd319b3dde1b87b620cc7542a14e5e06"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="FAQ.html"
+   checksum="f431a222b7c8e6b81913e42babe10c71"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="FilterFile.txt"
+   checksum="8152ddec7e26cbb2cc505a4876f6812a"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="allBugDescriptions.html"
+   checksum="64f27716bedb2337ce0a70e21c123d53"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="bug-logo.png"
+   checksum="2bcefe3294f93591e40160d41f8f27bd"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="bugDescriptions.html"
+   checksum="56e4df040b8e4207eaebefd2b1aed10c"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="buggy-sm.png"
+   checksum="25c4ae8f62daf15b552004684675aef7"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="contributing.html"
+   checksum="561b6017601e50d697d85f0d02b27766"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="customers"
+   kind="dir"/>
+<entry
+   name="demo.html"
+   checksum="d30e56bfad8618b6186157d1fa263e22"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="downloads.html"
+   checksum="ae96fa84f365a118d941865fd4382385"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="eclipse-filters-icon.png"
+   checksum="e495d236e9011469016e45323ed1ccd1"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="factSheet.html"
+   checksum="761520850e3db7e379c900d829c29a6f"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="findbugs.css"
+   checksum="d4d61af3ce8a501538dd99a2383147f0"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="findbugs2.html"
+   checksum="c648a979c1a98fcfa2a636fe7adda49f"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="guaranteedDereference.png"
+   checksum="478bdd01a3e85110d02b9e8c994d719a"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="index.html"
+   checksum="b56cb63e244945fadff2013ab29b7b18"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="infiniteRecursiveLoops.png"
+   checksum="77f0a86ca4b5411c01a9c9f05c8685ac"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="informal.png"
+   checksum="90d82f88a705e42fc1896cb8ad343a1d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="ja"
+   kind="dir"/>
+<entry
+   name="links.html"
+   checksum="210c1c1e4ff4c89fdc6f1c53bb87e68d"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="mailingLists.html"
+   checksum="00d20517173de739b8adcc5d8babb287"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="manual"
+   kind="dir"/>
+<entry
+   name="manual-fo.xsl"
+   checksum="01c005e052433ca38ca3d6e7d44e9b25"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="manual.xml"
+   checksum="327a9a7bd50a04a5e3508c27ca727033"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="manual.xsl"
+   checksum="b12e103895a2ef2572da3281312a1ef6"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="manual_ja.xml"
+   checksum="a2a2a59da30ca71275df6f6297f74b4b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="performance.html"
+   checksum="9f4d85c01ce50249e0cc5aec8b7a87b6"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="performingARelease.txt"
+   checksum="c9c69165e6602e1bc2efb6d1639b81cf"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="pluginStructure.txt"
+   checksum="47829c0d9267268ee2d8355dd81e38b5"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="plugins.txt"
+   checksum="8efce36e4e736423adbac114ffe0c938"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="pressRelease.pdf"
+   checksum="81a22e7eca89d451730ee08c0ed9c5e6"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="publications.html"
+   checksum="a348a5f1c6015ceaf8e5a6f0fc6be16d"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="reportingBugs.html"
+   checksum="4d1708149ac78fd881f3b9a457652674"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="sourceInfo.html"
+   checksum="5d9ff58739a9e2d4fa0ee18b3b124076"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="sysprops.html"
+   checksum="17084293e307e1a3b4e26159e40d1eb1"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="team.html"
+   checksum="8c75446a89267b956fd94131df8bef37"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="umdFindbugs.png"
+   checksum="712a4f6f040367152bad47892462771c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="updateChecking.html"
+   checksum="a3ebc8cce66b49254f2a09601971ba40"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="users.html"
+   checksum="5f59dbae4e010bfde8aec046b0575dde"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+</wc-entries>

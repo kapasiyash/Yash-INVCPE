@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/delegates/system"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16287"
+   kind="dir"
+   committed-date="2015-03-04T07:27:26.635701Z"/>
+<entry
+   name="agent"
+   kind="dir"/>
+<entry
+   name="audit"
+   kind="dir"/>
+<entry
+   name="internal"
+   kind="dir"/>
+<entry
+   name="systemparameter"
+   kind="dir"/>
+<entry
+   name="user"
+   kind="dir"/>
+</wc-entries>

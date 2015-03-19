@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/src/com/elitecore/cpe/web/composer/inventory/search"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16433"
+   kind="dir"
+   committed-date="2015-03-13T03:30:02.963545Z"/>
+<entry
+   name="ChangeInventorySubStatusComposer.java"
+   checksum="867fff7f830bea60466b8e36f3d5254a"
+   last-author="rinkal.sadariya"
+   committed-rev="16104"
+   text-time="2015-02-25T08:20:40.000000Z"
+   kind="file"
+   committed-date="2015-02-25T08:20:40.158011Z"/>
+<entry
+   name="InventoryHDComposer.java"
+   checksum="dd7e2a31aa13c32b2b7564c3a0d44766"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchInventoryBatchComposer.java"
+   checksum="f6df59d949fc35af2f74a2df927a0824"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchInventoryComposer.java"
+   checksum="94261d3705c22b97c4e129f4f9ddbc2f"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ViewInventoryBatchDetailComposer.java"
+   checksum="384a5b764fa3fd4dc12e1b08f2da2c8d"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ViewInventoryBatchSummaryComposer.java"
+   checksum="284ed8d2ccf3b2df3a9fcecc428e9c83"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ViewInventoryComposer.java"
+   checksum="208a21e0ddd55ac448b78cd4a9af5ee7"
+   last-author="rinkal.sadariya"
+   committed-rev="16433"
+   text-time="2015-03-13T03:30:02.000000Z"
+   kind="file"
+   committed-date="2015-03-13T03:30:02.963545Z"/>
+</wc-entries>

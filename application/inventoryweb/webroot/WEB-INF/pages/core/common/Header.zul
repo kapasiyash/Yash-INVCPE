@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="CRESTEL"?>
+
+<grid style="border:0px" height="100%" sclass="gridclass">
+			<columns >
+				<column width="25px"></column>
+				<column width="125px" ></column>
+				<column width="32px"></column>
+				<column  valign="bottom"></column>
+			</columns>
+		
+			<rows >
+				<row>
+				<image src="/images/left-curve.jpg"></image>
+				<div height="31px" width="125px" sclass="header"><label sclass="headerfont" value="${empty arg.title ? 'Crestel Partner ': arg.title}"></label></div>
+				<image src="/images/right-curve.jpg"></image>
+				<image src="/images/line.jpg" width="99%" height="7px"></image>
+				</row>
+			</rows>
+</grid>
+		

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/lib"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15540"
+   kind="dir"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="axis.jar"
+   checksum="03dcfdd88502505cc5a805a128bfdd8d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:27.000000Z"/>
+<entry
+   name="bsh.jar"
+   checksum="a1c60aa83c9c9a6cb2391c1c1b85eb00"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="com.sun.rowset.jar"
+   checksum="cbd627f974d39cbe0164ae77c3cbd242"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:27.000000Z"/>
+<entry
+   name="commons-net-3.3.jar"
+   checksum="c077ca61598e9c21f43f8b6488fbbee9"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="doxygen"
+   kind="dir"/>
+<entry
+   name="elite-agentframework.jar"
+   checksum="9fd8013b5a0b60c794e4b6111fd745ca"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="findbug"
+   kind="dir"/>
+<entry
+   name="fmpp.jar"
+   checksum="364d9162bce97093fd0fcbdfc7bbe4b2"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="freemarker"
+   kind="dir"/>
+<entry
+   name="freemarker.jar"
+   checksum="0c3500f8028b6691740ca30012b66185"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:36.000000Z"/>
+<entry
+   name="hibernate-core.jar"
+   checksum="d57876088586a5a167f3a975f3c1685e"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:37.000000Z"/>
+<entry
+   name="javax.persistence.jar"
+   checksum="500a04c25648de412670dbfe18645d5c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="jboss-client"
+   kind="dir"/>
+<entry
+   name="jdbc"
+   kind="dir"/>
+<entry
+   name="jee"
+   kind="dir"/>
+<entry
+   name="junit"
+   kind="dir"/>
+<entry
+   name="log4j"
+   kind="dir"/>
+<entry
+   name="nes-client.jar"
+   checksum="3d1a29ff4e125736619bd9ecb96bb228"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="oro.jar"
+   checksum="42e940d5d2d822f4dc04c65053e630ab"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:37.000000Z"
+   committed-rev="15539"
+   kind="file"
+   committed-date="2015-02-06T05:19:37.766902Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="other"
+   kind="dir"/>
+<entry
+   name="schemaspy"
+   kind="dir"/>
+<entry
+   name="svn"
+   kind="dir"/>
+<entry
+   name="umlgraph"
+   kind="dir"/>
+</wc-entries>

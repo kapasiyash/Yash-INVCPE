@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/facade/bss/user"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16287"
+   kind="dir"
+   committed-date="2015-03-04T07:27:26.635701Z"/>
+<entry
+   name="BSSUserFacade.java"
+   checksum="4035e9bdadd187e9d44271aed88bfb1d"
+   last-author="yash.kapasi"
+   committed-rev="16287"
+   text-time="2015-03-04T07:27:26.000000Z"
+   kind="file"
+   committed-date="2015-03-04T07:27:26.635701Z"/>
+<entry
+   name="BSSUserFacadeLocal.java"
+   checksum="2d5126629f38cc5824ef9c8d3bfb44ec"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="BSSUserFacadeRemote.java"
+   checksum="2074865173a5901bcbcc94ba5d5ac0ce"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="IBSSUserFacade.java"
+   checksum="9b4db604ab837ecf2453f34fd061fae0"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

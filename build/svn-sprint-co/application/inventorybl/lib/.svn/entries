@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/lib"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15540"
+   kind="dir"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="activation-1.1.1.jar"
+   checksum="46a37512971d8eca81c3fcf245bf07d2"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:07.000000Z"/>
+<entry
+   name="axis.jar"
+   checksum="03dcfdd88502505cc5a805a128bfdd8d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:06.000000Z"/>
+<entry
+   name="commons-beanutils.jar"
+   checksum="79f469610dc0f76ee27a74f198858b6b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:07.000000Z"/>
+<entry
+   name="commons-digester-2.1.jar"
+   checksum="528445033f22da28f5047b6abcd1c7c9"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:07.000000Z"/>
+<entry
+   name="commons-discovery-0.2.jar"
+   checksum="9a2fb56e6a79169b2fb6c8a0dc79abb0"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:07.000000Z"/>
+<entry
+   name="commons-net-3.3.jar"
+   checksum="c077ca61598e9c21f43f8b6488fbbee9"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:07.000000Z"/>
+<entry
+   name="elite-agent-service.sar"
+   checksum="7f13a500b2593863ea78a0b633a4b986"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:06.000000Z"/>
+<entry
+   name="elite-agentframework.jar"
+   checksum="9fd8013b5a0b60c794e4b6111fd745ca"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:07.000000Z"/>
+<entry
+   name="freemarker.jar"
+   checksum="03358fb59a2260a0c37f063e2ba58436"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:08.000000Z"/>
+<entry
+   name="hibernate-core.jar"
+   checksum="d57876088586a5a167f3a975f3c1685e"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:07.000000Z"/>
+<entry
+   name="ojdbc6.jar"
+   checksum="fc074b0027bc6f77a67a4c4aac2f490d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:07.000000Z"/>
+</wc-entries>

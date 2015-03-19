@@ -1,0 +1,69 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="searchEventHomeWin" style="padding: 0px; margin: 0px;" height="100%" width="100%" apply="com.elitecore.cpe.web.composer.SearchEventHomeComposer">
+				<vlayout style="padding-left: 5px; padding-top: 2px;" width="100%">
+					<div sclass="sectionTitle">
+								<label value="AR Integrator Event DashBoard" style="font-weight: bold;" />
+							</div>
+						<separator bar="false"/>	
+						<separator bar="false"/>
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="150px"></column>
+							<column width="250px"></column>
+							<column width="150px"></column>
+							<column width="250px"></column>
+						</columns>
+						<rows>
+							<row >
+								<cell>
+										<label value="Search Criteria"></label>
+										<label value="*" style="color:red;" />
+								</cell>
+								<cell colspan="3">
+									<radiogroup id="dateFillter"></radiogroup>
+								</cell>
+							</row>
+							<row id="isVisible" align="top"  visible="false">
+									<cell>
+											<label value="From Date"/>
+											
+										</cell>
+								
+								<cell>
+									<datebox id="fromDate" readonly="true" width="140px"></datebox>
+									
+								</cell>
+								<cell>
+											<label value="To Date"/>
+											
+										</cell>
+								<cell>
+									<datebox id="toDate" readonly="true" width="140px"></datebox>
+								</cell>
+								
+							</row>
+						</rows>
+					</grid>
+					<hbox visible="false" id="searchBtnBox">
+						<button   id="search" type="button" label="${labels.global.searchBtn}" mold="trendy" width="140px" />
+					</hbox>
+									
+					
+					<separator bar="false" />
+					<separator bar="false" />
+					<separator bar="false" />
+					<listbox id="searchResultGrid" emptyMessage="${labels.gen.norecordfound}" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}" width="100%" style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd">
+
+						<listhead sizable="true" id="listHead" >
+							<listheader label="EventName"  sort="auto(eventName)" />
+							<listheader label="TotalCount" sort="auto(totalCount)" />
+						</listhead>
+
+					</listbox>
+					<separator bar="false" />
+					<separator bar="false" />
+					</vlayout>
+
+	</window>
+</zk>

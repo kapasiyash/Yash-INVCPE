@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/images/ar"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15558"
+   kind="dir"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ajax-loader.gif"
+   checksum="57ca1a2085d82f0574e3ef740b9a5ead"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="client-logo.png"
+   checksum="dc3a3c16c0d9a044c9b2cce96986b2b0"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="crestel-lnr.png"
+   checksum="dbd2d3bc616dd008ae7b0ccfb7631d77"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="crestel-logo.png"
+   checksum="543231d09e8dfe4818345f1c2fb57c62"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="crestel.png"
+   checksum="dbd2d3bc616dd008ae7b0ccfb7631d77"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="crestel1.png"
+   checksum="9b2e71f0b8a1f6f38fd91512c086f70d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="favicon.ico"
+   checksum="93cd9d64fa3cf5eceffd5257b696ff18"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="gray_bg1.jpg"
+   checksum="09043c8dfb6b6e24116a43d7e44b6a1b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="gray_bg2.jpg"
+   checksum="12a2e4c4d986205d4aa94c61c16ac9d9"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="icons"
+   kind="dir"/>
+<entry
+   name="line.png"
+   checksum="63389e183e0dbcd49c002cb55ce82fe6"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="lnr.png"
+   checksum="053e917e9b754257b3f2ec378f3fa9f0"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="login-left-bottom.png"
+   checksum="e3482e2dc9e444ac135ee7ebe66a142c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="login-left.png"
+   checksum="dba0ffc865b260eb83036d59f26cebce"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="login-left1.png"
+   checksum="9047b09c7aaa28346c4f7ca6b68e79e6"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="login-line.png"
+   checksum="50be6526d8774b45975525adad235c10"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="loginbox_top.jpg"
+   checksum="4f8d01a1fe2bb8005ee2949352f4ed08"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="logo-crestel-small.png"
+   checksum="3ab8cd5727feef037d849750019d3b80"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="logo-crestel.png"
+   checksum="fad4f2d11170e5184ff743cba75822bc"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="logo-icon.png"
+   checksum="670f40bac7e467f30613e177ad6e36ab"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="logo-small.png"
+   checksum="c45e73b73c00da67408c320e18eaff2f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="logo.png"
+   checksum="cb47147498b5fc66a8c0df9dd482c091"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="mt.jpg"
+   checksum="21600176e00f64a1a62079e9516b7206"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="separator.png"
+   checksum="6722040fcc38457755f0c1c308b2c6a9"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="sitra-biglogo.jpg"
+   checksum="4b86ade1f360c5f9fa15fe236490ea4a"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="sterlite-fion1.png"
+   checksum="0fc97620388b83f6de9b218ec1f1915e"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="temp-nav.png"
+   checksum="3c526d79f64ed609adc09c81b78f9ca8"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="top-line.png"
+   checksum="5f8869ee6b990c9e9b06db3f469bb1f4"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="top-line1.png"
+   checksum="6ddd016831a257afc8b6e08acbea378d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="top-line2.png"
+   checksum="947ffdd4c581fbf5e6e461ae508f3955"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="yellow1.jpg"
+   checksum="a53c271b94895ab20caa75e34251d227"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="yellow12.jpg"
+   checksum="bffbcb56f1e1acc15440cae9d3a0329b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="yellow2.jpg"
+   checksum="5955ac158c7c2796987f96000bdad435"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:46:11.000000Z"
+   committed-rev="15557"
+   kind="file"
+   committed-date="2015-02-06T07:46:11.965271Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+</wc-entries>

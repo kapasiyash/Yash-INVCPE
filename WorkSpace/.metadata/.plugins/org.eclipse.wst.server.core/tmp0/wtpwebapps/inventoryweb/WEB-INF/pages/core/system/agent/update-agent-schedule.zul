@@ -1,0 +1,74 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="updateschedule" apply="com.elitecore.cpe.web.system.agent.UpdateAgentScheduleComposer">
+<vlayout width="800px">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.uagentschedule.title}" style="font-weight: bold;" />
+			</div>
+			
+			<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								
+								<row sclass="sectionTitle">
+									<cell>
+										<label	value="${labels.uagentschedule.note}" style="font:bold"/>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3">
+										<label	value="${labels.uagentschedule.notedetails}" />
+									</cell>
+									
+								</row>
+								
+																
+							</rows>
+						</grid>
+			
+			<separator bar="false" />
+			<div sclass="sectionTitle">
+								<label value="${labels.cagntsche.scheduleAgent}" style="font-weight: bold;" />
+							</div>
+							<separator bar="false"/>
+			<div id="scheduleContent" width="798px"  />
+			<separator bar="false" />
+			<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								
+								<row>
+									<cell>
+										<label	value="${labels.uagentschedule.reason}" />
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3">
+										<textbox id="reasontb" constraint="no empty:Please provide reason for Update." multiline="true" rows="4" cols="40"/>
+									</cell>
+									
+								</row>
+								
+																
+							</rows>
+						</grid>
+			<separator bar="false" />
+			<separator bar="false" />
+			<hbox>
+				<button id="btnUpdate" mold="trendy" label="${labels.global.updateBtn}" width="140px"/>
+				<button id="cancelBtn" mold="trendy" label="Cancel" onClick="updateschedule.detach();" width="140px"/>
+			</hbox>
+			<separator bar="false" />
+			<separator bar="false" />
+</vlayout>
+</hlayout>
+</zk>

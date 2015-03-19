@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project name="anttask" default="all" basedir=".">
+  	
+  	<property file="undeploy-oracle.properties"/>
+  	<property file="deploy-oracle.properties"/>
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="${billing.home}/lib/ant/ant-contrib-0.6.jar"/>
+	  	</classpath>
+  	</taskdef>
+  	
+	
+	<target name="undeploy-module">
+		<propertycopy name="undeploy.name" from="module${module.number}"/>
+
+		<java jar="${oc4j.home}/j2ee/home/admin_client.jar" fork="true" failonerror="true">
+			  <arg value="${deployer.uri}"/>
+			  <arg value="${oc4j.admin.user}"/>
+			  <arg value="${oc4j.admin.password}" />
+			  <arg value="-undeploy" />
+			  <arg value="${undeploy.name}" />
+		</java>
+	</target>
+	
+	<target name="undeploy-modules">
+		<foreach list="${module.count}" param="module.number" target="undeploy-module"/>
+	</target>
+
+	<target name="all">
+		<antcall target="undeploy-modules"/>
+  	</target>
+</project>

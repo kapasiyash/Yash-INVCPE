@@ -1,0 +1,110 @@
+<?page id="loginZul" title="Crestel AR Integrator"?>
+<?link rel="stylesheet" href="css/style.css" type="text/css" ?>
+<?link rel="stylesheet" type="text/css" href="/css/clnr.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/billling.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/login.css"?>
+<?link rel="shortcut icon" href="images/ar/favicon.ico" type="image/x-icon" ?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<style>
+		html,body{margin:0;padding:0}
+		.main-sec { 
+		background-repeat:repeat-x; background-color: ##F5F5F5; color:
+		black; 
+		}
+		
+		.lbl1{
+			font-size: 24px;
+			color: #555555; 
+			font-weight: bold;
+		}
+		
+		.lbl2{
+			font-size:16px;
+			color: #555555; font-weight: bold;
+		}
+		
+		.lbl3{
+			font-size:12px;
+			color: #555555; 
+		}
+		
+	</style>
+	<window apply="com.elitecore.cpe.web.system.user.UserLogoutComposer" height="100%">
+		<borderlayout >
+           	<north height="32px" border="none" sclass="login_top1" style="padding-top: 0px; padding-left:0px;">
+           <!-- 	  <label value="${labels.module.title}" style="color: #555555; font-size: 14px; font-weight: bold;"/> -->
+              <image src="/images/car/lnr.png"/>
+           	</north>
+			<center border="none">
+				<borderlayout >
+				<center border="none" sclass="login_top1">
+					<vlayout sclass="main-sec" height="100%">
+						<hlayout style="padding-top:20px;padding-left:20px;text-align:center;">
+							<vlayout>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+								<label sclass="lbl1" value="Logout Successful" />
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <label sclass="lbl2" value="You have successfuly logged out of CRESTEL Inventory." />
+                                <separator bar="false"/>
+                                <label sclass="lbl2" value="For security reasons, exit your web browser." />
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                <separator bar="false"/>
+                                
+								<hlayout style="padding-left:20px;text-align:center;">
+									<label sclass="lbl2" value="Want to login again..."/>
+									<a href="/index.zul" id="loginPageUrl" style="font-size:16px; font-weight: bold;" >Click Here</a>
+						
+								</hlayout>
+                            <separator bar="false"/>
+								<label sclass="lbl3" value="If you did not intend to log out, were logged out by mistake, or logged out for some other reason, you can always log in again." />
+                            <separator bar="false"/>
+                                
+							</vlayout>
+						</hlayout>
+					</vlayout>
+				</center>
+					</borderlayout>
+			</center>
+                    <south height="196px" border="none" sclass="login_btm"> 
+                        <borderlayout>
+                            <center sclass="login_btm" border="none"></center>
+                            <south height="96px" border="none"> 
+                        <borderlayout>
+                            <center sclass="login_btm1" border="none"></center>
+                            <west width="246px" border="none" sclass="login_btm1" style="padding-left: 0px;"> <image src="/images/ar/logo-crestel.png"/></west>
+                            <east width="550px" border="none" sclass="login_btm1">
+                                <vlayout style="text-align: right; padding-top:25px" spacing="0">
+                                  <hlayout style="padding-right: 15px;">
+                                  <image src="/images/ar/logo-icon.png"/>
+                                  </hlayout>
+                                  <hlayout>
+                                  <image src="/images/ar/line.png"/>
+                                  </hlayout>
+                                  <hlayout style="padding-right: 15px; padding-top: 5px;">
+                                  <label value="© Copyright 2012 Elitecore Technologies Pvt. Ltd. All Rights Reserved" style="color: #FFF9ED; font-size: 10px;"></label>
+                                  </hlayout>
+                                </vlayout>
+                              
+                           </east>
+                        </borderlayout>
+                    </south>
+                           
+                        </borderlayout>
+                    </south>
+			
+		</borderlayout>
+	</window>
+</zk>

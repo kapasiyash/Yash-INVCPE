@@ -1,0 +1,6 @@
+Sr.No,External Batch No,Warehouse,Resource Number,Inventory Number,GuaranteeWarrantyMode,Warranty Date,Warranty Type,Serial Number
+1,BTC00008,Central,EXT0000000001,INV000001,Guarantee,,,48-44-47-50
+2,BTC00008,Central,EXT0000000001,INV000002,Warranty,21/01/2014,Supplier date,48-44-47-51
+3,BTC00008,Central,EXT0000000001,INV000003,Guarantee,,,48-44-47-52
+4,BTC00008,Central,EXT0000000001,INV000004,Warranty,21/01/2014,Purchase date,48-44-47-53
+5,BTC00008,Central,EXT0000000001,INV000005,Warranty,21/01/2014,Purchase date,48-44-47-54

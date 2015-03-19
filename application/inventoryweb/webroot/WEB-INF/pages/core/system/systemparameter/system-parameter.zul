@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./systemParameterWindow" ?>
+<zk>
+
+<!-- <style>
+.z-bandbox .z-bandbox-btn  {
+background: url('../images/combobtn.gif') no-repeat scroll 0 -1px transparent;
+} 
+
+</style> -->
+
+	<window id="systemParameterWindow"  height="100%" width="100%" apply="com.elitecore.cpe.web.systemparameter.SystemParameterComposer">
+	   <include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="System Configuration"/>
+		<tabbox width="100%" height="100%" tabscroll="false" id="systemParameterTabBox" apply="">
+			<tabs>
+	            <tab id="systemParameterTab" />
+			</tabs>
+            <tabpanels height="100%" width="100%">
+	            	<tabpanel style="padding-top: 5px; padding-left: 5px; overflow: auto;" sclass="main-cont" >
+            	<vlayout style="padding-top: 10px; padding-left: 0px; overflow: auto;" sclass="main-cont">
+						<tabbox width="100%" height="100%" tabscroll="false">
+							<tabs id="tabs"></tabs>
+							<tabpanels id="tabPanels" height="100%" width="100%"></tabpanels>
+						</tabbox>
+					<hbox>
+                        <button id="btnUpdateSystemParam" type="button" width="140px" label="${labels.global.saveBtn}" mold="trendy"/>
+                        <separator bar="true" />
+                    </hbox>
+                    <separator bar="true" />
+                    <separator bar="true" />
+                    <include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+                    <separator bar="true" />
+                    <separator bar="true" />
+            	</vlayout>
+            	<separator bar="true" />
+                    <separator bar="true" />
+					</tabpanel>
+            </tabpanels>
+		</tabbox>
+	</window>
+</zk>

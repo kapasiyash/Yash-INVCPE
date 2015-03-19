@@ -1,0 +1,79 @@
+<html xmlns:string="xalan://java.lang.String" xmlns:lxslt="http://xml.apache.org/xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Standard Error from MigrationTestCase</title>
+</head>
+<body>
+<pre>log4j:WARN No appenders could be found for logger (org.jnp.interfaces.TimedSocketFactory).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+javax.naming.CommunicationException: Could not obtain connection to any of these urls: 10.105.1.32:1199 and discovery failed with error: javax.naming.CommunicationException: Receive timed out [Root exception is java.net.SocketTimeoutException: Receive timed out]
+	at org.jnp.interfaces.NamingContext.discoverServer(NamingContext.java:1690)
+	at org.jnp.interfaces.NamingContext.checkRef(NamingContext.java:1761)
+	at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:695)
+	at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:688)
+	at javax.naming.InitialContext.lookup(InitialContext.java:392)
+	at com.elitecore.test.migration.MigrationTestCase.testMigrationAPI(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at junit.framework.TestCase.runTest(TestCase.java:176)
+	at junit.framework.TestCase.runBare(TestCase.java:141)
+	at junit.framework.TestResult$1.protect(TestResult.java:122)
+	at junit.framework.TestResult.runProtected(TestResult.java:142)
+	at junit.framework.TestResult.run(TestResult.java:125)
+	at junit.framework.TestCase.run(TestCase.java:129)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:532)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.launch(JUnitTestRunner.java:1179)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.main(JUnitTestRunner.java:1030)
+Caused by: java.net.SocketTimeoutException: Receive timed out
+	at java.net.PlainDatagramSocketImpl.receive0(Native Method)
+	at java.net.PlainDatagramSocketImpl.receive(PlainDatagramSocketImpl.java:145)
+	at java.net.DatagramSocket.receive(DatagramSocket.java:725)
+	at org.jnp.interfaces.NamingContext.discoverServer(NamingContext.java:1659)
+	... 20 more
+ [Root exception is javax.naming.CommunicationException: Failed to connect to server /10.105.1.32:1199 [Root exception is javax.naming.ServiceUnavailableException: Failed to connect to server /10.105.1.32:1199 [Root exception is java.net.NoRouteToHostException: No route to host]]]
+	at org.jnp.interfaces.NamingContext.checkRef(NamingContext.java:1780)
+	at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:695)
+	at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:688)
+	at javax.naming.InitialContext.lookup(InitialContext.java:392)
+	at com.elitecore.test.migration.MigrationTestCase.testMigrationAPI(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at junit.framework.TestCase.runTest(TestCase.java:176)
+	at junit.framework.TestCase.runBare(TestCase.java:141)
+	at junit.framework.TestResult$1.protect(TestResult.java:122)
+	at junit.framework.TestResult.runProtected(TestResult.java:142)
+	at junit.framework.TestResult.run(TestResult.java:125)
+	at junit.framework.TestCase.run(TestCase.java:129)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:532)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.launch(JUnitTestRunner.java:1179)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.main(JUnitTestRunner.java:1030)
+Caused by: javax.naming.CommunicationException: Failed to connect to server /10.105.1.32:1199 [Root exception is javax.naming.ServiceUnavailableException: Failed to connect to server /10.105.1.32:1199 [Root exception is java.net.NoRouteToHostException: No route to host]]
+	at org.jnp.interfaces.NamingContext.getServer(NamingContext.java:337)
+	at org.jnp.interfaces.NamingContext.checkRef(NamingContext.java:1746)
+	... 19 more
+Caused by: javax.naming.ServiceUnavailableException: Failed to connect to server /10.105.1.32:1199 [Root exception is java.net.NoRouteToHostException: No route to host]
+	at org.jnp.interfaces.NamingContext.getServer(NamingContext.java:307)
+	... 20 more
+Caused by: java.net.NoRouteToHostException: No route to host
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at org.jnp.interfaces.TimedSocketFactory.createSocket(TimedSocketFactory.java:97)
+	at org.jnp.interfaces.TimedSocketFactory.createSocket(TimedSocketFactory.java:82)
+	at org.jnp.interfaces.NamingContext.getServer(NamingContext.java:303)
+	... 20 more
+</pre>
+</body>
+</html>

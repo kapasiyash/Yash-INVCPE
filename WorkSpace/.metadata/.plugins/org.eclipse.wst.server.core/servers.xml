@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-time="1" hostname="localhost" id="JBoss 6.x Runtime Server1423804130764" name="JBoss 6.x Runtime Server" org.jboss.ide.eclipse.as.core.server.IGNORE_LAUNCH_COMMANDS="true" org.jboss.ide.eclipse.as.core.server.LISTEN_ON_ALL_HOSTS="true" org.jboss.ide.eclipse.as.core.server.deployDirectory="server/default/deploy" org.jboss.ide.eclipse.as.core.server.deployDirectoryType="server" org.jboss.ide.eclipse.as.core.server.serverMode="local" org.jboss.ide.eclipse.as.core.server.tempDeployDirectory="server/default/tmp/jbosstoolsTemp" org.jboss.ide.eclipse.as.core.server.userName="admin" org.jboss.ide.eclipse.as.core.server.zipDeploymentsPreference="true" runtime-id="JBoss 6.x Runtime" server-type="org.jboss.ide.eclipse.as.60" server-type-id="org.jboss.ide.eclipse.as.60" start-timeout="450" stop-timeout="450" timestamp="4">
+    <list key="modules" value0="inventoryapp::org.eclipse.jst.jee.server:inventoryapp::jst.ear::6.0"/>
+  </server>
+  <server auto-publish-setting="1" auto-publish-time="1" configuration-id="/Servers/Tomcat v7.0 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v7.0 Server at localhost" name="Tomcat v7.0 Server at localhost" runtime-id="Apache Tomcat v7.0" server-type="org.eclipse.jst.server.tomcat.70" server-type-id="org.eclipse.jst.server.tomcat.70" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="3">
+    <list key="modules" value0="inventoryweb::org.eclipse.jst.jee.server:inventoryweb::jst.web::2.5"/>
+  </server>
+</servers>

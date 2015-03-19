@@ -1,0 +1,2536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>
+         FindBugs (2.0.1) 
+         Analysis for 
+         </title>
+<style type="text/css">
+         html, body, div, form {
+            margin:0px;
+            padding:0px;
+         }
+         body {
+            padding:3px;
+         }
+         a, a:link , a:active, a:visited, a:hover {
+            text-decoration: none; color: black;
+         }
+         #navlist {
+                 padding: 3px 0;
+                 margin-left: 0;
+                 border-bottom: 1px solid #778;
+                 font: bold 12px Verdana, sans-serif;
+         }
+         #navlist li {
+                 list-style: none;
+                 margin: 0;
+                 display: inline;
+         }
+         #navlist li a {
+                 padding: 3px 0.5em;
+                 margin-left: 3px;
+                 border: 1px solid #778;
+                 border-bottom: none;
+                 background: #DDE;
+                 text-decoration: none;
+         }
+         #navlist li a:link { color: #448; }
+         #navlist li a:visited { color: #667; }
+         #navlist li a:hover {
+                 color: #000;
+                 background: #AAE;
+                 border-color: #227;
+         }
+         #navlist li a.current {
+                 background: white;
+                 border-bottom: 1px solid white;
+         }
+         #filterWrapper {
+            margin-bottom:5px;
+         }
+         #displayWrapper {
+            margin-top:5px;
+         }
+         .message {
+            background:#BBBBBB;
+           border: 1px solid #778;
+         }
+         .displayContainer {
+            border:1px solid #555555;
+            margin-top:3px;
+            padding: 3px;
+            display:none;
+         }
+         #summaryContainer table,
+         #historyContainer table {
+            border:1px solid black;
+         }
+         #summaryContainer th,
+         #historyContainer th {
+            background: #aaaaaa;
+            color: white;
+         }
+         #summaryContainer th, #summaryContainer td,
+         #historyContainer th, #historyContainer td {
+            padding: 2px 4px 2px 4px;
+         }
+         .summary-name {
+            background: #eeeeee;
+            text-align:left;
+         }
+         .summary-size {
+            background: #eeeeee;
+            text-align:center;
+         }
+         .summary-priority-all {
+            background: #dddddd;
+            text-align:center;
+         }
+         .summary-priority-1 {
+            background: red;
+            text-align:center;
+         }
+         .summary-priority-2 {
+            background: orange;
+            text-align:center;
+         }
+         .summary-priority-3 {
+            background: green;
+            text-align:center;
+         }
+         .summary-priority-4 {
+            background: blue;
+            text-align:center;
+         }
+
+         .bugList-level1 {
+            margin-bottom:5px;
+         }
+         .bugList-level1, .bugList-level2, .bugList-level3, .bugList-level4 {
+            background-color: #ffffff;
+            margin-left:15px;
+            padding-left:10px;
+         }
+         .bugList-level1-label, .bugList-level2-label, .bugList-level3-label, .bugList-level4-label {
+            background-color: #bbbbbb;
+            border: 1px solid black;
+            padding: 1px 3px 1px 3px;;
+         }
+         .bugList-level2-label, .bugList-level3-label, .bugList-level4-label {
+            border-width: 0px 1px 1px 1px;
+         }
+         .bugList-level4-label {
+            background-color: #ffffff;
+            border: 0px 0px 1px 0px;
+         }
+         .bugList-level4 {
+            border: 0px 1px 1px 1px;
+         }
+
+         .bugList-level4-inner {
+            border-style: solid;
+            border-color: black;
+            border-width: 0px 1px 1px 1px;
+         }
+         .b-r {
+            font-size: 10pt; font-weight: bold; padding: 0 0 0 60px;
+         }
+         .b-d {
+            font-weight: normal; background: #ccccc0;
+            padding: 0 5px 0 5px; margin: 0px;
+         }
+         .b-1 {
+            background: red; height: 0.5em; width: 1em;
+            margin-right: 0.5em;
+         }
+         .b-2 {
+            background: orange; height: 0.5em; width: 1em;
+            margin-right: 0.5em;
+         }
+         .b-3 {
+            background: green; height: 0.5em; width: 1em;
+            margin-right: 0.5em;
+         }
+         .b-4 {
+            background: blue; height: 0.5em; width: 1em;
+            margin-right: 0.5em;
+         }
+
+      </style>
+<script type="text/javascript">
+         var menus            = new Array('summary','info','history','listByCategories','listByPackages');
+         var selectedMenuId   = "summary";
+         var selectedVersion  = -1;
+         var selectedPriority = 4;
+         var lastVersion      = 0;
+         var includeFixedIntroducedBugs;
+
+         var bPackageNamesPopulated = false;
+
+         var filterContainerId              = "filterWrapper";
+         var historyControlContainerId      = "historyControlWrapper";
+         var messageContainerId             = "messageContainer";
+         var summaryContainerId             = "summaryContainer";
+         var infoContainerId                = "infoContainer";
+         var historyContainerId             = "historyContainer";
+         var listByCategoriesContainerId    = "listByCategoriesContainer";
+         var listByPackagesContainerId      = "listByPackagesContainer";
+
+         var idxCatKey = 0; var idxCatDescr = 1; var idxBugCat = 1;
+         var idxCodeKey = 0; var idxCodeDescr = 1; var idxBugCode = 2;
+         var idxPatternKey = 2; var idxPatternDescr = 3; var idxBugPattern = 3;
+         var idxBugKey = 0; var idxBugDescr = 6;
+         var idxBugClass = 6, idxBugPackage = 7;
+
+         // main init function
+         function init() {
+            loadFilter();
+            selectMenu(selectedMenuId);
+            lastVersion = versions.length - 1;
+         }
+
+         // menu callback function
+         function selectMenu(menuId) {
+            document.getElementById(selectedMenuId).className="none";
+            document.getElementById(menuId).className="current";
+            if (menuId!=selectedMenuId) {
+               hideMenu(selectedMenuId);
+               selectedMenuId = menuId;
+            }
+            if (menuId=="summary")           displaySummary();
+            if (menuId=="info")              displayInfo();
+            if (menuId=="history")           displayHistory();
+            if (menuId=="listByCategories")  displayListByCategories();
+            if (menuId=="listByPackages")    displayListByPackages();
+         }
+
+         // display filter
+         function loadFilter() {
+            var versionsBox = document.findbugsForm.versions.options;
+            versionsBox[0] = new Option(" -- All Versions -- ","-1");
+            versionsBox.selectedIndex = 0;
+            if (versions.length>=1) {
+               for (x=0; versions.length>1 && x<versions.length; x++) {
+                  versionsBox[x+1] = new Option(" Bugs at release: "+versions[versions.length-x-1][1], versions[versions.length-x-1][0]);
+               }
+            }
+
+            var prioritiesBox = document.findbugsForm.priorities.options;
+            prioritiesBox[0] = new Option(" -- All priorities -- ", "4");
+            prioritiesBox[1] = new Option(" P1 bugs ", "1");
+            prioritiesBox[2] = new Option(" P1 and P2 bugs ", "2");
+            prioritiesBox[3] = new Option(" P1, P2 and P3 bugs ", "3");
+         }
+
+         // display a message
+         function displayMessage(msg) {
+            var container = document.getElementById(messageContainerId);
+            container.innerHTML = "<div class='message'>"+msg+"</div>";
+         }
+
+         // reset displayed message
+         function resetMessage() {
+            var container = document.getElementById(messageContainerId);
+            container.innerHTML = "";
+         }
+
+         function hideMenu(menuId) {
+            var container = menuId+"Container";
+            document.getElementById(container).style.display="none";
+         }
+
+         // filter callback function
+         function filter() {
+            var versionsBox = document.findbugsForm.versions.options;
+            selectedVersion = versionsBox[versionsBox.selectedIndex].value;
+
+            var prioritiesBox = document.findbugsForm.priorities.options;
+            selectedPriority = prioritiesBox[prioritiesBox.selectedIndex].value;
+
+            selectMenu(selectedMenuId);
+         }
+
+         // includeFixedBugs callback function
+         function includeFixedIntroducedBugsInHistory() {
+            includeFixedIntroducedBugs =
+              document.findbugsHistoryControlForm.includeFixedIntroducedBugs.checked;
+
+            selectMenu(selectedMenuId);
+         }
+
+         // display summary tab
+         function displaySummary() {
+            resetMessage();
+            hide(filterContainerId);
+            hide(historyControlContainerId);
+            var container = document.getElementById(summaryContainerId);
+            container.style.display="block";
+         }
+
+         // display info tab
+         function displayInfo() {
+            resetMessage();
+            hide(filterContainerId);
+            hide(historyControlContainerId);
+            var container = document.getElementById(infoContainerId);
+            container.style.display="block";
+         }
+
+         // display history tab
+         function displayHistory() {
+            displayMessage("Loading history...");
+            hide(filterContainerId);
+            show(historyControlContainerId);
+            var container = document.getElementById(historyContainerId);
+            var content = "";
+            var i=0;
+            var p = [0,0,0,0,0];
+            var f = [0,0,0,0,0];
+
+            content += "<table><tr><th>Release</th><th>Bugs</th><th>Bugs p1</th><th>Bugs p2</th><th>Bugs p3</th><th>Bugs Exp.</th></tr>";
+
+            var aSpan   = "<span title='Bugs introduced in this release that have not been fixed.'>";
+            var fSpan   = "<span title='Bugs fixed in this release.'>";
+            var fiSpan  = "<span title='Bugs introduced in this release that were fixed in later releases.'>";
+            var afiSpan = "<span title='Total number of bugs introduced in this release.'>";
+            var eSpan   = "</span>";
+
+            if(includeFixedIntroducedBugs) {
+                for (i=(versions.length-1); i>0; i--) {
+                    v = countBugsVersion(i, 4);
+                    t = countTotalBugsVersion(i);
+                    o = countFixedButActiveBugsVersion(i);
+                    f = countFixedBugsInVersion(i);
+                    fi = countFixedBugsIntroducedInVersion(i);
+                    content += "<tr>";
+                    content += "<td class='summary-name'>" + versions[i][1] + "</td>";
+                    content += "<td class='summary-priority-all'> " + (t[0] + o[0]) + " (+" + afiSpan + (v[0] + fi[0]) + eSpan +
+                      " [" + aSpan + v[0] + eSpan + " / " + fiSpan + fi[0] + eSpan + "] " + eSpan + " / -" + fSpan + f[0] + eSpan + ") </td>";
+                    content += "<td class='summary-priority-1'> " + (t[1] + o[1]) + " (+" + afiSpan + (v[1] + fi[1]) + eSpan +
+                      " [" + aSpan + v[1] + eSpan + " / " + fiSpan + fi[1] + eSpan + "] " + eSpan + " / -" + fSpan + f[1] + eSpan + ") </td>";
+                    content += "<td class='summary-priority-2'> " + (t[2] + o[2]) + " (+" + afiSpan + (v[2] + fi[2]) + eSpan +
+                      " [" + aSpan + v[2] + eSpan + " / " + fiSpan + fi[2] + eSpan + "] " + eSpan + " / -" + fSpan + f[2] + eSpan + ") </td>";
+                    content += "<td class='summary-priority-3'> " + (t[3] + o[3]) + " (+" + afiSpan + (v[3] + fi[3]) + eSpan +
+                      " [" + aSpan + v[3] + eSpan + " / " + fiSpan + fi[3] + eSpan + "] " + eSpan + " / -" + fSpan + f[3] + eSpan + ") </td>";
+                    content += "<td class='summary-priority-4'> " + (t[4] + o[4]) + " (+" + afiSpan + (v[4] + fi[4]) + eSpan +
+                      " [" + aSpan + v[4] + eSpan + " / " + fiSpan + fi[4] + eSpan + "] " + eSpan + " / -" + fSpan + f[4] + eSpan + ") </td>";
+                    content += "</tr>";
+                }
+            } else {
+                for (i=(versions.length-1); i>0; i--) {
+                    v = countBugsVersion(i, 4);
+                    t = countTotalBugsVersion(i);
+                    o = countFixedButActiveBugsVersion(i);
+                    f = countFixedBugsInVersion(i);
+                    content += "<tr>";
+                    content += "<td class='summary-name'>" + versions[i][1] + "</td>";
+                    content += "<td class='summary-priority-all'> " + (t[0] + o[0]) + " (+" + aSpan + v[0] + eSpan + " / -" + fSpan + f[0] + eSpan + ") </td>";
+                    content += "<td class='summary-priority-1'  > " + (t[1] + o[1]) + " (+" + aSpan + v[1] + eSpan + " / -" + fSpan + f[1] + eSpan + ") </td>";
+                    content += "<td class='summary-priority-2'  > " + (t[2] + o[2]) + " (+" + aSpan + v[2] + eSpan + " / -" + fSpan + f[2] + eSpan + ") </td>";
+                    content += "<td class='summary-priority-3'  > " + (t[3] + o[3]) + " (+" + aSpan + v[3] + eSpan + " / -" + fSpan + f[3] + eSpan + ") </td>";
+                    content += "<td class='summary-priority-4'  > " + (t[4] + o[4]) + " (+" + aSpan + v[4] + eSpan + " / -" + fSpan + f[4] + eSpan + ") </td>";
+                    content += "</tr>";
+                }
+            }
+
+            t = countTotalBugsVersion(0);
+            o = countFixedButActiveBugsVersion(0);
+            content += "<tr>";
+            content += "<td class='summary-name'>" + versions[0][1] + "</td>";
+            content += "<td class='summary-priority-all'> " + (t[0] + o[0]) + " </td>";
+            content += "<td class='summary-priority-1'  > " + (t[1] + o[1]) + " </td>";
+            content += "<td class='summary-priority-2'  > " + (t[2] + o[2]) + " </td>";
+            content += "<td class='summary-priority-3'  > " + (t[3] + o[3]) + " </td>";
+            content += "<td class='summary-priority-4'  > " + (t[4] + o[4]) + " </td>";
+            content += "</tr>";
+
+            content += "</table>";
+            container.innerHTML = content;
+            container.style.display="block";
+            resetMessage();
+         }
+
+         // display list by cat tab
+         function displayListByCategories() {
+            hide(historyControlContainerId);
+            show(filterContainerId);
+            var container = document.getElementById(listByCategoriesContainerId);
+            container.innerHTML = "";
+            container.style.display="block";
+            displayMessage("Loading stats (categories)...");
+            container.innerHTML = displayLevel1("lbc", "Stats by Bug Categories");
+            resetMessage();
+         }
+
+         // display list by package tab
+         function displayListByPackages() {
+            hide(historyControlContainerId);
+            show(filterContainerId);
+            var container = document.getElementById(listByPackagesContainerId);
+            container.style.display="block";
+            if (!bPackageNamesPopulated) {
+               displayMessage("Initializing...");
+               populatePackageNames();
+            }
+            displayMessage("Loading stats (packages)...");
+            container.innerHTML = displayLevel1("lbp", "Stats by Bug Package");
+            resetMessage();
+         }
+
+         // callback function for list item click
+         function toggleList(listType, containerId, id1, id2, id3) {
+            var container = document.getElementById(containerId);
+            if (container.style.display=="block") {
+               container.style.display="none";
+            } else {
+               if (listType=="lbc") {
+                  if (id1.length>0 && id2.length==0 && id3.length==0) {
+                     displayCategoriesCodes(containerId, id1);
+                  } else if (id1.length>0 && id2.length>0 && id3.length==0) {
+                     displayCategoriesCodesPatterns(containerId, id1, id2);
+                  } else if (id1.length>0 && id2.length>0 && id3.length>0) {
+                     displayCategoriesCodesPatternsBugs(containerId, id1, id2, id3);
+                  } else {
+                     // ???
+                  }
+               } else if (listType=="lbp") {
+                  if (id1.length>0 && id2.length==0 && id3.length==0) {
+                     displayPackageCodes(containerId, id1);
+                  } else if (id1.length>0 && id2.length>0 && id3.length==0) {
+                     displayPackageClassPatterns(containerId, id1, id2);
+                  } else if (id1.length>0 && id2.length>0 && id3.length>0) {
+                     displayPackageClassPatternsBugs(containerId, id1, id2, id3);
+                  } else {
+                     // ???
+                  }
+               } else {
+                  // ????
+               }
+            }
+         }
+
+         // list by categories, display bug cat>codes
+         function displayCategoriesCodes(containerId, catId) {
+            displayMessage("Loading stats (codes)...");
+            var container = document.getElementById(containerId);
+            container.style.display="block";
+            if (container.innerHTML=="Loading..." || container.innerHTML=="") {
+               container.innerHTML = displayLevel2("lbc", catId);
+            }
+            resetMessage();
+         }
+
+         // list by categories, display bug package>codes
+         function displayPackageCodes(containerId, packageId) {
+            displayMessage("Loading stats (codes)...");
+            var container = document.getElementById(containerId);
+            container.style.display="block";
+            if (container.innerHTML=="Loading..." || container.innerHTML=="") {
+               container.innerHTML = displayLevel2("lbp", packageId);
+            }
+            resetMessage();
+         }
+
+         // list by categories, display bug cat>codes>patterns
+         function displayCategoriesCodesPatterns(containerId, catId, codeId) {
+            displayMessage("Loading stats (patterns)...");
+            var container = document.getElementById(containerId);
+            container.style.display="block";
+            if (container.innerHTML=="Loading..." || container.innerHTML=="")
+               container.innerHTML = displayLevel3("lbc", catId, codeId);
+            resetMessage();
+         }
+
+         // list by package, display bug package>class>patterns
+         function displayPackageClassPatterns(containerId, packageId, classId) {
+            displayMessage("Loading stats (patterns)...");
+            var container = document.getElementById(containerId);
+            container.style.display="block";
+            if (container.innerHTML=="Loading..." || container.innerHTML=="")
+               container.innerHTML = displayLevel3("lbp", packageId, classId);
+            resetMessage();
+         }
+
+         // list by categories, display bug cat>codes>patterns>bugs
+         function displayCategoriesCodesPatternsBugs(containerId, catId, codeId, patternId) {
+            displayMessage("Loading stats (bugs)...");
+            var container = document.getElementById(containerId);
+            container.style.display="block";
+            if (container.innerHTML=="Loading..." || container.innerHTML=="")
+               container.innerHTML = displayLevel4("lbc", catId, codeId, patternId);
+            resetMessage();
+         }
+
+         // list by package, display bug package>class>patterns>bugs
+         function displayPackageClassPatternsBugs(containerId, packageId, classId, patternId) {
+            displayMessage("Loading stats (bugs)...");
+            var container = document.getElementById(containerId);
+            container.style.display="block";
+            if (container.innerHTML=="Loading..." || container.innerHTML=="")
+               container.innerHTML = displayLevel4("lbp",  packageId, classId, patternId);
+            resetMessage();
+         }
+
+         // generate level 1 list
+         function displayLevel1(list, title) {
+            var content = "";
+            var content2 = "";
+
+            content += "<h3>"+title+"</h3>";
+            content += getPriorityLegend();
+            content2 += "<div class='bugList'>";
+
+            var id = "";
+            var containerId = "";
+            var subContainerId = "";
+            var prefixSub = "";
+            var prefixId = "";
+            var p = [0,0,0,0,0];
+            var numberOfBugs = 0;
+            var label = "";
+            var max = 0;
+            if (list=="lbc") {
+               max = categories.length;
+            } else if (list=="lbp") {
+               max = packageStats.length;
+            }
+
+            for (var x=0; x<max -1; x++) {
+               if (list=="lbp" && packageStats[x][1]=="0") continue;
+
+               if (list=="lbc") {
+                  id = categories[x][idxCatKey];
+                  label = categories[x][idxCatDescr];
+                  containerId = "categories-" + id;
+                  subContainerId = "cat-"+id;
+                  p = countBugsCat(selectedVersion, selectedPriority, id, idxBugCat);
+               }
+               if (list=="lbp") {
+                  id = packageStats[x][0];
+                  label = packageStats[x][0];
+                  containerId = "packages-" + id;
+                  subContainerId = "package-"+id;
+                  p = countBugsPackage(selectedVersion, selectedPriority, id, idxBugPackage);
+               }
+
+               subContainerId = prefixSub+id;
+
+               var total = p[1]+p[2]+p[3]+p[4];
+               if (total > 0) {
+                  content2 += addListItem( 1, containerId, label, total, p, subContainerId,
+                                          "toggleList('" + list + "', '" + subContainerId + "', '"+ id + "', '', '')"
+                                          );
+               }
+               numberOfBugs += total;
+            }
+            content2 += "</div>";
+            content += "<h4>Total number of bugs";
+            if (selectedVersion!=-1) {
+               content += " (introduced in release " + versions[selectedVersion][1] +")";
+            }
+            content += ": "+numberOfBugs+"</h4>";
+            return content+content2;
+         }
+
+         // generate level 2 list
+        function displayLevel2(list, id1) {
+            var content = "";
+            var code = "";
+            var containerId = "";
+            var subContainerId = "";
+            var p = [0,0,0,0,0];
+            var max = 0;
+            var id2 = "";
+            if (list=="lbc") {
+               max = codes.length;
+            } else if (list=="lbp") {
+               max = classStats.length;
+            }
+
+            for (var x=0; x<max -1; x++) {
+               if (list=="lbp" && classStats[x][3]=="0") continue;
+
+               if (list=="lbc") {
+                  id2 = codes[x][idxCodeKey];
+                  label = codes[x][idxCodeDescr];
+                  containerId = "codes-"+id1;
+                  subContainerId = "cat-" + id1 + "-code-" + id2;
+                  p = countBugsCode(selectedVersion, selectedPriority, id1, idxBugCat, id2, idxBugCode);
+               }
+               if (list=="lbp") {
+                  id2 = classStats[x][0];
+                  label = classStats[x][0];
+                  containerId = "packages-"+id1;
+                  subContainerId = "package-" + id1 + "-class-" + id2;
+                  p = countBugsClass(selectedVersion, selectedPriority, id1, idxBugPackage, id2, idxBugClass);
+               }
+
+               var total = p[1]+p[2]+p[3]+p[4];
+               if (total > 0) {
+                  content += addListItem( 2, containerId, label, total, p, subContainerId,
+                                          "toggleList('"+ list + "', '" + subContainerId + "', '"+ id1 + "', '"+ id2 + "', '')"
+                                          );
+               }
+            }
+            return content;
+         }
+
+         // generate level 3 list
+        function displayLevel3(list, id1, id2) {
+            var content = "";
+            var containerId = "";
+            var subContainerId = "";
+            var p = [0,0,0,0,0];
+            var max = 0;
+            var label = "";
+            var id3 = "";
+
+            if (list=="lbc") {
+               max = patterns.length;
+            } else if (list=="lbp") {
+               max = patterns.length;
+            }
+
+            for (var x=0; x<max -1; x++) {
+               //if (list=="lbp" && (patterns[x][0]!=id1 || patterns[x][1]!=id2)) continue;
+               //if (list=="lbp" && classStats[x][3]=="0") continue;
+
+               if (list=="lbc") {
+                  id3 = patterns[x][idxPatternKey];;
+                  label = patterns[x][idxPatternDescr];
+                  containerId = "patterns-"+id1;
+                  subContainerId = "cat-" + id1 + "-code-" + id2 + "-pattern-" + id3;
+                  p = countBugsPattern(selectedVersion, selectedPriority, id1, idxBugCat, id2, idxBugCode, id3, idxBugPattern);
+               }
+               if (list=="lbp") {
+                  id3 = patterns[x][idxPatternKey];;
+                  label = patterns[x][idxPatternDescr];
+                  containerId = "classpatterns-"+id1;
+                  subContainerId = "package-" + id1 + "-class-" + id2 + "-pattern-" + id3;
+                  p = countBugsClassPattern(selectedVersion, selectedPriority, id2, idxBugClass, id3, idxBugPattern);
+               }
+
+               var total = p[1]+p[2]+p[3]+p[4];
+               if (total > 0) {
+                  content += addListItem( 3, containerId, label, total, p, subContainerId,
+                                          "toggleList('" + list + "', '" + subContainerId + "', '"+ id1 + "', '"+ id2 + "', '"+ id3 + "')"
+                                          );
+               }
+            }
+            return content;
+         }
+
+         // generate level 4 list
+        function displayLevel4(list, id1, id2, id3) {
+            var content = "";
+            var bug = "";
+            var bugP = 0;
+            var containerId = "";
+            var subContainerId = "";
+            var bugId = "";
+            var label = "";
+            var p = [0,0,0,0,0];
+            for (var x=0; x<bugs.length -1; x++) {
+               bug = bugs[x];
+               if (list=="lbc") {
+                  if ( bug[1]!=id1 || bug[2]!=id2 || bug[3]!=id3 ) continue;
+                  if ( selectedVersion!=-1
+                     && selectedVersion!=bug[5]) continue;
+                  if ( selectedPriority!=4
+                     && selectedPriority<bug[4]) continue;
+
+                  subContainerId = "cat-" + id1 + "-code-" + id2 + "-pattern-" + id3 + "-bug-" + bug[0];
+               }
+               if (list=="lbp") {
+                  if ( bug[7]!=id1 || bug[6]!=id2 || bug[3]!=id3 ) continue;
+                  if ( selectedVersion!=-1
+                     && selectedVersion!=bug[5]) continue;
+                  if ( selectedPriority!=4
+                     && selectedPriority<bug[4]) continue;
+
+                  subContainerId = "package-" + id1 + "-class-" + id2 + "-pattern-" + id3 + "-bug-" + bug[0];
+               }
+
+               bugId = "b-uid-" + bug[0];
+               label = bug[idxBugDescr];
+               containerId = "bugs-"+bugId;
+               bugP = bug[4];
+               p[bugP]++;
+               var total = p[1]+p[2]+p[3]+p[4];
+               if (total > 0) {
+                  content += addBug(   4, containerId, label, bugP, bug[5], subContainerId,
+                                       "showbug('" + bugId + "', '" + subContainerId + "', '"+id3+"')");
+               }
+            }
+            return content;
+         }
+
+
+         function addListItem(level, id, label, total, p, subId, onclick) {
+            var content = "";
+
+            content += "<div class='bugList-level"+level+"' >";
+            content += "<div class='bugList-level"+level+"-label' id='"+id+"' >";
+            content += "<a href='' onclick=\"" + onclick + ";return false;\" ";
+            content += ">";
+            content += "<strong>"+label+"</strong>";
+            content += " "+total+" bugs";
+            if (selectedPriority>1)
+               content += " <em>("+p[1];
+            if (selectedPriority>=2)
+               content += "/"+p[2];
+            if (selectedPriority>=3)
+               content += "/"+p[3];
+            if (selectedPriority>=4)
+               content += "/"+p[4];
+            if (selectedPriority>1)
+               content += ")</em>";
+            content += "</a>";
+            content += "</div>";
+            content += "<div class='bugList-level"+level+"-inner' id='"+subId+"' style='display:none;'>Loading...</div>";
+            content += "</div>";
+            return content;
+         }
+
+         function addBug( level, id, label, p, version, subId, onclick) {
+            var content = "";
+
+            content += "<div class='bugList-level" + level + "' id='" + id + "'>";
+            content += "<div class='bugList-level" + level + "-label' id='" + id + "'>";
+            content += "<span class='b-" + p + "'>&nbsp;&nbsp;&nbsp;</span>";
+            content += "<a href='' onclick=\"" + onclick + ";return false;\">";
+            if (version==lastVersion) {
+               content += "<span style='color:red;font-weight:bold;'>NEW!</span> ";
+            }
+            content += "<strong>" + label + "</strong>";
+            if (version==0) {
+               content += " <em>since release first historized release</em>";
+            } else {
+               content += " <em>since release " + versions[version][1] + "</em>";
+            }
+            content += "</a>";
+            content += "</div>";
+            content += "<div class='bugList-level" + level + "-inner' id='" + subId + "' style='display:none;'>Loading...</div>";
+            content += "</div>";
+            return content;
+         }
+
+         function countBugsVersion(version, priority) {
+            return countBugs(version, priority, "", -1, "", -1, "", -1, "", -1, "", -1);
+         }
+
+         function countBugsCat(version, priority, cat, idxCat) {
+            return countBugs(version, priority, cat, idxCat, "", -1, "", -1, "", -1, "", -1);
+         }
+
+         function countBugsPackage(version, priority, packageId, idxPackage) {
+            return countBugs(version, priority, "", -1, "", -1, "", -1, packageId, idxPackage, "", -1);
+         }
+
+         function countBugsCode(version, priority, cat, idxCat, code, idxCode) {
+            return countBugs(version, priority, cat, idxCat, code, idxCode, "", -1, "", -1, "", -1);
+         }
+
+         function countBugsPattern(version, priority, cat, idxCat, code, idxCode, packageId, idxPattern) {
+            return countBugs(version, priority, cat, idxCat, code, idxCode, packageId, idxPattern, "", -1, "", -1);
+         }
+
+         function countBugsClass(version, priority, id1, idxBugPackage, id2, idxBugClass) {
+            return countBugs(version, priority, "", -1, "", -1, "", -1, id1, idxBugPackage, id2, idxBugClass);
+         }
+
+         function countBugsClassPattern(version, priority, id2, idxBugClass, id3, idxBugPattern) {
+            return countBugs(version, priority, "", -1, "", -1, id3, idxBugPattern, "", -1, id2, idxBugClass);
+         }
+
+         function countBugs(version, priority, cat, idxCat, code, idxCode, pattern, idxPattern, packageId, idxPackage, classId, idxClass) {
+            var count = [0,0,0,0,0];
+            var last=1000000;
+            for (var x=0; x<bugs.length-1; x++) {
+               var bug = bugs[x];
+
+               var bugCat = bug[idxCat];
+               var bugP = bug[4];
+               var bugCode = bug[idxCode];
+               var bugPattern = bug[idxPattern];
+
+               if (     (version==-1    || version==bug[5])
+                     && (priority==4    || priority>=bug[4])
+                     && (idxCat==-1     || bug[idxCat]==cat)
+                     && (idxCode==-1    || bug[idxCode]==code)
+                     && (idxPattern==-1 || bug[idxPattern]==pattern)
+                     && (idxPackage==-1 || bug[idxPackage]==packageId)
+                     && (idxClass==-1   || bug[idxClass]==classId)
+                     ) {
+                  count[bug[4]]++;
+               }
+            }
+            count[0] = count[1] + count[2] + count[3] + count[4];
+            return count;
+         }
+
+         function countFixedBugsInVersion(version) {
+            var count = [0,0,0,0,0];
+            var last=1000000;
+            for (var x=0; x<fixedBugs.length-1; x++) {
+               var bug = fixedBugs[x];
+
+               var bugP = bug[4];
+
+               if ( version==-1 || version==(bug[6]+1)) {
+                  count[bug[4]]++;
+               }
+            }
+            count[0] = count[1] + count[2] + count[3] + count[4];
+            return count;
+         }
+
+         function countFixedBugsIntroducedInVersion(version) {
+            var count = [0,0,0,0,0];
+            var last=1000000;
+            for (var x=0; x<fixedBugs.length-1; x++) {
+               var bug = fixedBugs[x];
+
+               var bugP = bug[4];
+
+               if ( version==-1 || version==(bug[5])) {
+                  count[bug[4]]++;
+               }
+            }
+            count[0] = count[1] + count[2] + count[3] + count[4];
+            return count;
+         }
+
+         function countFixedButActiveBugsVersion(version) {
+            var count = [0,0,0,0,0];
+            var last=1000000;
+            for (var x=0; x<fixedBugs.length-1; x++) {
+               var bug = fixedBugs[x];
+
+               var bugP = bug[4];
+
+               if ( version==-1 || (version >=bug[5] && version<=bug[6]) ) {
+                  count[bug[4]]++;
+               }
+            }
+            count[0] = count[1] + count[2] + count[3] + count[4];
+            return count;
+         }
+
+         function countTotalBugsVersion(version) {
+            var count = [0,0,0,0,0];
+            var last=1000000;
+            for (var x=0; x<bugs.length-1; x++) {
+               var bug = bugs[x];
+
+               var bugP = bug[4];
+
+               if (version==-1 || version>=bug[5]) {
+                  count[bug[4]]++;
+               }
+            }
+            count[0] = count[1] + count[2] + count[3] + count[4];
+            return count;
+         }
+
+         function getPriorityLegend() {
+            var content = "";
+            content += "<h5><span class='b-1'>&nbsp;&nbsp;&nbsp;</span> P1 ";
+            content += "<span class='b-2'>&nbsp;&nbsp;&nbsp;</span> P2 ";
+            content += "<span class='b-3'>&nbsp;&nbsp;&nbsp;</span> P3 ";
+            content += "<span class='b-4'>&nbsp;&nbsp;&nbsp;</span> Exp ";
+            content += "</h5>";
+            return content;
+         }
+
+         function populatePackageNames() {
+            for (var i=0; i<bugs.length; i++) {
+               var classId = bugs[i][6];
+               var idx = classId.lastIndexOf('.');
+               var packageId = "";
+
+               if (idx>0) {
+                  packageId = classId.substring(0, idx);
+               }
+
+               bugs[i][7] = packageId;
+            }
+         }
+
+         function showbug(bugId, containerId, patternId) {
+            var bugplaceholder   = document.getElementById(containerId);
+            var bug              = document.getElementById(bugId);
+
+            if ( bugplaceholder==null) {
+               alert(buguid+'-ph-'+list+' - '+buguid+' - bugplaceholder==null');
+               return;
+            }
+            if ( bug==null) {
+               alert(buguid+'-ph-'+list+' - '+buguid+' - bug==null');
+               return;
+            }
+
+            var newBug = bug.innerHTML;
+            var pattern = document.getElementById('tip-'+patternId).innerHTML;
+            toggle(containerId);
+            bugplaceholder.innerHTML = newBug + pattern;
+         }
+         function toggle(foo) {
+            if( document.getElementById(foo).style.display == "none") {
+               show(foo);
+            } else {
+               if( document.getElementById(foo).style.display == "block") {
+                  hide(foo);
+               } else {
+                  show(foo);
+               }
+            }
+         }
+         function show(foo) {
+            document.getElementById(foo).style.display="block";
+         }
+         function hide(foo) {
+            document.getElementById(foo).style.display="none";
+         }
+
+         window.onload = function(){
+            init();
+         };
+      </script>
+<script type="text/javascript">
+         // versions fields: release id, release label
+         var versions = new Array(
+            
+               [ "0", "" ]
+            );
+
+         // categories fields: category id, category label
+         var categories = new Array(
+            
+               [ "SECURITY", "Security" ],
+            
+               [ "STYLE", "Dodgy code" ],
+            
+               [ "", "" ]
+            );
+
+         // codes fields: code id, code label
+         var codes = new Array(
+            
+               [ "INT", "Suspicious integer expression" ],
+            
+               [ "NP", "Null pointer dereference" ],
+            
+               [ "REC", "RuntimeException capture" ],
+            
+               [ "SQL", "Potential SQL Problem" ],
+            
+               [ "", "" ]
+            );
+
+         // patterns fields: category id, code id, pattern id, pattern label
+         var patterns = new Array(
+            
+               [ "STYLE", "INT", "INT_VACUOUS_BIT_OPERATION", "Vacuous bit mask operation on integer value" ],
+
+            
+               [ "STYLE", "NP", "NP_LOAD_OF_KNOWN_NULL_VALUE", "Load of known null value" ],
+
+            
+               [ "STYLE", "REC", "REC_CATCH_EXCEPTION", "Exception is caught when Exception is not thrown" ],
+
+            
+               [ "SECURITY", "SQL", "SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING", "A prepared statement is generated from a nonconstant String" ],
+
+            
+               [ "", "", "", "" ]
+            );
+
+         // class stats fields: class name, package name, isInterface, total bugs, bugs p1, bugs p2, bugs p3, bugs p4
+         var classStats = new Array(
+            
+               [ "com.elitecore.cpe.bl.agents.AgentData", "com.elitecore.cpe.bl.agents", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.AgentInitializationException", "com.elitecore.cpe.bl.agents", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.AgentRunContext", "com.elitecore.cpe.bl.agents", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.base.AgentBase", "com.elitecore.cpe.bl.agents.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.base.BaseAgent", "com.elitecore.cpe.bl.agents.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.base.BaseAgentRun", "com.elitecore.cpe.bl.agents.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.base.BaseEnityEnvParameter", "com.elitecore.cpe.bl.agents.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.base.BaseEntity", "com.elitecore.cpe.bl.agents.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.base.BaseMasterEnityEnvParameter", "com.elitecore.cpe.bl.agents.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.base.BaseMasterEntity", "com.elitecore.cpe.bl.agents.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.base.BaseSchedule", "com.elitecore.cpe.bl.agents.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent", "com.elitecore.cpe.bl.agents.customs", "false", "1", "", "1", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent", "com.elitecore.cpe.bl.agents.customs", "false", "1", "", "1", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.manager.AgentManager", "com.elitecore.cpe.bl.agents.manager", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.provider.AgentManagerProvider", "com.elitecore.cpe.bl.agents.provider", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.provider.AgentWorkerProvider", "com.elitecore.cpe.bl.agents.provider", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.service.AgentServiceManager", "com.elitecore.cpe.bl.agents.service", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.service.IAgentServiceManager", "com.elitecore.cpe.bl.agents.service", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.worker.AgentWorker", "com.elitecore.cpe.bl.agents.worker", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.inventorymgt.InventoryStatusConstants", "com.elitecore.cpe.bl.constants.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.master.EntityConstants", "com.elitecore.cpe.bl.constants.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.notification.NotificationConstants", "com.elitecore.cpe.bl.constants.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.policy.CPECommonConstants", "com.elitecore.cpe.bl.constants.policy", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.policy.UniqueConstraintConstants", "com.elitecore.cpe.bl.constants.policy", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.system.AgentConstants", "com.elitecore.cpe.bl.constants.system", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.system.audit.AuditConstants", "com.elitecore.cpe.bl.constants.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.system.audit.AuditTagConstant", "com.elitecore.cpe.bl.constants.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.system.DataSourceConstant", "com.elitecore.cpe.bl.constants.system", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.system.parameter.SystemParameterConstants", "com.elitecore.cpe.bl.constants.system.parameter", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.user.UserConstants", "com.elitecore.cpe.bl.constants.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.controller.system.BSSUserAuthController", "com.elitecore.cpe.bl.controller.system", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.controller.system.CPEUserAuthController", "com.elitecore.cpe.bl.controller.system", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.common.ComboBoxData", "com.elitecore.cpe.bl.data.common", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.common.ComboData", "com.elitecore.cpe.bl.data.common", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.notification.DocumentTemplateDetailWrapperdata", "com.elitecore.cpe.bl.data.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.notification.DocumentTemplateWrapperdata", "com.elitecore.cpe.bl.data.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.notification.MessageTagWrapperData", "com.elitecore.cpe.bl.data.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.notification.NotificationData", "com.elitecore.cpe.bl.data.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.notification.SMSDocumentTemplateDetailWrapperData", "com.elitecore.cpe.bl.data.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.agent.AgentScheduleProcedureWrapperData", "com.elitecore.cpe.bl.data.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.audit.AuditEntryData", "com.elitecore.cpe.bl.data.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.audit.AuditQueueData", "com.elitecore.cpe.bl.data.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.audit.AuditSummary", "com.elitecore.cpe.bl.data.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.audit.AuditSummaryDetail", "com.elitecore.cpe.bl.data.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.audit.ConfigureAuditWrapperData", "com.elitecore.cpe.bl.data.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.audit.EntityTypeEnum", "com.elitecore.cpe.bl.data.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.audit.WebServiceAuditData", "com.elitecore.cpe.bl.data.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.internal.SystemActionData", "com.elitecore.cpe.bl.data.system.internal", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.internal.SystemModuleData", "com.elitecore.cpe.bl.data.system.internal", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.internal.SystemModuleGroupData", "com.elitecore.cpe.bl.data.system.internal", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.systemparameter.SystemParameterGroupWrapperData", "com.elitecore.cpe.bl.data.system.systemparameter", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.systemparameter.SystemParameterWrapperData", "com.elitecore.cpe.bl.data.system.systemparameter", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.user.AdminUserWrapperData", "com.elitecore.cpe.bl.data.system.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.user.UserData", "com.elitecore.cpe.bl.data.system.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.BaseBusinessDelegate", "com.elitecore.cpe.bl.delegates", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.CPEDelegateFactory", "com.elitecore.cpe.bl.delegates", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.inventorymgt.InventoryManagementBD", "com.elitecore.cpe.bl.delegates.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.master.AttributeBD", "com.elitecore.cpe.bl.delegates.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.master.ItemBD", "com.elitecore.cpe.bl.delegates.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.master.WareHouseBD", "com.elitecore.cpe.bl.delegates.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.notification.NotificationBD", "com.elitecore.cpe.bl.delegates.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.system.agent.SystemAgentBD", "com.elitecore.cpe.bl.delegates.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.system.audit.ConfigureAuditBD", "com.elitecore.cpe.bl.delegates.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.system.internal.SystemInternalBD", "com.elitecore.cpe.bl.delegates.system.internal", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.system.systemparameter.SystemParameterBD", "com.elitecore.cpe.bl.delegates.system.systemparameter", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.system.user.UserBD", "com.elitecore.cpe.bl.delegates.system.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.transfer.InventoryTransferBD", "com.elitecore.cpe.bl.delegates.transfer", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.bss.acl.BSSACLGroup", "com.elitecore.cpe.bl.entity.inventory.bss.acl", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.bss.user.BSSUser", "com.elitecore.cpe.bl.entity.inventory.bss.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.DocumentCategory", "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.DocumentTemplate", "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.DocumentTemplateDetail", "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.MessageTag", "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.NotificationAudit", "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.SMSDocumentTemplateDetail", "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core.expr.ConstraintExpression", "com.elitecore.cpe.bl.entity.inventory.core.expr", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core.PrimaryKey", "com.elitecore.cpe.bl.entity.inventory.core", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.BatchData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.BatchSummaryData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.InvalidInventoryData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryReserveData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryReserveDetailData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryStatusData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryStatusLogData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryStatusTransition", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventorySubStatusData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventorySubStatusTransition", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.OrderData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.ResourceAttributeRel", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.TransferOrderData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.TransferOrderDetailData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.WarehouseInventoryStatusData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt.WarehouseInventoryStatusHistoryData", "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.master.AttributeData", "com.elitecore.cpe.bl.entity.inventory.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.master.AttributeTransData", "com.elitecore.cpe.bl.entity.inventory.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.master.ConfigureThresholdData", "com.elitecore.cpe.bl.entity.inventory.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.master.ItemData", "com.elitecore.cpe.bl.entity.inventory.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.master.ResourceCategory", "com.elitecore.cpe.bl.entity.inventory.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.master.ResourceSubTypeData", "com.elitecore.cpe.bl.entity.inventory.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.master.ResourceTypeData", "com.elitecore.cpe.bl.entity.inventory.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.master.WarehouseData", "com.elitecore.cpe.bl.entity.inventory.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.master.WarehouseTypeData", "com.elitecore.cpe.bl.entity.inventory.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.AgentParam", "com.elitecore.cpe.bl.entity.inventory.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.ExecutionStatus", "com.elitecore.cpe.bl.entity.inventory.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.ExecutionType", "com.elitecore.cpe.bl.entity.inventory.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.history.SystemAgentRunDetail", "com.elitecore.cpe.bl.entity.inventory.system.agent.history", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.history.SystemAgentRunQueue", "com.elitecore.cpe.bl.entity.inventory.system.agent.history", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.schedule.SystemAgentSchedule", "com.elitecore.cpe.bl.entity.inventory.system.agent.schedule", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.schedule.SystemAgentScheduleParameter", "com.elitecore.cpe.bl.entity.inventory.system.agent.schedule", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.SystemAgent", "com.elitecore.cpe.bl.entity.inventory.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.SystemAgentParameter", "com.elitecore.cpe.bl.entity.inventory.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.audit.AuditEntry", "com.elitecore.cpe.bl.entity.inventory.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.audit.DataTagsData", "com.elitecore.cpe.bl.entity.inventory.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.audit.MessageTemplateData", "com.elitecore.cpe.bl.entity.inventory.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.audit.SystemAudit", "com.elitecore.cpe.bl.entity.inventory.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.audit.ViewAuditData", "com.elitecore.cpe.bl.entity.inventory.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.audit.WebServiceAuditEntry", "com.elitecore.cpe.bl.entity.inventory.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.internal.SystemAction", "com.elitecore.cpe.bl.entity.inventory.system.internal", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.internal.SystemModule", "com.elitecore.cpe.bl.entity.inventory.system.internal", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.systemparameter.SysPrmCustomFieldType", "com.elitecore.cpe.bl.entity.inventory.system.systemparameter", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.systemparameter.SystemParameter", "com.elitecore.cpe.bl.entity.inventory.system.systemparameter", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.systemparameter.SystemParameterGroup", "com.elitecore.cpe.bl.entity.inventory.system.systemparameter", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.userwarehouse.UserWarehouseMapping", "com.elitecore.cpe.bl.entity.inventory.system.userwarehouse", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.transfer.InventoryTransferOrderStatus", "com.elitecore.cpe.bl.entity.inventory.transfer", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.user.EncryptionType", "com.elitecore.cpe.bl.entity.inventory.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception.AccessDeniedException", "com.elitecore.cpe.bl.exception", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception.AccountBlockedException", "com.elitecore.cpe.bl.exception", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception.agent.AgentServiceException", "com.elitecore.cpe.bl.exception.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception.CreateBLException", "com.elitecore.cpe.bl.exception", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception.NoSuchControllerException", "com.elitecore.cpe.bl.exception", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception.PasswordExpiredException", "com.elitecore.cpe.bl.exception", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception.SearchBLException", "com.elitecore.cpe.bl.exception", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception.TechnicalException", "com.elitecore.cpe.bl.exception", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception.UpdateBLException", "com.elitecore.cpe.bl.exception", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.BaseDataConversionUtils", "com.elitecore.cpe.bl.facade", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.BaseFacade", "com.elitecore.cpe.bl.facade", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.batch.BatchManagementFacade", "com.elitecore.cpe.bl.facade.batch", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.batch.BatchManagementFacadeLocal", "com.elitecore.cpe.bl.facade.batch", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.batch.BatchManagementFacadeRemote", "com.elitecore.cpe.bl.facade.batch", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.batch.BatchManagementUtil", "com.elitecore.cpe.bl.facade.batch", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.batch.IBatchManagementFacade", "com.elitecore.cpe.bl.facade.batch", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.bss.user.BSSUserFacade", "com.elitecore.cpe.bl.facade.bss.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.bss.user.BSSUserFacadeLocal", "com.elitecore.cpe.bl.facade.bss.user", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.bss.user.BSSUserFacadeRemote", "com.elitecore.cpe.bl.facade.bss.user", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.bss.user.IBSSUserFacade", "com.elitecore.cpe.bl.facade.bss.user", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorymgt.IInventoryManagementFacade", "com.elitecore.cpe.bl.facade.inventorymgt", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade", "com.elitecore.cpe.bl.facade.inventorymgt", "false", "1", "", "1", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacadeLocal", "com.elitecore.cpe.bl.facade.inventorymgt", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacadeRemote", "com.elitecore.cpe.bl.facade.inventorymgt", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementUtil", "com.elitecore.cpe.bl.facade.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementUtil$1", "com.elitecore.cpe.bl.facade.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementUtil$2", "com.elitecore.cpe.bl.facade.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorytransfer.IInventoryTransferFacade", "com.elitecore.cpe.bl.facade.inventorytransfer", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorytransfer.InventoryTransferFacade", "com.elitecore.cpe.bl.facade.inventorytransfer", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorytransfer.InventoryTransferFacadeLocal", "com.elitecore.cpe.bl.facade.inventorytransfer", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorytransfer.InventoryTransferFacadeRemote", "com.elitecore.cpe.bl.facade.inventorytransfer", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.attribute.AttributeFacade", "com.elitecore.cpe.bl.facade.master.attribute", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.attribute.AttributeFacadeLocal", "com.elitecore.cpe.bl.facade.master.attribute", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.attribute.AttributeFacadeRemote", "com.elitecore.cpe.bl.facade.master.attribute", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.attribute.AttributeUtil", "com.elitecore.cpe.bl.facade.master.attribute", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.attribute.IAttributeFacade", "com.elitecore.cpe.bl.facade.master.attribute", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.item.IItemFacade", "com.elitecore.cpe.bl.facade.master.item", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.item.ItemFacade", "com.elitecore.cpe.bl.facade.master.item", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.item.ItemFacadeLocal", "com.elitecore.cpe.bl.facade.master.item", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.item.ItemFacadeRemote", "com.elitecore.cpe.bl.facade.master.item", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.item.ItemUtil", "com.elitecore.cpe.bl.facade.master.item", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.warehouse.IWarehouseFacade", "com.elitecore.cpe.bl.facade.master.warehouse", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade", "com.elitecore.cpe.bl.facade.master.warehouse", "false", "1", "", "1", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacadeLocal", "com.elitecore.cpe.bl.facade.master.warehouse", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacadeRemote", "com.elitecore.cpe.bl.facade.master.warehouse", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil", "com.elitecore.cpe.bl.facade.master.warehouse", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil$1", "com.elitecore.cpe.bl.facade.master.warehouse", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil$2", "com.elitecore.cpe.bl.facade.master.warehouse", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil$3", "com.elitecore.cpe.bl.facade.master.warehouse", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil$4", "com.elitecore.cpe.bl.facade.master.warehouse", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.notification.INotificationFacade", "com.elitecore.cpe.bl.facade.notification", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.notification.NotificationDataConversionUtils", "com.elitecore.cpe.bl.facade.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.notification.NotificationFacade", "com.elitecore.cpe.bl.facade.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.notification.NotificationFacadeLocal", "com.elitecore.cpe.bl.facade.notification", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.notification.NotificationFacadeRemote", "com.elitecore.cpe.bl.facade.notification", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.notification.SystemNotificationQueueHandler", "com.elitecore.cpe.bl.facade.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.agent.ISystemAgentFacade", "com.elitecore.cpe.bl.facade.system.agent", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.agent.SystemAgentDataConversionUtil", "com.elitecore.cpe.bl.facade.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.agent.SystemAgentFacade", "com.elitecore.cpe.bl.facade.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.agent.SystemAgentFacadeLocal", "com.elitecore.cpe.bl.facade.system.agent", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.agent.SystemAgentFacadeRemote", "com.elitecore.cpe.bl.facade.system.agent", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.audit.AuditDataConversionUtilities", "com.elitecore.cpe.bl.facade.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.audit.ISystemAuditFacade", "com.elitecore.cpe.bl.facade.system.audit", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.audit.SystemAuditFacade", "com.elitecore.cpe.bl.facade.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.audit.SystemAuditFacadeLocal", "com.elitecore.cpe.bl.facade.system.audit", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.audit.SystemAuditFacadeRemote", "com.elitecore.cpe.bl.facade.system.audit", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.audit.SystemAuditQueueHandler", "com.elitecore.cpe.bl.facade.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.audit.WebServiceAuditQueueHandler", "com.elitecore.cpe.bl.facade.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.internal.ISystemInternalFacade", "com.elitecore.cpe.bl.facade.system.internal", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.internal.SystemInternalDataConversionUtil", "com.elitecore.cpe.bl.facade.system.internal", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.internal.SystemInternalFacade", "com.elitecore.cpe.bl.facade.system.internal", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.internal.SystemInternalFacadeLocal", "com.elitecore.cpe.bl.facade.system.internal", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.internal.SystemInternalFacadeRemote", "com.elitecore.cpe.bl.facade.system.internal", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.systemparameter.ISystemParameterFacade", "com.elitecore.cpe.bl.facade.system.systemparameter", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.systemparameter.SystemParameterFacade", "com.elitecore.cpe.bl.facade.system.systemparameter", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.systemparameter.SystemParameterFacadeLocal", "com.elitecore.cpe.bl.facade.system.systemparameter", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.systemparameter.SystemParameterFacadeRemote", "com.elitecore.cpe.bl.facade.system.systemparameter", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.user.IUserFacade", "com.elitecore.cpe.bl.facade.system.user", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.user.UserFacade", "com.elitecore.cpe.bl.facade.system.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.user.UserFacadeLocal", "com.elitecore.cpe.bl.facade.system.user", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.user.UserFacadeRemote", "com.elitecore.cpe.bl.facade.system.user", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.ws.IWSFacade", "com.elitecore.cpe.bl.facade.ws", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.ws.WSFacade", "com.elitecore.cpe.bl.facade.ws", "false", "1", "", "1", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.ws.WSFacadeLocal", "com.elitecore.cpe.bl.facade.ws", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.ws.WSFacadeRemote", "com.elitecore.cpe.bl.facade.ws", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.ws.WSFacadeUtil", "com.elitecore.cpe.bl.facade.ws", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.factory.base.BaseFactory", "com.elitecore.cpe.bl.factory.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.factory.system.user.UserFactory", "com.elitecore.cpe.bl.factory.system.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.message.SystemAuditMessageListener", "com.elitecore.cpe.bl.message", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.message.SystemAuditMessageListener$MyRunnable", "com.elitecore.cpe.bl.message", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.message.SystemNotificationMessageListener", "com.elitecore.cpe.bl.message", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.message.WebServiceAuditMessageListener", "com.elitecore.cpe.bl.message", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.BaseSessionBean", "com.elitecore.cpe.bl.session", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.bss.user.BSSUserSessionBean", "com.elitecore.cpe.bl.session.bss.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.bss.user.BSSUserSessionBeanLocal", "com.elitecore.cpe.bl.session.bss.user", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.inventorymgt.BatchManagementSessionBean", "com.elitecore.cpe.bl.session.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.inventorymgt.BatchManagementSessionBeanLocal", "com.elitecore.cpe.bl.session.inventorymgt", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean", "com.elitecore.cpe.bl.session.inventorymgt", "false", "4", "4", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBeanLocal", "com.elitecore.cpe.bl.session.inventorymgt", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean", "com.elitecore.cpe.bl.session.inventorytransfer", "false", "1", "1", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBeanLocal", "com.elitecore.cpe.bl.session.inventorytransfer", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.master.attribute.AttributeSessionBean", "com.elitecore.cpe.bl.session.master.attribute", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.master.attribute.AttributeSessionBeanLocal", "com.elitecore.cpe.bl.session.master.attribute", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.master.item.ItemSessionBean", "com.elitecore.cpe.bl.session.master.item", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.master.item.ItemSessionBeanLocal", "com.elitecore.cpe.bl.session.master.item", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.master.warehouse.WarehouseSessionBean", "com.elitecore.cpe.bl.session.master.warehouse", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.master.warehouse.WarehouseSessionBeanLocal", "com.elitecore.cpe.bl.session.master.warehouse", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.notification.NotificationSessionBean", "com.elitecore.cpe.bl.session.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.notification.NotificationSessionBeanLocal", "com.elitecore.cpe.bl.session.notification", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.agent.SystemAgentSessionBean", "com.elitecore.cpe.bl.session.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.agent.SystemAgentSessionBeanLocal", "com.elitecore.cpe.bl.session.system.agent", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.audit.SystemAuditSessionBean", "com.elitecore.cpe.bl.session.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.audit.SystemAuditSessionBeanLocal", "com.elitecore.cpe.bl.session.system.audit", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.internal.SystemInternalSessionBean", "com.elitecore.cpe.bl.session.system.internal", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.internal.SystemInternalSessionBeanLocal", "com.elitecore.cpe.bl.session.system.internal", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.systemparameter.SystemParameterSessionBean", "com.elitecore.cpe.bl.session.system.systemparameter", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.systemparameter.SystemParameterSessionBeanLocal", "com.elitecore.cpe.bl.session.system.systemparameter", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.user.UserSessionBean", "com.elitecore.cpe.bl.session.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.user.UserSessionBeanLocal", "com.elitecore.cpe.bl.session.user", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.configuration.notification.CheckValidDateForTemplateVO", "com.elitecore.cpe.bl.vo.configuration.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.configuration.notification.NotificationCategoryVO", "com.elitecore.cpe.bl.vo.configuration.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.configuration.notification.SearchDocumentTemplateVO", "com.elitecore.cpe.bl.vo.configuration.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.configuration.notification.ViewDocumentTemplateVO", "com.elitecore.cpe.bl.vo.configuration.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.core.expr.ConstraintExpressionVO", "com.elitecore.cpe.bl.vo.core.expr", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.BatchSummaryVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.BulkChangeInventoryStatusVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.ChangeInventoryStatusVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.ChangeInventorySubStatusVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.InventoryBatchViewVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.InventoryDetailVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.InventoryStatusLogVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.InventoryUploadVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.InventoryVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.InventoryWrapperVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.migration.AttributeMigrationVO", "com.elitecore.cpe.bl.vo.inventorymgt.migration", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.migration.InventoryMigrationResponseVO", "com.elitecore.cpe.bl.vo.inventorymgt.migration", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.migration.InventoryMigrationVO", "com.elitecore.cpe.bl.vo.inventorymgt.migration", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.PlaceOrderNotificationEmailVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.PlaceOrderVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.ResourceAttributeVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.SearchInventoryVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.SearchTransferInventory", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.SearchWarehouseInventoryStatusVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.ThresholdNotificationEmailVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.ThresholdNotificationVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.TransferInventorySummaryViewVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.WarehouseInventoryStatusVO", "com.elitecore.cpe.bl.vo.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorytransfer.CancelTransferOrderVO", "com.elitecore.cpe.bl.vo.inventorytransfer", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorytransfer.CheckInventoryVO", "com.elitecore.cpe.bl.vo.inventorytransfer", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO", "com.elitecore.cpe.bl.vo.inventorytransfer", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO$InventoryVO", "com.elitecore.cpe.bl.vo.inventorytransfer", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorytransfer.ViewTransferInventoryDetailVO", "com.elitecore.cpe.bl.vo.inventorytransfer", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.AttributeVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.ConfigureThresholdVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.ItemVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.ResourceCategoryVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.ResourceSubTypeVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.ResourceTypeVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.SearchResourceSubTypeVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.SearchResourceTypeVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.ThresholdStatusVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.UpdateResourceSubTypeVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.UpdateResourceTypeVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.warehouse.CreateWareHouseTreeVO", "com.elitecore.cpe.bl.vo.master.warehouse", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.WareHouseSummaryVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.WarehouseTypeVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.WarehouseVO", "com.elitecore.cpe.bl.vo.master", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.AgentParameterVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.AgentScheduleParamVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.AgentScheduleVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.AgentServiceVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.AgentVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.PreUpdateAgentParamVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.SearchAgentRunInQueueVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.SearchAgentScheduleVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.SystemAgentParamVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.SystemAgentVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.UpdateAgentParameterVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.UpdateAgentScheduleVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.ViewAgentRunHistoryVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.ViewAgentScheduleVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent.ViewVO", "com.elitecore.cpe.bl.vo.system.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.audit.SearchAuditPaggingVO", "com.elitecore.cpe.bl.vo.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.audit.SearchAuditVO", "com.elitecore.cpe.bl.vo.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.audit.SearchAuditWrapper", "com.elitecore.cpe.bl.vo.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.audit.SearchWsAuditVO", "com.elitecore.cpe.bl.vo.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.audit.ViewAuditEntryVO", "com.elitecore.cpe.bl.vo.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.audit.ViewAuditVO", "com.elitecore.cpe.bl.vo.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.audit.ViewWsAuditEntryVO", "com.elitecore.cpe.bl.vo.system.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.dashboard.SearchAdminDashBoardVO", "com.elitecore.cpe.bl.vo.system.dashboard", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.user.SearchUserVO", "com.elitecore.cpe.bl.vo.system.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.user.UserVO", "com.elitecore.cpe.bl.vo.system.user", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.userwarehousemapping.UserWarehouseVO", "com.elitecore.cpe.bl.vo.system.userwarehousemapping", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.base.BaseBL", "com.elitecore.cpe.core.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.base.BaseWebServiceBL", "com.elitecore.cpe.core.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.controller.BaseController", "com.elitecore.cpe.core.controller", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.controller.Controller", "com.elitecore.cpe.core.controller", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.IBDSessionContext", "com.elitecore.cpe.core", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.IBLSession", "com.elitecore.cpe.core", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.InternalBLSession", "com.elitecore.cpe.core", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.InternalBLSession$1", "com.elitecore.cpe.core", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.InternalBLSession$BLSessionContextImp", "com.elitecore.cpe.core", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.SessionAccessControl", "com.elitecore.cpe.core", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.CSVDataExporter", "com.elitecore.cpe.util", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.DateAndTimeFormateUtility", "com.elitecore.cpe.util", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.ElapseCalculator", "com.elitecore.cpe.util", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.asciicrypt.AsciiEncryption", "com.elitecore.cpe.util.encryption.asciicrypt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.asciicrypt.EncryptDecrypt", "com.elitecore.cpe.util.encryption.asciicrypt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.DecryptionNotSupportedException", "com.elitecore.cpe.util.encryption", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.DefaultEncryption", "com.elitecore.cpe.util.encryption", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.elitecrypt.EliteCryptEncryption", "com.elitecore.cpe.util.encryption.elitecrypt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.elitecrypt.EncryptCRC", "com.elitecore.cpe.util.encryption.elitecrypt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.IEncryption", "com.elitecore.cpe.util.encryption", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.md5.MD5", "com.elitecore.cpe.util.encryption.md5", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.md5.MD5Encryption", "com.elitecore.cpe.util.encryption.md5", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.md5.MesgDigest", "com.elitecore.cpe.util.encryption.md5", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.md5.MesgDigestUtil", "com.elitecore.cpe.util.encryption.md5", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.NoSuchEncryptionException", "com.elitecore.cpe.util.encryption", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.PasswordEncryption", "com.elitecore.cpe.util.encryption", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.plaintext.PlainTextEncryption", "com.elitecore.cpe.util.encryption.plaintext", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt", "com.elitecore.cpe.util.encryption.unixcrypt", "false", "3", "", "3", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.unixcrypt.UnixCryptEncryption", "com.elitecore.cpe.util.encryption.unixcrypt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.AlwaysTrueValueMatcher", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.DateBuilder", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.DateBuilder$1", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.DateBuilder$IntervalUnit", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.DayOfMonthValueMatcher", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.exception.InvalidPatternException", "com.elitecore.cpe.util.expr.cron.exception", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.IntArrayValueMatcher", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.Predictor", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.SchedulingPattern", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.SchedulingPattern$DayOfMonthValueParser", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.SchedulingPattern$DayOfWeekValueParser", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.SchedulingPattern$HourValueParser", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.SchedulingPattern$MinuteValueParser", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.SchedulingPattern$MonthValueParser", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.SchedulingPattern$SimpleValueParser", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.SchedulingPattern$ValueParser", "com.elitecore.cpe.util.expr.cron", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.SchedulingPatternBuilder", "com.elitecore.cpe.util.expr.cron", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.ValueMatcher", "com.elitecore.cpe.util.expr.cron", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.ftp.FTPUploader", "com.elitecore.cpe.util.ftp", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.GeneralUtility", "com.elitecore.cpe.util", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.JAXBUtil", "com.elitecore.cpe.util", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.logger.BLLogger", "com.elitecore.cpe.util.logger", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.logger.BLLogger$LogLevel", "com.elitecore.cpe.util.logger", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.logger.DefaultLogger", "com.elitecore.cpe.util.logger", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.logger.ILogger", "com.elitecore.cpe.util.logger", "true", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.logger.Logger", "com.elitecore.cpe.util.logger", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.notification.NotificationUtil", "com.elitecore.cpe.util.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.notification.NotificationUtil$1", "com.elitecore.cpe.util.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.notification.NotificationUtil$2", "com.elitecore.cpe.util.notification", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.TransactionNoteBuilder", "com.elitecore.cpe.util", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.ValidityUtils", "com.elitecore.cpe.util", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.agent.AgentTestCase", "com.elitecore.test.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.agent.SystemAgentTestCase", "com.elitecore.test.agent", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.attributemgt.AttributeTestCase", "com.elitecore.test.attributemgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.audit.AuditTestCase", "com.elitecore.test.audit", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.base.BaseTestCase", "com.elitecore.test.base", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.inventorymgt.InventoryTestCase", "com.elitecore.test.inventorymgt", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.migration.MigrationTestCase", "com.elitecore.test.migration", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.resource.ResourceTestCase", "com.elitecore.test.resource", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.resourcesubtype.ResourceSubTypeTestCase", "com.elitecore.test.resourcesubtype", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.resourcetype.ResourceTypeTestCase", "com.elitecore.test.resourcetype", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.warehouse.WarehouseTestCase", "com.elitecore.test.warehouse", "false", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.warehousetype.WarehouseTypeTestCase", "com.elitecore.test.warehousetype", "false", "0", "", "", "", "" ],
+            
+               [ "DemoExecutorUsage", "", "false", "0", "", "", "", "" ],
+            
+               [ "InvokeAll", "", "false", "0", "", "", "", "" ],
+            
+               [ "InvokeAll$1", "", "false", "0", "", "", "", "" ],
+            
+               [ "InvokeAll$Task1", "", "false", "0", "", "", "", "" ],
+            
+               [ "InvokeAll$Task2", "", "false", "0", "", "", "", "" ],
+            
+               [ "TestOne", "", "false", "0", "", "", "", "" ],
+            
+               [ "TestTwo", "", "false", "0", "", "", "", "" ],
+            
+               [ "", "", "", "", "", "", "", "" ]
+            );
+
+         // package stats fields: package name, total bugs, bugs p1, bugs p2, bugs p3, bugs p4
+         var packageStats = new Array(
+            
+               [ "", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.base", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.customs", "2", "", "2", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.manager", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.provider", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.service", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.agents.worker", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.inventorymgt", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.master", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.notification", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.policy", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.system", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.system.audit", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.system.parameter", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.constants.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.controller.system", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.common", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.notification", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.agent", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.audit", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.internal", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.systemparameter", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.data.system.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.inventorymgt", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.master", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.notification", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.system.agent", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.system.audit", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.system.internal", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.system.systemparameter", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.system.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.delegates.transfer", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.bss.acl", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.bss.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core.configuration.notification", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.core.expr", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.inventorymgt", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.master", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.history", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.agent.schedule", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.audit", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.internal", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.systemparameter", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.system.userwarehouse", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.transfer", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.entity.inventory.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.exception.agent", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.batch", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.bss.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorymgt", "1", "", "1", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.inventorytransfer", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.attribute", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.item", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.master.warehouse", "1", "", "1", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.notification", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.agent", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.audit", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.internal", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.systemparameter", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.system.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.facade.ws", "1", "", "1", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.factory.base", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.factory.system.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.message", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.bss.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.inventorymgt", "4", "4", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.inventorytransfer", "1", "1", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.master.attribute", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.master.item", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.master.warehouse", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.notification", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.agent", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.audit", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.internal", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.system.systemparameter", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.session.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.configuration.notification", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.core.expr", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorymgt.migration", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.inventorytransfer", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.master.warehouse", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.agent", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.audit", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.dashboard", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.user", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.bl.vo.system.userwarehousemapping", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.base", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.core.controller", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.asciicrypt", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.elitecrypt", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.md5", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.plaintext", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.encryption.unixcrypt", "3", "", "3", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.expr.cron.exception", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.ftp", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.logger", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.cpe.util.notification", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.agent", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.attributemgt", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.audit", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.base", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.inventorymgt", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.migration", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.resource", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.resourcesubtype", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.resourcetype", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.warehouse", "0", "", "", "", "" ],
+            
+               [ "com.elitecore.test.warehousetype", "0", "", "", "", "" ],
+            
+               [ "", "", "", "", "", "" ]
+            );
+
+
+         // bugs fields: bug id, category id, code id, pattern id, priority, release id, class name, packagename (populated by javascript)
+         var bugs = new Array(
+            
+
+               [ "37b74661a9508561ef007313f12c2df8-0",
+                 "STYLE",
+                 "REC",
+                 "REC_CATCH_EXCEPTION",
+                 2,
+                 0,
+                 "com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent",
+                 ""],
+            
+
+               [ "3672159b43a00f43a2b1940abe111ec4-0",
+                 "STYLE",
+                 "NP",
+                 "NP_LOAD_OF_KNOWN_NULL_VALUE",
+                 2,
+                 0,
+                 "com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent",
+                 ""],
+            
+
+               [ "15f795d177c396ced2f26114a064b2a8-0",
+                 "STYLE",
+                 "REC",
+                 "REC_CATCH_EXCEPTION",
+                 2,
+                 0,
+                 "com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade",
+                 ""],
+            
+
+               [ "e7a297975414e5a851622bdd90fb8bc9-0",
+                 "STYLE",
+                 "REC",
+                 "REC_CATCH_EXCEPTION",
+                 2,
+                 0,
+                 "com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade",
+                 ""],
+            
+
+               [ "3a3a2e4bc50582ea4e5f63fef766cf8b-0",
+                 "STYLE",
+                 "REC",
+                 "REC_CATCH_EXCEPTION",
+                 2,
+                 0,
+                 "com.elitecore.cpe.bl.facade.ws.WSFacade",
+                 ""],
+            
+
+               [ "9d82dcdb053a95aceafa041b6e0a3b77-0",
+                 "SECURITY",
+                 "SQL",
+                 "SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING",
+                 1,
+                 0,
+                 "com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean",
+                 ""],
+            
+
+               [ "76d173d2b0353076edc850b8affbfde-0",
+                 "SECURITY",
+                 "SQL",
+                 "SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING",
+                 1,
+                 0,
+                 "com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean",
+                 ""],
+            
+
+               [ "e08b0719d5357fdd7aa00964f47ef501-0",
+                 "SECURITY",
+                 "SQL",
+                 "SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING",
+                 1,
+                 0,
+                 "com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean",
+                 ""],
+            
+
+               [ "b9f332b29398be499edd472d99ff598e-0",
+                 "SECURITY",
+                 "SQL",
+                 "SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING",
+                 1,
+                 0,
+                 "com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean",
+                 ""],
+            
+
+               [ "493f7c09616b4f24d09169655bb543dd-0",
+                 "SECURITY",
+                 "SQL",
+                 "SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING",
+                 1,
+                 0,
+                 "com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean",
+                 ""],
+            
+
+               [ "8ccf3ef507f56aba3f3d1f3c0dea8dbc-0",
+                 "STYLE",
+                 "INT",
+                 "INT_VACUOUS_BIT_OPERATION",
+                 2,
+                 0,
+                 "com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt",
+                 ""],
+            
+
+               [ "a1882eee2447cf80fc8efaf320087d80-0",
+                 "STYLE",
+                 "INT",
+                 "INT_VACUOUS_BIT_OPERATION",
+                 2,
+                 0,
+                 "com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt",
+                 ""],
+            
+
+               [ "fb11ac8c35b9b27cae735fc00d81585a-0",
+                 "STYLE",
+                 "INT",
+                 "INT_VACUOUS_BIT_OPERATION",
+                 2,
+                 0,
+                 "com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt",
+                 ""],
+            
+               [ "", "", "", "", 0, 0, "", "" ]
+            );
+
+         // bugs fields: bug id, category id, code id, pattern id, priority, first release id, fixed release id, class name
+         var fixedBugs = new Array(
+            
+               [ "", "", "", "", 0, 0, 0, "" ]
+            );
+
+      </script>
+</head>
+<body>
+<h3>
+<a href="http://findbugs.sourceforge.net">FindBugs</a> (2.0.1) 
+         Analysis for 
+         </h3>
+<div id="menuWrapper" style="">
+<div id="navcontainer">
+<ul id="navlist">
+<li>
+<a id="summary" class="current" href="#" onclick="selectMenu('summary'); return false;">Summary</a>
+</li>
+<li>
+<a id="history" class="none" href="#" onclick="selectMenu('history'); return false;">History</a>
+</li>
+<li>
+<a id="listByCategories" class="none" href="#" onclick="selectMenu('listByCategories'); return false;">Browse By Categories</a>
+</li>
+<li>
+<a id="listByPackages" class="none" href="#" onclick="selectMenu('listByPackages'); return false;">Browse by Packages</a>
+</li>
+<li>
+<a id="info" class="none" href="#" onclick="selectMenu('info'); return false;">Info</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="displayWrapper">
+<div style="height:25px;">
+<div id="messageContainer" style="float:right;">
+            Computing data...
+         </div>
+<div id="filterWrapper" style="display:none;">
+<form name="findbugsForm">
+<div id="filterContainer">
+<select name="versions" onchange="filter()">
+<option value="loading">Loading filter...</option>
+</select>
+<select name="priorities" onchange="filter()">
+<option value="loading">Loading filter...</option>
+</select>
+</div>
+</form>
+</div>
+<div id="historyControlWrapper" style="display:none;">
+<form name="findbugsHistoryControlForm">
+<div id="historyControlContainer">
+<input type="checkbox" name="includeFixedIntroducedBugs" value="checked" alt="Include fixed introduced bugs." onclick="includeFixedIntroducedBugsInHistory()"/>
+               Include counts of introduced bugs that were fixed in later releases.
+             </div>
+</form>
+</div>
+</div>
+<div id="summaryContainer" class="displayContainer">
+<h3>Package Summary</h3>
+<table>
+<tr>
+<th>Package</th>
+<th>Code Size</th>
+<th>Bugs</th>
+<th>Bugs p1</th>
+<th>Bugs p2</th>
+<th>Bugs p3</th>
+<th>Bugs Exp.</th>
+</tr>
+<tr>
+<td class="summary-name">
+                     Overall
+                     (121 packages),
+                     (398 classes)
+                  </td>
+<td class="summary-size">26409</td>
+<td class="summary-priority-all">13</td>
+<td class="summary-priority-1">5</td>
+<td class="summary-priority-2">8</td>
+<td class="summary-priority-3"/>
+<td class="summary-priority-4"/>
+</tr>
+<tr>
+<td class="summary-name">com.elitecore.cpe.bl.agents.customs</td>
+<td class="summary-size">274</td>
+<td class="summary-priority-all">2</td>
+<td class="summary-priority-1"/>
+<td class="summary-priority-2">2</td>
+<td class="summary-priority-3"/>
+<td class="summary-priority-4"/>
+</tr>
+<tr>
+<td class="summary-name">com.elitecore.cpe.bl.facade.inventorymgt</td>
+<td class="summary-size">2457</td>
+<td class="summary-priority-all">1</td>
+<td class="summary-priority-1"/>
+<td class="summary-priority-2">1</td>
+<td class="summary-priority-3"/>
+<td class="summary-priority-4"/>
+</tr>
+<tr>
+<td class="summary-name">com.elitecore.cpe.bl.facade.master.warehouse</td>
+<td class="summary-size">1101</td>
+<td class="summary-priority-all">1</td>
+<td class="summary-priority-1"/>
+<td class="summary-priority-2">1</td>
+<td class="summary-priority-3"/>
+<td class="summary-priority-4"/>
+</tr>
+<tr>
+<td class="summary-name">com.elitecore.cpe.bl.facade.ws</td>
+<td class="summary-size">834</td>
+<td class="summary-priority-all">1</td>
+<td class="summary-priority-1"/>
+<td class="summary-priority-2">1</td>
+<td class="summary-priority-3"/>
+<td class="summary-priority-4"/>
+</tr>
+<tr>
+<td class="summary-name">com.elitecore.cpe.bl.session.inventorymgt</td>
+<td class="summary-size">1517</td>
+<td class="summary-priority-all">4</td>
+<td class="summary-priority-1">4</td>
+<td class="summary-priority-2"/>
+<td class="summary-priority-3"/>
+<td class="summary-priority-4"/>
+</tr>
+<tr>
+<td class="summary-name">com.elitecore.cpe.bl.session.inventorytransfer</td>
+<td class="summary-size">164</td>
+<td class="summary-priority-all">1</td>
+<td class="summary-priority-1">1</td>
+<td class="summary-priority-2"/>
+<td class="summary-priority-3"/>
+<td class="summary-priority-4"/>
+</tr>
+<tr>
+<td class="summary-name">com.elitecore.cpe.util.encryption.unixcrypt</td>
+<td class="summary-size">965</td>
+<td class="summary-priority-all">3</td>
+<td class="summary-priority-1"/>
+<td class="summary-priority-2">3</td>
+<td class="summary-priority-3"/>
+<td class="summary-priority-4"/>
+</tr>
+</table>
+</div>
+<div id="infoContainer" class="displayContainer">
+<div id="analyzed-files">
+<h3>Analyzed Files:</h3>
+<ul>
+<li>/home/elitecore/Project/Partner-CPE_branch/CrestelCPE-MTNICE/Sprint-4/build/release/${env.BUILD_NUMBER}/inventorybl.jar</li>
+</ul>
+</div>
+<div id="used-libraries">
+<h3>Used Libraries:</h3>
+<ul>
+<li>None</li>
+</ul>
+</div>
+<div id="analysis-error">
+<h3>Analysis Errors:</h3>
+<ul>
+<li>Missing ref classes for analysis:
+                        <ul>
+<li>com.elitecore.cpe.bl.ws.data.input.request.BookCPERequestData</li>
+<li>com.elitecore.cpe.bl.ws.data.input.request.InventoryDetailsRequestData</li>
+<li>com.elitecore.cpe.bl.ws.data.input.request.MarkCPEAsFaultyRequestVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.request.ReleaseCPERequestVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.request.ResourceAvailibilityRequestData</li>
+<li>com.elitecore.cpe.bl.ws.data.input.response.CPEResponseVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.response.InventoryDetailsResponseData</li>
+<li>com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusResponseVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.response.ResourceAvailibilityResponseData</li>
+<li>com.elitecore.cpe.bl.ws.data.input.vo.CPEInventoryVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.vo.InventoryAttributeVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.vo.InventoryDetailVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.vo.InventoryRequestVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.vo.InventoryVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.vo.ReserveAllocateRequestVO</li>
+<li>com.elitecore.cpe.bl.ws.data.input.vo.ResourceAvailibilityVO</li>
+<li>com.elitecore.cpe.bl.ws.data.util.InventoryMgtResponseCode</li>
+<li>com.elitecore.utility.agentframework.AgentRunDetails</li>
+<li>com.elitecore.utility.agentframework.IAgent</li>
+<li>com.elitecore.utility.agentframework.IAgentSchedule</li>
+<li>com.elitecore.utility.agentframework.data.AgentServiceSummaryData</li>
+<li>com.elitecore.utility.agentframework.entities.IAgentRunEntity</li>
+<li>com.elitecore.utility.agentframework.entities.IAgentRunMasterEntity</li>
+<li>com.elitecore.utility.agentframework.managers.IAgentManager</li>
+<li>com.elitecore.utility.agentframework.providers.DefaultAgentManagerProvider</li>
+<li>com.elitecore.utility.agentframework.providers.DefaultAgentWorkerProvider</li>
+<li>com.elitecore.utility.agentframework.utils.AgentErrorObject</li>
+<li>com.elitecore.utility.agentframework.utils.AgentResultObject</li>
+<li>com.elitecore.utility.agentframework.utils.IAgentMasterEntityEnvParameterList</li>
+<li>com.elitecore.utility.agentframework.utils.IAgentRunEnvParameterList</li>
+<li>com.elitecore.utility.agentframework.worker.IAgentWorker</li>
+<li>javax.ejb.ActivationConfigProperty</li>
+<li>javax.ejb.EJB</li>
+<li>javax.ejb.Local</li>
+<li>javax.ejb.MessageDriven</li>
+<li>javax.ejb.Remote</li>
+<li>javax.ejb.SessionContext</li>
+<li>javax.ejb.Stateless</li>
+<li>javax.ejb.TransactionAttribute</li>
+<li>javax.ejb.TransactionAttributeType</li>
+<li>javax.ejb.TransactionManagement</li>
+<li>javax.ejb.TransactionManagementType</li>
+<li>javax.jms.JMSException</li>
+<li>javax.jms.Message</li>
+<li>javax.jms.MessageListener</li>
+<li>javax.jms.ObjectMessage</li>
+<li>javax.jms.Queue</li>
+<li>javax.jms.QueueConnection</li>
+<li>javax.jms.QueueConnectionFactory</li>
+<li>javax.jms.QueueSender</li>
+<li>javax.jms.QueueSession</li>
+<li>javax.mail.Address</li>
+<li>javax.mail.Authenticator</li>
+<li>javax.mail.Message</li>
+<li>javax.mail.Message$RecipientType</li>
+<li>javax.mail.PasswordAuthentication</li>
+<li>javax.mail.Session</li>
+<li>javax.mail.Transport</li>
+<li>javax.mail.internet.InternetAddress</li>
+<li>javax.mail.internet.MimeMessage</li>
+<li>javax.persistence.CascadeType</li>
+<li>javax.persistence.Column</li>
+<li>javax.persistence.Entity</li>
+<li>javax.persistence.EntityManager</li>
+<li>javax.persistence.FetchType</li>
+<li>javax.persistence.GeneratedValue</li>
+<li>javax.persistence.GenerationType</li>
+<li>javax.persistence.Id</li>
+<li>javax.persistence.JoinColumn</li>
+<li>javax.persistence.JoinTable</li>
+<li>javax.persistence.Lob</li>
+<li>javax.persistence.LockModeType</li>
+<li>javax.persistence.ManyToMany</li>
+<li>javax.persistence.ManyToOne</li>
+<li>javax.persistence.NamedQueries</li>
+<li>javax.persistence.NamedQuery</li>
+<li>javax.persistence.NoResultException</li>
+<li>javax.persistence.OneToMany</li>
+<li>javax.persistence.OneToOne</li>
+<li>javax.persistence.PersistenceContext</li>
+<li>javax.persistence.Query</li>
+<li>javax.persistence.SequenceGenerator</li>
+<li>javax.persistence.Table</li>
+<li>junit.framework.TestCase</li>
+<li>oracle.sql.TIMESTAMP</li>
+<li>org.apache.commons.net.PrintCommandListener</li>
+<li>org.apache.commons.net.ProtocolCommandListener</li>
+<li>org.apache.commons.net.ftp.FTPClient</li>
+<li>org.apache.commons.net.ftp.FTPReply</li>
+<li>org.apache.log4j.Level</li>
+<li>org.apache.log4j.Logger</li>
+<li>org.hibernate.annotations.Cache</li>
+<li>org.hibernate.annotations.CacheConcurrencyStrategy</li>
+<li>org.hibernate.exception.ConstraintViolationException</li>
+<li>org.jboss.mx.util.MBeanServerLocator</li>
+<li>org.junit.Before</li>
+<li>org.junit.Test</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="historyContainer" class="displayContainer">Loading...</div>
+<div id="listByCategoriesContainer" class="displayContainer">Loading...</div>
+<div id="listByPackagesContainer" class="displayContainer">Loading...</div>
+</div>
+<div id="bug-collection" style="display:none;">
+<div id="tip-INT_VACUOUS_BIT_OPERATION" class="tip">
+
+<p> This is an integer bit operation (and, or, or exclusive or) that doesn't do any useful work
+(e.g., <code>v & 0xffffffff</code>).
+
+</p>
+
+    </div>
+<div id="tip-SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING" class="tip">
+
+  <p>The code creates an SQL prepared statement from a nonconstant String.
+If unchecked, tainted data from a user is used in building this String, SQL injection could
+be used to make the prepared statement do something unexpected and undesirable.
+</p>
+
+    </div>
+<div id="tip-NP_LOAD_OF_KNOWN_NULL_VALUE" class="tip">
+
+  <p> The variable referenced at this point is known to be null due to an earlier
+   check against null. Although this is valid, it might be a mistake (perhaps you
+intended to refer to a different variable, or perhaps the earlier check to see if the
+variable is null should have been a check to see if it was nonnull).
+</p>
+
+    </div>
+<div id="tip-REC_CATCH_EXCEPTION" class="tip">
+  
+  <p>
+  This method uses a try-catch block that catches Exception objects, but Exception is not
+  thrown within the try block, and RuntimeException is not explicitly caught.  It is a common bug pattern to
+  say try { ... } catch (Exception e) { something } as a shorthand for catching a number of types of exception
+  each of whose catch blocks is identical, but this construct also accidentally catches RuntimeException as well,
+  masking potential bugs.
+  </p>
+  
+     </div>
+<div style="display:none;" class="bug" id="b-uid-37b74661a9508561ef007313f12c2df8-0">
+<div class="b-r">In class com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent</div>
+<div class="b-r">In method com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent.runAgentTask(BaseSchedule, BaseEntity, BaseEnityEnvParameter, BaseMasterEnityEnvParameter)</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">Exception is caught when Exception is not thrown in com.elitecore.cpe.bl.agents.customs.InventoryUploadAgent.runAgentTask(BaseSchedule, BaseEntity, BaseEnityEnvParameter, BaseMasterEnityEnvParameter)</div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-3672159b43a00f43a2b1940abe111ec4-0">
+<div class="b-r">In class com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent</div>
+<div class="b-r">In method com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent.runAgentTask(BaseSchedule, BaseEntity, BaseEnityEnvParameter, BaseMasterEnityEnvParameter)</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">Load of known null value in com.elitecore.cpe.bl.agents.customs.ThresholdNotificationAgent.runAgentTask(BaseSchedule, BaseEntity, BaseEnityEnvParameter, BaseMasterEnityEnvParameter)</div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-15f795d177c396ced2f26114a064b2a8-0">
+<div class="b-r">In class com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade</div>
+<div class="b-r">In method com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade.changeInventorySubStatus(ChangeInventorySubStatusVO, IBLSession)</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">Exception is caught when Exception is not thrown in com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade.changeInventorySubStatus(ChangeInventorySubStatusVO, IBLSession)</div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-e7a297975414e5a851622bdd90fb8bc9-0">
+<div class="b-r">In class com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade</div>
+<div class="b-r">In method com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade.calculateThreasholdValue(Long, Long, Long, Long)</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">Exception is caught when Exception is not thrown in com.elitecore.cpe.bl.facade.master.warehouse.WarehouseFacade.calculateThreasholdValue(Long, Long, Long, Long)</div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-3a3a2e4bc50582ea4e5f63fef766cf8b-0">
+<div class="b-r">In class com.elitecore.cpe.bl.facade.ws.WSFacade</div>
+<div class="b-r">In method com.elitecore.cpe.bl.facade.ws.WSFacade.reserveInventory(BookCPERequestData, IBLSession)</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">Exception is caught when Exception is not thrown in com.elitecore.cpe.bl.facade.ws.WSFacade.reserveInventory(BookCPERequestData, IBLSession)</div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-9d82dcdb053a95aceafa041b6e0a3b77-0">
+<div class="b-r">In class com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean</div>
+<div class="b-r">In method com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.getInventoryDetails(InventoryDetailsRequestData, String, int)</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">A prepared statement is generated from a nonconstant String in com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.getInventoryDetails(InventoryDetailsRequestData, String, int) </div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-76d173d2b0353076edc850b8affbfde-0">
+<div class="b-r">In class com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean</div>
+<div class="b-r">In method com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchInventory(SearchInventoryVO)</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">A prepared statement is generated from a nonconstant String in com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchInventory(SearchInventoryVO) </div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-e08b0719d5357fdd7aa00964f47ef501-0">
+<div class="b-r">In class com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean</div>
+<div class="b-r">In method com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchTransferInventorySummary(SearchTransferInventory)</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">A prepared statement is generated from a nonconstant String in com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchTransferInventorySummary(SearchTransferInventory) </div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-b9f332b29398be499edd472d99ff598e-0">
+<div class="b-r">In class com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean</div>
+<div class="b-r">In method com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchValidInventoryUploadData(String, String, Boolean)</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">A prepared statement is generated from a nonconstant String in com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBean.searchValidInventoryUploadData(String, String, Boolean) </div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-493f7c09616b4f24d09169655bb543dd-0">
+<div class="b-r">In class com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean</div>
+<div class="b-r">In method com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean.searchTransferInventoryOrderDetail(SearchTransferInventory)</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">A prepared statement is generated from a nonconstant String in com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBean.searchTransferInventoryOrderDetail(SearchTransferInventory) </div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-8ccf3ef507f56aba3f3d1f3c0dea8dbc-0">
+<div class="b-r">In class com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt</div>
+<div class="b-r">In method com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.body(int[], int, int)</div>
+<div class="b-r">Value iand</div>
+<div class="b-r">Local variable stored in JVM register 3</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">Vacuous iand operation on $L3 in com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.body(int[], int, int)</div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-a1882eee2447cf80fc8efaf320087d80-0">
+<div class="b-r">In class com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt</div>
+<div class="b-r">In method com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.des_set_key(byte[])</div>
+<div class="b-r">Value iand</div>
+<div class="b-r">Local variable stored in JVM register 5</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">Vacuous iand operation on $L5 in com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.des_set_key(byte[])</div>
+</div>
+<div style="display:none;" class="bug" id="b-uid-fb11ac8c35b9b27cae735fc00d81585a-0">
+<div class="b-r">In class com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt</div>
+<div class="b-r">In method com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.des_set_key(byte[])</div>
+<div class="b-r">Value iand</div>
+<div class="b-r">In &lt;Unknown&gt;</div>
+<div class="b-d">Vacuous iand operation on &lt;Unknown&gt; in com.elitecore.cpe.util.encryption.unixcrypt.UnixCrypt.des_set_key(byte[])</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/WEB-INF/pages/core/master/item"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16440"
+   kind="dir"
+   committed-date="2015-03-13T03:40:26.500228Z"/>
+<entry
+   name="SearchItem.zul"
+   checksum="f44624f7f6ee1d4ced542ad1ec493ebf"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="UpdateItem.zul"
+   checksum="60538366c8ab94f5a6008b9a5e65b3ab"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="change-inventory-status.zul"
+   checksum="53b4a14020ac83ae235270dcafa0c93f"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="create-resource-subtype.zul"
+   checksum="49cc3493037bb87bbfdd50ae04b13fe9"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="create-resource-type.zul"
+   checksum="a2a469dfd5b32b68184c7d7b1f09f676"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="createItem.zul"
+   checksum="54541c9d33ab8180cd8ce097891a72cd"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="search-resource-subtype.zul"
+   checksum="a835c8cf8da0457ecf0ba8ecab73efc6"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:49:02.000000Z"
+   committed-rev="15558"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="search-resource-type.zul"
+   checksum="19f3be4ea1bbc7e6db466ba4af345dfc"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:49:02.000000Z"
+   committed-rev="15558"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"
+   prop-time="2015-03-16T09:20:10.000000Z"/>
+<entry
+   name="update-resource-subtype.zul"
+   checksum="6c45012a8de8df9916c4e7f6cedb724d"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="update-resource-type.zul"
+   checksum="58c9853c7a3044929540309f4e90c172"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="view-resource-subtype.zul"
+   checksum="0b4b41dc094a9248cc55ae3b89343318"
+   last-author="rinkal.sadariya"
+   committed-rev="16440"
+   text-time="2015-03-13T03:40:26.000000Z"
+   kind="file"
+   committed-date="2015-03-13T03:40:26.500228Z"/>
+<entry
+   name="view-resource-type.zul"
+   checksum="5f0c24a7df9ce6721559a8e49a61f44e"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="viewItem.zul"
+   checksum="1f3a8b106767843911e52a22f1ccb6ce"
+   last-author="rinkal.sadariya"
+   committed-rev="16440"
+   text-time="2015-03-13T03:40:26.000000Z"
+   kind="file"
+   committed-date="2015-03-13T03:40:26.500228Z"/>
+</wc-entries>

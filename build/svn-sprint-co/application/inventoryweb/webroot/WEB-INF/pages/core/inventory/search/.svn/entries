@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/WEB-INF/pages/core/inventory/search"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16439"
+   kind="dir"
+   committed-date="2015-03-13T03:38:57.091297Z"/>
+<entry
+   name="Inventoryhistorydetail.zul"
+   checksum="1d3f0a3807bc013b8fd600d96d40217f"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchInventory.zul"
+   checksum="06300f3fc989ad2e8a1b653e6d7eb758"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchInventoryBatch.zul"
+   checksum="c4f54dd27a43a48eb7c60d9795a0449a"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ViewBatchSummary.zul"
+   checksum="9fe9cd9e8b72a1f01a72c531c9bee2fa"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ViewInventoryBatchDetail.zul"
+   checksum="76ebc9ddc943c1d17953fa8849af14ff"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="changeInventorySubStatus.zul"
+   checksum="b37b53a0981a81910f4d39bfd3f04f4a"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="viewInventory.zul"
+   checksum="e9a02961a1bca75784a783cb2c7c381b"
+   last-author="rinkal.sadariya"
+   committed-rev="16439"
+   text-time="2015-03-13T03:38:57.000000Z"
+   kind="file"
+   committed-date="2015-03-13T03:38:57.091297Z"/>
+</wc-entries>

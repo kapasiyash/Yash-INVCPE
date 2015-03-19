@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+<project name="pin" default="all" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+
+	
+	<property name="lib.dir"                     		value="${crestel.home}/lib"/>
+	<property name="module.pin.versions.dir"        	value="${crestel.home}/modules/pin/versions"/>
+	<property file="${module.pin.versions.dir}/build.properties"/>
+	
+	<property name="targetupgrade.dir"			value="${module.pin.versions.dir}/targetupgrade" />
+	<property name="targetupgrade.pin.dir"		value="${targetupgrade.dir}/pin" />
+	
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+	<path id="lib.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  	<classpath>
+			<pathelement location="${lib.dir}/ant/ant-contrib-0.6.jar"/>
+	  	</classpath>
+	</taskdef>
+	
+	<taskdef name="EliteInstall" 
+  		 classname="com.elitecore.ant.taskdefs.UnbundleFromFile"
+  		 classpathref="lib.class.path"	/>
+	
+	<taskdef name="Bundle" 
+   		 classname="com.elitecore.ant.taskdefs.Bundle"
+  		 classpathref="lib.class.path"/>
+
+	<typedef name="safefileset" 
+		 classname="com.elitecore.ant.types.SafeFileSet"   
+		 classpathref="lib.class.path" />
+	
+	<taskdef name="safedelete"	 
+		 classname="com.elitecore.ant.taskdefs.SafeDelete" 
+		 classpathref="lib.class.path" />
+	
+	<taskdef name="EliteVersionCheck"
+		 classname="com.elitecore.ant.taskdefs.EliteVersionCheck"
+		 classpathref="lib.class.path"   />
+	
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+	<target name="version-upgrade">
+		<property file="${installation.dir}/pin/version.info"/>		
+		<property environment="env"/>
+		
+		<switch value="${build.type}">
+		  	<case value="HOTFIX_BUILD">
+				<property name="current.version" value="${component.name};${version.number}.${hotfix.number}"/>
+			</case>
+			<default>
+		  		<property name="current.version" value="${component.name};${version.number}"/>
+			</default>			
+			
+		</switch>
+		
+		<trycatch>
+			<try>
+				<EliteVersionCheck driver="oracle.jdbc.driver.OracleDriver"
+						 url="${database.url}"
+						 userid="jispbilcorbilling${db.env}"
+						 password="jispbilcorbilling${db.env}"
+						 autocommit="false"
+						 classpath="${lib.dir}/jdbc/oracle9i.jar"
+						 currentversion="${current.version}"
+						 operationType="WRITE"
+						 hostName="${env.HOSTNAME}"/> 
+			</try>
+			<catch>
+				<fail message="DATABASE VERSION UPDATE FAILED. INSTALLATION MODULE PIN FAILED"/>
+			</catch>
+		</trycatch>
+					 
+	</target>
+
+			
+	<target name="post-upgrade">
+		<copy todir="${pin.home}" overwrite="true">
+			<fileset dir="${targetupgrade.pin.dir}"/>
+		</copy>
+
+                <fixcrlf srcdir="${pin.home}" eol="unix" eof="remove" includes="**/*.sh,**/*.xml,**/*.properties" />
+                <chmod dir="${pin.home}" perm="ug+rwx" includes="**/*.sh"/>
+		
+		
+	</target>
+	
+	<target name="delete">
+		<safedelete failonerror="true">
+			<safefileset dir="${targetupgrade.pin.dir}" includesfile="${installation.dir}/pin/delete/delete-files.txt"
+		        	 excludesfile="${installation.dir}/pin/delete/delete-exclude-files.txt"/>
+			<safefileset dir="${pin.home}" includesfile="${installation.dir}/pin/delete/delete-files.txt"
+		        	 excludesfile="${installation.dir}/pin/delete/delete-exclude-files.txt"/>
+		</safedelete>
+	</target>
+	
+	<target name="update">
+		<copy todir="${targetupgrade.pin.dir}" overwrite="true">
+			<fileset dir="${installation.dir}/pin/update"/>
+		</copy>
+	</target>
+	
+	<target name="new">
+		<copy todir="${targetupgrade.pin.dir}" overwrite="true">
+			<fileset dir="${installation.dir}/pin/new" />
+		</copy>
+	</target>	
+	
+	<target name="make-upgrade">
+		<echo message="${installation.dir}/pin/Installfiles.txt" />
+		<EliteInstall targetdir="${targetupgrade.pin.dir}" datareader="${installation.dir}/pin/Installfiles.txt"/> 
+
+		<antcall target="new"/>
+		<antcall target="update"/>
+		<antcall target="delete"/> 
+		<Bundle targetdir="${targetupgrade.pin.dir}"/> 
+	</target>
+	
+	<target name="pre-upgrade">
+		<mkdir dir="${targetupgrade.pin.dir}"/>
+
+		<copy todir="${targetupgrade.pin.dir}" overwrite="true">
+			<fileset dir="${pin.home}" >
+				<include name="**/*"/>
+				<exclude name="versions/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="upgrade" description="Perform upgradation">
+		<trycatch>
+			<try>
+				<antcall target="pre-upgrade"/>
+				<antcall target="make-upgrade"/>
+				<antcall target="post-upgrade"/>
+				<delete dir="${targetupgrade.dir}"/>				
+			</try>	
+			<catch>
+				<delete dir="${targetupgrade.dir}"/>
+				<fail message="ERROR WHILE UPGRADING. INSTALLATION MODULE PIN FAILED"/>
+			</catch>
+		 </trycatch>
+		
+	</target>
+	
+	<target name="check-preconditions" description="Checks conditions for pin">
+
+		<property file="${installation.dir}/pin/version.info"/>
+		<property environment="env"/>
+		
+		<switch value="${build.type}">
+		  	<case value="HOTFIX_BUILD">
+				<if>
+					<or>
+						<equals arg1="${prv.hotfix.number}" arg2="" />
+						<equals arg1="${prv.hotfix.number}" arg2="00" />
+					</or>
+					<then>
+				  		<property name="required.version" value="${component.name};${version.number}"/>
+					</then>
+					<else>
+				  		<property name="required.version" value="${component.name};${version.number}.${prv.hotfix.number}"/>
+					</else>
+				</if>
+				<property name="current.version" value="${component.name};${version.number}.${hotfix.number}"/>
+			</case>
+			<default>
+				<property name="required.version" value="${component.name};${base.version.number}"/>
+		  		<property name="current.version" value="${component.name};${version.number}"/>
+
+			</default>			
+			
+		</switch>
+		 
+		 <trycatch>
+			<try>
+				<EliteVersionCheck driver="oracle.jdbc.driver.OracleDriver" 
+						 url="${database.url}"
+						 userid="jispbilcorbilling${db.env}"
+						 password="jispbilcorbilling${db.env}"
+						 autocommit="true"
+						 classpath="${lib.dir}/jdbc/oracle9i.jar"
+						 requiredversion="${required.version}"
+						 currentversion="${current.version}"
+						 operationType="READ"
+						 hostName="${env.HOSTNAME}"/>
+			</try>
+			<catch>
+				<fail message="VERSION CHECK FAILED. INSTALLATION MODULE PIN FAILED"/>
+			</catch>
+		 </trycatch>
+
+	</target>
+
+	<target name="build-all"  description="Build everything">
+		<trycatch>
+			<try>
+				<antcall target="check-preconditions" />
+				<antcall target="upgrade"/>
+				<antcall target="version-upgrade"/>
+			</try>	
+			<catch>
+				<fail message="ERROR WHILE INSTALLING PIN"/>
+			</catch>
+		</trycatch>
+	</target>
+
+
+	<target name="execute-dbscript" >
+
+		<echo message="Executing: ${db.userid}: ${pin.home}/dbscripts/${dbscript}" />
+		<sql
+		    driver="oracle.jdbc.driver.OracleDriver"
+		    url="${database.url}"
+		    userid="${db.userid}"
+		    password="${db.password}"
+		    classpath="${lib.dir}/jdbc/oracle9i.jar"
+		    onerror="continue"
+		    print="true"
+		    showheaders="false"
+		    keepformat="true"
+		    src="${pin.home}/dbscripts/${dbscript}"
+		/>
+	</target>	
+
+	<target name="database-schema-upgrade" >
+
+		<property file="${installation.dir}/pin/version.info"/>
+		<property file="${pin.home}/dbscripts/${db.file}.properties" />
+	
+		<propertycopy name="dbscripts.order" from="${db.schema}"/>
+		
+		<echo message="Database scripts: ${dbscripts.order}" />
+		
+		<foreach list="${dbscripts.order}" param="dbscript" target="execute-dbscript">
+			<param name="db.userid" value="${db.schema}${db.env}" />
+			<param name="db.password" value="${db.schema}${db.env}" />
+		</foreach>
+	</target>
+
+	<target name="database-upgrade" >
+
+		<property file="${installation.dir}/pin/version.info"/>
+		<property file="${pin.home}/dbscripts/${db.file}.properties" />
+
+		<echo message="${database.schemas}" />
+		<if>
+			<and>
+				<isset property="database.schemas" />
+				<not>
+					<equals arg1="${database.schemas}" arg2="" />
+				</not>
+			</and>
+		
+			<then>	
+				<foreach list="${database.schemas}" param="db.schema" target="database-schema-upgrade">
+				</foreach>
+			</then>
+		</if>		
+	
+	</target>
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition ends      -->
+	<!-- ******************************** -->
+	<target name="all" >
+		<antcall target="build-all"/> 
+	</target>
+</project> 

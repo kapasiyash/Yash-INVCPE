@@ -1,0 +1,88 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="searchAuditWin" style="padding: 0px; margin: 0px;" height="100%" width="100%" apply="com.elitecore.cpe.web.composer.audit.SearchAuditComposer">
+ <include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="Audit Management"/>
+		<tabbox id="searchAuditTabbox" width="100%" height="100%" tabscroll="true">
+		
+			<tabs>
+				<tab label="${labels.as.title}" />
+			</tabs>
+			<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;" sclass="main-cont">
+					<vlayout style="padding-left: 5px; padding-top: 2px;padding-bottom: 50px;" width="100%">
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="160px"></column>
+							<column width="240px"></column>
+							<column width="160px"></column>
+							<column width="240px"></column>
+						</columns>
+						<rows>
+						<!-- <row spans="1, 3" align="top">
+								<cell>
+									<label value="${labels.as.user}" style="text-align: left;" />
+								</cell>
+								<textbox id="txtUser" width="150px" maxlength="50" />
+							</row> -->
+							<row>
+									<cell>
+										<label	value="${labels.as.module}" />
+									</cell>
+									<cell><combobox id="cmbModule" readonly="true" width="150px"></combobox></cell>
+							</row>
+							<row>
+									<cell>
+										<label	value="${labels.as.action}" />
+									</cell>
+									<cell><combobox id="modeAction" readonly="true" width="150px"></combobox></cell>
+							</row>
+							<row  align="top">
+								
+										<cell>
+											<label value="${labels.as.auditfrom}"/>
+											
+										</cell>
+										<cell>
+											<datebox id="auditfrom" readonly="true" width="150px" format="${$composer.dateFormat}"   constraint="no future : Please select valid date." />
+										</cell>
+										<cell>
+											<label value="${labels.as.auditto}"/>
+											
+										</cell>
+										<cell>
+											<datebox id="auditto" readonly="true" width="150px" format="${$composer.dateFormat}"   constraint="no future : Please select valid date."  />
+										</cell>
+								</row>
+							</rows>
+					</grid>
+					<separator bar="false" />
+					<separator bar="false" />
+					<hbox>
+						<button id="btnSearch" type="button" label="${labels.global.searchBtn}" mold="trendy" width="140px" />
+						<button id="btnCancel" type="button" label="${labels.global.cancelBtn}" mold="trendy" width="140px" />
+					</hbox>
+					<separator bar="false" />
+					<separator bar="false" />
+					<separator bar="false" />
+					<paging id="userPaging" width="98%" visible="false"/>
+					<listbox id="searchResultGrid" visible="false"   forward="onDoubleClick=onDoubleClickedSearchItem"  width="99%" style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd">
+						<listhead sizable="true">
+						<listheader label="${labels.global.sr.no}" width="55px" />
+							<listheader label="${labels.sauditlb.date}" width="15%" sort="auto(auditDate)" />
+							<listheader label="${labels.sauditlb.action}" width="15%" sort="auto(auditAction)" />
+							<listheader label="${labels.sauditlb.user}" width="15%" sort="auto(userName)" />
+							<listheader label="${labels.sauditlb.reason}" width="25%" sort="auto(reason)" />
+							<listheader label="${labels.sauditlb.ip}" width="10%" sort="auto(ipAddress)" />
+							<listheader label="${labels.sauditlb.auditype}" width="10%" sort="auto(auditType)" />
+							<listheader  label="${labels.global.view}" width="55px"/>
+						</listhead>
+					</listbox>
+					<separator bar="false" />
+					<separator bar="false" />
+					<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

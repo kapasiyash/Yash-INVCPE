@@ -1,0 +1,89 @@
+<zk>
+<window  id="createAttribute"  style="overflow: visible;" width="100%"  
+		apply="com.elitecore.cpe.web.composer.master.attribute.CreateAttributeComposer">
+	<!-- <tabbox width="100%" height="100%" tabscroll="false" id="createAttributeTabbox">
+	<tabs>
+		<tab id="createLPTab" label="${labels.attribute.createtitle}" />
+	</tabs>
+
+<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 20px;overflow:auto;" sclass="main-cont">  -->
+				<hlayout height="100%" width="100%" style="overflow: visible;">
+					<vlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%">
+						<hlayout width="100%">
+							<vlayout width="100%">
+								
+								<separator bar="false"/>
+										<grid width="100%"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+										<columns>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											<column width="160px"></column>
+											<column width="240px"></column>
+										</columns>
+										<rows>
+											<row>
+												<cell>
+													<label value="${labels.attribute.name}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <textbox id="txtName" width="140px" maxlength="30" constraint="no empty,/^[a-zA-Z]+[a-zA-Z0-9 ]*/  : Please enter Attribute Name."/></cell>
+											</row>
+											<row>
+												<cell>
+													<label value="${labels.attribute.usedby}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <selectbox id="selRel" width="145px" /></cell>
+											</row>
+											<row>
+												<cell>
+													<label value="${labels.attribute.datatype}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <selectbox id="selDatatype" width="145px" /></cell>
+											</row>
+											<row>
+												<cell>
+													<label value="${labels.attribute.datavalue}"></label>
+													
+												</cell>
+												<cell colspan="3" > 
+													<textbox id="txtDatavalue" width="140px" maxlength="255" />
+													<space bar="false" />
+													<label id="lblDatavalueTooltip" ></label>
+												</cell>
+											</row>
+											<row>
+												<cell>
+													<label value="${labels.attribute.unique}"></label>
+												</cell>
+												<cell colspan="3" > <checkbox id="chkUnique"  /></cell>
+											</row>
+											<row>
+												<cell>
+													<label value="${labels.attribute.mandatory}"></label>
+												</cell>
+												<cell colspan="3" > <checkbox id="chkMandatory"  /></cell>
+											</row>
+											
+										</rows>
+										</grid>
+										
+										<hbox>
+											<button id="btnCreate" width="140px" mold="trendy" label="${labels.global.createBtn}"/>
+											<button id="btnCancel1" width="140px" mold="trendy" label="${labels.global.cancelBtn}"/>
+										</hbox>
+													<separator bar="false" />
+													<separator bar="false" />
+							</vlayout>
+						</hlayout>
+						<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+				</hlayout>
+			<!-- </tabpanel>
+		</tabpanels>
+		</tabbox>  -->
+
+</window>
+</zk>

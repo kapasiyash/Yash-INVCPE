@@ -1,0 +1,104 @@
+<zk>
+	<window id="" style="overflow: visible;" apply="com.elitecore.cpe.web.composer.master.warehouse.ViewWarehouseComposer">
+		<hlayout height="100%" width="100%" style="overflow: visible;">
+			 <vlayout width="100%" height="100%" style="padding-left: 5px; padding-top: 2px;padding-bottom: 50px;">
+		    	<hbox width="100%" style="border: 1px solid #ccc;border-width: 0 1px;">
+		            <div align="right">
+		                <menubar id="actionMenubar" autodrop="true" width="798px" sclass="top-menu"/>
+		            </div>
+		        </hbox>
+				<hlayout width="100%">
+					<vlayout width="100%">
+						<grid id="viewbucketgrid" width="798px"  oddRowSclass="non-odd" sclass="viewGrid" zclass="none">
+							<columns>
+								<column width="150px" />
+			                    <column width="249px" />
+			                    <column width="150px" />
+			                    <column width="249px" />
+							</columns>
+							<rows>
+								<row  align="top">
+									<label value="${labels.warehouse.name}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbWarehouseName"/>
+									<label value="${labels.warehouse.warehouseCode}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbWarehouseCode"/>
+								</row>
+								<row spans="1, 3" align="top">
+									<label value="${labels.warehouse.parentwhname}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbParentWHName"/>
+								</row>
+<!-- 								<row spans="1, 3" align="top"> -->
+<!-- 									<label value="${labels.warehouse.alias}" style="text-align: left;" /> -->
+<!-- 									<label style="text-align: left;" id="lbWarehouseAlias"/> -->
+<!-- 								</row> -->
+								<row spans="1, 3" align="top">
+									<label value="${labels.warehousetype.name}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbWarehouseType"/>
+								</row>
+								<row spans="1, 3" align="top">
+									<label value="${labels.global.location}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbWarehouselocation"/>
+								</row>
+								<row spans="1, 3" align="top">
+									<label value="${labels.warehouse.owner}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbOwner"/>
+								</row>
+								<row spans="1, 3" align="top">
+									<label value="${labels.warehouse.contactNo}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbContactno"/>
+								</row>
+								<row spans="1, 3" align="top">
+									<label value="${labels.warehouse.emailId}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbEmailid"/>
+								</row>
+								<row spans="1, 3" align="top">
+									<label value="${labels.global.description}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbWarehouseDesc"/>
+								</row>
+								<row align="top">
+									<label value="${labels.global.createDate}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbCreatedDate"  />
+									<label value="${labels.global.createDateBy}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbCreatedBy" />
+								</row>
+								<row align="top">
+									<label value="${labels.global.lastModifiedDate}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbUpdateDate"  />
+									<label value="${labels.global.lastModifiedBy}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbUpdatedBy" />
+								</row>
+								
+							</rows>
+							
+						</grid>
+
+						<separator bar="false"/>
+						<div sclass="sectionTitle" width="800px" id="viewThresholdGridDiv">
+				<label  value="${labels.warehouse.thresholdDetailtitle}" style="font-weight: bold;" />
+			</div>
+						<listbox id="viewThresholdGrid" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="99%">
+											<listhead sizable="true">
+												<listheader label="${labels.global.sr.no}" width="55px" />
+												<listheader label="${labels.item.type}" width="25%"  />
+												<listheader label="${labels.item.subtype}" width="25%"  />
+												<listheader label="${labels.threshold.type}" width="25%"  />
+												<listheader label="${labels.threshold.value}"  width="25%"  />
+												<listheader label="${labels.threshold.quantity}"  width="22%"  />
+												<listheader label="${labels.threshold.email}"  width="22%"  />
+												<listheader label="${labels.threshold.mobile}"  width="22%"  />
+												
+											<!-- <listheader label="${labels.global.edit}"  width="10%"  />
+												<listheader label="${labels.global.deleteBtn}"  width="10%"  /> -->	
+											</listhead>
+										</listbox>
+						<div id="viewActionContent"  width="100%" />
+						</vlayout>
+				</hlayout>
+				<label id="lblMessage" visible="false" value="Note : Central Warehouse cannot be deleted. Warehouse name and Warehouse Type cannot be updated" style="text-align: left;color: red;" />
+				<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+			</vlayout>
+		</hlayout>
+	</window>
+
+</zk>

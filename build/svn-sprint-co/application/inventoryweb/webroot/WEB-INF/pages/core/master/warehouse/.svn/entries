@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/WEB-INF/pages/core/master/warehouse"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16334"
+   kind="dir"
+   committed-date="2015-03-09T03:27:51.797663Z"/>
+<entry
+   name="ConfigureThreshold.zul"
+   checksum="c3e6517502a6324c379b6014d82f889a"
+   last-author="rinkal.sadariya"
+   committed-rev="16334"
+   text-time="2015-03-09T03:27:51.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:27:51.797663Z"/>
+<entry
+   name="CreateWarehouse.zul"
+   checksum="7fa6227c5433a448066cceda56c04b6c"
+   last-author="rinkal.sadariya"
+   committed-rev="16334"
+   text-time="2015-03-09T03:27:51.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:27:51.797663Z"/>
+<entry
+   name="CreateWarehouseType.zul"
+   checksum="e86c5cdcae53d7edba57c1b93b8904a6"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="DeleteWarehouse.zul"
+   checksum="8974ce0e66707a102c37cef415a71a01"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="PlaceOrder.zul"
+   checksum="be84d7a7f513c3793394b6bc1ecc2f3e"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchPlaceOrderDetail.zul"
+   checksum="6c756f53911624de3bcb2fee81904bf7"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchWarehouse.zul"
+   checksum="6e1f73b215fe02a141732dd8d08636bc"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchWarehouseType.zul"
+   checksum="f1728f585e70d444eb2c007a5a84e5d3"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="TransferInventorySummary.zul"
+   checksum="3fe6fda63d20220a26e5ce192dafe5fb"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="TransferPlaceOrder.zul"
+   checksum="12f0e78ddda9e8f323248e0a3953dcda"
+   last-author="yash.kapasi"
+   committed-rev="16288"
+   text-time="2015-03-04T07:27:37.000000Z"
+   kind="file"
+   committed-date="2015-03-04T07:27:37.714349Z"/>
+<entry
+   name="UpdateWarehouse.zul"
+   checksum="e621b50238744c0898e3aa9b2765c3eb"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="UpdateWarehouseType.zul"
+   checksum="42ab7a857048e35b997fb1b8e02d0e07"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ViewWarehouse.zul"
+   checksum="6833df31779fec2b559897a9b155afcd"
+   last-author="rinkal.sadariya"
+   committed-rev="16334"
+   text-time="2015-03-09T03:27:51.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:27:51.797663Z"/>
+<entry
+   name="ViewWarehouseType.zul"
+   checksum="74c1b89898dc1b7662ed74f5ce09ac11"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="cancelPlaceOrder.zul"
+   checksum="a6a369345783c3069b6a660f08c8bd56"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="cancelTransferInventory.zul"
+   checksum="688ffee4a2fa08cc33bcab7d89333493"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="configureThreshold_empty.zul"
+   checksum="6f7132c79c46a5659e80c6ed35331b51"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="deleteThreshold.zul"
+   checksum="98bb0aba99de7137a669aa300e4a11e7"
+   last-author="rinkal.sadariya"
+   committed-rev="16334"
+   text-time="2015-03-09T03:27:51.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:27:51.797663Z"/>
+<entry
+   name="rejectTransferInventory.zul"
+   checksum="db62954ae0cffaa0193948ef72e2cd56"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="tree"
+   kind="dir"/>
+<entry
+   name="viewPlaceOrder.zul"
+   checksum="239e19c0ad206e24f9a76f0b197b9691"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="viewPlaceOrderDetail.zul"
+   checksum="611c6621d8e520ce8b59488fdfaf7e82"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="viewTransferInventory.zul"
+   checksum="74340bd2f7f323abfc3acc9e7fa867a0"
+   last-author="yash.kapasi"
+   committed-rev="16288"
+   text-time="2015-03-04T07:27:37.000000Z"
+   kind="file"
+   committed-date="2015-03-04T07:27:37.714349Z"/>
+<entry
+   name="viewTransferInventory_old.zul"
+   checksum="96620766632a245f9a12d5997dfa3e70"
+   last-author="yash.kapasi"
+   committed-rev="16288"
+   text-time="2015-03-04T07:27:37.000000Z"
+   kind="file"
+   committed-date="2015-03-04T07:27:37.714349Z"/>
+<entry
+   name="warehouse-summary.zul"
+   checksum="866260cff6f1fecf1a2f320845720bde"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

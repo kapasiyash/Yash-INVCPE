@@ -1,0 +1,87 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="updateAttribute" apply="com.elitecore.cpe.web.composer.master.attribute.UpdateAttributeComposer">
+<vlayout width="800px">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.attribute.updatattributetitle}" style="font-weight: bold;" />
+			</div>
+			
+			<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								<row>
+									<cell>
+										<label value="${labels.attribute.name}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <textbox id="txtName" width="140" maxlength="30" constraint="no empty,/^[a-zA-Z]+[a-zA-Z0-9 ]*/ : Please enter valid alphanumeric Attribute Name."/></cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.attribute.usedby}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <selectbox id="selRel" width="140" /></cell>
+								</row>
+								<row>
+										<cell>
+												<label value="${labels.attribute.datatype}"></label>
+												<label value="*" style="color:red;" />
+											</cell>
+											<cell colspan="3" > <selectbox id="selDatatype" width="140" /></cell>
+										</row>
+								<row>
+									<cell>
+										<label value="${labels.attribute.datavalue}"></label>
+										
+									</cell>
+									<cell colspan="3" > 
+										<textbox id="txtDatavalue" width="140" maxlength="255" />
+										<space bar="false" />
+										<label id="lblDatavalueTooltip" ></label>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.attribute.unique}"></label>
+									</cell>
+									<cell colspan="3" > <checkbox id="chkUnique"  /></cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.attribute.mandatory}"></label>
+									</cell>
+									<cell colspan="3" > <checkbox id="chkMandatory"  /></cell>
+								</row>
+								
+								<row>
+									<cell>
+										<label value="${labels.global.reason}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <textbox id="txtReason" width="140" maxlength="100" constraint="no empty : Please enter Reason." rows="3" /></cell>
+								</row>
+								
+							</rows>
+						</grid>
+						
+						
+						
+			<separator bar="false" />
+			<separator bar="false" />
+			<hbox>
+				<button id="btnUpdate" mold="trendy" label="${labels.global.updateBtn}" width="140px"/>
+				<button id="cancelBtn" mold="trendy" label="Cancel" onClick="updateAttribute.detach();" width="140px"/>
+			</hbox>
+			<separator bar="false" />
+			<separator bar="false" />
+			
+</vlayout>
+</hlayout>
+</zk>

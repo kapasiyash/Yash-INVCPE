@@ -1,0 +1,93 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="placeOrder" apply="com.elitecore.cpe.web.composer.master.warehouse.PlaceOrderComposer">
+  
+<vlayout width="800px">
+			<separator bar="false" />
+			
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.warehouse.placeOrdertitle}" style="font-weight: bold;" />
+			</div>
+			
+			
+				<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								<row>
+								<cell>
+									<label value="${labels.inventory.newwh}"/>
+									<label value="*" style="color:red;" />
+									
+
+								</cell>
+								<cell >
+									<combobox id="cmbWarhouse" width="145px" constraint="no empty : Please Select Warehouse">
+									
+									</combobox>
+								</cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.item.type}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+								<cell>	<combobox id="cmbResourceType" width="145px" maxlength="100" constraint="no empty : Please Select Resource Type"/></cell>
+								
+									<cell>
+											<label value="${labels.item.subtype}"></label>
+											
+									</cell>
+									<cell> <combobox id="cmbResourceSubType" width="145px" maxlength="100" /></cell>
+								</row>
+								
+								<row>
+									<cell>
+										<label value="${labels.inventory.qty}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" ><intbox id="txtQuantity" width="140px" maxlength="5" constraint="no empty,no negative : Please enter Quantity "  /></cell>
+								</row>
+								
+								
+							
+							</rows>
+						</grid>
+						<hbox>
+						<separator bar="false" />
+						<separator bar="false" />
+				
+				<button id="btnSubmit" mold="trendy" label="Place Order" width="140px" visible="true"/>
+				<button id="cancelBtn" mold="trendy" label="Cancel" onClick="placeOrder.detach();" width="140px"/>
+			<!--  	<button id="cancelBtn" mold="trendy" label="${labels.global.cancelBtn}" onClick="updatesEvent.detach();" width="140px"/> -->
+			</hbox>
+<!-- 			<separator bar="false" /> -->
+<!-- 			<separator bar="false" /> -->
+<!-- 			<listbox id="configThresholdGrid" visible="true"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"    -->
+<!-- 												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd" height="100%" width="99%"> -->
+<!-- 											<listhead sizable="true"> -->
+<!-- 												<listheader label="${labels.global.sr.no}" width="55px" /> -->
+<!-- 												<listheader label="${labels.item.type}" width="22%"  /> -->
+<!-- 												<listheader label="${labels.item.subtype}" width="22%"  /> -->
+<!-- 												<listheader label="${labels.threshold.type}" width="22%"  /> -->
+<!-- 												<listheader label="${labels.threshold.value}"  width="22%"  /> -->
+<!-- 												<listheader label="${labels.global.edit}"  width="55px"  /> -->
+<!-- 												<listheader label="${labels.global.deleteBtn}"  width="60px"  /> -->
+<!-- 											</listhead> -->
+<!-- 										</listbox> -->
+						
+						
+						
+			<separator bar="false" />
+			<separator bar="false" />
+			
+			<separator bar="false" />
+			<separator bar="false" />
+			
+</vlayout>
+</hlayout>
+</zk>

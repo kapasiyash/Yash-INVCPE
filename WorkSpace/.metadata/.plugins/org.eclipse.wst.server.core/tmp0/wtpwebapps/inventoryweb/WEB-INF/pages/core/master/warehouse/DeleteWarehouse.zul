@@ -1,0 +1,45 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="deleteWarehouse" 
+		apply="com.elitecore.cpe.web.composer.master.warehouse.DeleteWarehouseComposer">
+		
+<vlayout width="800px">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.warehouse.deletewarehousetitle}" style="font-weight: bold;" />
+			</div>
+			
+			<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+			
+								<row>
+									<cell>
+										<label value="${labels.global.reason}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <textbox id="txtReason" width="140" maxlength="100" multiline="true"   cols="40" constraint="no empty : Please enter Reason." rows="3" /></cell>
+								</row>
+								
+							
+							</rows>
+						</grid>
+						
+						
+						
+			<separator bar="false" />
+			<separator bar="false" />
+			<hbox>
+				<button id="btnDelete" mold="trendy" label="${labels.global.deleteBtn}" width="140px"/>
+				<button id="cancelBtn" mold="trendy" label="Cancel" onClick="deleteWarehouse.detach();" width="140px"/>
+			</hbox>
+			<separator bar="false" />
+			<separator bar="false" />
+</vlayout>
+</hlayout>
+</zk>

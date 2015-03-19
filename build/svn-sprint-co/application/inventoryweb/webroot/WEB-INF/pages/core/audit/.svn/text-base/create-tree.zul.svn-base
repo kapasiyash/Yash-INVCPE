@@ -1,0 +1,11 @@
+<?page title="Create Tree" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window  border="none" contentStyle="overflow:auto;" style="padding-right: 10px;" apply="com.elitecore.cpe.web.composer.audit.CreateTreeComposer">
+<tabbox tabscroll="true" id="moduleTabbox">
+	<tabs id="moduleTabs">		
+	</tabs>
+	<tabpanels id="moduleTabpanels">			
+	</tabpanels>
+</tabbox>
+</window>
+</zk>

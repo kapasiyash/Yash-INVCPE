@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/delegates/master"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16330"
+   kind="dir"
+   committed-date="2015-03-09T03:23:30.401117Z"/>
+<entry
+   name="AttributeBD.java"
+   checksum="f3bbddfa7dbde36e48b31679d1e868d9"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ItemBD.java"
+   checksum="c3b056a63b5e7c02558b618bb9199421"
+   last-author="yash.kapasi"
+   committed-rev="16287"
+   text-time="2015-03-04T07:27:26.000000Z"
+   kind="file"
+   committed-date="2015-03-04T07:27:26.635701Z"/>
+<entry
+   name="WareHouseBD.java"
+   checksum="62c1996cb0d84b99eb1dfad35f9ab861"
+   last-author="rinkal.sadariya"
+   committed-rev="16330"
+   text-time="2015-03-09T03:23:30.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:23:30.401117Z"/>
+</wc-entries>

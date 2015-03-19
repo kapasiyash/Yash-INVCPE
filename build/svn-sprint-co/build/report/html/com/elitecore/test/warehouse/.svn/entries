@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/report/html/com/elitecore/test/warehouse"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16487"
+   kind="dir"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="10_WarehouseTestCase-err.html"
+   checksum="e71cdb8a423170170b9fdfe99e94ae26"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="10_WarehouseTestCase-fails.html"
+   checksum="9e59a3df1cfc79e92395f5ca73fe8a2f"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="10_WarehouseTestCase-out.html"
+   checksum="4bc3eff16608f7e2b61c30a9330daefb"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="10_WarehouseTestCase.html"
+   checksum="d4ede602dc1c34aa8393776321fd43e7"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="package-frame.html"
+   checksum="609d167895776546a2ae668bf0fb5be2"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="package-summary.html"
+   checksum="c7fd647d05f5dcc0961049da68efce22"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+</wc-entries>

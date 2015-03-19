@@ -1,0 +1,108 @@
+BODY 
+{
+SCROLLBAR-FACE-COLOR: #FFFFFF; 
+SCROLLBAR-HIGHLIGHT-COLOR: #F3EFEE; 
+SCROLLBAR-SHADOW-COLOR:  #FFFFFF; 
+SCROLLBAR-3DLIGHT-COLOR: #FFFFFF; 
+SCROLLBAR-ARROW-COLOR: #003F72; 
+SCROLLBAR-TRACK-COLOR: #FFFFFF;
+SCROLLBAR-DARKSHADOW-COLOR: #003F72; 
+}
+.white-header {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:19px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.border {
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #3A81C1;
+	border-left-color: #3A81C1;
+}
+
+.input_box, .z-textbox {
+height:17px;
+width:127px;
+padding:0px;
+margin:0px;
+font-family:Arial, Helvetica, sans-serif;
+font-size:11px;
+}
+.h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF ! important;
+	font-weight: normal;
+}
+.menu {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #FFFFFF;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #0B6AAE;
+	line-height: 20px;
+}
+
+
+
+.h1_black {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+}
+.blue_text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #1F5C9F;
+}
+.txt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+}
+
+.txt a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+
+.txt a:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #1F5C9F;
+	text-decoration: none;
+	letter-spacing: 2em;
+}
+
+
+.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+
+
+z-button .z-button-tl, .z-button .z-button-tr, .z-button .z-button-bl, .z-button .z-button-br,
+.z-button .z-button-tm, .z-button .z-button-bm, .z-button .z-button-cl, .z-button .z-button-cr {
+background-image:none; background-color:#008bb6;
+}
+
+.z-button .z-button-cm {
+background-image:url(images/loginbox_right_bot.jpg);
+
+}

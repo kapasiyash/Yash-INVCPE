@@ -1,0 +1,47 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="configureThreshold" apply="com.elitecore.cpe.web.composer.master.warehouse.DeleteThresholdComposer">
+<vlayout width="800px">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.warehouse.deleteThresholdtitle}" style="font-weight: bold;" />
+			</div>
+			
+			<div id="thresholdConfigDiv">
+			<separator bar="false" />
+			<separator bar="false" />
+			<listbox id="configThresholdGrid" visible="true"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top"   multiple="true" checkmark="true"
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd" height="100%" width="99%">
+											<listhead sizable="true">
+												<listheader label="${labels.global.sr.no}" width="55px" />
+												<listheader label="${labels.item.type}" width="22%"  />
+												<listheader label="${labels.item.subtype}" width="22%"  />
+												<listheader label="${labels.threshold.type}" width="22%"  />
+												<listheader label="${labels.threshold.value}"  width="22%"  />
+												<listheader label="${labels.threshold.quantity}"  width="22%"  />
+												<listheader label="${labels.threshold.email}"  width="22%"  />
+												<listheader label="${labels.threshold.mobile}"  width="22%"  />
+										<!-- 		<listheader label="${labels.global.edit}"  width="55px"  /> -->
+<!-- 												<listheader label="${labels.global.deleteBtn}"  width="60px"  />
+ -->											</listhead>
+									    </listbox>
+						
+						
+			<separator bar="false" />
+			<separator bar="false" />
+			<button id="btnDelete" mold="trendy" label="Delete" width="140px" visible="true"  />
+			<separator bar="false" />
+			<separator bar="false" />
+			</div>
+			<div id="thresholdNoConfig" visible="false">
+				Not Available any Inventory
+			</div>
+</vlayout>
+</hlayout>
+ <popup id="mobile" width="300px">
+        <html><![CDATA[
+            Note: please enter Mobile Number with country code 
+            <br/><font color="red">ie. +230zyyyxxxx</font>
+        ]]></html>
+    </popup>
+</zk>

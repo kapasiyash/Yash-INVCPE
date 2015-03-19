@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="2.0.1" sequence="0" timestamp="1426495696622" analysisTimestamp="1426495696634" release="">
+  <Project projectName="">
+    <Jar>/home/elitecore/Project/Partner-CPE_branch/CrestelCPE-MTNICE/Sprint-4/build/release/${env.BUILD_NUMBER}/inventoryweb.jar</Jar>
+    <SrcDir>/home/elitecore/Project/Partner-CPE_branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/src</SrcDir>
+  </Project>
+  <BugInstance type="UR_UNINIT_READ" priority="2" abbrev="UR" category="CORRECTNESS" instanceHash="a85fbfaa69c495873629db72df5e4ca6" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="3">
+    <ShortMessage>Uninitialized read of field in constructor</ShortMessage>
+    <LongMessage>Uninitialized read of chosenLb in new com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer()</LongMessage>
+    <Class classname="com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer" primary="true">
+      <SourceLine classname="com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer" start="32" end="102" sourcefile="DualListboxComposer.java" sourcepath="com/elitecore/cpe/web/system/userwarehousemapping/DualListboxComposer.java" relSourcepath="com/elitecore/cpe/web/system/userwarehousemapping/DualListboxComposer.java">
+        <Message>At DualListboxComposer.java:[lines 32-102]</Message>
+      </SourceLine>
+      <Message>In class com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer</Message>
+    </Class>
+    <Method classname="com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer" name="&lt;init&gt;" signature="()V" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer" start="32" end="39" startBytecode="0" endBytecode="123" sourcefile="DualListboxComposer.java" sourcepath="com/elitecore/cpe/web/system/userwarehousemapping/DualListboxComposer.java" relSourcepath="com/elitecore/cpe/web/system/userwarehousemapping/DualListboxComposer.java"/>
+      <Message>In method new com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer()</Message>
+    </Method>
+    <Field classname="com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer" name="chosenLb" signature="Lorg/zkoss/zul/Listbox;" isStatic="false" primary="true">
+      <SourceLine classname="com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer" sourcefile="DualListboxComposer.java" sourcepath="com/elitecore/cpe/web/system/userwarehousemapping/DualListboxComposer.java" relSourcepath="com/elitecore/cpe/web/system/userwarehousemapping/DualListboxComposer.java">
+        <Message>In DualListboxComposer.java</Message>
+      </SourceLine>
+      <Message>Field com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer.chosenLb</Message>
+    </Field>
+    <SourceLine classname="com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer" primary="true" start="37" end="37" startBytecode="35" endBytecode="35" sourcefile="DualListboxComposer.java" sourcepath="com/elitecore/cpe/web/system/userwarehousemapping/DualListboxComposer.java" relSourcepath="com/elitecore/cpe/web/system/userwarehousemapping/DualListboxComposer.java">
+      <Message>At DualListboxComposer.java:[line 37]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="CORRECTNESS">
+    <Description>Correctness</Description>
+  </BugCategory>
+  <BugPattern type="UR_UNINIT_READ" abbrev="UR" category="CORRECTNESS">
+    <ShortDescription>Uninitialized read of field in constructor</ShortDescription>
+    <Details><![CDATA[
+
+  <p> This constructor reads a field which has not yet been assigned a value.&nbsp;
+  This is often caused when the programmer mistakenly uses the field instead
+  of one of the constructor's parameters.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="UR">
+    <Description>Uninitialized read of field in constructor</Description>
+  </BugCode>
+  <Errors errors="0" missingClasses="202">
+    <MissingClass>com.elitecore.cpe.bl.data.common.ComboBoxData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.common.ComboData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.notification.DocumentTemplateDetailWrapperdata</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.notification.DocumentTemplateWrapperdata</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.notification.MessageTagWrapperData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.notification.SMSDocumentTemplateDetailWrapperData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.system.agent.AgentScheduleProcedureWrapperData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.system.audit.ConfigureAuditWrapperData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.system.audit.EntityTypeEnum</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.system.internal.SystemActionData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.system.internal.SystemModuleData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.system.internal.SystemModuleGroupData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.system.systemparameter.SystemParameterGroupWrapperData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.data.system.systemparameter.SystemParameterWrapperData</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.inventorymgt.InventoryManagementBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.master.AttributeBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.master.ItemBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.master.WareHouseBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.notification.NotificationBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.system.agent.SystemAgentBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.system.audit.ConfigureAuditBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.system.internal.SystemInternalBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.system.systemparameter.SystemParameterBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.system.user.UserBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.delegates.transfer.InventoryTransferBD</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.exception.AccessDeniedException</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.exception.CreateBLException</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.exception.SearchBLException</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.exception.TechnicalException</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.exception.UpdateBLException</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.facade.system.internal.SystemInternalDataConversionUtil</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.configuration.notification.CheckValidDateForTemplateVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.configuration.notification.NotificationCategoryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.configuration.notification.SearchDocumentTemplateVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.configuration.notification.ViewDocumentTemplateVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.core.expr.ConstraintExpressionVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.BatchSummaryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.BulkChangeInventoryStatusVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.ChangeInventoryStatusVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.ChangeInventorySubStatusVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.InventoryBatchViewVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.InventoryDetailVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.InventoryStatusLogVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.InventoryUploadVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.PlaceOrderVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.ResourceAttributeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.SearchInventoryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.SearchTransferInventory</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.SearchWarehouseInventoryStatusVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorymgt.TransferInventorySummaryViewVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorytransfer.CancelTransferOrderVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorytransfer.CheckInventoryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO$InventoryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.inventorytransfer.ViewTransferInventoryDetailVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.AttributeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.ConfigureThresholdVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.ItemVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.ResourceCategoryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.ResourceSubTypeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.ResourceTypeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.SearchResourceSubTypeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.SearchResourceTypeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.UpdateResourceSubTypeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.UpdateResourceTypeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.WareHouseSummaryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.WarehouseTypeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.WarehouseVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.master.warehouse.CreateWareHouseTreeVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.AgentParameterVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.AgentScheduleParamVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.AgentScheduleVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.AgentVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.PreUpdateAgentParamVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.SearchAgentRunInQueueVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.SearchAgentScheduleVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.UpdateAgentParameterVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.UpdateAgentScheduleVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.ViewAgentRunHistoryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.ViewAgentScheduleVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.agent.ViewVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.audit.SearchAuditPaggingVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.audit.SearchAuditVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.audit.SearchAuditWrapper</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.audit.SearchWsAuditVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.audit.ViewAuditEntryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.audit.ViewAuditVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.bl.vo.system.audit.ViewWsAuditEntryVO</MissingClass>
+    <MissingClass>com.elitecore.cpe.core.IBDSessionContext</MissingClass>
+    <MissingClass>com.elitecore.cpe.core.IBLSession</MissingClass>
+    <MissingClass>com.elitecore.cpe.util.CSVDataExporter</MissingClass>
+    <MissingClass>com.elitecore.cpe.util.GeneralUtility</MissingClass>
+    <MissingClass>com.elitecore.cpe.util.expr.cron.SchedulingPattern</MissingClass>
+    <MissingClass>com.elitecore.cpe.util.expr.cron.exception.InvalidPatternException</MissingClass>
+    <MissingClass>com.elitecore.cpe.util.logger.BLLogger</MissingClass>
+    <MissingClass>com.elitecore.cpe.util.logger.BLLogger$LogLevel</MissingClass>
+    <MissingClass>com.elitecore.cpe.util.logger.Logger</MissingClass>
+    <MissingClass>javax.servlet.ServletContext</MissingClass>
+    <MissingClass>javax.servlet.ServletContextEvent</MissingClass>
+    <MissingClass>javax.servlet.ServletContextListener</MissingClass>
+    <MissingClass>javax.servlet.http.Cookie</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletRequest</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletResponse</MissingClass>
+    <MissingClass>javax.servlet.http.HttpSession</MissingClass>
+    <MissingClass>org.zkforge.ckez.CKeditor</MissingClass>
+    <MissingClass>org.zkoss.util.media.Media</MissingClass>
+    <MissingClass>org.zkoss.util.resource.Labels</MissingClass>
+    <MissingClass>org.zkoss.zhtml.Li</MissingClass>
+    <MissingClass>org.zkoss.zhtml.Ul</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.Component</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.Components</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.Desktop</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.Execution</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.Executions</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.IdSpace</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.Page</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.Session</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.Sessions</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.WrongValueException</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.event.Event</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.event.EventListener</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.event.Events</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.event.ForwardEvent</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.event.InputEvent</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.event.UploadEvent</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.metainfo.ComponentInfo</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.select.Selectors</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.select.annotation.Listen</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.select.annotation.Wire</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.sys.ComponentsCtrl</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.sys.IdGenerator</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.util.Clients</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.util.GenericForwardComposer</MissingClass>
+    <MissingClass>org.zkoss.zk.ui.util.Initiator</MissingClass>
+    <MissingClass>org.zkoss.zul.A</MissingClass>
+    <MissingClass>org.zkoss.zul.AbstractListModel</MissingClass>
+    <MissingClass>org.zkoss.zul.Bandbox</MissingClass>
+    <MissingClass>org.zkoss.zul.Bandpopup</MissingClass>
+    <MissingClass>org.zkoss.zul.Button</MissingClass>
+    <MissingClass>org.zkoss.zul.Cell</MissingClass>
+    <MissingClass>org.zkoss.zul.Checkbox</MissingClass>
+    <MissingClass>org.zkoss.zul.Column</MissingClass>
+    <MissingClass>org.zkoss.zul.Columns</MissingClass>
+    <MissingClass>org.zkoss.zul.Combobox</MissingClass>
+    <MissingClass>org.zkoss.zul.Comboitem</MissingClass>
+    <MissingClass>org.zkoss.zul.ComboitemRenderer</MissingClass>
+    <MissingClass>org.zkoss.zul.Datebox</MissingClass>
+    <MissingClass>org.zkoss.zul.DefaultTreeModel</MissingClass>
+    <MissingClass>org.zkoss.zul.DefaultTreeNode</MissingClass>
+    <MissingClass>org.zkoss.zul.Div</MissingClass>
+    <MissingClass>org.zkoss.zul.FieldComparator</MissingClass>
+    <MissingClass>org.zkoss.zul.Filedownload</MissingClass>
+    <MissingClass>org.zkoss.zul.Grid</MissingClass>
+    <MissingClass>org.zkoss.zul.Hbox</MissingClass>
+    <MissingClass>org.zkoss.zul.Hlayout</MissingClass>
+    <MissingClass>org.zkoss.zul.Image</MissingClass>
+    <MissingClass>org.zkoss.zul.Intbox</MissingClass>
+    <MissingClass>org.zkoss.zul.Label</MissingClass>
+    <MissingClass>org.zkoss.zul.ListModel</MissingClass>
+    <MissingClass>org.zkoss.zul.ListModelList</MissingClass>
+    <MissingClass>org.zkoss.zul.Listbox</MissingClass>
+    <MissingClass>org.zkoss.zul.Listcell</MissingClass>
+    <MissingClass>org.zkoss.zul.Listhead</MissingClass>
+    <MissingClass>org.zkoss.zul.Listheader</MissingClass>
+    <MissingClass>org.zkoss.zul.Listitem</MissingClass>
+    <MissingClass>org.zkoss.zul.ListitemRenderer</MissingClass>
+    <MissingClass>org.zkoss.zul.Longbox</MissingClass>
+    <MissingClass>org.zkoss.zul.Menu</MissingClass>
+    <MissingClass>org.zkoss.zul.Menubar</MissingClass>
+    <MissingClass>org.zkoss.zul.Menuitem</MissingClass>
+    <MissingClass>org.zkoss.zul.Menupopup</MissingClass>
+    <MissingClass>org.zkoss.zul.Messagebox</MissingClass>
+    <MissingClass>org.zkoss.zul.Messagebox$Button</MissingClass>
+    <MissingClass>org.zkoss.zul.Messagebox$ClickEvent</MissingClass>
+    <MissingClass>org.zkoss.zul.Paging</MissingClass>
+    <MissingClass>org.zkoss.zul.Panelchildren</MissingClass>
+    <MissingClass>org.zkoss.zul.Radio</MissingClass>
+    <MissingClass>org.zkoss.zul.Radiogroup</MissingClass>
+    <MissingClass>org.zkoss.zul.Row</MissingClass>
+    <MissingClass>org.zkoss.zul.Rows</MissingClass>
+    <MissingClass>org.zkoss.zul.Selectbox</MissingClass>
+    <MissingClass>org.zkoss.zul.Tab</MissingClass>
+    <MissingClass>org.zkoss.zul.Tabbox</MissingClass>
+    <MissingClass>org.zkoss.zul.Tabpanel</MissingClass>
+    <MissingClass>org.zkoss.zul.Tabpanels</MissingClass>
+    <MissingClass>org.zkoss.zul.Tabs</MissingClass>
+    <MissingClass>org.zkoss.zul.Textbox</MissingClass>
+    <MissingClass>org.zkoss.zul.Timebox</MissingClass>
+    <MissingClass>org.zkoss.zul.Tree</MissingClass>
+    <MissingClass>org.zkoss.zul.TreeModel</MissingClass>
+    <MissingClass>org.zkoss.zul.TreeNode</MissingClass>
+    <MissingClass>org.zkoss.zul.Treecell</MissingClass>
+    <MissingClass>org.zkoss.zul.Treechildren</MissingClass>
+    <MissingClass>org.zkoss.zul.Treeitem</MissingClass>
+    <MissingClass>org.zkoss.zul.TreeitemRenderer</MissingClass>
+    <MissingClass>org.zkoss.zul.Treerow</MissingClass>
+    <MissingClass>org.zkoss.zul.Vlayout</MissingClass>
+    <MissingClass>org.zkoss.zul.West</MissingClass>
+    <MissingClass>org.zkoss.zul.Window</MissingClass>
+    <MissingClass>org.zkoss.zul.event.PagingEvent</MissingClass>
+    <MissingClass>org.zkoss.zul.ext.Sortable</MissingClass>
+    <MissingClass>org.zkoss.zul.impl.InputElement</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Mon, 16 Mar 2015 14:18:16 +0530" total_classes="340" referenced_classes="392" total_bugs="1" total_size="12841" num_packages="27" vm_version="20.13-b02" cpu_seconds="43.58" clock_seconds="23.22" peak_mbytes="388.38" alloc_mbytes="816.00" gc_seconds="1.02" priority_2="1">
+    <FileStats path="com/elitecore/cpe/web/CheckSession.java" bugCount="0" size="14"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/core/BaseCPEViewComposer.java" bugCount="0" size="222"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/core/BaseComposer.java" bugCount="0" size="200"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/core/BaseDataProvider.java" bugCount="0" size="9"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/core/BaseSearchComposer.java" bugCount="0" size="134"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/core/BaseViewComposer.java" bugCount="0" size="165"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/core/MainLayoutComposer.java" bugCount="0" size="300"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/core/StaticIdGenerator.java" bugCount="0" size="25"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/module/BaseComposerOperationImpl.java" bugCount="0" size="80"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/module/BaseComposerOperations.java" bugCount="0" size="23"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/module/BaseConstants.java" bugCount="0" size="26"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/module/BaseDialogComposer.java" bugCount="0" size="34"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/module/BaseModuleComposer.java" bugCount="0" size="22"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/module/BaseModuleViewComposer.java" bugCount="0" size="191"/>
+    <FileStats path="com/elitecore/cpe/web/base/ui/module/CPEWebConstants.java" bugCount="0" size="26"/>
+    <FileStats path="com/elitecore/cpe/web/bl/vo/BLSession.java" bugCount="0" size="34"/>
+    <FileStats path="com/elitecore/cpe/web/common/TimeoutComposer.java" bugCount="0" size="14"/>
+    <FileStats path="com/elitecore/cpe/web/composer/ConfigureProcSchedule.java" bugCount="0" size="86"/>
+    <FileStats path="com/elitecore/cpe/web/composer/MainLayoutComposer.java" bugCount="0" size="643"/>
+    <FileStats path="com/elitecore/cpe/web/composer/audit/ConfigureAuditComposer.java" bugCount="0" size="32"/>
+    <FileStats path="com/elitecore/cpe/web/composer/audit/CreateTreeComposer.java" bugCount="0" size="200"/>
+    <FileStats path="com/elitecore/cpe/web/composer/audit/SearchAuditComposer.java" bugCount="0" size="255"/>
+    <FileStats path="com/elitecore/cpe/web/composer/audit/SearchWsAuditComposer.java" bugCount="0" size="169"/>
+    <FileStats path="com/elitecore/cpe/web/composer/audit/ViewAuditComposer.java" bugCount="0" size="98"/>
+    <FileStats path="com/elitecore/cpe/web/composer/audit/ViewAuditEntryComposer.java" bugCount="0" size="48"/>
+    <FileStats path="com/elitecore/cpe/web/composer/audit/ViewWSAuditComposer.java" bugCount="0" size="39"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/BulkStatusChangeInventoryComposer.java" bugCount="0" size="67"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/UploadInventoryCSVFormatComposer.java" bugCount="0" size="44"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/UploadInventoryComposer.java" bugCount="0" size="110"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/orderdetail/SearchOrderDetailComposer.java" bugCount="0" size="250"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/search/ChangeInventorySubStatusComposer.java" bugCount="0" size="48"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/search/InventoryHDComposer.java" bugCount="0" size="41"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/search/SearchInventoryBatchComposer.java" bugCount="0" size="134"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/search/SearchInventoryComposer.java" bugCount="0" size="318"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/search/ViewInventoryBatchDetailComposer.java" bugCount="0" size="106"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/search/ViewInventoryBatchSummaryComposer.java" bugCount="0" size="96"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/search/ViewInventoryComposer.java" bugCount="0" size="199"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/transfer/TransferInventory.java" bugCount="0" size="105"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/transfer/TransferInventoryBatch.java" bugCount="0" size="226"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/transfer/TransferInventoryComposer.java" bugCount="0" size="199"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/transfer/TransferInventoryP.java" bugCount="0" size="331"/>
+    <FileStats path="com/elitecore/cpe/web/composer/inventory/transfer/ViewTransferOrderDetailComposer.java" bugCount="0" size="44"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/attribute/CreateAttributeComposer.java" bugCount="0" size="117"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/attribute/SearchAttributeComposer.java" bugCount="0" size="121"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/attribute/UpdateAttributeComposer.java" bugCount="0" size="129"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/attribute/ViewAttributeComposer.java" bugCount="0" size="53"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/ChangeInventoryStatusComposer.java" bugCount="0" size="48"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/CreateItemComposer.java" bugCount="0" size="227"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/CreateResourceSubTypeComposer.java" bugCount="0" size="35"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/CreateResourceTypeComposer.java" bugCount="0" size="26"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/SearchItemComposer.java" bugCount="0" size="145"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/SearchResourceSubTypeComposer.java" bugCount="0" size="115"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/SearchResourceTypeComposer.java" bugCount="0" size="105"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/UpdateItemComposer.java" bugCount="0" size="263"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/UpdateResourceSubTypeComposer.java" bugCount="0" size="53"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/UpdateResourceTypeComposer.java" bugCount="0" size="44"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/ViewItemComposer.java" bugCount="0" size="91"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/ViewResourceSubTypeComposer.java" bugCount="0" size="63"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/item/ViewResourceTypeComposer.java" bugCount="0" size="52"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/CancelPlaceOrderComposer.java" bugCount="0" size="33"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/CancelTransferInventoryComposer.java" bugCount="0" size="33"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/ConfigureThresholdComposer.java" bugCount="0" size="451"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/CreateWarehouseComposer.java" bugCount="0" size="100"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/CreateWarehouseTypeComposer.java" bugCount="0" size="37"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/DeleteThresholdComposer.java" bugCount="0" size="74"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/DeleteWarehouseComposer.java" bugCount="0" size="43"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/PlaceOrderComposer.java" bugCount="0" size="108"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/RejectTransferInventoryComposer.java" bugCount="0" size="89"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/SearchPlaceOrderDetailComposer.java" bugCount="0" size="252"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/SearchWarehouseComposer.java" bugCount="0" size="123"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/SearchWarehouseSummaryComposer.java" bugCount="0" size="143"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/SearchWarehouseTypeComposer.java" bugCount="0" size="99"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/TransferInventorySummaryComposer.java" bugCount="0" size="254"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/TransferPlaceOrderComposer.java" bugCount="0" size="224"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/UpdateWarehouseComposer.java" bugCount="0" size="114"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/UpdateWarehouseTypeComposer.java" bugCount="0" size="42"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/ViewPlaceOrderDetailComposer.java" bugCount="0" size="63"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/ViewPlaceOrderTransferComposer.java" bugCount="0" size="68"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/ViewTransferInventoryComposer.java" bugCount="0" size="171"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/ViewTransferInventoryComposerOLD.java" bugCount="0" size="78"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/ViewWarehouseComposer.java" bugCount="0" size="130"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/ViewWarehouseTypeComposer.java" bugCount="0" size="50"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/tree/CreateWareHouseTreeComposer.java" bugCount="0" size="150"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/tree/SingleWareHouseTreeComposer.java" bugCount="0" size="55"/>
+    <FileStats path="com/elitecore/cpe/web/composer/master/warehouse/tree/WareHouseTreeViewComposer.java" bugCount="0" size="18"/>
+    <FileStats path="com/elitecore/cpe/web/configuration/notification/CreateNotifiactionTemplateComposer.java" bugCount="0" size="286"/>
+    <FileStats path="com/elitecore/cpe/web/configuration/notification/SearchNotificationTemplateComposer.java" bugCount="0" size="148"/>
+    <FileStats path="com/elitecore/cpe/web/configuration/notification/UpdateDocTemBasicDetailsComposer.java" bugCount="0" size="100"/>
+    <FileStats path="com/elitecore/cpe/web/configuration/notification/UpdateDocumentTemplateComposer.java" bugCount="0" size="186"/>
+    <FileStats path="com/elitecore/cpe/web/configuration/notification/ViewDocumentTemplateComposer.java" bugCount="0" size="64"/>
+    <FileStats path="com/elitecore/cpe/web/constants/ActionAlias.java" bugCount="0" size="66"/>
+    <FileStats path="com/elitecore/cpe/web/constants/CommonConstants.java" bugCount="0" size="9"/>
+    <FileStats path="com/elitecore/cpe/web/constants/Pages.java" bugCount="0" size="95"/>
+    <FileStats path="com/elitecore/cpe/web/core/exception/InvalidDataException.java" bugCount="0" size="14"/>
+    <FileStats path="com/elitecore/cpe/web/core/exception/ModuleInitializationException.java" bugCount="0" size="14"/>
+    <FileStats path="com/elitecore/cpe/web/core/listener/CPEContextListener.java" bugCount="0" size="29"/>
+    <FileStats path="com/elitecore/cpe/web/core/listener/LoadCacheDataListener.java" bugCount="0" size="40"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/CreateAgentScheduleComposer.java" bugCount="0" size="316"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/DeleteAgentScheduleComposer.java" bugCount="0" size="25"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/SearchAgentComposer.java" bugCount="0" size="103"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/SearchAgentRunInQueueComposer.java" bugCount="0" size="69"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/SearchAgentScheduleComposer.java" bugCount="0" size="136"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/UpdateAgentParameterComposer.java" bugCount="0" size="83"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/UpdateAgentScheduleComposer.java" bugCount="0" size="41"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/ViewAgentComposer.java" bugCount="0" size="63"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/ViewAgentScheduleComposer.java" bugCount="0" size="72"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/ViewHistoryComposer.java" bugCount="0" size="59"/>
+    <FileStats path="com/elitecore/cpe/web/system/agent/ViewHistoryPopupComposer.java" bugCount="0" size="34"/>
+    <FileStats path="com/elitecore/cpe/web/system/configuration/cronexpr/CronExpressionBuilderComposer.java" bugCount="0" size="132"/>
+    <FileStats path="com/elitecore/cpe/web/system/dashboard/AdminDashBoardComposer.java" bugCount="0" size="9"/>
+    <FileStats path="com/elitecore/cpe/web/system/user/UserLoginComposer.java" bugCount="0" size="95"/>
+    <FileStats path="com/elitecore/cpe/web/system/user/UserLogoutComposer.java" bugCount="0" size="14"/>
+    <FileStats path="com/elitecore/cpe/web/system/userwarehousemapping/DualListboxComposer.java" bugCount="1" size="57" bugHash="655f6ee38c5f0cd7dbe54685b18dff6d"/>
+    <FileStats path="com/elitecore/cpe/web/system/userwarehousemapping/UserWareHouseMappingComposer.java" bugCount="0" size="66"/>
+    <FileStats path="com/elitecore/cpe/web/systemparameter/SystemParameterComposer.java" bugCount="0" size="156"/>
+    <FileStats path="com/elitecore/cpe/web/utils/CustomFieldUtils.java" bugCount="0" size="77"/>
+    <FileStats path="com/elitecore/cpe/web/utils/DefaultActionUtil.java" bugCount="0" size="10"/>
+    <FileStats path="com/elitecore/cpe/web/utils/GeneralUtility.java" bugCount="0" size="56"/>
+    <FileStats path="com/elitecore/cpe/web/utils/MessageUtility.java" bugCount="0" size="9"/>
+    <FileStats path="com/elitecore/cpe/web/utils/dataprovider/SystemParameterDataProvider.java" bugCount="0" size="12"/>
+    <PackageStats package="com.elitecore.cpe.web" total_bugs="0" total_types="1" total_size="14">
+      <ClassStats class="com.elitecore.cpe.web.CheckSession" sourceFile="CheckSession.java" interface="false" size="14" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.base.ui.core" total_bugs="0" total_types="30" total_size="1055">
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseCPEViewComposer" sourceFile="BaseCPEViewComposer.java" interface="false" size="156" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseCPEViewComposer$ActionItemSelectionListener" sourceFile="BaseCPEViewComposer.java" interface="false" size="20" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseCPEViewComposer$ActionMenuItem" sourceFile="BaseCPEViewComposer.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseCPEViewComposer$ActionMenuItemRender" sourceFile="BaseCPEViewComposer.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseComposer" sourceFile="BaseComposer.java" interface="false" size="114" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseComposer$1" sourceFile="BaseComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseComposer$2" sourceFile="BaseComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseComposer$ComboBoxItemDataRenderer" sourceFile="BaseComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseComposer$ComboItemDataRenderer" sourceFile="BaseComposer.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseComposer$PagingListModel" sourceFile="BaseComposer.java" interface="false" size="45" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseDataProvider" sourceFile="BaseDataProvider.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseSearchComposer" sourceFile="BaseSearchComposer.java" interface="false" size="134" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseViewComposer" sourceFile="BaseViewComposer.java" interface="false" size="110" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseViewComposer$1" sourceFile="BaseViewComposer.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseViewComposer$ActionItemSelectionListener" sourceFile="BaseViewComposer.java" interface="false" size="21" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseViewComposer$ActionMenuItem" sourceFile="BaseViewComposer.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.BaseViewComposer$ActionMenuItemRender" sourceFile="BaseViewComposer.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer" sourceFile="MainLayoutComposer.java" interface="false" size="154" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$1" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$2" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$3" sourceFile="MainLayoutComposer.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$4" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$5" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$6" sourceFile="MainLayoutComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$7" sourceFile="MainLayoutComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$MainMenuItem" sourceFile="MainLayoutComposer.java" interface="false" size="26" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$MenuItemTreeNode" sourceFile="MainLayoutComposer.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$MenuItemTreeRenderer" sourceFile="MainLayoutComposer.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.MainLayoutComposer$MenuItemTreeRenderer$1" sourceFile="MainLayoutComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.core.StaticIdGenerator" sourceFile="StaticIdGenerator.java" interface="false" size="25" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.base.ui.module" total_bugs="0" total_types="10" total_size="402">
+      <ClassStats class="com.elitecore.cpe.web.base.ui.module.BaseComposerOperationImpl" sourceFile="BaseComposerOperationImpl.java" interface="false" size="80" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.module.BaseComposerOperations" sourceFile="BaseComposerOperations.java" interface="true" size="23" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.module.BaseConstants" sourceFile="BaseConstants.java" interface="false" size="26" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.module.BaseDialogComposer" sourceFile="BaseDialogComposer.java" interface="false" size="34" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.module.BaseModuleComposer" sourceFile="BaseModuleComposer.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.module.BaseModuleViewComposer" sourceFile="BaseModuleViewComposer.java" interface="false" size="147" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.module.BaseModuleViewComposer$ComboBoxItemDataRenderer" sourceFile="BaseModuleViewComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.module.BaseModuleViewComposer$ComboItemDataRenderer" sourceFile="BaseModuleViewComposer.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.module.BaseModuleViewComposer$EmptyListItemRender" sourceFile="BaseModuleViewComposer.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.base.ui.module.CPEWebConstants" sourceFile="CPEWebConstants.java" interface="false" size="26" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.bl.vo" total_bugs="0" total_types="1" total_size="34">
+      <ClassStats class="com.elitecore.cpe.web.bl.vo.BLSession" sourceFile="BLSession.java" interface="false" size="34" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.common" total_bugs="0" total_types="1" total_size="14">
+      <ClassStats class="com.elitecore.cpe.web.common.TimeoutComposer" sourceFile="TimeoutComposer.java" interface="false" size="14" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.composer" total_bugs="0" total_types="34" total_size="729">
+      <ClassStats class="com.elitecore.cpe.web.composer.ConfigureProcSchedule" sourceFile="ConfigureProcSchedule.java" interface="false" size="70" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.ConfigureProcSchedule$1" sourceFile="ConfigureProcSchedule.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.ConfigureProcSchedule$2" sourceFile="ConfigureProcSchedule.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer" sourceFile="MainLayoutComposer.java" interface="false" size="330" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$1" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$10" sourceFile="MainLayoutComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$11" sourceFile="MainLayoutComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$12" sourceFile="MainLayoutComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$13" sourceFile="MainLayoutComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$14" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$15" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$16" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$17" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$18" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$19" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$2" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$20" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$21" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$22" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$23" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$24" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$25" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$26" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$3" sourceFile="MainLayoutComposer.java" interface="false" size="28" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$4" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$5" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$6" sourceFile="MainLayoutComposer.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$7" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$8" sourceFile="MainLayoutComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$9" sourceFile="MainLayoutComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$MainMenuItem" sourceFile="MainLayoutComposer.java" interface="false" size="26" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$MenuItemTreeNode" sourceFile="MainLayoutComposer.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$MenuItemTreeRenderer" sourceFile="MainLayoutComposer.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.MainLayoutComposer$MenuItemTreeRenderer$1" sourceFile="MainLayoutComposer.java" interface="false" size="20" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.composer.audit" total_bugs="0" total_types="19" total_size="841">
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.ConfigureAuditComposer" sourceFile="ConfigureAuditComposer.java" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.CreateTreeComposer" sourceFile="CreateTreeComposer.java" interface="false" size="169" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.CreateTreeComposer$1" sourceFile="CreateTreeComposer.java" interface="false" size="23" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.CreateTreeComposer$2" sourceFile="CreateTreeComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchAuditComposer" sourceFile="SearchAuditComposer.java" interface="false" size="160" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchAuditComposer$1" sourceFile="SearchAuditComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchAuditComposer$2" sourceFile="SearchAuditComposer.java" interface="false" size="20" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchAuditComposer$SearchListItemRenderer" sourceFile="SearchAuditComposer.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchAuditComposer$SearchListItemRenderer$1" sourceFile="SearchAuditComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchAuditComposer$SearchListItemRenderer$2" sourceFile="SearchAuditComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchAuditComposer$SearchListItemRenderer$3" sourceFile="SearchAuditComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchWsAuditComposer" sourceFile="SearchWsAuditComposer.java" interface="false" size="111" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchWsAuditComposer$SearchListItemRenderer" sourceFile="SearchWsAuditComposer.java" interface="false" size="32" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchWsAuditComposer$SearchListItemRenderer$1" sourceFile="SearchWsAuditComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchWsAuditComposer$SearchListItemRenderer$2" sourceFile="SearchWsAuditComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.SearchWsAuditComposer$SearchListItemRenderer$3" sourceFile="SearchWsAuditComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.ViewAuditComposer" sourceFile="ViewAuditComposer.java" interface="false" size="98" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.ViewAuditEntryComposer" sourceFile="ViewAuditEntryComposer.java" interface="false" size="48" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.audit.ViewWSAuditComposer" sourceFile="ViewWSAuditComposer.java" interface="false" size="39" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.composer.inventory" total_bugs="0" total_types="4" total_size="221">
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.BulkStatusChangeInventoryComposer" sourceFile="BulkStatusChangeInventoryComposer.java" interface="false" size="55" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.BulkStatusChangeInventoryComposer$1" sourceFile="BulkStatusChangeInventoryComposer.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.UploadInventoryCSVFormatComposer" sourceFile="UploadInventoryCSVFormatComposer.java" interface="false" size="44" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.UploadInventoryComposer" sourceFile="UploadInventoryComposer.java" interface="false" size="110" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.composer.inventory.orderdetail" total_bugs="0" total_types="6" total_size="250">
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.orderdetail.SearchOrderDetailComposer" sourceFile="SearchOrderDetailComposer.java" interface="false" size="157" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.orderdetail.SearchOrderDetailComposer$SearchListItemRenderer" sourceFile="SearchOrderDetailComposer.java" interface="false" size="26" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.orderdetail.SearchOrderDetailComposer$SearchListItemRenderer$1" sourceFile="SearchOrderDetailComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.orderdetail.SearchOrderDetailComposer$SearchListTranferItemRenderer" sourceFile="SearchOrderDetailComposer.java" interface="false" size="43" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.orderdetail.SearchOrderDetailComposer$SearchListTranferItemRenderer$1" sourceFile="SearchOrderDetailComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.orderdetail.SearchOrderDetailComposer$SearchListTranferItemRenderer$2" sourceFile="SearchOrderDetailComposer.java" interface="false" size="8" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.composer.inventory.search" total_bugs="0" total_types="23" total_size="942">
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.ChangeInventorySubStatusComposer" sourceFile="ChangeInventorySubStatusComposer.java" interface="false" size="48" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.InventoryHDComposer" sourceFile="InventoryHDComposer.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.InventoryHDComposer$SearchListItemRenderer" sourceFile="InventoryHDComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryBatchComposer" sourceFile="SearchInventoryBatchComposer.java" interface="false" size="59" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryBatchComposer$SearchListInventoryBatchRenderer" sourceFile="SearchInventoryBatchComposer.java" interface="false" size="41" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryBatchComposer$SearchListInventoryBatchRenderer$1" sourceFile="SearchInventoryBatchComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryBatchComposer$SearchListInventoryBatchRenderer$2" sourceFile="SearchInventoryBatchComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryBatchComposer$SearchListInventoryBatchRenderer$3" sourceFile="SearchInventoryBatchComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryBatchComposer$SearchListInventoryBatchRenderer$4" sourceFile="SearchInventoryBatchComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryComposer" sourceFile="SearchInventoryComposer.java" interface="false" size="230" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryComposer$1" sourceFile="SearchInventoryComposer.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryComposer$SearchListItemRenderer" sourceFile="SearchInventoryComposer.java" interface="false" size="45" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryComposer$SearchListItemRenderer$1" sourceFile="SearchInventoryComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryComposer$SearchListItemRenderer$2" sourceFile="SearchInventoryComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryComposer$SearchListItemRenderer$3" sourceFile="SearchInventoryComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.ViewInventoryBatchDetailComposer" sourceFile="ViewInventoryBatchDetailComposer.java" interface="false" size="78" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.ViewInventoryBatchDetailComposer$1" sourceFile="ViewInventoryBatchDetailComposer.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.ViewInventoryBatchDetailComposer$SearchListItemRenderer" sourceFile="ViewInventoryBatchDetailComposer.java" interface="false" size="27" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.ViewInventoryBatchSummaryComposer" sourceFile="ViewInventoryBatchSummaryComposer.java" interface="false" size="73" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.ViewInventoryBatchSummaryComposer$1" sourceFile="ViewInventoryBatchSummaryComposer.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.ViewInventoryBatchSummaryComposer$SearchListItemRenderer" sourceFile="ViewInventoryBatchSummaryComposer.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.ViewInventoryComposer" sourceFile="ViewInventoryComposer.java" interface="false" size="183" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.search.ViewInventoryComposer$SearchListItemRenderer" sourceFile="ViewInventoryComposer.java" interface="false" size="16" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.composer.inventory.transfer" total_bugs="0" total_types="19" total_size="905">
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventory" sourceFile="TransferInventory.java" interface="false" size="105" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryBatch" sourceFile="TransferInventoryBatch.java" interface="false" size="163" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryBatch$SearchListInventoryBatchRenderer" sourceFile="TransferInventoryBatch.java" interface="false" size="37" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryBatch$SearchListInventoryBatchRenderer$1" sourceFile="TransferInventoryBatch.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryBatch$SearchListInventoryBatchRenderer$2" sourceFile="TransferInventoryBatch.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryBatch$SearchListInventoryBatchRenderer$3" sourceFile="TransferInventoryBatch.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryComposer" sourceFile="TransferInventoryComposer.java" interface="false" size="129" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryComposer$1" sourceFile="TransferInventoryComposer.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryComposer$2" sourceFile="TransferInventoryComposer.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryComposer$3" sourceFile="TransferInventoryComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryComposer$InventoryTransferRenderer" sourceFile="TransferInventoryComposer.java" interface="false" size="15" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryP" sourceFile="TransferInventoryP.java" interface="false" size="236" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryP$1" sourceFile="TransferInventoryP.java" interface="false" size="21" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryP$2" sourceFile="TransferInventoryP.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryP$SearchListItemRenderer" sourceFile="TransferInventoryP.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryP$SearchListItemRenderer$1" sourceFile="TransferInventoryP.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryP$SearchListItemRenderer$2" sourceFile="TransferInventoryP.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryP$SearchListItemRenderer$3" sourceFile="TransferInventoryP.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.inventory.transfer.ViewTransferOrderDetailComposer" sourceFile="ViewTransferOrderDetailComposer.java" interface="false" size="44" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.composer.master.attribute" total_bugs="0" total_types="12" total_size="420">
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.CreateAttributeComposer" sourceFile="CreateAttributeComposer.java" interface="false" size="101" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.CreateAttributeComposer$1" sourceFile="CreateAttributeComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.CreateAttributeComposer$2" sourceFile="CreateAttributeComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.SearchAttributeComposer" sourceFile="SearchAttributeComposer.java" interface="false" size="65" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.SearchAttributeComposer$SearchListItemRenderer" sourceFile="SearchAttributeComposer.java" interface="false" size="30" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.SearchAttributeComposer$SearchListItemRenderer$1" sourceFile="SearchAttributeComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.SearchAttributeComposer$SearchListItemRenderer$2" sourceFile="SearchAttributeComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.SearchAttributeComposer$SearchListItemRenderer$3" sourceFile="SearchAttributeComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.UpdateAttributeComposer" sourceFile="UpdateAttributeComposer.java" interface="false" size="113" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.UpdateAttributeComposer$1" sourceFile="UpdateAttributeComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.UpdateAttributeComposer$2" sourceFile="UpdateAttributeComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.attribute.ViewAttributeComposer" sourceFile="ViewAttributeComposer.java" interface="false" size="53" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.composer.master.item" total_bugs="0" total_types="38" total_size="1267">
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.ChangeInventoryStatusComposer" sourceFile="ChangeInventoryStatusComposer.java" interface="false" size="48" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.CreateItemComposer" sourceFile="CreateItemComposer.java" interface="false" size="144" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.CreateItemComposer$1" sourceFile="CreateItemComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.CreateItemComposer$2" sourceFile="CreateItemComposer.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.CreateItemComposer$AttributeItemRenderer" sourceFile="CreateItemComposer.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.CreateItemComposer$AttributeItemRenderer$1" sourceFile="CreateItemComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.CreateItemComposer$AttributeItemRenderer$2" sourceFile="CreateItemComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.CreateItemComposer$AttributeItemRenderer$3" sourceFile="CreateItemComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.CreateResourceSubTypeComposer" sourceFile="CreateResourceSubTypeComposer.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.CreateResourceTypeComposer" sourceFile="CreateResourceTypeComposer.java" interface="false" size="26" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchItemComposer" sourceFile="SearchItemComposer.java" interface="false" size="69" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchItemComposer$1" sourceFile="SearchItemComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchItemComposer$SearchListItemRenderer" sourceFile="SearchItemComposer.java" interface="false" size="34" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchItemComposer$SearchListItemRenderer$1" sourceFile="SearchItemComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchItemComposer$SearchListItemRenderer$2" sourceFile="SearchItemComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchItemComposer$SearchListItemRenderer$3" sourceFile="SearchItemComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchResourceSubTypeComposer" sourceFile="SearchResourceSubTypeComposer.java" interface="false" size="58" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchResourceSubTypeComposer$SearchItemRenderer" sourceFile="SearchResourceSubTypeComposer.java" interface="false" size="31" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchResourceSubTypeComposer$SearchItemRenderer$1" sourceFile="SearchResourceSubTypeComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchResourceSubTypeComposer$SearchItemRenderer$2" sourceFile="SearchResourceSubTypeComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchResourceSubTypeComposer$SearchItemRenderer$3" sourceFile="SearchResourceSubTypeComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchResourceTypeComposer" sourceFile="SearchResourceTypeComposer.java" interface="false" size="48" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchResourceTypeComposer$SearchItemRenderer" sourceFile="SearchResourceTypeComposer.java" interface="false" size="31" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchResourceTypeComposer$SearchItemRenderer$1" sourceFile="SearchResourceTypeComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchResourceTypeComposer$SearchItemRenderer$2" sourceFile="SearchResourceTypeComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.SearchResourceTypeComposer$SearchItemRenderer$3" sourceFile="SearchResourceTypeComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.UpdateItemComposer" sourceFile="UpdateItemComposer.java" interface="false" size="180" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.UpdateItemComposer$1" sourceFile="UpdateItemComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.UpdateItemComposer$2" sourceFile="UpdateItemComposer.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.UpdateItemComposer$AttributeItemRenderer" sourceFile="UpdateItemComposer.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.UpdateItemComposer$AttributeItemRenderer$1" sourceFile="UpdateItemComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.UpdateItemComposer$AttributeItemRenderer$2" sourceFile="UpdateItemComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.UpdateItemComposer$AttributeItemRenderer$3" sourceFile="UpdateItemComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.UpdateResourceSubTypeComposer" sourceFile="UpdateResourceSubTypeComposer.java" interface="false" size="53" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.UpdateResourceTypeComposer" sourceFile="UpdateResourceTypeComposer.java" interface="false" size="44" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.ViewItemComposer" sourceFile="ViewItemComposer.java" interface="false" size="91" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.ViewResourceSubTypeComposer" sourceFile="ViewResourceSubTypeComposer.java" interface="false" size="63" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.item.ViewResourceTypeComposer" sourceFile="ViewResourceTypeComposer.java" interface="false" size="52" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.composer.master.warehouse" total_bugs="0" total_types="62" total_size="2779">
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.CancelPlaceOrderComposer" sourceFile="CancelPlaceOrderComposer.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.CancelTransferInventoryComposer" sourceFile="CancelTransferInventoryComposer.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ConfigureThresholdComposer" sourceFile="ConfigureThresholdComposer.java" interface="false" size="351" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ConfigureThresholdComposer$SearchListItemRenderer" sourceFile="ConfigureThresholdComposer.java" interface="false" size="48" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ConfigureThresholdComposer$SearchListItemRenderer$1" sourceFile="ConfigureThresholdComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ConfigureThresholdComposer$SearchListItemRenderer$2" sourceFile="ConfigureThresholdComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ConfigureThresholdComposer$SearchListItemRenderer$3" sourceFile="ConfigureThresholdComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ConfigureThresholdComposer$SearchListItemRenderer$4" sourceFile="ConfigureThresholdComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ConfigureThresholdComposer$SearchListItemRenderer$5" sourceFile="ConfigureThresholdComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ConfigureThresholdComposer$SearchListItemRenderer$6" sourceFile="ConfigureThresholdComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.CreateWarehouseComposer" sourceFile="CreateWarehouseComposer.java" interface="false" size="88" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.CreateWarehouseComposer$1" sourceFile="CreateWarehouseComposer.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.CreateWarehouseTypeComposer" sourceFile="CreateWarehouseTypeComposer.java" interface="false" size="37" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.DeleteThresholdComposer" sourceFile="DeleteThresholdComposer.java" interface="false" size="53" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.DeleteThresholdComposer$1" sourceFile="DeleteThresholdComposer.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.DeleteThresholdComposer$SearchListItemRenderer" sourceFile="DeleteThresholdComposer.java" interface="false" size="20" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.DeleteWarehouseComposer" sourceFile="DeleteWarehouseComposer.java" interface="false" size="24" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.DeleteWarehouseComposer$1" sourceFile="DeleteWarehouseComposer.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.PlaceOrderComposer" sourceFile="PlaceOrderComposer.java" interface="false" size="91" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.PlaceOrderComposer$1" sourceFile="PlaceOrderComposer.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.RejectTransferInventoryComposer" sourceFile="RejectTransferInventoryComposer.java" interface="false" size="89" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchPlaceOrderDetailComposer" sourceFile="SearchPlaceOrderDetailComposer.java" interface="false" size="148" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchPlaceOrderDetailComposer$SearchListItemRenderer" sourceFile="SearchPlaceOrderDetailComposer.java" interface="false" size="70" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchPlaceOrderDetailComposer$SearchListItemRenderer$1" sourceFile="SearchPlaceOrderDetailComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchPlaceOrderDetailComposer$SearchListItemRenderer$2" sourceFile="SearchPlaceOrderDetailComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchPlaceOrderDetailComposer$SearchListItemRenderer$3" sourceFile="SearchPlaceOrderDetailComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchPlaceOrderDetailComposer$SearchListItemRenderer$4" sourceFile="SearchPlaceOrderDetailComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseComposer" sourceFile="SearchWarehouseComposer.java" interface="false" size="62" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseComposer$SearchListItemRenderer" sourceFile="SearchWarehouseComposer.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseComposer$SearchListItemRenderer$1" sourceFile="SearchWarehouseComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseComposer$SearchListItemRenderer$2" sourceFile="SearchWarehouseComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseComposer$SearchListItemRenderer$3" sourceFile="SearchWarehouseComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseSummaryComposer" sourceFile="SearchWarehouseSummaryComposer.java" interface="false" size="114" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseSummaryComposer$1" sourceFile="SearchWarehouseSummaryComposer.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseSummaryComposer$SearchListItemRenderer" sourceFile="SearchWarehouseSummaryComposer.java" interface="false" size="28" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseTypeComposer" sourceFile="SearchWarehouseTypeComposer.java" interface="false" size="43" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseTypeComposer$SearchListItemRenderer" sourceFile="SearchWarehouseTypeComposer.java" interface="false" size="30" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseTypeComposer$SearchListItemRenderer$1" sourceFile="SearchWarehouseTypeComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseTypeComposer$SearchListItemRenderer$2" sourceFile="SearchWarehouseTypeComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.SearchWarehouseTypeComposer$SearchListItemRenderer$3" sourceFile="SearchWarehouseTypeComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.TransferInventorySummaryComposer" sourceFile="TransferInventorySummaryComposer.java" interface="false" size="143" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.TransferInventorySummaryComposer$SearchListItemRenderer" sourceFile="TransferInventorySummaryComposer.java" interface="false" size="77" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.TransferInventorySummaryComposer$SearchListItemRenderer$1" sourceFile="TransferInventorySummaryComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.TransferInventorySummaryComposer$SearchListItemRenderer$2" sourceFile="TransferInventorySummaryComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.TransferInventorySummaryComposer$SearchListItemRenderer$3" sourceFile="TransferInventorySummaryComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.TransferInventorySummaryComposer$SearchListItemRenderer$4" sourceFile="TransferInventorySummaryComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.TransferPlaceOrderComposer" sourceFile="TransferPlaceOrderComposer.java" interface="false" size="160" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.TransferPlaceOrderComposer$1" sourceFile="TransferPlaceOrderComposer.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.TransferPlaceOrderComposer$2" sourceFile="TransferPlaceOrderComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.TransferPlaceOrderComposer$InventoryTransferRenderer" sourceFile="TransferPlaceOrderComposer.java" interface="false" size="15" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.UpdateWarehouseComposer" sourceFile="UpdateWarehouseComposer.java" interface="false" size="114" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.UpdateWarehouseTypeComposer" sourceFile="UpdateWarehouseTypeComposer.java" interface="false" size="42" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ViewPlaceOrderDetailComposer" sourceFile="ViewPlaceOrderDetailComposer.java" interface="false" size="63" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ViewPlaceOrderTransferComposer" sourceFile="ViewPlaceOrderTransferComposer.java" interface="false" size="68" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ViewTransferInventoryComposer" sourceFile="ViewTransferInventoryComposer.java" interface="false" size="101" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ViewTransferInventoryComposer$1" sourceFile="ViewTransferInventoryComposer.java" interface="false" size="38" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ViewTransferInventoryComposer$2" sourceFile="ViewTransferInventoryComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ViewTransferInventoryComposer$InventoryTransferRenderer" sourceFile="ViewTransferInventoryComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ViewTransferInventoryComposerOLD" sourceFile="ViewTransferInventoryComposerOLD.java" interface="false" size="78" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ViewWarehouseComposer" sourceFile="ViewWarehouseComposer.java" interface="false" size="109" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ViewWarehouseComposer$SearchListItemRenderer" sourceFile="ViewWarehouseComposer.java" interface="false" size="21" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.ViewWarehouseTypeComposer" sourceFile="ViewWarehouseTypeComposer.java" interface="false" size="50" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.composer.master.warehouse.tree" total_bugs="0" total_types="4" total_size="223">
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.tree.CreateWareHouseTreeComposer" sourceFile="CreateWareHouseTreeComposer.java" interface="false" size="142" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.tree.CreateWareHouseTreeComposer$1" sourceFile="CreateWareHouseTreeComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.tree.SingleWareHouseTreeComposer" sourceFile="SingleWareHouseTreeComposer.java" interface="false" size="55" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.composer.master.warehouse.tree.WareHouseTreeViewComposer" sourceFile="WareHouseTreeViewComposer.java" interface="false" size="18" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.configuration.notification" total_bugs="0" total_types="22" total_size="784">
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.CreateNotifiactionTemplateComposer" sourceFile="CreateNotifiactionTemplateComposer.java" interface="false" size="208" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.CreateNotifiactionTemplateComposer$1" sourceFile="CreateNotifiactionTemplateComposer.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.CreateNotifiactionTemplateComposer$2" sourceFile="CreateNotifiactionTemplateComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.CreateNotifiactionTemplateComposer$3" sourceFile="CreateNotifiactionTemplateComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.CreateNotifiactionTemplateComposer$4" sourceFile="CreateNotifiactionTemplateComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.CreateNotifiactionTemplateComposer$5" sourceFile="CreateNotifiactionTemplateComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.CreateNotifiactionTemplateComposer$MessageItemDataRenderer" sourceFile="CreateNotifiactionTemplateComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.CreateNotifiactionTemplateComposer$NotificationItemDataRenderer" sourceFile="CreateNotifiactionTemplateComposer.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.SearchNotificationTemplateComposer" sourceFile="SearchNotificationTemplateComposer.java" interface="false" size="69" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.SearchNotificationTemplateComposer$NotificationItemDataRenderer" sourceFile="SearchNotificationTemplateComposer.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.SearchNotificationTemplateComposer$SearchItemRenderer" sourceFile="SearchNotificationTemplateComposer.java" interface="false" size="34" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.SearchNotificationTemplateComposer$SearchItemRenderer$1" sourceFile="SearchNotificationTemplateComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.SearchNotificationTemplateComposer$SearchItemRenderer$2" sourceFile="SearchNotificationTemplateComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.SearchNotificationTemplateComposer$SearchItemRenderer$3" sourceFile="SearchNotificationTemplateComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.UpdateDocTemBasicDetailsComposer" sourceFile="UpdateDocTemBasicDetailsComposer.java" interface="false" size="91" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.UpdateDocTemBasicDetailsComposer$1" sourceFile="UpdateDocTemBasicDetailsComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.UpdateDocumentTemplateComposer" sourceFile="UpdateDocumentTemplateComposer.java" interface="false" size="150" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.UpdateDocumentTemplateComposer$1" sourceFile="UpdateDocumentTemplateComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.UpdateDocumentTemplateComposer$2" sourceFile="UpdateDocumentTemplateComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.UpdateDocumentTemplateComposer$3" sourceFile="UpdateDocumentTemplateComposer.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.UpdateDocumentTemplateComposer$MessageItemDataRenderer" sourceFile="UpdateDocumentTemplateComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.configuration.notification.ViewDocumentTemplateComposer" sourceFile="ViewDocumentTemplateComposer.java" interface="false" size="64" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.constants" total_bugs="0" total_types="3" total_size="170">
+      <ClassStats class="com.elitecore.cpe.web.constants.ActionAlias" sourceFile="ActionAlias.java" interface="false" size="66" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.constants.CommonConstants" sourceFile="CommonConstants.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.constants.Pages" sourceFile="Pages.java" interface="false" size="95" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.core.exception" total_bugs="0" total_types="2" total_size="28">
+      <ClassStats class="com.elitecore.cpe.web.core.exception.InvalidDataException" sourceFile="InvalidDataException.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.core.exception.ModuleInitializationException" sourceFile="ModuleInitializationException.java" interface="false" size="14" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.core.listener" total_bugs="0" total_types="2" total_size="69">
+      <ClassStats class="com.elitecore.cpe.web.core.listener.CPEContextListener" sourceFile="CPEContextListener.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.core.listener.LoadCacheDataListener" sourceFile="LoadCacheDataListener.java" interface="false" size="40" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.system.agent" total_bugs="0" total_types="28" total_size="1001">
+      <ClassStats class="com.elitecore.cpe.web.system.agent.CreateAgentScheduleComposer" sourceFile="CreateAgentScheduleComposer.java" interface="false" size="264" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.CreateAgentScheduleComposer$1" sourceFile="CreateAgentScheduleComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.CreateAgentScheduleComposer$2" sourceFile="CreateAgentScheduleComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.CreateAgentScheduleComposer$3" sourceFile="CreateAgentScheduleComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.CreateAgentScheduleComposer$4" sourceFile="CreateAgentScheduleComposer.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.CreateAgentScheduleComposer$5" sourceFile="CreateAgentScheduleComposer.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.CreateAgentScheduleComposer$6" sourceFile="CreateAgentScheduleComposer.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.DeleteAgentScheduleComposer" sourceFile="DeleteAgentScheduleComposer.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentComposer" sourceFile="SearchAgentComposer.java" interface="false" size="44" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentComposer$SearchItemRenderer" sourceFile="SearchAgentComposer.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentComposer$SearchItemRenderer$1" sourceFile="SearchAgentComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentComposer$SearchItemRenderer$2" sourceFile="SearchAgentComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentComposer$SearchItemRenderer$3" sourceFile="SearchAgentComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentRunInQueueComposer" sourceFile="SearchAgentRunInQueueComposer.java" interface="false" size="51" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentRunInQueueComposer$1" sourceFile="SearchAgentRunInQueueComposer.java" interface="false" size="18" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentScheduleComposer" sourceFile="SearchAgentScheduleComposer.java" interface="false" size="72" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentScheduleComposer$SearchItemRenderer" sourceFile="SearchAgentScheduleComposer.java" interface="false" size="38" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentScheduleComposer$SearchItemRenderer$1" sourceFile="SearchAgentScheduleComposer.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentScheduleComposer$SearchItemRenderer$2" sourceFile="SearchAgentScheduleComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.SearchAgentScheduleComposer$SearchItemRenderer$3" sourceFile="SearchAgentScheduleComposer.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.UpdateAgentParameterComposer" sourceFile="UpdateAgentParameterComposer.java" interface="false" size="83" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.UpdateAgentScheduleComposer" sourceFile="UpdateAgentScheduleComposer.java" interface="false" size="41" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.ViewAgentComposer" sourceFile="ViewAgentComposer.java" interface="false" size="63" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.ViewAgentScheduleComposer" sourceFile="ViewAgentScheduleComposer.java" interface="false" size="72" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.ViewHistoryComposer" sourceFile="ViewHistoryComposer.java" interface="false" size="41" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.ViewHistoryComposer$1" sourceFile="ViewHistoryComposer.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.ViewHistoryComposer$HistoryRenderer" sourceFile="ViewHistoryComposer.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.agent.ViewHistoryPopupComposer" sourceFile="ViewHistoryPopupComposer.java" interface="false" size="34" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.system.configuration.cronexpr" total_bugs="0" total_types="2" total_size="132">
+      <ClassStats class="com.elitecore.cpe.web.system.configuration.cronexpr.CronExpressionBuilderComposer" sourceFile="CronExpressionBuilderComposer.java" interface="false" size="114" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.configuration.cronexpr.CronExpressionBuilderComposer$1" sourceFile="CronExpressionBuilderComposer.java" interface="false" size="18" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.system.dashboard" total_bugs="0" total_types="1" total_size="9">
+      <ClassStats class="com.elitecore.cpe.web.system.dashboard.AdminDashBoardComposer" sourceFile="AdminDashBoardComposer.java" interface="false" size="9" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.system.user" total_bugs="0" total_types="2" total_size="109">
+      <ClassStats class="com.elitecore.cpe.web.system.user.UserLoginComposer" sourceFile="UserLoginComposer.java" interface="false" size="95" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.user.UserLogoutComposer" sourceFile="UserLogoutComposer.java" interface="false" size="14" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.system.userwarehousemapping" total_bugs="1" total_types="5" total_size="123" priority_2="1">
+      <ClassStats class="com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer" sourceFile="DualListboxComposer.java" interface="false" size="52" bugs="1" priority_2="1"/>
+      <ClassStats class="com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer$ChooseEvent" sourceFile="DualListboxComposer.java" interface="false" size="5" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.userwarehousemapping.UserWareHouseMappingComposer" sourceFile="UserWareHouseMappingComposer.java" interface="false" size="39" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.userwarehousemapping.UserWareHouseMappingComposer$1" sourceFile="UserWareHouseMappingComposer.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.system.userwarehousemapping.UserWareHouseMappingComposer$WarehouseComparator" sourceFile="UserWareHouseMappingComposer.java" interface="false" size="8" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.systemparameter" total_bugs="0" total_types="3" total_size="156">
+      <ClassStats class="com.elitecore.cpe.web.systemparameter.SystemParameterComposer" sourceFile="SystemParameterComposer.java" interface="false" size="110" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.systemparameter.SystemParameterComposer$1" sourceFile="SystemParameterComposer.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.systemparameter.SystemParameterComposer$2" sourceFile="SystemParameterComposer.java" interface="false" size="29" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.utils" total_bugs="0" total_types="5" total_size="152">
+      <ClassStats class="com.elitecore.cpe.web.utils.CustomFieldUtils" sourceFile="CustomFieldUtils.java" interface="false" size="67" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.utils.CustomFieldUtils$1" sourceFile="CustomFieldUtils.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.utils.DefaultActionUtil" sourceFile="DefaultActionUtil.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.utils.GeneralUtility" sourceFile="GeneralUtility.java" interface="false" size="56" bugs="0"/>
+      <ClassStats class="com.elitecore.cpe.web.utils.MessageUtility" sourceFile="MessageUtility.java" interface="false" size="9" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="com.elitecore.cpe.web.utils.dataprovider" total_bugs="0" total_types="1" total_size="12">
+      <ClassStats class="com.elitecore.cpe.web.utils.dataprovider.SystemParameterDataProvider" sourceFile="SystemParameterDataProvider.java" interface="false" size="12" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="1608" invocations="1524" avgMicrosecondsPerInvocation="1055" maxMicrosecondsPerInvocation="39635" standardDeviationMircosecondsPerInvocation="2875"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="1524" invocations="1524" avgMicrosecondsPerInvocation="1000" maxMicrosecondsPerInvocation="358961" standardDeviationMircosecondsPerInvocation="9480"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="1478" invocations="1463" avgMicrosecondsPerInvocation="1010" maxMicrosecondsPerInvocation="208637" standardDeviationMircosecondsPerInvocation="5857"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="1388" invocations="1536" avgMicrosecondsPerInvocation="903" maxMicrosecondsPerInvocation="32970" standardDeviationMircosecondsPerInvocation="2514"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="1237" invocations="1261" avgMicrosecondsPerInvocation="981" maxMicrosecondsPerInvocation="34852" standardDeviationMircosecondsPerInvocation="2726"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="1157" invocations="1542" avgMicrosecondsPerInvocation="750" maxMicrosecondsPerInvocation="26552" standardDeviationMircosecondsPerInvocation="2255"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="848" invocations="1524" avgMicrosecondsPerInvocation="556" maxMicrosecondsPerInvocation="16462" standardDeviationMircosecondsPerInvocation="1670"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="821" invocations="392" avgMicrosecondsPerInvocation="2096" maxMicrosecondsPerInvocation="47388" standardDeviationMircosecondsPerInvocation="5175"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="716" invocations="392" avgMicrosecondsPerInvocation="1828" maxMicrosecondsPerInvocation="42606" standardDeviationMircosecondsPerInvocation="4758"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="572" invocations="1054" avgMicrosecondsPerInvocation="542" maxMicrosecondsPerInvocation="27341" standardDeviationMircosecondsPerInvocation="1668"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="427" invocations="1524" avgMicrosecondsPerInvocation="280" maxMicrosecondsPerInvocation="13936" standardDeviationMircosecondsPerInvocation="1095"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DefaultEncodingDetector" totalMilliseconds="380" invocations="340" avgMicrosecondsPerInvocation="1120" maxMicrosecondsPerInvocation="22645" standardDeviationMircosecondsPerInvocation="2448"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="355" invocations="340" avgMicrosecondsPerInvocation="1045" maxMicrosecondsPerInvocation="23958" standardDeviationMircosecondsPerInvocation="3282"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="343" invocations="392" avgMicrosecondsPerInvocation="877" maxMicrosecondsPerInvocation="36800" standardDeviationMircosecondsPerInvocation="2572"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindBadCast2" totalMilliseconds="327" invocations="340" avgMicrosecondsPerInvocation="962" maxMicrosecondsPerInvocation="217510" standardDeviationMircosecondsPerInvocation="11814"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="326" invocations="1866" avgMicrosecondsPerInvocation="174" maxMicrosecondsPerInvocation="10497" standardDeviationMircosecondsPerInvocation="736"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="278" invocations="392" avgMicrosecondsPerInvocation="710" maxMicrosecondsPerInvocation="22721" standardDeviationMircosecondsPerInvocation="2304"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.UnreadFields" totalMilliseconds="265" invocations="340" avgMicrosecondsPerInvocation="781" maxMicrosecondsPerInvocation="12654" standardDeviationMircosecondsPerInvocation="1719"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="241" invocations="340" avgMicrosecondsPerInvocation="710" maxMicrosecondsPerInvocation="12559" standardDeviationMircosecondsPerInvocation="1645"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="236" invocations="1277" avgMicrosecondsPerInvocation="185" maxMicrosecondsPerInvocation="10807" standardDeviationMircosecondsPerInvocation="833"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="231" invocations="1556" avgMicrosecondsPerInvocation="149" maxMicrosecondsPerInvocation="39154" standardDeviationMircosecondsPerInvocation="1153"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="214" invocations="340" avgMicrosecondsPerInvocation="631" maxMicrosecondsPerInvocation="11901" standardDeviationMircosecondsPerInvocation="1531"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.DumbMethods" totalMilliseconds="212" invocations="340" avgMicrosecondsPerInvocation="624" maxMicrosecondsPerInvocation="16629" standardDeviationMircosecondsPerInvocation="1737"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="186" invocations="32283" avgMicrosecondsPerInvocation="5" maxMicrosecondsPerInvocation="10019" standardDeviationMircosecondsPerInvocation="85"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNullDeref$CheckCallSitesAndReturnInstructions" totalMilliseconds="186" invocations="1463" avgMicrosecondsPerInvocation="127" maxMicrosecondsPerInvocation="10658" standardDeviationMircosecondsPerInvocation="576"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.StreamResourceTracker" totalMilliseconds="181" invocations="117" avgMicrosecondsPerInvocation="1552" maxMicrosecondsPerInvocation="17162" standardDeviationMircosecondsPerInvocation="2912"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="178" invocations="614" avgMicrosecondsPerInvocation="290" maxMicrosecondsPerInvocation="13718" standardDeviationMircosecondsPerInvocation="1100"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.URLProblems" totalMilliseconds="167" invocations="340" avgMicrosecondsPerInvocation="492" maxMicrosecondsPerInvocation="11715" standardDeviationMircosecondsPerInvocation="1214"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindHEmismatch" totalMilliseconds="156" invocations="340" avgMicrosecondsPerInvocation="461" maxMicrosecondsPerInvocation="61524" standardDeviationMircosecondsPerInvocation="3429"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

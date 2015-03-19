@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<upgrade product-name="CRESTEL" version="6.0.0">
+	<required-versions>
+	<required-version>6.0.0</required-version>
+	</required-versions>
+	<introduction>
+	</introduction>
+	<contents>
+		<added-files>
+		</added-files>
+		<removed-files>
+		</removed-files>
+		<modified-files>
+		</modified-files>
+	</contents>
+	<changes>
+		<new-features>
+		</new-features>
+		<fixed-bugs>
+		</fixed-bugs>
+		<enhancements>
+		</enhancements>
+	</changes>
+	<installation-instructions>
+		<prerequisites>
+		</prerequisites>
+		<download>
+		</download>
+		<environ>
+		</environ>
+		<installation-steps>
+		</installation-steps>
+		<configuration>
+		</configuration>
+		<troubleshooting>
+		</troubleshooting>
+	</installation-instructions>
+	<release-notes>
+		<notes>
+		</notes>
+		<known-bugs />
+		<future-releases />
+	</release-notes>
+</upgrade>

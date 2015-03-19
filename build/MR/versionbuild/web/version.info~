@@ -1,0 +1,9 @@
+#Mon, 09 Sep 2013 12:00:09 +0530
+
+version.id=1
+version.number=6.0.0
+version.series.id=1
+version.series.number=5.1.2.10
+hotfix.number=01
+prv.hotfix.number=00
+component.name=CPE[Web]

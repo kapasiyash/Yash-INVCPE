@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<project name="CustomerDeactivation" default="Deactivate-Customer" basedir=".">
+    <description>
+        Customer Deactivation build
+    </description>
+  
+<property file="${basedir}/agent.properties"/>
+
+<!-- Path that is common to both the local machine and system-->
+<path id="agent.class.path">
+    <fileset dir="${operationsmanager.home}/WEB-INF/lib">
+		<include name="*.jar" />
+    </fileset>
+</path>
+
+<!-- Main target for Activating customers-->
+<target name="Deactivate-Customer"  depends="" description="Run to deactivate customers" >
+	<java classname="com.elitecore.billing.agent.CustomerDeactivationAgent" 
+		classpathref="agent.class.path" 
+		classpath="."
+		failonerror="true" >
+		<arg value="deactivate" />
+	</java>
+</target>
+
+<!-- Target for listing customers that are to be Activated -->
+<target name="list"  depends="" description="Run to list customers to be deactivated" >
+
+	<java classname="com.elitecore.billing.agent.CustomerDeactivationAgent" classpathref="agent.class.path" failonerror="true" >
+		<arg value="list" />
+	</java>
+</target>
+
+</project>

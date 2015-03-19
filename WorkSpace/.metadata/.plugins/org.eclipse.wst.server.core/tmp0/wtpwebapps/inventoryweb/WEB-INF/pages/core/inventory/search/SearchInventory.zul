@@ -1,0 +1,186 @@
+<zk>
+<window  id="searchInventory"  style="overflow: visible;" width="100%" height="100%" 
+		apply="com.elitecore.cpe.web.composer.inventory.search.SearchInventoryComposer">
+		 <include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="Inventory"/>
+ 	<tabbox width="100%" height="100%" tabscroll="false" id="searchInventoryTabbox">  
+	<tabs>
+		<tab id="createLPTab" label="${labels.inventory.searchtitle}" />
+	</tabs>
+
+<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;" sclass="main-cont">
+				<vlayout style="padding-left: 5px; padding-top: 2px;padding-bottom: 50px;" width="100%">
+					<grid width="800px" sclass="form-grid"
+						style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="160px"></column>
+							<column width="240px"></column>
+							<column width="160px"></column>
+							<column width="240px"></column>
+						</columns>
+						<rows>
+						<row>
+								<cell>
+									<label value="${labels.inventory.Number}"></label>
+
+								</cell>
+								<cell >
+									<textbox id="txtInventoryId"
+										width="140px" maxlength="100" />
+								</cell>
+								<cell>
+									<label value="${labels.inventory.batchNumber}"></label>
+								</cell>
+								<cell >
+									<textbox id="txtBatchId" width="140px"
+										maxlength="100" />
+								</cell>
+							</row>
+							
+							<row>
+								<cell>
+									<label value="${labels.warehouse.name}">
+									</label>
+
+								</cell>
+								<cell >
+									<combobox id="cmbWarhouse" width="145px">
+										<!-- 	<comboitem
+											label="Select from Below" /> -->
+									</combobox>
+								</cell>
+								<cell>
+									<label value="${labels.inventory.status}" >
+									</label>
+
+								</cell>
+								<cell >
+									<combobox id="cmbInventoryStatus" width="145px">
+										<comboitem
+											label="Select from Below" />
+									</combobox>
+								</cell>
+							</row>
+							<row>
+								<cell>
+									<label
+										value="${labels.item.type}">
+									</label>
+
+								</cell>
+								<cell >
+									<combobox id="cmbResourceType"
+										width="145px" maxlength="100" />
+								</cell>
+								<cell>
+									<label
+										value="${labels.item.subtype}">
+									</label>
+
+								</cell>
+								<cell >
+									<combobox id="cmbResourceSubType"
+										width="145px" maxlength="100" />
+								</cell>
+							</row>
+							
+							<row>
+								<cell>
+									<label
+										value="${labels.item.resourceNo}">
+									</label>
+
+								</cell>
+								<cell >
+									<textbox id="txtResourceNumber"
+										width="140px" maxlength="50" />
+								</cell>
+								<cell>
+									<label
+										value="${labels.item.resourceName}">
+									</label>
+
+								</cell>
+								<cell >
+									<textbox id="txtResourceName"
+										width="140px" maxlength="50" />
+								</cell>
+							</row>
+							
+							<row>
+								<cell>
+									<label
+										value="${labels.item.atribute}">
+									</label>
+
+								</cell>
+								<cell >
+									<combobox id="cmbAttribute"
+										width="145px" maxlength="100" />
+								</cell>
+								<cell>
+									<label
+										value="${labels.item.atributevalue}">
+									</label>
+
+								</cell>
+								
+								<cell >
+									<textbox id="txtAttributeValue"
+										width="140px" maxlength="100" />
+								</cell>
+							</row>
+							
+							
+							
+							<row>
+								<cell>
+									<label
+										value="${labels.warehouse.externalBatchNumber}">
+									</label>
+
+								</cell>
+								<cell >
+									<textbox id="txtExternalBatchNumber"
+										width="140px" maxlength="100" />
+								</cell>
+								
+							</row>
+							
+						</rows>
+					</grid>
+
+					<separator bar="false" />
+
+										<separator bar="false" />
+										<hbox>
+											<button id="btnSearch" type="button" label="${labels.global.searchBtn}" mold="trendy" width="140px" />
+											
+											<button id="btnCancel" type="button" label="${labels.global.cancelBtn}"  mold="trendy" width="140px" />
+											
+											<button id="btnDownload" type="button" label="${labels.vexecdetail.download}"  mold="trendy" width="140px" />
+										</hbox>
+										<separator bar="false" />
+										<separator bar="false" />
+										<separator bar="false" />
+										<listbox id="searchResultGrid" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="99%">
+											<!-- <listhead sizable="true">
+												<listheader label="${labels.global.sr.no}" width="20%" />
+												<listheader label="CPE Batch" width="40%"  />
+												<listheader label="Inventory ID" width="30%"  />
+												<listheader label="Status"  width="40%"  />
+												<listheader label="MAC Address"  width="40%"  />
+												<listheader label="Searial Number"  width="40%"  />
+											</listhead>  -->
+										</listbox>
+										<separator bar="false" />
+										<separator bar="false" />
+										<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+						</vlayout>
+			</tabpanel>
+		</tabpanels>
+		</tabbox> 
+
+</window>
+</zk>

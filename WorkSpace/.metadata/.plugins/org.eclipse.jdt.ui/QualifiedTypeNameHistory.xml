@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.zkoss.zk.ui.event.Events"/>
+<fullyQualifiedTypeName name="org.zkoss.zk.ui.event.EventListener"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.delegates.master.ItemBD"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.delegates.inventorymgt.InventoryManagementBD"/>
+<fullyQualifiedTypeName name="com.lowagie.text.pdf.hyphenation.TernaryTree.Iterator"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.vo.inventorymgt.InventoryDetailVO"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.web.core.exception.InvalidDataException"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.web.utils.MessageUtility"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventorySubStatusData"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.core.IBLSession"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.delegates.system.user.UserBD"/>
+<fullyQualifiedTypeName name="org.zkoss.zul.Row"/>
+<fullyQualifiedTypeName name="org.zkoss.zul.Listbox"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.delegates.transfer.InventoryTransferBD"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.vo.inventorymgt.TransferInventorySummaryViewVO"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.entity.inventory.inventorymgt.TransferOrderDetailData"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.exception.SearchBLException"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.web.utils.GeneralUtility"/>
+<fullyQualifiedTypeName name="org.zkoss.zul.ListModelList"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.vo.inventorytransfer.CheckInventoryVO"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO.InventoryVO"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade.InventoryFacadeExecutor"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="InvokeAll.Task1"/>
+<fullyQualifiedTypeName name="java.util.concurrent.Callable"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementFacade"/>
+<fullyQualifiedTypeName name="java.util.concurrent.FutureTask"/>
+<fullyQualifiedTypeName name="java.util.concurrent.Future"/>
+<fullyQualifiedTypeName name="javax.persistence.NoResultException"/>
+<fullyQualifiedTypeName name="java.lang.Long"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.entity.inventory.master.WarehouseData"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryData"/>
+<fullyQualifiedTypeName name="com.elitecore.cpe.bl.entity.inventory.master.ItemData"/>
+</qualifiedTypeNameHistroy>

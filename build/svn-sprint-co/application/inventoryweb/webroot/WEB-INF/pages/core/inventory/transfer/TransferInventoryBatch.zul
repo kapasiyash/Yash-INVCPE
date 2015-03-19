@@ -1,0 +1,115 @@
+<zk>
+<window  id="transferInventoryBatch"  style="overflow: visible;" width="100%" height="100%"  
+		apply="com.elitecore.cpe.web.composer.inventory.transfer.TransferInventoryBatch">
+		  <include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="Inventory"/>
+	<tabbox width="100%" height="100%" tabscroll="false" id="transferInventoryBatchTabbox">
+	<tabs>
+		<tab id="createLPTab" label="${labels.inventory.transferinventorybatch}" />
+	</tabs>
+
+<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 0px;overflow:auto;" sclass="main-cont"> 
+				<hlayout height="100%" width="100%" style="overflow: visible;">
+					<vlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%">
+						<hlayout width="100%">
+							<vlayout width="100%">
+								
+								<separator bar="false"/>
+										<grid id="transferInventorybatchgrid" width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+										<columns>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											<column width="160px"></column>
+											<column width="240px"></column>
+										</columns>
+										<rows>
+											<row>
+												<cell>
+													<label value="${labels.inventory.currentwh}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+
+												<cell colspan="3" > <combobox  id="cmbWarehouse" width="145px" maxlength="100" constraint="no empty : Please Select Warehouse Name." tabindex="1"/></cell>
+											</row>
+											<row>
+
+												<cell>
+													<label value="${labels.inventory.batchno}"></label>
+												</cell>
+
+												<cell colspan="3" > <textbox  id="txtBatchNo" width="140px" maxlength="100" /></cell>
+
+											</row>
+											
+											<row>
+												<cell>
+													<label value="${labels.item.type}" />
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell  >
+													<combobox id="cmbResourceType" width="145px" constraint="no empty : Please Select Resource Type.">
+														<comboitem label="Select from Below" />
+													</combobox>
+												</cell>
+												<cell>
+													<label value="${labels.item.subtype}" />
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell  >
+													<combobox id="cmbResourceSubType" width="145px" constraint="no empty : Please Select Resource SubType.">
+														<comboitem label="Select from Below" />
+													</combobox>
+												</cell>
+											</row>
+											<row>
+												<cell>
+													<label value="${labels.inventory.newwh}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+
+												<cell colspan="3" > <combobox  id="cmbTransferwarehouse" width="145px" maxlength="100" constraint="no empty : Please Select To be Transfered Warehouse."/></cell>
+
+											</row>
+											
+										</rows>
+										</grid>
+										
+										<separator bar="false" />
+										<separator bar="false" />
+										<hbox>
+											<button id="btnSearch" type="button" label="${labels.global.searchBtn}"  mold="trendy" width="140px" />
+											<button id="btnTransfer" type="button" label="${labels.inventory.transferinventory}" mold="trendy" width="140px" />
+										</hbox>
+										<separator bar="false" />
+										<separator bar="false" />
+										<separator bar="false" />
+										
+										
+										
+										  <listbox id="searchResultGrid" visible="false" checkmark="true" mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="98%">
+											<listhead sizable="true">
+											 	<listheader width="32px" />
+												<listheader label="${labels.global.sr.no}" width="55px" />
+												<listheader label="${labels.inventory.batchno}" width="40%"  />
+												<listheader label="${labels.item.type}" width="15%"  />
+												<listheader label="${labels.item.subtype}" width="15%"  />
+												<listheader label="${labels.inventory.avaialabeinventory}" width="15%"  />
+												<listheader label="${labels.inventory.tobemovedinventory}" width="15%"  />
+												<listheader label="${labels.global.view}"  width="65px"  />
+											</listhead>
+										</listbox>  
+										
+										<separator bar="false" />
+										<separator bar="false" />
+								</vlayout>
+						</hlayout>
+						<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+				</hlayout>
+			</tabpanel>
+		</tabpanels>
+		</tabbox> 
+
+</window>
+</zk>

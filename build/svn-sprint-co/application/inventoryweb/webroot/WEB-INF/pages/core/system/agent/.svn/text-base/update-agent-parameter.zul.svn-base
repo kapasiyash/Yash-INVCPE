@@ -1,0 +1,91 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="updateagentparam" apply="com.elitecore.cpe.web.system.agent.UpdateAgentParameterComposer">
+<vlayout width="800px">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.uap.updatetitle}" style="font-weight: bold;" />
+			</div>
+			
+			<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								
+								<row>
+									<cell>
+										<label value="${labels.uap.meconcurrencylimit}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell > <longbox id="longMEConCurrencyLimit" width="140px" maxlength="3" constraint="no empty: Please enter Master Entity Con-Currency Limit."/></cell>
+									<cell>
+										<label value="${labels.uap.entityconcurrencylimit}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell > <longbox id="longEConCurrencyLimit" width="140px" maxlength="3" constraint="no empty: Please enter Entity Con-Currency Limit."/></cell>
+								</row>
+								
+								<row>
+									<cell>
+										<label value="${labels.uap.mechunksize}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell> <longbox id="longMEChunkSize" width="140px" maxlength="6" constraint="no empty: Please enter Master Entity Chunk Size."/></cell>
+									<cell>
+										<label value="${labels.uap.mechunksizelimit}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell > <longbox id="longMEChunkSizeLimit" width="140px"  maxlength="6" constraint="no empty: Please enter Master Entity Chunk Size Limit."/></cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.uap.entitychunksize}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell > <longbox id="longEChunkSize" width="140px"  maxlength="6" constraint="no empty: Please enter Entity Chunk Size."/></cell>
+									<cell>
+										<label value="${labels.uap.entitychunksizelimit}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell  > <longbox id="longEChunkSizeLimit" width="140px"  maxlength="6" constraint="no empty: Please enter Entity Chunk Size Limit."/></cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.uap.overrulemechunksize}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell  > <combobox id="combooverrulemechunksize" width="150px" readonly="true" constraint="no empty : Please Select Over Rule Master Entity Chunk Size."/></cell>
+									<cell>
+										<label value="${labels.uap.overruleentitychunksize}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell  > <combobox id="combooverruleechunksize" width="150px" readonly="true" constraint="no empty : Please Select Over Rule Entity Chunk Size.">
+											
+											</combobox>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.uap.reason}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <textbox id="txtReason" width="140px" constraint="no empty,/^[a-zA-Z0-9 ]*/: Please enter Reason."/></cell>
+								</row>								
+							</rows>
+			</grid>
+			
+			<separator bar="false" />
+			<separator bar="false" />
+			<hbox>
+				<button id="btnUpdate" mold="trendy" label="${labels.global.updateBtn}" width="140px"/>
+				<button id="cancelBtn" mold="trendy" label="Cancel" onClick="updateagentparam.detach();" width="140px"/>
+			</hbox>
+			<separator bar="false" />
+			<separator bar="false" />
+</vlayout>
+</hlayout>
+</zk>

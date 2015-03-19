@@ -1,0 +1,615 @@
+<?xml version="1.0"?>
+<project name="cpe-build" default="build-app" basedir=".">
+
+	<property file="${basedir}/build.properties"/>	
+	<property file="${basedir}/hotfix.properties"/>	
+	<property file="${basedir}/svn.properties" />
+	<property name="appdir" location="../application"/>	
+
+	<property name="lib" location="lib"/>	
+	<property name="doc" location="doc"/>		
+	<property name="build" location="build"/>		
+	<property name="dist" location="dist"/>		
+	<property name="release" location="release"/>		
+	<property name="rmiclient" location="rmiclient"/>
+	<property name="findbug" location="${lib}/findbug"/>			    
+	<property name="builder.name" value="yash.kapasi" />  	
+	<property name="mr.dir"  location="${basedir}/MR"/>
+	<property name="fullversion.release"  location="fullversion"/>
+
+	<property name="project" value="Crestel CPE"/>	
+	<property name="bl-module-name" value="inventorybl"/>
+	<property name="blisl-module-name" value="inventoryisl"/>	
+	<property name="exec-web-module-name" value="inventoryweb"/>	
+
+
+	<property name="bl-module-app-dir" location="${appdir}/${bl-module-name}"/>	
+	<property name="exec-web-module-app-dir" location="${appdir}/${exec-web-module-name}"/>	
+
+	<property name="bl-module-build-dir" location="${build}/${bl-module-name}"/>	
+	<property name="exec-web-module-build-dir" location="${build}/${exec-web-module-name}"/>	
+
+
+	<property environment="env"/> 
+	<property name="inventory.svn.rev" value="${env.BUILD_NUMBER}"/>    
+
+	<tstamp prefix="info">  
+		<format property="current-date" pattern="d-MMMM-yyyy" locale="en" />  
+		<format property="current-time" pattern="hh:mm:ss a z" locale="en" />  
+		<format property="year-month-day" pattern="yyyy-MM-dd" locale="en" />  
+	</tstamp>  
+
+	<path id="classpath">
+		<fileset dir="${lib}" includes="**/*.jar"/>		
+	</path>
+
+	<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" >  
+		<classpath refid="classpath"/>  
+	</taskdef>
+	
+		<taskdef resource="com/elitecore/ant/taskdefs/taskdefs.properties" >
+		<classpath refid="classpath"/>
+	</taskdef>
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties" >
+		<classpath refid="classpath"/>
+	</taskdef>
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath refid="classpath"/>
+	</taskdef>
+
+	<taskdef name="fmpp" classname="fmpp.tools.AntTask" >
+		<classpath refid="classpath"/>
+	</taskdef>
+	<taskdef name="freemarker" classname="freemarker.ext.ant.FreemarkerXmlTask">
+		<classpath>
+			<pathelement location="${basedir}/lib/freemarker.jar" />
+		</classpath>
+	</taskdef>
+	
+	<target name="clean" >
+		<delete dir="${doc}" />
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+		<!--delete dir="${svn.checkout.dir}" / -->
+		<delete dir="${test.report.dir}" />
+		
+	</target>	
+
+	<target name="init" >		
+		<mkdir dir="${release}" />
+		<mkdir dir ="${fullversion.release}" />
+		<mkdir dir="${release}/${inventory.svn.rev}" />
+		<mkdir dir="${release}/bin" />
+		<mkdir dir="${release}/binaries" />
+		<mkdir dir="${doc}" />
+		<mkdir dir="${build}" />
+		<mkdir dir="${dist}" />		
+		<mkdir dir="${svn.checkout.dir}" />
+		<mkdir dir="${test.report.dir}" />
+		
+	</target>	
+
+	<target name="checkout" >
+		<subant target="checkout">
+			<filelist dir="${basedir}" files="build-checkout.xml"/>
+		</subant>
+	</target> 
+
+
+	<target name="compile" >  
+
+		<echo message="Compiling Business Layer Source"/>
+		<mkdir dir="${build}/${bl-module-name}" />
+		<javac  srcdir="${bl-module-app-dir}/src"  destdir="${build}/${bl-module-name}"  classpathref="classpath" >								
+		</javac>
+
+		<echo message="Compiling Business Layer Test Case Source"/>
+		<javac  srcdir="${bl-module-app-dir}/test"  destdir="${build}/${bl-module-name}"   >								
+			<classpath>
+				<fileset dir="${lib}">
+					<include name="**/*.jar"/>
+				</fileset>
+				<pathelement location="${build}/${bl-module-name}"/>
+			</classpath>
+		</javac>
+
+		<echo message="Compiling Web Layer Source"/>
+		<mkdir dir="${build}/${exec-web-module-name}" />
+		<javac  srcdir="${exec-web-module-app-dir}/src"  destdir="${build}/${exec-web-module-name}" includeantruntime="false"
+				debug="on"
+				debuglevel="lines,vars,source"
+				classpathref="classpath" >
+			<classpath>
+				<pathelement location="${build}/${bl-module-name}"/>				
+				<fileset dir="${exec-web-module-app-dir}/webroot/WEB-INF/lib">
+					<include name="**/*.jar"/>
+					<include name="**/*.zip"/>
+				</fileset>
+				<fileset dir="${lib}">
+					<include name="**/*.jar"/>
+				</fileset>           
+				<fileset dir="${basedir}/lib">
+					<include name="**/*.jar"/>
+					<include name="**/*.zip"/>
+				</fileset>
+				
+			</classpath>			
+		</javac>
+
+	</target>  
+
+	<target name="prepare-java-doc" >  		
+		<javadoc sourcepath="${bl-module-app-dir}/src" destdir="${doc}/arbl/" classpathref="classpath" 
+		 author="true"
+         use="true"
+         windowtitle="CPEBL-DOCS" group="BL com.elitecore.cpe.bl*,Core com.elitecore.cpe.core*,Util com.elitecore.cpe.util*" >   														
+			<doctitle>
+				<![CDATA[<h1>Crestel CPE </h1>]]></doctitle>
+			<bottom>
+				<![CDATA[<i>Copyright &#169; 2013 Elitecore Technologies Pvt.Ltd. All Rights Reserved.</i>]]></bottom>
+			<tag name="todo" scope="all" description="To do:"/>
+		</javadoc>
+	</target>  
+
+	<target name="make-binaries" >      
+
+		<echo message="Creating Business Layer JAR"/>		
+		<jar destfile="${release}/${inventory.svn.rev}/inventorybl.jar" basedir="${bl-module-build-dir}" excludes="**/bl/ws/**">  
+			<fileset dir="${bl-module-app-dir}/src">
+				<include name="META-INF/persistence.xml"/>
+				<include name="META-INF/jboss-service.xml"/>
+				
+			</fileset>
+			<manifest>                  
+				<attribute name="Built-By"      value="Elitecore Technologies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Created-By"    value="Elitecore Techonolgies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Built-On" value="${info.current-date}" />  
+				<attribute name="Built-At" value="${info.current-time}" />  
+				<attribute name="version"  value="CRESTELCPE 1.0"/>
+			</manifest>  
+		</jar>  
+		
+
+		<echo message="Creating Inventory ISL Archieve"/>
+		<jar destfile="${release}/${inventory.svn.rev}/inventoryblisl.jar" basedir="${bl-module-build-dir}">     
+		
+		 <patternset id="a">
+			<include name="**/ws/**"/>
+			<exclude name="**/facade/ws/**"/>
+		</patternset>
+		</jar> 
+
+
+		<echo message="Creating Web Layer JAR"/>			
+		<jar destfile="${release}/${inventory.svn.rev}/inventoryweb.jar" basedir="${exec-web-module-build-dir}">  
+			<manifest>                  
+				<attribute name="Built-By"      value="Elitecore Technologies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Created-By"    value="Elitecore Techonolgies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Built-On" value="${info.current-date}" />  
+				<attribute name="Built-At" value="${info.current-time}" />  
+				<attribute name="version"  value="CRESTELCPE-1.0"/>
+			</manifest>  
+		</jar>  
+
+		<copy file="${release}/${inventory.svn.rev}/inventoryweb.jar" todir="${exec-web-module-app-dir}/webroot/WEB-INF/lib" />	
+
+
+		<echo message="Creating Enterprise Archieve"/>		
+		<jar jarfile="${release}/${inventory.svn.rev}/inventoryapp.ear">
+            <fileset dir="${release}/${inventory.svn.rev}/">
+                <include name="inventorybl.jar"/>
+		<include name="inventoryblisl.jar"/>
+            </fileset>
+            <manifest>
+				<attribute name="Built-By"      value="Elitecore Technologies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Created-By"    value="Elitecore Techonolgies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Built-On" value="${info.current-date}" ></attribute>  
+				<attribute name="Built-At" value="${info.current-time}" ></attribute>  
+				<attribute name="version"  value="CRESTELCPE-1.0"/>
+            </manifest>
+        </jar>
+
+<echo message="Creating Client Archieve"/>
+		<jar destfile="${rmiclient}/inventory-client.jar" >     
+	 	     <fileset dir="${bl-module-build-dir}" >
+
+			<exclude name="**/*Facade.class/**"/>
+			<exclude name="**/entity/**"/>
+			<exclude name="**/session/**"/>
+			<exclude name="**/ws/**"/>
+			<exclude name="**/controller/**"/>
+			<exclude name="**/agents/**"/>	
+			
+		</fileset>
+		<fileset dir="${bl-module-build-dir}" >
+			<include name="**/I*Facade.class/**"/>
+			<include name="**/agents/base/**"/>
+			<include name="**/ws/data/**"/>	
+		</fileset>
+		</jar>
+
+		<!--		<copy file="${release}/${inventory.svn.rev}/inventorybl.jar" todir="${exec-web-module-app-dir}/webroot/WEB-INF/lib" />-->
+
+		<copy file="${rmiclient}/inventory-client.jar" todir="${exec-web-module-app-dir}/webroot/WEB-INF/lib" />
+
+		<echo message="Creating Web Layer Archieve"/>		
+
+		<jar jarfile="${release}/${inventory.svn.rev}/inventoryweb.war">
+			<fileset dir="${exec-web-module-app-dir}/webroot">
+				<include name="**/**/*.*"/>
+			</fileset>
+
+			<manifest>
+				<attribute name="Built-By"      value="Elitecore Technologies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Created-By"    value="Elitecore Techonolgies Pvt. Ltd - ${builder.name}"/>
+				<attribute name="Built-On" value="${info.current-date}" />  
+				<attribute name="Built-At" value="${info.current-time}" />  
+				<attribute name="version"  value="CRESTELCPE-6.0.0-${inventory.svn.rev}"/>
+			</manifest>
+		</jar>	
+
+	  
+		
+
+	</target>	
+
+
+	<!--- Making Database full version -->
+
+	<property name="fullversion" value="${basedir}/fullversion" />
+	<property name="fullversion.tempalate" value="${fullversion}/template" />
+	<property name="template.dbfull" value="${fullversion.tempalate}/CRESTEL-CPE-DBFullV6.0.4" />
+	<property name="template.inventoryfull" value="${fullversion.tempalate}/CRESTEL-CPE-FullV6.0.4" />
+	<property name="dbfull" value="${fullversion}/CRESTEL-CPE-DBFullV6.0.4" />
+	<property name="inventoryfull" value="${fullversion}/CRESTEL-CPE-FullV6.0.4" />
+
+
+	<target name="make-database-fullversion">
+		<delete dir="${dbfull}"/>
+		<mkdir dir="${dbfull}" />
+		<copy  todir="${dbfull}" >
+			<fileset dir="${template.dbfull}" >
+				<include name="**/**/*" />
+			</fileset>
+		</copy>
+		<echo message="Making Database Fullversion" />
+		<echo message="Copying SQL Files" />
+
+
+		<copy  todir="${dbfull}/CRESTEL-CPE-DBFullV6.0.4" >
+			<fileset dir="${bl-module-app-dir}/setup" >
+				<include name="*.sql" />
+				<exclude name="data-sources.sql" />
+				<exclude name="synomnys.sql" />
+			</fileset>
+		</copy>
+		<echo message="Compressing Database Fullversion" />
+		<tar compression="gzip" destfile="${dbfull}.tar.gz">
+			<tarfileset dir="${dbfull}/" >
+				<include name="**/**/*"/>					
+			</tarfileset>
+		</tar>
+
+		<echo message="Moving to Release" />
+
+
+
+	</target>
+
+	
+	<target name="make-inventory-fullversion" >
+
+		<tstamp>
+			<format property="build.number" pattern="yyyy_MM_dd_HHmmss" />
+		</tstamp>
+		<delete dir="${inventoryfull}"/>
+		<mkdir dir="${inventoryfull}" />
+		
+		<copy  todir="${inventoryfull}" >
+			<fileset dir="${template.inventoryfull}" >
+				<include name="**/**/*" />
+			</fileset>
+		</copy>
+
+
+		<fmpp sourceFile="${template.inventoryfull}/version.info.ftl" outputFile="${inventoryfull}/version.info">		
+			<data expandProperties="yes">
+				 ant: antProperties()
+				 versionNumber: '${version.number}'
+				 buildNumber:'${build.number}'				
+			</data>
+		</fmpp>
+
+		<echo message="Making Crestel CPE Fullversion" />
+		<echo message="Copying SQL Files" />
+
+		<copy todir="${inventoryfull}/lib" >
+			<fileset dir="${bl-module-app-dir}/lib" >
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+
+		<copy file="${release}/${inventory.svn.rev}/inventoryapp.ear" todir="${inventoryfull}/modules/cpe/ear" />
+
+		<copy  todir="${inventoryfull}/modules/cpe/clients/sar" >
+			<fileset  dir="${bl-module-app-dir}/lib">
+				<include name="*.sar" />
+			</fileset>
+		</copy>
+
+		<copy file="${release}/${inventory.svn.rev}/inventoryweb.war" todir="${inventoryfull}/modules/web/clients/web" />
+
+		<echo message="Compressing Crestel CPE Fullversion" />
+
+		<tar compression="gzip" destfile="${inventoryfull}.tar.gz">
+			<tarfileset dir="${inventoryfull}/" >
+				<exclude name="**/*.ftl" />
+				<include name="**/**/*"/>					
+			</tarfileset>
+		</tar>
+
+	</target>
+
+	<target name="make-fullversion" > 
+		<antcall target="make-database-fullversion" />
+		<antcall target="make-inventory-fullversion" />
+	</target> 
+
+	<target name="prepare-db-doc">
+		<delete dir="${doc}/db-docs" />
+		<mkdir dir="${doc}/db-docs" />
+		<java jar="${lib}/schemaspy/schemaSpy_5.0.0.jar" output="${doc}/db-docs/output.log" error="${doc}/db-docs/error.log" fork="true">				  		 		  		  
+
+			<arg line="-t orathin"/>
+			<arg line="-host ${db.host}"/>
+			<arg line="-port ${db.port}"/>
+			<arg line="-db ${db.sid}"/>
+			<arg line="-u ${db.username}"/>
+			<arg line="-p ${db.password}"/>
+			<arg line="-cp ${lib}/jdbc/oracle9i.jar"/>
+			<arg line="-o ${doc}/db-docs"/>		  
+		</java>
+	</target>
+
+
+	<target name="findbug" >    		
+		<delete dir="${findbug.dir}" />
+		<mkdir  dir="${findbug.dir}" />
+		<findbugs home="${findbug}"  output="xml:withMessages" outputFile="${findbug.dir}/findbugs-inventory-bl.xml" excludeFilter="${findbug}/findbugsExclude.xml" >          
+			<sourcePath path="${bl-module-app-dir}/src"  />				 
+			<class location="${release}/${inventory.svn.rev}/inventorybl.jar"/>  
+		</findbugs>  		
+
+
+		<findbugs home="${findbug}"   output="html" stylesheet="fancy-hist.xsl" outputFile="${findbug.dir}/findbugs-inventory-bl.html" excludeFilter="${findbug}/findbugsExclude.xml" >          
+			<sourcePath path="${bl-module-app-dir}/src"  />				 
+			<class location="${release}/${inventory.svn.rev}/inventorybl.jar"/>  
+		</findbugs>  		
+
+
+		<findbugs home="${findbug}"  output="xml:withMessages" outputFile="${findbug.dir}/findbugs-inventory-web.xml" excludeFilter="${findbug}/findbugsWebExclude.xml" >          
+			<sourcePath path="${exec-web-module-app-dir}/src"  />				 			
+			<class location="${release}/${inventory.svn.rev}/inventoryweb.jar"/>  
+		</findbugs>  		
+
+		<findbugs home="${findbug}"   output="html" stylesheet="fancy-hist.xsl" outputFile="${findbug.dir}/findbugs-inventory-web.html" excludeFilter="${findbug}/findbugsWebExclude.xml" >          
+			<sourcePath path="${exec-web-module-app-dir}/src"  />				 			
+			<class location="${release}/${inventory.svn.rev}/inventoryweb.jar"/>  
+		</findbugs>  		
+
+	</target>
+
+	<path id="junit.class.path" >
+		<fileset dir="${lib}" includes="**/*.jar"/>		
+		<pathelement location="${build}/${bl-module-name}" />
+	</path>
+	<target name="junit"  depends="compile">
+		<junit printsummary="on" fork="true" haltonfailure="false">
+			<classpath refid="junit.class.path" />
+			<formatter type="xml" />
+			<batchtest todir="${test.report.dir}">
+				<fileset dir="${bl-module-app-dir}/test">
+					<include name="**/*Test*.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+		<junitreport todir="${test.report.dir}">
+			<fileset dir="${test.report.dir}">
+				<include name="TEST-*.xml"/>
+			</fileset>
+			<report format="frames" todir="./report/html"/>
+		</junitreport>
+	</target>
+	<target name="version.build">
+	    	<antcall target="clean"/>
+		<antcall target="init"/>	
+		<antcall target="compile"/>	
+		<antcall target="make-binaries"/>
+	</target>
+
+	<target name="build-app" depends="version.build">
+		<antcall target="junit" />
+		<antcall target="prepare-java-doc"/> 
+		<antcall target="findbug"/>					
+	</target>
+	
+	<target name="build-fullversion"  depends="version.build">
+	      <antcall target="copy-deliverables" />
+	      <antcall target="copy-binaries"/>
+	      <antcall target="make-fullversion" />
+	      <antcall target="svn-commit" />
+	</target>
+	<target name="build-app-local"  depends="version.build">
+		<antcall target="junit" />
+		<!--antcall target="prepare-java-doc"/> 
+		<antcall target="findbug"/>	 -->				
+	</target>
+	
+	<target name="build-hotfix" depends="version.build" >
+		<tstamp>
+			<format property="build.number" pattern="yyyy_MM_dd_HHmmss" />
+		</tstamp>
+		<echo message="Creating application hotfix" />
+		<delete dir="${mr.dir}/template" />
+		<mkdir dir="${mr.dir}/template" />
+		<copy todir="${mr.dir}/template" >
+			<fileset dir="${mr.dir}/mr">
+				<exclude name="*.svn" />
+			</fileset>		
+		</copy>
+	<fmpp sourceFile="${basedir}/MR/mr/version.info.ftl" outputFile="${basedir}/MR/template/version.info">		
+			<data expandProperties="yes">
+				 ant: antProperties()
+				 envMR:'${env.MR}'
+				 versionNumber:'${version.number}'
+				 buildNumber:'${build.number}',
+		 	</data>
+	</fmpp>
+	<fmpp sourceFile="${basedir}/MR/mr/cpe/version.info.ftl" outputFile="${basedir}/MR/template/cpe/version.info">		
+			<data expandProperties="yes">
+				 ant: antProperties()
+				 envMR:'${env.MR}'
+				 versionNumber:'${version.number}'
+				 buildNumber:'${build.number}',
+		 	</data>
+	</fmpp>
+	<fmpp sourceFile="${basedir}/MR/mr/web/version.info.ftl" outputFile="${basedir}/MR/template/web/version.info">		
+			<data expandProperties="yes">
+				 ant: antProperties()
+				 envMR:'${env.MR}'
+				 versionNumber:'${version.number}'
+				 buildNumber:'${build.number}',
+		 	</data>
+	</fmpp>
+		<antcall target="copy-deliverables" />
+		<delete dir="${release}/binaries_old/binaries" />
+		<delete dir="${release}/binaries_new/binaries" />
+		<delete dir="${release}/upgrade" />
+		<mkdir dir="${release}/binaries_old/binaries" />
+		<mkdir dir="${release}/binaries_new/binaries" />
+		<mkdir dir="${release}/upgrade" />
+		<!-- Considering Build is allready done. -->
+		<antcall target="copy-binaries"/>
+		<!--Creating Hotfix difference and preparing bundle. -->
+		<antcall target="make-hotfix-difference" />
+		<antcall target="svn-commit" />
+	</target>
+	 <target name="svn-commit">
+	  <ant antfile="build-checkout.xml"  target="update-release" useNativeBasedir="false" inheritAll="true" />
+	</target>
+	
+	<target name="copy-binaries">
+		<foreach list="${module.list}" param="module" trim="true"  target="prepare-binary-data" inheritall="false" />				
+	</target>
+
+	<target name="prepare-binary-data">
+
+		<echo message="Copying : ${module}" />
+
+		<propertycopy name="module.release.list" from="${module}.release.list"/>
+		<propertycopy name="module.release.dir" from="${module}.release.dir"/>
+		<propertycopy name="module.dir" from="${module}.module.dir"/>
+
+		<foreach list="${module.release.list}" param="module.deliverables" target="copy-binary"  trim="true"  inheritall="false">
+			<param name="module.release.dir" value="${module.release.dir}"/>
+			<param name="module" value="${module}"/>
+		</foreach>		
+
+		<propertycopy name="module.dir" from="${module}.module.dir"/>
+		<!-- echo message="Copying ${release}/${module.dir} to ${fullversion-template}/module" /> 
+		<mkdir dir="${fullversion-template}/modules/${module}" />
+		<copy todir="${fullversion-template}/modules/${module}">
+			<fileset dir="${release}/${module.dir}"/>
+		</copy -->
+
+	</target>	
+
+	<target name="copy-binary">
+		<echo message="Copying ${release}\bin\${module.deliverables} to ${release}/${module.release.dir}" /> 
+		<trycatch>
+			<try>
+				<copy file="${release}/${module.release.dir}/${module.deliverables}" todir="${release}/binaries_old/${module.release.dir}" />
+			</try>
+			<catch>
+				<echo message="${release}/${module.release.dir}/${module.deliverables} File not found" />
+			</catch>
+		</trycatch>
+
+		<copy file="${release}/bin/${module.deliverables}" todir="${release}/${module.release.dir}" />
+
+		<copy file="${release}/bin/${module.deliverables}" todir="${release}/../../releases/${module.release.dir}" />
+		<trycatch>
+			<try>
+				<copy file="${release}/${module.release.dir}/${module.deliverables}" todir="${release}/binaries_new/${module.release.dir}" />
+			</try>
+			<catch>
+				<echo message="${release}/${module.release.dir}/${module.deliverables} File not found" />
+			</catch>
+		</trycatch>
+
+	</target>	
+
+	<target name="make-hotfix-difference">
+
+		<foreach list="${module.list}" param="module" trim="true"  target="make-difference" inheritall="false" />			
+
+		<if>
+			<isset property="env.Version"/>
+			<then>
+				<tar compression="gzip" destfile="${mr.dir}/${project.name}-MR-${env.Version}-${env.MR}.tar.gz">
+					<tarfileset dir="${mr.dir}/template">
+						<include name="**/**/*"/> 
+						<exclude name="**/*.ftl" />                                                                      
+					</tarfileset>
+				</tar>
+
+				<copy file="${mr.dir}/${project.name}-MR-${env.Version}-${env.MR}.tar.gz" todir="../../releases/MR"/>
+			</then>
+			<else>
+				<tar compression="gzip" destfile="${mr.dir}/${project.name}-MR-${project.version}-HF.tar.gz">
+					<tarfileset dir="${mr.dir}/template">
+						<include name="**/**/*"/> 
+						<exclude name="**/*.ftl" />                                                                      
+					</tarfileset>
+				</tar>
+				<copy file="${mr.dir}/${project.name}-MR-${project.version}-${env.MR}.tar.gz" todir="../../releases/MR"/>
+			</else>
+		</if>
+
+	</target>
+	<target name="make-difference">
+
+		<EliteUpgrade currentsource="${release}/binaries_old/binaries/${module}"
+				newsource="${release}/binaries_new/binaries/${module}"
+				upgradedir="${release}/upgrade/${module}" >	
+		</EliteUpgrade>
+
+		<propertycopy name="module.mr.dir" from="${module}.mr.dir"/>
+
+		<echo message="Module : ${module}" />
+		<echo message="Copying ${release}/upgrade/${module} to ${release}/${module.mr.dir}" />
+
+		<copy todir="${module.mr.dir}">
+			<fileset dir="${release}/upgrade/${module}"/>
+		</copy>
+
+	</target>
+	
+		<target name="copy-deliverables" >
+
+		<!-- Copying Ear to Binaries-->
+		<copy todir="${release}/bin" >
+			<fileset dir="${release}/${inventory.svn.rev}" >
+				<include name="*.ear" />
+				<include name="*.war" />
+				<include name="*.sar" />
+			</fileset>
+			<fileset dir="${bl-module-app-dir}/lib">
+			  <include name="*.sar" />
+			</fileset>
+		</copy>
+		
+	</target>
+
+</project>

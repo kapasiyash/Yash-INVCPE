@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/src/com/elitecore/cpe/web/constants"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16333"
+   kind="dir"
+   committed-date="2015-03-09T03:27:14.356148Z"/>
+<entry
+   name="ActionAlias.java"
+   checksum="c88d44b2abf35d4a4f16ae5d01ebabc8"
+   last-author="rinkal.sadariya"
+   committed-rev="16333"
+   text-time="2015-03-09T03:27:14.000000Z"
+   kind="file"
+   committed-date="2015-03-09T03:27:14.356148Z"/>
+<entry
+   name="CommonConstants.java"
+   checksum="89ddc4b58522ac8fd6e73f9cb9f0ad4e"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="Pages.java"
+   checksum="c5a63dbf8c52bdda2d4321123369c1bd"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

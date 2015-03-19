@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/setup"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16453"
+   kind="dir"
+   committed-date="2015-03-16T05:06:06.556293Z"/>
+<entry
+   name="01_PARTNER_TO_INVENTORY_Grant.sql"
+   checksum="20c9562f7aaf594b7ee641b78e29ae58"
+   last-author="yash.kapasi"
+   committed-rev="16418"
+   text-time="2015-03-12T09:26:48.000000Z"
+   kind="file"
+   committed-date="2015-03-12T09:26:48.590476Z"/>
+<entry
+   name="02_PARTNER_TO_INVENTORY_Synonym.sql"
+   checksum="8bc0b43fcd34596fe822998576ed896a"
+   last-author="yash.kapasi"
+   committed-rev="16418"
+   text-time="2015-03-12T09:26:48.000000Z"
+   kind="file"
+   committed-date="2015-03-12T09:26:48.590476Z"/>
+<entry
+   name="03_PARTNER_TO_INVENTORY_Views.sql"
+   checksum="b8a9cdf8ff7bb69500f58eb338de1a1f"
+   last-author="yash.kapasi"
+   committed-rev="16418"
+   text-time="2015-03-12T09:26:48.000000Z"
+   kind="file"
+   committed-date="2015-03-12T09:26:48.590476Z"/>
+<entry
+   name="Crestel-CPE-DB-6.0.3-MR01.sql"
+   checksum="aac93f913e01fcd6875c9231c91b8480"
+   last-author="yash.kapasi"
+   committed-rev="16418"
+   text-time="2015-03-12T09:26:48.000000Z"
+   kind="file"
+   committed-date="2015-03-12T09:26:48.590476Z"/>
+<entry
+   name="MR.sql"
+   checksum="b5b7487617fa9b9922195d132e1390cd"
+   last-author="yash.kapasi"
+   committed-rev="16418"
+   text-time="2015-03-12T09:26:48.000000Z"
+   kind="file"
+   committed-date="2015-03-12T09:26:48.590476Z"/>
+<entry
+   name="Sprint-3-INC.sql"
+   checksum="9b7a58c742b849b960b2272eacf91e1e"
+   last-author="yash.kapasi"
+   committed-rev="16418"
+   text-time="2015-03-12T09:26:48.000000Z"
+   kind="file"
+   committed-date="2015-03-12T09:26:48.590476Z"/>
+<entry
+   name="Sprint-3.sql"
+   checksum="ee8f6f84e50bff030d677b0b1ddcc8bf"
+   last-author="yash.kapasi"
+   committed-rev="16418"
+   text-time="2015-03-12T09:26:48.000000Z"
+   kind="file"
+   committed-date="2015-03-12T09:26:48.590476Z"/>
+<entry
+   name="Sprint-4.sql"
+   checksum="45666021c7427a45f2d20dd9dcf73cfe"
+   last-author="yash.kapasi"
+   committed-rev="16453"
+   text-time="2015-03-16T05:06:06.000000Z"
+   kind="file"
+   committed-date="2015-03-16T05:06:06.556293Z"/>
+<entry
+   name="action.sql"
+   checksum="f3591b3256c570016d6e9fd71dc0a938"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="app-setup.sql"
+   checksum="a38fefd69ecdba5c6536828d30755017"
+   last-author="yash.kapasi"
+   committed-rev="16418"
+   text-time="2015-03-12T09:26:48.000000Z"
+   kind="file"
+   committed-date="2015-03-12T09:26:48.590476Z"/>
+<entry
+   name="default.sql"
+   checksum="2dd4846c693543a883c28e493379bfc0"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="setup.sql"
+   checksum="8456180d1b957a3329ab2bb7534263cf"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="start-inventory.sql"
+   checksum="4fc0dfd206e23d79d73e92fea7f27874"
+   last-author="yash.kapasi"
+   committed-rev="16418"
+   text-time="2015-03-12T09:26:48.000000Z"
+   kind="file"
+   committed-date="2015-03-12T09:26:48.590476Z"/>
+<entry
+   name="template.sql"
+   checksum="d94cd13d75623d6667ecb93f65e754e2"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+</wc-entries>

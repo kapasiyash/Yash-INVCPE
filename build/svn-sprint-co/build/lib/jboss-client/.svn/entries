@@ -1,0 +1,1769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/lib/jboss-client"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15540"
+   kind="dir"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="FastInfoset.jar"
+   checksum="34202d4ad7d35940f74348553d6ec362"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="XmlSchema.jar"
+   checksum="6ae1206ff8ea1119519f38eb1e56ad3f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="activation.jar"
+   checksum="44973dd16d5d3ca1d8f5eaea5f69a7c1"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="antlr.jar"
+   checksum="3d710f139cdefbe6a94f30a182fe1527"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="asm.jar"
+   checksum="2e59b91db2bf91d7a78013db2c5e60de"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="cdi-api.jar"
+   checksum="3b1d2676079f7edf83a0003630136fdf"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="commons-beanutils.jar"
+   checksum="2c6b93da0aa90f7600b7114fed2dd450"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:36.000000Z"/>
+<entry
+   name="commons-collections.jar"
+   checksum="f8f714bd412d44087bc4710d4bdda04e"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:29.000000Z"/>
+<entry
+   name="commons-lang.jar"
+   checksum="40d60da9302d7dbc99b78b28fb358ddb"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="commons-logging.jar"
+   checksum="3c1b9b9a307f9787fe95a16158f25adb"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="concurrent.jar"
+   checksum="f5e2fdc65b1b5cba66c5a9f4098f4977"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="cxf-api.jar"
+   checksum="760625ebb45c1901acb08bb96696eaf9"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="cxf-common-schemas.jar"
+   checksum="2b4d13aed62946fe98f185ae1a514066"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="cxf-common-utilities.jar"
+   checksum="f26065ee9955317e633d57dbfec95251"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="cxf-rt-bindings-coloc.jar"
+   checksum="977545e2800c2b0a126d7351e76bdfad"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="cxf-rt-bindings-http.jar"
+   checksum="248d6ccce197eaf62b9970b1aa6a3bbe"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="cxf-rt-bindings-object.jar"
+   checksum="63f30f4c348d6d3539054f395afdd001"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:36.000000Z"/>
+<entry
+   name="cxf-rt-bindings-soap.jar"
+   checksum="afb532c7247c28da981c4b78819acc91"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="cxf-rt-bindings-xml.jar"
+   checksum="21eb0e69cbc86ab9865725e4aa4cf056"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="cxf-rt-core.jar"
+   checksum="34f2e7ce791443b0fbf7904749eaf420"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="cxf-rt-databinding-aegis.jar"
+   checksum="df75e63102b10d92467b11fb9fae4fc8"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="cxf-rt-databinding-jaxb.jar"
+   checksum="bdd09e7a2742fe89d53bfcbae7798b5c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="cxf-rt-frontend-jaxws.jar"
+   checksum="2d965af88c313f16a42188fa51e72899"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="cxf-rt-frontend-simple.jar"
+   checksum="09c6406619f7204d127f569af33e36ad"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="cxf-rt-management.jar"
+   checksum="f81141b0e13857f1ed7e2abb08d819dc"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="cxf-rt-transports-http.jar"
+   checksum="96f0cc75d559d729cd71329772b7e592"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="cxf-rt-transports-jms.jar"
+   checksum="7f7ef59a4c0b59cba7de04e4f4148c55"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="cxf-rt-transports-local.jar"
+   checksum="7addcd8242b8b52dda4608a889e00c46"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="cxf-rt-ws-addr.jar"
+   checksum="c559bcc543b513ca9499ae2dd08d124d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="cxf-rt-ws-policy.jar"
+   checksum="5c7151f854fcbf0f6f962857d1a1d7f8"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="cxf-rt-ws-rm.jar"
+   checksum="a0fa77f8ee6da335c662678398ff338c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="cxf-rt-ws-security.jar"
+   checksum="e73a375032ef4ac18bce82a3c677ee41"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="cxf-tools-common.jar"
+   checksum="8ed7c0a0269a04ef4506f246c36f61a1"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="cxf-tools-java2ws.jar"
+   checksum="47f83234709fdac9f3b6363dbdf1fc2f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="cxf-tools-validator.jar"
+   checksum="33aa909626ae3e161bd24f773126a221"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="cxf-tools-wsdlto-core.jar"
+   checksum="3f36f9f7601a4692e035d005fa19ba2b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="cxf-tools-wsdlto-databinding-jaxb.jar"
+   checksum="ed925e39a34f111500c56066ada200a2"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="cxf-tools-wsdlto-frontend-jaxws.jar"
+   checksum="33e2b5d1a0d0a4d3b160697c37cd7594"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="cxf-xjc-boolean.jar"
+   checksum="cdc1159f120e1a825d8dd42f619dea14"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="cxf-xjc-bug671.jar"
+   checksum="608670d8e90ed1feb9d379eff2823000"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="cxf-xjc-dv.jar"
+   checksum="332e22543cc73064316912684600131f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="cxf-xjc-ts.jar"
+   checksum="0900ab3c0b2b1a24e9b3ee93f6878a34"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="ejb3-persistence.jar"
+   checksum="be6d082d2c76d0cc1ce3b86c12e271ed"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="getopt.jar"
+   checksum="431eb361aa2974adfe9524a1c2f8d64b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="hibernate-annotations.jar"
+   checksum="273a3c1114fa5381bcab8ff2d0838d56"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="hibernate-commons-annotations.jar"
+   checksum="ef563d46ee3025e5c018109b02cdc9f0"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="hibernate-core.jar"
+   checksum="7e0867ba0bcf8c5b844f77dda833d8fc"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="hibernate-jpa-2.0-api.jar"
+   checksum="103e2216de2143a3c8d796a4b366845f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="hibernate-validator.jar"
+   checksum="b8a83f7a1b1b3d9ae5a680d85d595df3"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="hornetq-core-client.jar"
+   checksum="36b47d9143226d71968b44aad5d62305"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="hornetq-jms-client.jar"
+   checksum="9d5783ee186251a4bc16dc9b9d278b87"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jacorb.jar"
+   checksum="999316aa4b23ec33d30b535594f60e0d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="javassist.jar"
+   checksum="36db091233bd003985a7847abf1779b7"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="javax.inject.jar"
+   checksum="6172466e84188f9202ab67d03b32eb3e"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jaxb-api.jar"
+   checksum="cd77894ca0f36359b0b6f2e7293a78eb"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jaxb-impl.jar"
+   checksum="7c122081a912e2395bd442bc3ae11756"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="jaxb-xjc.jar"
+   checksum="2a977f542dc927b699e9d27abcd3b6a3"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jaxws-api.jar"
+   checksum="68ce6a566af6791e5c1fc9ff4b363e91"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jaxws-httpserver-httpspi.jar"
+   checksum="62d2ec7c6fa14593e12a6a3c45d5f055"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jaxws-rt.jar"
+   checksum="a82b8d84fea85504ed2fe688a93d2867"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jaxws-tools.jar"
+   checksum="96b5fbd206289b3e4923a2035e1585b5"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-annotations-api_1.1_spec.jar"
+   checksum="21a948c2b2e3edcd81ccfa095e6e1497"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jboss-aop-client.jar"
+   checksum="4d616ed288ff2958126ac0e99f3d710c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-appclient.jar"
+   checksum="ebef1588f903a6d16a4ba553f257a383"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-aspect-jdk50-client.jar"
+   checksum="d71f07cf3d9c93d125cd9fe0e440a423"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-classpool-jbosscl.jar"
+   checksum="fea4d11e18e2d2b374b5f7fe5740a460"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jboss-classpool-scoped.jar"
+   checksum="b187c8d9d670d6554644724d458dc115"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jboss-classpool.jar"
+   checksum="a531925714337aa90320527448054e99"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-client.jar"
+   checksum="af52e5878014349ea126634a858a277f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-common-core.jar"
+   checksum="78bc847c238e0fca31c7cb0c05a7ae75"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-connector-api_1.5_spec.jar"
+   checksum="e6d827532ff51f9adcfeb487ecb5e30f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jboss-deployers-client-spi.jar"
+   checksum="8bccf56628aa477ef3b4dd384dfd2128"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:29.000000Z"/>
+<entry
+   name="jboss-deployers-client.jar"
+   checksum="c9da007ddc38abff777a46f2f4190989"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:36.000000Z"/>
+<entry
+   name="jboss-deployers-core-spi.jar"
+   checksum="b08183f1f507c7036c972405ec02bdc6"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jboss-deployers-core.jar"
+   checksum="1da2879f9b8e2c8de4c711954bf31edc"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jboss-deployers-vfs-spi.jar"
+   checksum="8258d6ab5587faa9dcdc1f5e88624b02"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-deployers-vfs.jar"
+   checksum="3e6813b4c3b78d9afaec9a551b306597"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="jboss-deployment.jar"
+   checksum="ff87b016156b7be88daf31a82ba96259"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:29.000000Z"/>
+<entry
+   name="jboss-ejb-api_3.1_spec.jar"
+   checksum="5978d3dfc2e2604523ce14fede276cbc"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-ejb3-async-impl.jar"
+   checksum="8809367f1b641a3bca0c2f10c0261ec5"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jboss-ejb3-async-spi.jar"
+   checksum="92eb1f8257f69e328fa183a2c1e6ee23"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-ejb3-common-client.jar"
+   checksum="46977a0c5de67260ea331ed4e485296d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-ejb3-context-spi.jar"
+   checksum="189c470a509feb6cf3d1f5c9fcbc0e2a"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-ejb3-core-client.jar"
+   checksum="3278508a47f057001ec09d238bfa08c5"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:36.000000Z"/>
+<entry
+   name="jboss-ejb3-embedded-standalone.jar"
+   checksum="c6192304980a65d637919e5719083a7c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-ejb3-ext-api-impl.jar"
+   checksum="2e48fd17f9379c3509960b4dda9020c5"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-ejb3-ext-api.jar"
+   checksum="dd6158895e22edb2d565920dd4e2d330"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jboss-ejb3-proxy-clustered-client.jar"
+   checksum="fe92567641ffb38c2c41e6fd33175a4a"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-ejb3-proxy-impl-client.jar"
+   checksum="336463fe7cd41b1efa5ddb012dc2bdce"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-ejb3-proxy-spi-client.jar"
+   checksum="e90a4e1284d58c1bed6c2cd5062ceb99"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-ejb3-security-client.jar"
+   checksum="292bddfedd2dc2fa8b401b6ed0c80036"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="jboss-ejb3-singleton-proxy-impl.jar"
+   checksum="06870cc772a1f9c822bf59cddc9fe388"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-ejb3-vfs-spi.jar"
+   checksum="b611f4457842f3a97c067f8305b87cab"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-el-api_2.2_spec.jar"
+   checksum="0555cb3eda24be8f65926c070de00b37"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jboss-ha-client.jar"
+   checksum="2e0aab04dfcea2c73476ef824e52b402"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-ha-legacy-client.jar"
+   checksum="78a1ba72efae6ca4643df6f9182f0f9f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-iiop-client.jar"
+   checksum="f64253b084c4a51d4afb10367b5d99ab"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:29.000000Z"/>
+<entry
+   name="jboss-integration.jar"
+   checksum="89df08b416dcf234adffb15ce0d055db"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-interceptor-core.jar"
+   checksum="f89e3ea1e4bf86e6d57f42c1f40738de"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-interceptor-spi.jar"
+   checksum="0b3ffe59e2708d0ff484c4f9bf1e8d44"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jboss-interceptors-api_1.1_spec.jar"
+   checksum="fe48d2e30ca920042e3e83ed51130ff3"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-j2se.jar"
+   checksum="8a18e4bc7beb14a0ad2affe513ba7529"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-jacc-api_1.4_spec.jar"
+   checksum="f2175ad49cb91c2e8f30b38309bd6dcb"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-jad-api_1.2_spec.jar"
+   checksum="fb6b70e95a1416cbd4b3ee62f737c9b8"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="jboss-jaspi-api.jar"
+   checksum="77778ab92e26fd0b048535c300b863c5"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jboss-jaspi-api_1.0_spec.jar"
+   checksum="ea4e15346b2573ecd66b364edd5f4478"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-javaee.jar"
+   checksum="8855317aa7067753ea7ac99570506514"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-jaxb-api_2.2_spec.jar"
+   checksum="6ef90c30c8a8efcb91f4ef916fca674d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-jaxr-api_1.0_spec.jar"
+   checksum="8a8667b131f6441d7c343834055d02fb"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-jaxrpc-api_1.1_spec.jar"
+   checksum="58906e89bbcc92ccc64f17b167662c60"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jboss-jaxws-api_2.2_spec.jar"
+   checksum="d777f72a0aeeb425603fdca64895054e"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jboss-jms-api_1.1_spec.jar"
+   checksum="4f6fd8f528bc94f4caf69b7463f9ce8b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jboss-jmx-annotations.jar"
+   checksum="e27a87ab11bf297225b61b731c226c00"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-jmx.jar"
+   checksum="ba2d1ba3daffeea03b793be5af1babf4"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-jsp-api_2.2_spec.jar"
+   checksum="324998f10a15d4875ce194d5a892638c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jboss-jsr77-client.jar"
+   checksum="dbef5e9fa2bcd0c856219a845bb4d50b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-logging-jdk.jar"
+   checksum="80035f782d369001403d17ffa523b759"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jboss-logging-log4j.jar"
+   checksum="9ef891408dfe8fb8a79114c57e1f41c1"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="jboss-logging-spi.jar"
+   checksum="60e20c82184e907232b9a367468124dc"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-logging.jar"
+   checksum="7d2b2f50766099eda09bf765f6c3dfe8"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-managed.jar"
+   checksum="2ca34dfe1d12db689da1a637f3fdad50"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jboss-marshalling-river.jar"
+   checksum="a573454b3de9c68b95fb98805b76013b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="jboss-marshalling.jar"
+   checksum="c642b40aba47020a2c71bf7a83de846b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jboss-mdr.jar"
+   checksum="a3b57a8be835f5d768b39c3c7624918e"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-messaging-client.jar"
+   checksum="a33882135ae68a5eca285eff1645ec24"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jboss-metadata-client.jar"
+   checksum="d24fa8a70f264fde2ec47978c21a9b64"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jboss-metadata-common.jar"
+   checksum="880a3e2f1b5369888dad7f8d0a1df28c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-metadata-ear.jar"
+   checksum="14f82e94b7f7086fde47de566f6fa64f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-metadata-ejb.jar"
+   checksum="78b3ac386381b1d7e61487ac70d717f9"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:36.000000Z"/>
+<entry
+   name="jboss-metadata-rar.jar"
+   checksum="c91268f80b022278735df7c0ce14e43d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-metadata-war.jar"
+   checksum="7faee09acf4e0819ad18dc27e9ee6394"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jboss-metadata.jar"
+   checksum="2c307ceb211e236b50a8f1eec733e0f5"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-metatype.jar"
+   checksum="99b8c21bda1612767da0fc4280a43229"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-profileservice-client.jar"
+   checksum="75ba51c504a667d505e6b485b67a5aa9"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jboss-profileservice-spi.jar"
+   checksum="fffa7421ac9874d436e858a1019baa02"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-remoting-3.jar"
+   checksum="38bb4ef07cf6848093d32b7459878621"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-remoting.jar"
+   checksum="ac5733914cd6281f53b2f0caa631bdfd"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-security-spi.jar"
+   checksum="b42e0c7c158241a88ce27ecaeb89e2d7"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jboss-serialization.jar"
+   checksum="37393b8e9d3543abf479570cf7946b48"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jboss-servlet-api_3.0_spec.jar"
+   checksum="a83583461330915db821b583405c2c9c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-srp-client.jar"
+   checksum="fbed0a4b9a926e171d26f7338f0f93af"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:36.000000Z"/>
+<entry
+   name="jboss-system-client.jar"
+   checksum="fc261bab12b43e224259ce46ebe2f86f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jboss-system-jmx-client.jar"
+   checksum="d1cd23f80a400093e6640f0fcdde15e5"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-transaction-api_1.1_spec.jar"
+   checksum="4e1a160eb5307f0a6e099ae2867aeaac"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jboss-xml-binding.jar"
+   checksum="34e77a1be86f5ea1e41f74fc8b59fdae"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jbossall-client.jar"
+   checksum="fb85cd25bba995a0a167de2b6c283207"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="jbosscx-client.jar"
+   checksum="77add00d097206f37857fa381e468c47"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jbossjmx-ant.jar"
+   checksum="11128a80a269cb4fde0cd8624468fb2e"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jbossjts-integration.jar"
+   checksum="e3aa1a50e9f22f8aef079facabdfbb5a"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jbossjts-jacorb.jar"
+   checksum="eb3f29d3faef6de3dbd90e9e4402d7fa"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:36.000000Z"/>
+<entry
+   name="jbossjts.jar"
+   checksum="33423a591c2f37cea02f7827f5130279"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:36.000000Z"/>
+<entry
+   name="jbosssx-as-client.jar"
+   checksum="ea19ce1245ae9a8c8cebbc0a0615076c"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jbosssx-client.jar"
+   checksum="f106fe8773bd6ecee5141177125c7a98"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="jbossws-common.jar"
+   checksum="862ad516a2192f49ec4243475d9d9752"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jbossws-cxf-client.jar"
+   checksum="a88d5323f3d755e4c3da2dd8b02520aa"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jbossws-cxf-transports-httpserver.jar"
+   checksum="58e10b1412b4276f1ea4ddec0f553924"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jbossws-framework.jar"
+   checksum="49d893ec604f26d6cca6f9d0d351f1d9"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jbossws-jboss50.jar"
+   checksum="2fc860d7d05e59553714e06153679535"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="jbossws-native-client.jar"
+   checksum="03a31ac4d3c5cf492299385063ecd9d0"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jbossws-native-core.jar"
+   checksum="a43f08d416c4fef80c94e39051491f82"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="jbossws-native-factories.jar"
+   checksum="cccd19af7e117e86734b22d8fde715b0"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jbossws-spi.jar"
+   checksum="2243d50caac1a1a79f03e7315ff47335"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jbossxb.jar"
+   checksum="04c1240f772faae6b49c99b54e35f529"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="jcl-over-slf4j.jar"
+   checksum="9aae72ddfe846e94a66583f7bd1d3a9b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jettison.jar"
+   checksum="d915a0e5e513a50ca4957f95222f8795"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="jmx-client.jar"
+   checksum="b6f8ea0185c333a028fffe568628b5c6"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="jmx-invoker-adaptor-client.jar"
+   checksum="572cc175b8e51fea8acac4ed619a1220"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="jnp-client.jar"
+   checksum="2010bfabcee31eb62c367b20b810dc4e"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="jsr181-api.jar"
+   checksum="1202e0023229ee9b0284cf50c2743e04"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:36.000000Z"/>
+<entry
+   name="log4j.jar"
+   checksum="1139b545a405096c57c7c29978a25fd4"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="logkit.jar"
+   checksum="6208f0b85304c9be88eee7fe385d1075"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="mail.jar"
+   checksum="d794f7d5930ac219103f43b52d9e7ec1"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="neethi.jar"
+   checksum="84bb01b9c09b264571fea5f2fbb48a4f"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="netty.jar"
+   checksum="405dfe2464c945775a4a377c8b4e4335"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="policy.jar"
+   checksum="13f22221a78f31b9c80550a017236351"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="saaj-api.jar"
+   checksum="612b99fcb7fb85432ea8f85300b1d954"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="scout.jar"
+   checksum="6f1e24f7ffc142c7a065a9570a392dfb"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="serializer.jar"
+   checksum="e48e04f1e735db65250ce06872a25675"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="slf4j-api.jar"
+   checksum="9ba34908094e0d05b9e2a63054e7b4f0"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="slf4j-jboss-logging.jar"
+   checksum="1ae48ec449060a5a526e3f1f587d9815"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="stax-api.jar"
+   checksum="dbd237a74c6c5ec6f56b118d7bbd8191"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="stax-ex.jar"
+   checksum="f1317da5e97b7ed7be235601e969cd43"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+<entry
+   name="streambuffer.jar"
+   checksum="3af5da49e2198488e643a79cc698636a"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="trove.jar"
+   checksum="3f7013e9273e22c76a6a431a10547dbb"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="validation-api.jar"
+   checksum="51b111418e9f59a9d5ac2972ba0e64eb"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:30.000000Z"/>
+<entry
+   name="velocity.jar"
+   checksum="942f0787f12eeb3b36e8da10b0ea55b2"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:29.000000Z"/>
+<entry
+   name="weld-api.jar"
+   checksum="09a1e4c571acdfb1b31d3f617a87b7a0"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="wsdl4j.jar"
+   checksum="f8eec1afde3371be76d9b0a8c32a06f1"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:33.000000Z"/>
+<entry
+   name="wss4j.jar"
+   checksum="0b8948a64e0e4014591247dc716cddcf"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="wstx-lgpl.jar"
+   checksum="a30b6c4c86201fae5b1e766382aae0dd"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="wstx.jar"
+   checksum="a1abb9a2b7095307e518eb521d1e1b10"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:28.000000Z"/>
+<entry
+   name="xalan.jar"
+   checksum="f851cd6ba2a680120985963fb9ef50e6"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:35.000000Z"/>
+<entry
+   name="xercesImpl.jar"
+   checksum="784b288a12da96cb956042000ca9a65a"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:34.000000Z"/>
+<entry
+   name="xml-resolver.jar"
+   checksum="84ea25df882de101a04342ce2ed1b760"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:32.000000Z"/>
+<entry
+   name="xmlsec.jar"
+   checksum="627e14dcba0334ecdd462bc8aa9b4ec5"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:31.000000Z"/>
+</wc-entries>

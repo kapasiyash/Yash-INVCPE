@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/test/com/elitecore/test"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15558"
+   kind="dir"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="agent"
+   kind="dir"/>
+<entry
+   name="attributemgt"
+   kind="dir"/>
+<entry
+   name="audit"
+   kind="dir"/>
+<entry
+   name="base"
+   kind="dir"/>
+<entry
+   name="inventorymgt"
+   kind="dir"/>
+<entry
+   name="migration"
+   kind="dir"/>
+<entry
+   name="resource"
+   kind="dir"/>
+<entry
+   name="resourcesubtype"
+   kind="dir"/>
+<entry
+   name="resourcetype"
+   kind="dir"/>
+<entry
+   name="warehouse"
+   kind="dir"/>
+<entry
+   name="warehousetype"
+   kind="dir"/>
+</wc-entries>

@@ -1,0 +1,113 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="configureRuleWind" mode="modal" border="normal" width="800px"  title="Rule Configuration"
+ position="center,center" closable="true" style="overflow:auto;"  apply="com.elitecore.cpe.web.system.rules.ConfigureRuleComposer" >
+					<vlayout style="padding-left: 5px; padding-top: 2px;" width="800px">
+					
+					
+							<div sclass="sectionTitle">
+								<label value="${labels.rules.config}" style="font-weight: bold;" />
+							</div>
+							
+							<separator bar="false"/>
+							<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								<row>
+									<cell>
+										<label value="${labels.rules.attr}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell><textbox id="txtAttribute" width="140" maxlength="100" constraint="no empty : Please enter some Attribute"/></cell>
+									<cell>
+										<label value="Operator Type"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell><combobox id="operaTypeCombo" readonly="true"  /></cell>
+								</row>
+								<row>
+									<cell>
+										<label value="${labels.rules.operator}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell><combobox id="operatorCombo" readonly="true"  /></cell>
+									<cell>
+										<label value="${labels.rules.value}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell><textbox id="txtValue" width="140" maxlength="100" constraint="no empty : Please enter some Value"/></cell>
+								</row>
+								<row  spans="1,3" id="GLRow" >
+									<cell>
+										<label value="GL Codes" />
+									</cell>
+									
+									<vlayout width="550px">
+									<div width="550px" align="right">
+									<image id="addGLImage" src="/images/icons/add16.png"/>
+									</div>
+												<listbox id="GLlist" oddRowSclass="non-odd" sclass="formList" width="550px" height="150px">
+													<listhead sizable="true">
+															<listheader label="Sr No." width="10%" sort="auto(srNo)" />
+															<listheader label="GL Code" sort="auto(glCode)" />
+															<listheader label="Percentage" sort="auto(percentage)" />
+															<listheader label="" width="80px" />
+															
+													</listhead>
+												</listbox>
+									
+									</vlayout>
+								</row>
+								<!-- <row >
+										<cell>
+										<label	value="${labels.arec.glcode}" />
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" >
+									
+									<combobox id="comboGLCode" width="140" readonly="true" constraint="no empty : Please Select GL Code"/>
+									</cell>
+											
+								</row> -->
+							</rows>
+							</grid>
+							
+						<separator bar="false" />
+						<hbox>
+							<button id="btnAdd" width="140px" mold="trendy" label="${labels.global.addBtn}"/>
+							<button id="btnEdit" visible="false" width="140px" mold="trendy" label="${labels.global.saveBtn}"/>
+						</hbox>
+						<separator bar="false" />
+						<separator bar="false" />
+						<separator bar="false" />
+							<listbox id="rulesLB"  visible="true" sclass="formList" width="95%" height="200px" oddRowSclass="non-odd">
+											<listhead sizable="true">
+												<listheader  label="${labels.rulelb.conditional}" width="30%"/>
+												<listheader  label="${labels.rulelb.attribute}" />
+												<listheader  label="${labels.rulelb.operator}" />
+												<listheader  label="${labels.rulelb.value}" />
+												<listheader  label="${labels.rulelb.glCode}" />
+												<listheader  label="" />
+											</listhead>										
+							</listbox>
+						
+						
+						<separator bar="false" />
+						<separator bar="false" />
+						<hbox>
+							<button id="btnAddRule" width="140px" mold="trendy" label="Add Rule"/>
+							<button id="btnUpdateRule" width="140px" mold="trendy" label="Update Rule"/>
+							<button id="btnCancel" width="140px" mold="trendy" label="Cancel"/>
+						</hbox>
+						
+					</vlayout>
+					
+					<separator bar="false" />
+					<separator bar="false" />
+	</window>
+</zk>

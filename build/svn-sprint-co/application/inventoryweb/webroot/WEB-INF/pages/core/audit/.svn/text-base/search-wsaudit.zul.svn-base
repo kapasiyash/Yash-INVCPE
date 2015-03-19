@@ -1,0 +1,93 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="searchWsAuditWin" style="padding: 0px; margin: 0px;" height="100%" width="100%" apply="com.elitecore.cpe.web.composer.audit.SearchWsAuditComposer">
+<include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="Audit Management"/>
+		<tabbox id="searchWsAuditTabbox" width="100%" height="100%" tabscroll="true">
+			<tabs>
+				<tab label="${labels.wsa.title}" />
+			</tabs>
+			<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;" sclass="main-cont">
+				<vlayout style="padding-left: 5px; padding-top: 2px;padding-bottom: 50px;" width="100%">
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="160px"></column>
+							<column width="240px"></column>
+							<column width="160px"></column>
+							<column width="240px"></column>
+						</columns>
+						<rows>
+						
+							<row>
+									<cell>
+										<label	value="${labels.wsa.action}" />
+									</cell>
+									<cell><combobox id="eventTypes" readonly="true" width="150px"></combobox></cell>
+									<cell>
+										<label	value="${labels.wsa.status}" />
+									</cell>
+									<cell><combobox id="status" readonly="true" width="150px"></combobox></cell>
+							</row>
+							
+							
+								<row align="top">
+									<cell>
+										<label value="${labels.wsa.inputparam}" style="text-align: left;" />
+									</cell>
+									<textbox id="txtInputParam" width="145px" maxlength="40" />
+									<cell>
+										<label value="${labels.wsa.outputparam}" style="text-align: left;" />
+									</cell>
+									<textbox id="txtOutputParam" width="145px" maxlength="40" />
+								</row>
+								
+								<row  align="top">
+								
+										<cell>
+											<label value="${labels.as.auditfrom}"/>
+											
+										</cell>
+										<cell>
+											<datebox id="auditfrom" readonly="true"  width="150px" format="${$composer.dateFormat}"   constraint="no future : Please select valid date." />
+										</cell>
+										<cell>
+											<label value="${labels.as.auditto}"/>
+											
+										</cell>
+										<cell>
+											<datebox id="auditto" readonly="true" width="150px" format="${$composer.dateFormat}"   constraint="no future : Please select valid date."  />
+										</cell>
+								</row>
+								
+							</rows>
+					</grid>
+					<separator bar="false" />
+					<separator bar="false" />
+					<hbox>
+						<button id="btnSearch" type="button" label="${labels.global.searchBtn}" mold="trendy" width="140px" />
+						<button id="btnCancel" type="button" label="${labels.global.cancelBtn}"  mold="trendy" width="140px" />
+					</hbox>
+					<separator bar="false" />
+					<separator bar="false" />
+					<separator bar="false" />
+					<listbox id="searchResultGrid" visible="false"  mold="paging" forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}" width="99%" style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd">
+						<listhead sizable="true">
+						<listheader label="${labels.global.sr.no}" width="55px" />
+							<listheader label="${labels.swsauditlb.eventname}" width="15%" sort="auto(eventName)" />
+							<listheader label="${labels.wsauditlb.status}" width="15%" sort="auto(status)" />
+							<listheader label="${labels.wsauditlb.code}" width="10%" sort="auto(responseCode)" />
+							<listheader label="${labels.wsauditlb.message}" width="35%" sort="auto(responseMessage)" />
+							<listheader label="${labels.wsauditlb.date}" width="25%" sort="auto(processedDate)" />
+							<listheader  label="${labels.wsauditlb.data}" width="55px"/>
+							<!-- <listheader  label="${labels.wsauditlb.output}" width="10%"/> -->
+						</listhead>
+					</listbox>
+					<separator bar="false" />
+					<separator bar="false" />
+					<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

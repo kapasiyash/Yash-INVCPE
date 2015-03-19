@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="rinkal.sadariya"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/WEB-INF/pages/core/inventory"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16439"
+   kind="dir"
+   committed-date="2015-03-13T03:38:57.091297Z"/>
+<entry
+   name="BulkStatusChangeInventory.zul"
+   checksum="b5b2b2fe569571ae1f00bf827963627d"
+   last-author="rinkal.sadariya"
+   committed-rev="15851"
+   text-time="2015-02-12T12:50:27.000000Z"
+   kind="file"
+   committed-date="2015-02-12T12:50:27.782707Z"/>
+<entry
+   name="UploadInventory.zul"
+   checksum="2e2b56ca2b70cd37483b4af185857960"
+   last-author="rinkal.sadariya"
+   committed-rev="16438"
+   text-time="2015-03-13T03:38:14.000000Z"
+   kind="file"
+   committed-date="2015-03-13T03:38:14.028022Z"/>
+<entry
+   name="UploadInventoryCSVFormat.zul"
+   checksum="e68814137f05794007d341ba32f98a6b"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="orderdetail"
+   kind="dir"/>
+<entry
+   name="search"
+   kind="dir"/>
+<entry
+   name="transfer"
+   kind="dir"/>
+</wc-entries>

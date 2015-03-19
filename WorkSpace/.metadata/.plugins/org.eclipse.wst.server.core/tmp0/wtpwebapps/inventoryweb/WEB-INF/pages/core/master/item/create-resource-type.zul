@@ -1,0 +1,58 @@
+<zk>
+<window id="createResourceType"  width="100%" border="none"  apply="com.elitecore.cpe.web.composer.master.item.CreateResourceTypeComposer">
+		  <vlayout>
+						<hlayout height="100%" width="100%" style="overflow: visible;">
+					<vlayout style="padding-left: 5px; padding-top: 2px;" width="99%" height="100%">
+							<!-- <div sclass="sectionTitle">
+								<label value="${labels.crt.title}" style="font-weight: bold;" />
+							</div> -->
+							<hlayout width="100%">
+						<vlayout width="100%">
+							<separator bar="false"/>
+							<grid width="100%"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								
+								<row>
+									<cell>
+										<label value="${labels.srst.typename}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <textbox id="txtName" width="140" maxlength="50" constraint="no empty,/^[a-zA-Z0-9 ]*/ : Please enter valid alphanumeric Resource Type Name. (i.e a-zA-Z0-9 )"/></cell>
+								</row>
+								
+								<row>
+									<cell>
+										<label value="${labels.crt.description}"></label>
+									<!-- 	<label value="*" style="color:red;" />  -->
+									</cell>
+									<cell colspan="3" > <textbox id="txtDescription" multiline="true"  rows="3" cols="40" width="140" maxlength="255" /></cell>
+								</row>
+								
+								
+								
+							</rows>
+						</grid>
+						<separator bar="false" />
+						<separator bar="false" />
+
+						
+						<hbox>
+							<button id="btnCreate" width="140px" mold="trendy" label="${labels.global.createBtn}"/>
+							<button id="btnCancel" width="140px" mold="trendy"  label="${labels.global.cancelBtn}"/>
+						</hbox>
+						<separator bar="false" />
+						<separator bar="false" />
+					</vlayout>
+						</hlayout>
+					</vlayout>
+				</hlayout>
+			<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+		</vlayout>	
+	</window>
+</zk>

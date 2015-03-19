@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns:w="http://www.zkoss.org/2005/zk/client">
+	<window id="adminDashBoardWin" style="padding: 0px; margin: 0px;" height="100%" width="100%" 
+			apply="com.elitecore.cpe.web.system.dashboard.AdminDashBoardComposer">
+	<style>
+.z-tab-hl {
+ display:none !important;
+}
+</style>
+		<tabbox id="searchAdminDashboardTabbox" width="100%" height="100%" tabscroll="false">
+			 <tabs>
+				<tab label="${labels.admin.dashboard.title}" />
+			</tabs>
+			<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 20px; overflow: auto;"  sclass="main-cont">
+				<div sclass="sectionTitle">
+								<label value="Inventory DashBoard" style="font-weight: bold;" />
+				</div>
+				<separator/> 
+				<separator/>
+				<!-- 
+				
+					 -->
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

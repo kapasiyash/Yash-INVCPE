@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/report/html/com/elitecore/test/base"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16487"
+   kind="dir"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="4_BaseTestCase-out.html"
+   checksum="89547042ba0f539e74bb2d17fd43b5c0"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="4_BaseTestCase.html"
+   checksum="8258f9d7ed809a8e360630b800c7e9e4"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="5_BaseTestCase-out.txt"
+   checksum="153776a8ef107202b7c8d4b4aa3c7ceb"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="5_BaseTestCase.html"
+   checksum="b446daad192b307bb7d1503e126ea04c"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="package-frame.html"
+   checksum="885e9059ad2eea9d5234ebd535b8ce11"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="package-summary.html"
+   checksum="f9bd9209449eb296d5936a6bee2438df"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+</wc-entries>

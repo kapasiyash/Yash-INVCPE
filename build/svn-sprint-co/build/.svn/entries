@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16494"
+   kind="dir"
+   committed-date="2015-03-16T09:17:39.411475Z"/>
+<entry
+   name=".ant-targets-build-local.xml"
+   checksum="f1c80d286cfb05bf08edf9cd3870d8e5"
+   last-author="yash.kapasi"
+   committed-rev="15538"
+   text-time="2015-02-06T05:19:11.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:19:11.908734Z"/>
+<entry
+   name=".ant-targets-build.xml"
+   checksum="80a29adc3daa6c7b3098a04e4b0a655a"
+   last-author="yash.kapasi"
+   committed-rev="15538"
+   text-time="2015-02-06T05:19:11.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:19:11.908734Z"/>
+<entry
+   name="MR"
+   kind="dir"/>
+<entry
+   name="build"
+   kind="dir"/>
+<entry
+   name="build-artifacts.xml"
+   checksum="2dfaae24f60f786202c1d49216e20500"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:11.000000Z"
+   committed-rev="15538"
+   kind="file"
+   committed-date="2015-02-06T05:19:11.908734Z"
+   prop-time="2015-03-16T09:20:06.000000Z"/>
+<entry
+   name="build-checkout.xml"
+   checksum="ace77b1700056635774c37684aa3bdaf"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:19:11.000000Z"
+   committed-rev="15538"
+   kind="file"
+   committed-date="2015-02-06T05:19:11.908734Z"
+   prop-time="2015-03-16T09:19:27.000000Z"/>
+<entry
+   name="build-db-mr.xml"
+   checksum="59fde7abca48dce22f710ef35be52afb"
+   last-author="yash.kapasi"
+   text-time="2015-03-16T06:51:20.000000Z"
+   committed-rev="16474"
+   kind="file"
+   committed-date="2015-03-16T06:51:20.121732Z"
+   prop-time="2015-03-16T09:19:27.000000Z"/>
+<entry
+   name="build-local.xml"
+   checksum="546372c82037f3d9afc678186b4d09e1"
+   last-author="yash.kapasi"
+   text-time="2015-03-16T08:52:50.000000Z"
+   committed-rev="16484"
+   kind="file"
+   committed-date="2015-03-16T08:52:50.594837Z"
+   prop-time="2015-03-16T09:19:26.000000Z"/>
+<entry
+   name="build.properties"
+   checksum="a593534e8c5874c1f2b542343a987614"
+   last-author="yash.kapasi"
+   committed-rev="15538"
+   text-time="2015-02-06T05:19:11.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:19:11.908734Z"/>
+<entry
+   name="build.xml"
+   checksum="aa326df94a3e77fb53a05b807d8207c7"
+   last-author="yash.kapasi"
+   text-time="2015-03-16T06:54:20.000000Z"
+   committed-rev="16476"
+   kind="file"
+   committed-date="2015-03-16T06:54:20.355183Z"
+   prop-time="2015-03-16T09:19:27.000000Z"/>
+<entry
+   name="dist"
+   kind="dir"/>
+<entry
+   name="doc"
+   kind="dir"/>
+<entry
+   name="findbug"
+   kind="dir"/>
+<entry
+   name="fullversion"
+   kind="dir"/>
+<entry
+   name="hotfix.properties"
+   checksum="4d66952744932b1b63b40c84d2a2000d"
+   last-author="yash.kapasi"
+   committed-rev="16476"
+   text-time="2015-03-16T06:54:20.000000Z"
+   kind="file"
+   committed-date="2015-03-16T06:54:20.355183Z"/>
+<entry
+   name="hudson-build.xml"
+   checksum="02ee10d78916e9fb77c7faeaa745bbcd"
+   last-author="yash.kapasi"
+   text-time="2015-03-16T09:17:39.000000Z"
+   committed-rev="16494"
+   kind="file"
+   committed-date="2015-03-16T09:17:39.411475Z"
+   prop-time="2015-03-16T09:19:27.000000Z"/>
+<entry
+   name="hudson-incremental-build.xml"
+   checksum="b242e43034aa074f9889a25db137891c"
+   last-author="yash.kapasi"
+   text-time="2015-03-16T06:51:20.000000Z"
+   committed-rev="16474"
+   kind="file"
+   committed-date="2015-03-16T06:51:20.121732Z"
+   prop-time="2015-03-16T09:19:27.000000Z"/>
+<entry
+   name="junit"
+   kind="dir"/>
+<entry
+   name="lib"
+   kind="dir"/>
+<entry
+   name="release"
+   kind="dir"/>
+<entry
+   name="report"
+   kind="dir"/>
+<entry
+   name="rmiclient"
+   kind="dir"/>
+<entry
+   name="svn.properties"
+   checksum="0008223e3312571bb5048bb60f0e586a"
+   last-author="yash.kapasi"
+   committed-rev="16476"
+   text-time="2015-03-16T06:54:20.000000Z"
+   kind="file"
+   committed-date="2015-03-16T06:54:20.355183Z"/>
+</wc-entries>

@@ -1,0 +1,37 @@
+<hlayout height="300px" width="59%" style="padding:10px">
+    <listbox id="candidateLb" hflex="1" width="30%" vflex="true" multiple="true" >
+        <listhead>
+            <listheader label="Available WareHouse" ></listheader>
+        </listhead>
+        <template name="model">
+            <listitem>
+                <listcell label="${each.name }"/>
+            </listitem>
+        </template>
+    </listbox>
+    <zscript><![CDATA[
+    String imgPath = "/images/widgets";
+]]></zscript>
+    <vbox spacing="10px" width="24px">
+    <separator bar="false"/>
+    <separator bar="false"/>
+    <separator bar="false"/>
+    <separator bar="false"/>
+        <image style="cursor:pointer" id="chooseAllBtn" src="${imgPath}/rightrightarrow_g.png" />
+        <image style="cursor:pointer" id="chooseBtn" src="${imgPath}/rightarrow_g.png" />
+        <image style="cursor:pointer" id="removeBtn" src="${imgPath}/leftarrow_g.png" />
+        <image style="cursor:pointer" id="removeAllBtn" src="${imgPath}/leftleftarrow_g.png" />
+    </vbox>
+    <listbox id="chosenLb" hflex="1" width="30%" vflex="true" multiple="true" >
+        <listhead>
+            <listheader label="Mapped/Allowed Warehouse" ></listheader>
+        </listhead>
+        <template name="model">
+            <listitem>
+                <listcell label="${each.name }"/>
+            </listitem>
+        </template>
+    </listbox>
+ 
+   
+</hlayout>

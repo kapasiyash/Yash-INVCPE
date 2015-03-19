@@ -1,0 +1,109 @@
+************* inside lookup - start *****************
+************* inside lookup - start *****************
+Event Plugin Class-->null null
+Event Plugin Class Details Found
+Event Plugin Created Successfully..!!!
+Pre Update Event Plugin Class-->demo demo
+Event Plugin-->Write Off Disp PLUG000080
+Event Plugin-->Write Off Disp Audit PLUG000081
+Event Plugin-->Redeem Payment Puller PLUG000057
+Event Plugin-->Redeem Payment Process PLUG000058
+Event Plugin-->Redeem Payment Req Disp PLUG000059
+Event Plugin-->Redeem Payment Disp PLUG000060
+Event Plugin-->Redeem Payment Disp Audit PLUG000061
+Event Plugin-->Generate Bill Puller PLUG000072
+Event Plugin-->Generate Bill Process PLUG000073
+Event Plugin-->Generate Bill  Req Disp PLUG000074
+Event Plugin-->Generate Bill Disp PLUG000075
+Event Plugin-->Generate Bill Disp Audit PLUG000076
+Event Plugin-->Write Off Puller PLUG000077
+Event Plugin-->Write Off Process PLUG000078
+Event Plugin-->Write Off Req Disp PLUG000079
+Event Plugin-->Credit Note Puller PLUG000067
+Event Plugin-->Credit Note Processor PLUG000068
+Event Plugin-->Credit Note Req Disp PLUG000069
+Event Plugin-->Credit Note Disp PLUG000070
+Event Plugin-->Credit Note DispRes to Audit PLUG000071
+Event Plugin-->CashCheque Disp Plugin PLUG000050
+Event Plugin-->CashCheque Disp Resp Plugin PLUG000051
+Event Plugin-->CashCheque Process Plugin PLUG000048
+Event Plugin-->CashCheque Puller Plugin PLUG000047
+Event Plugin-->CashCheque ReqDisp Plugin PLUG000049
+Event Plugin-->CreditDebit Disp Plugin PLUG000055
+Event Plugin-->CreditDebit Disp Audit Plugin PLUG000056
+Event Plugin-->CreditDebit Process Plugin PLUG000053
+Event Plugin-->CreditDebit Puller Plugin PLUG000052
+Event Plugin-->CreditDebit Req Disp Plugin PLUG000054
+Event Plugin-->Direct Debit Payment Disp PLUG000045
+Event Plugin-->Direct Debit Payment Disp to Audit PLUG000046
+Event Plugin-->Direct Debit Payment Process PLUG000043
+Event Plugin-->Direct Debit Payment Puller PLUG000042
+Event Plugin-->Direct Debit Payment Req Desp PLUG000044
+Event Plugin-->Online Payment Disp PLUG000040
+Event Plugin-->Online Payment Disp to Audit PLUG000041
+Event Plugin-->Online Payment Process PLUG000038
+Event Plugin-->Online Payment Puller PLUG000037
+Event Plugin-->Online Payment Req Disp PLUG000039
+Event Plugin-->DebitNote Puller Billing Plugin PLUG000062
+Event Plugin-->DebitNote Process Billing Plugin PLUG000063
+Event Plugin-->DebitNote Req Disp Billing Plugin PLUG000064
+Event Plugin-->DebitNote Disp Billing Plugin PLUG000065
+Event Plugin-->DebitNote Disp Audit Billing Plugin PLUG000066
+Event Plugin-->Advance Payment Puller PLUG000082
+Event Plugin-->Advance Payment Process PLUG000083
+Event Plugin-->Advance Payment Req Disp PLUG000084
+Event Plugin-->Advance Payment Disp PLUG000085
+Event Plugin-->Advance Payment Disp Audit PLUG000086
+Event Plugin Class-->Write Off Disp Write Off Disp
+Event Plugin Class-->Write Off Disp Audit Write Off Disp Audit
+Event Plugin Class-->Redeem Payment Puller Redeem Payment Puller
+Event Plugin Class-->Redeem Payment Process Redeem Payment Process
+Event Plugin Class-->Redeem Payment Req Disp Redeem Payment Req Disp
+Event Plugin Class-->Redeem Payment Disp Redeem Payment Disp
+Event Plugin Class-->Redeem Payment Disp Audit Redeem Payment Disp Audit
+Event Plugin Class-->Generate Bill Puller Generate Bill Puller
+Event Plugin Class-->Generate Bill Process Generate Bill Process
+Event Plugin Class-->Generate Bill  Req Disp Generate Bill  Req Disp
+Event Plugin Class-->Generate Bill Disp Generate Bill Disp
+Event Plugin Class-->Generate Bill Disp Audit Generate Bill Disp Audit
+Event Plugin Class-->Write Off Puller Write Off Puller
+Event Plugin Class-->Write Off Process Write Off Process
+Event Plugin Class-->Write Off Req Disp Write Off Req Disp
+Event Plugin Class-->Credit Note Puller Credit Note Puller
+Event Plugin Class-->Credit Note Processor Credit Note Processor
+Event Plugin Class-->Credit Note Req Disp Credit Note Req Disp
+Event Plugin Class-->Credit Note Disp Credit Note Disp
+Event Plugin Class-->Credit Note DispRes to Audit Credit Note DispRes to Audit
+Event Plugin Class-->CashCheque Disp Plugin CashCheque Disp Plugin
+Event Plugin Class-->CashCheque Disp Resp Plugin CashCheque Disp Resp Plugin
+Event Plugin Class-->CashCheque Process Plugin CashCheque Process Plugin
+Event Plugin Class-->CashCheque Puller Plugin CashCheque Puller Plugin
+Event Plugin Class-->CashCheque ReqDisp Plugin CashCheque ReqDisp Plugin
+Event Plugin Class-->CreditDebit Disp Plugin CreditDebit Disp Plugin
+Event Plugin Class-->CreditDebit Disp Audit Plugin CreditDebit Disp Audit Plugin
+Event Plugin Class-->CreditDebit Process Plugin CreditDebit Process Plugin
+Event Plugin Class-->CreditDebit Puller Plugin CreditDebit Puller Plugin
+Event Plugin Class-->CreditDebit Req Disp Plugin CreditDebit Req Disp Plugin
+Event Plugin Class-->Direct Debit Payment Disp Direct Debit Payment Disp
+Event Plugin Class-->Direct Debit Payment Disp to Audit Direct Debit Payment Disp to Audit
+Event Plugin Class-->Direct Debit Payment Process Direct Debit Payment Process
+Event Plugin Class-->Direct Debit Payment Puller Direct Debit Payment Puller
+Event Plugin Class-->Direct Debit Payment Req Desp Direct Debit Payment Req Desp
+Event Plugin Class-->Online Payment Disp Online Payment Disp
+Event Plugin Class-->Online Payment Disp to Audit Online Payment Disp to Audit
+Event Plugin Class-->Online Payment Process Online Payment Process
+Event Plugin Class-->Online Payment Puller Online Payment Puller
+Event Plugin Class-->Online Payment Req Disp Online Payment Req Disp
+Event Plugin Class-->DebitNote Puller Billing Plugin DebitNote Puller Billing Plugin
+Event Plugin Class-->DebitNote Process Billing Plugin DebitNote Process Billing Plugin
+Event Plugin Class-->DebitNote Req Disp Billing Plugin DebitNote Req Disp Billing Plugin
+Event Plugin Class-->DebitNote Disp Billing Plugin DebitNote Disp Billing Plugin
+Event Plugin Class-->DebitNote Disp Audit Billing Plugin DebitNote Disp Audit Billing Plugin
+Event Plugin Class-->Advance Payment Puller Advance Payment Puller
+Event Plugin Class-->Advance Payment Process Advance Payment Process
+Event Plugin Class-->Advance Payment Req Disp Advance Payment Req Disp
+Event Plugin Class-->Advance Payment Disp Advance Payment Disp
+Event Plugin Class-->Advance Payment Disp Audit Advance Payment Disp Audit
+Event Plugin Class Deleted SuccessFully
+Junit Start
+

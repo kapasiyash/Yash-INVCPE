@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<project name="anttask" default="all" basedir=".">
+
+  	<property file="${basedir}/../deployment.properties"/>
+  	<property file="deploy-jboss.properties"/>
+  	
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="${billing.home}/lib/ant/ant-contrib-0.6.jar"/>
+	  	</classpath>
+  	</taskdef>
+  	
+	
+	<target name="deploy-module">
+		<propertycopy name="module.detail" from="module${module.number}"/>
+		
+		<propertyregex property="module.path" input="${module.detail}"
+              		regexp="^(.*),(.*),(.*),(.*),(.*)$" select="\1" casesensitive="false" />
+              	<propertyregex property="module.name" input="${module.detail}"
+              		regexp="^(.*),(.*),(.*),(.*),(.*)$" select="\2" casesensitive="false" />
+              	<propertyregex property="level.number" input="${module.detail}"
+              		regexp="^(.*),(.*),(.*),(.*),(.*)$" select="\5" casesensitive="false" />
+
+		<delete file="${jboss.home}/server/default/deploy/billing/${level.number}${module.name}"/>
+		<copy tofile="${jboss.home}/server/default/deploy/billing/${level.number}${module.name}" file="${billing.home}/${module.path}/${module.name}" overwrite="true" />
+	</target>
+	
+	<target name="deploy-modules">
+		<foreach list="${module.count}" param="module.number" target="deploy-module"/>
+		<copy tofile="${jboss.home}/server/default/deploy/billing/crestel-destination-service.xml" 
+			file="${billing.home}/utilities/jmsconfig/jboss/crestel-destination-service.xml" overwrite="true" />
+	</target>
+	
+	<target name="all">
+		<antcall target="deploy-modules"/>
+  	</target>
+</project>

@@ -1,0 +1,504 @@
+<?xml version="1.0"?>
+<project name="Billing" default="all" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+		
+	<property name="lib.dir"                     		value="${crestel.home}/lib"/>
+	<property name="upgrade.dir"        			value="${crestel.home}/upgrade"/>
+	<property name="targetupgrade.dir"			value="${upgrade.dir}/targetupgrade" />
+	<property name="temp-utilities.dir"			value="${crestel.home}/upgrade/temputilities" />
+		
+	<property file="${upgrade.dir}/build.properties"/>
+	
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+	<path id="lib.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  	<classpath>
+			<pathelement location="${lib.dir}/ant/ant-contrib-0.6.jar"/>
+	  	</classpath>
+	</taskdef>
+	
+	<taskdef name="EliteInstall" 
+  		 classname="com.elitecore.ant.taskdefs.UnbundleFromFile"
+  		 classpathref="lib.class.path"	/>
+	
+	<taskdef name="Bundle" 
+   		 classname="com.elitecore.ant.taskdefs.Bundle"
+  		 classpathref="lib.class.path"/>
+
+	<typedef name="safefileset" 
+		 classname="com.elitecore.ant.types.SafeFileSet"   
+		 classpathref="lib.class.path" />
+	
+	<taskdef name="safedelete"	 
+		 classname="com.elitecore.ant.taskdefs.SafeDelete" 
+		 classpathref="lib.class.path" />
+	
+	<taskdef name="EliteVersionCheck"
+		 classname="com.elitecore.ant.taskdefs.EliteVersionCheck"
+		 classpathref="lib.class.path"   />
+	
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+	<target name="version-upgrade">
+	
+		<echo message="Updating version information" />
+		
+		<property file="${installation.dir}/version.info"/>		
+		<property environment="env"/>
+		
+		<switch value="${build.type}">
+		  	<case value="HOTFIX_BUILD">
+				<property name="current.version" value="${component.name};${version.number}.${hotfix.number}"/>
+			</case>
+			<default>
+		  		<property name="current.version" value="${component.name};${version.number}"/>
+			</default>			
+			
+		</switch>
+		
+		<trycatch property="version-upgrade.error">
+			<try>
+				<EliteVersionCheck driver="oracle.jdbc.driver.OracleDriver"
+						 url="${database.url}"
+						 userid="jispbilcorbilling${db.env}"
+						 password="jispbilcorbilling${db.env}"
+						 autocommit="false"
+						 classpath="${lib.dir}/jdbc/oracle9i.jar"
+						 currentversion="${current.version}"
+						 operationType="WRITE"
+						 hostName="${env.HOSTNAME}"/> 
+			</try>
+			<catch>
+				<echo message="[ERROR] Root cause: ${version-upgrade.error}" />
+				<echo message="[ERROR] Error while updating version information" />
+				<fail message="Error while updating version information"/>
+			</catch>
+		</trycatch>
+					 
+	</target>
+
+	<target name="backup-utilities">
+		<mkdir dir="${temp-utilities.dir}"/>
+		
+		<copy todir="${temp-utilities.dir}" overwrite="true">
+			<fileset dir="${crestel.home}/utilities">
+				<include name="**/installationscripts/**/deploy-*.properties"/>
+				<include name="**/serverscripts/**/post-install-utilties.*"/>
+				<include name="**/serverscripts/**/pre-install-utilties.*"/>
+			</fileset>
+		</copy>
+
+	</target>
+
+	<target name="restore-utilities">
+
+		<copy todir="${crestel.home}/utilities" overwrite="true">
+			<fileset dir="${temp-utilities.dir}">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		<delete dir="${temp-utilities.dir}"/>
+	</target>
+
+	<target name="post-upgrade">
+
+		<antcall target="restore-utilities" />
+		
+                <fixcrlf srcdir="${crestel.home}/upgrade" eol="unix" eof="remove" includes="**/*.sh,**/*.xml,**/*.properties" />
+                <fixcrlf srcdir="${crestel.home}/dbscripts" eol="unix" eof="remove" includes="**/*.sh,**/*.xml,**/*.properties" />
+                <fixcrlf srcdir="${crestel.home}/utilities" eol="unix" eof="remove" includes="**/*.sh,**/*.xml,**/*.properties" />
+                
+                <chmod dir="${crestel.home}/upgrade" perm="ug+rwx" includes="**/*.sh"/>
+                <chmod dir="${crestel.home}/dbscripts" perm="ug+rwx" includes="**/*.sh"/>
+                <chmod dir="${crestel.home}/utilities" perm="ug+rwx" includes="**/*.sh"/>
+		
+	</target>
+	
+
+	<target name="install-module">
+
+		<condition property="os.family" value="windows">
+			<and>
+				<os family="windows"/>
+			</and>
+		</condition>
+		<condition property="os.family" value="unix">
+			<not>
+				<os family="windows"/>
+			</not>
+		</condition>
+		<echo message="Operating system is : ${os.family}" />	
+
+		<property file="${installation.dir}/installation.info"/>
+		
+		<property name="module.name" value="${installation.module}" />
+		<propertycopy name="module.file" from="${installation.module}.file"/>
+		
+		<trycatch property="install-module.error">
+			<try>	
+				<echo message="Starting installation of module: ${module.name}. Please wait..." />
+				<echo message="Installation file: ${installation.dir}/${module.file}" />
+				<copy file="${installation.dir}/${module.file}.tar.gz" 
+					tofile="${crestel.home}/modules/${module.name}/versions/${module.file}.tar.gz" overwrite="true" />
+				<if>
+					<equals arg1="${os.family}" arg2="windows"/>
+					<then>
+						<if>
+							<equals arg1="${module.name}" arg2="billing"/>
+							<then>
+							<exec executable="${crestel.home}/modules/${module.name}/versions/install-bill-version.bat"
+								dir="${crestel.home}/modules/${module.name}/versions" failonerror="true" errorproperty="errorproperty">
+								<arg line="${module.file}"/>
+							</exec>
+							</then>
+						<else>
+							<exec executable="${crestel.home}/modules/${module.name}/versions/install-${module.name}-version.bat"
+								dir="${crestel.home}/modules/${module.name}/versions" failonerror="true" errorproperty="errorproperty">
+								<arg line="${module.file}"/>
+							</exec>
+						</else>
+						</if>
+					</then>
+					<else>
+						<fixcrlf srcdir="${crestel.home}/modules/${module.name}/versions" eol="unix" eof="remove" includes="*.sh" />	
+						<chmod dir="${crestel.home}/modules/${module.name}/versions" perm="ug+rwx" includes="*.sh"/>
+						<if>
+							<equals arg1="${module.name}" arg2="billing"/>
+							<then>
+							<exec executable="${crestel.home}/modules/${module.name}/versions/install-bill-version.sh"
+								dir="${crestel.home}/modules/${module.name}/versions" failonerror="true" errorproperty="errorproperty">
+								<arg line="${module.file}"/>
+							</exec>
+							</then>
+						<else>
+							<exec executable="${crestel.home}/modules/${module.name}/versions/install-${module.name}-version.sh"
+								dir="${crestel.home}/modules/${module.name}/versions" failonerror="true" errorproperty="errorproperty">
+								<arg line="${module.file}"/>
+							</exec>
+						</else>
+						</if>
+					</else>
+				</if>
+				
+				<propertyregex property="errorcode"
+						input="${errorproperty}"
+						regexp="(BUILD FAILED)(.*)"
+						select="\1"
+						casesensitive="false" />
+				<if>
+					<or>
+						<equals arg1="${errorcode}" arg2="Build failed" />
+						<equals arg1="${errorcode}" arg2="BUILD FAILED" />
+					</or>
+					<then>
+						<delete file="${crestel.home}/modules/${module.name}/versions/${module.file}.tar.gz" />
+						<delete dir="${crestel.home}/modules/${module.name}/versions/installationdir" />
+						<fail message="${errorcode}: ${errorproperty}"/>
+					</then>
+				</if>
+				
+				<delete file="${crestel.home}/modules/${module.name}/versions/${module.file}.tar.gz" />
+				<!--			
+				<mkdir dir="${crestel.home}/modules/${module.name}/versions/installationdir" />
+				
+				<echo message="${installation.dir}/${module.file}" />
+				<ant antfile="${crestel.home}/modules/${module.name}/versions/build-version-install.xml" inheritAll="false" >
+					<property name="file.name" value="${module.file}" />
+					<property name="file.path" value="${installation.dir}" />
+					<property name="installation.dir" value="${crestel.home}/modules/${module.name}/versions/installationdir" />
+				</ant>
+				-->
+				
+				<echo message="Installation SUCCESSFUL of module : ${module.name}" />
+			</try>
+			<catch>
+				<delete file="${crestel.home}/modules/${module.name}/versions/${module.file}.tar.gz" />
+				<delete dir="${crestel.home}/modules/${module.name}/versions/installationdir" />
+				<echo message="[ERROR] Root cause: ${install-module.error}" />
+				<echo message="[ERROR] Installation FAILED of module: ${module.name}" />
+				<fail message="Installation failed of module: ${module.name}"/>
+			</catch>
+		</trycatch>              		
+	
+	</target>	
+	
+	<target name="make-upgrade">
+		<property file="${installation.dir}/installation.info"/>
+		
+		<foreach list="${installation.list}" param="installation.module" target="install-module">
+		</foreach>
+
+		<!--<delete dir="${crestel.home}/dbscripts" />-->
+		<mkdir dir="${crestel.home}/dbscripts" />
+		<copy todir="${crestel.home}/dbscripts" overwrite="true">
+			<fileset dir="${installation.dir}/dbscripts">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		
+		<!--<delete dir="${crestel.home}/utilities" />-->
+		<mkdir dir="${crestel.home}/utilities" />
+		<copy todir="${crestel.home}/utilities" overwrite="true">
+			<fileset dir="${installation.dir}/utilities">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+				
+	</target>
+	
+	<target name="pre-upgrade">
+		<antcall target="backup-utilities"/>
+	</target>
+	
+	<target name="upgrade" description="Perform upgradation">
+	
+		<echo message="Starting version upgrade" />
+		
+		<trycatch property="upgrade.error">
+			<try>
+				<mkdir dir="${targetupgrade.dir}"/>
+				<antcall target="pre-upgrade"/>
+				<antcall target="make-upgrade"/>
+				<antcall target="post-upgrade"/>
+				<delete dir="${targetupgrade.dir}"/>				
+			</try>	
+			<catch>
+				<delete dir="${targetupgrade.dir}"/>
+				<delete dir="${temp-utilities.dir}"/>
+				<echo message="[ERROR] Root cause: ${upgrade.error}" />
+				<echo message="[ERROR] Error while version upgrade" />
+				<fail message="Error while version upgrade"/>
+			</catch>
+		 </trycatch>
+		
+	</target>
+	
+	<target name="check-preconditions" description="Checks conditions for billing">
+
+		<echo message="Checking version compatibility" />
+		
+		<property file="${installation.dir}/version.info"/>
+		
+		<property environment="env"/>
+		
+		<switch value="${build.type}">
+		  	<case value="HOTFIX_BUILD">
+				<if>
+					<or>
+						<equals arg1="${prv.hotfix.number}" arg2="" />
+						<equals arg1="${prv.hotfix.number}" arg2="00" />
+					</or>
+					<then>
+				  		<property name="required.version" value="${component.name};${version.number}"/>
+					</then>
+					<else>
+				  		<property name="required.version" value="${component.name};${version.number}.${prv.hotfix.number}"/>
+					</else>
+				</if>
+				<property name="current.version" value="${component.name};${version.number}.${hotfix.number}"/>
+			</case>
+			<default>
+				<property name="required.version" value="${component.name};${base.version.number}"/>
+		  		<property name="current.version" value="${component.name};${version.number}"/>
+
+			</default>			
+			
+		</switch>
+		 
+		 <trycatch property="check-preconditions.error">
+			<try>
+				<EliteVersionCheck driver="oracle.jdbc.driver.OracleDriver" 
+						 url="${database.url}"
+						 userid="jispbilcorbilling${db.env}"
+						 password="jispbilcorbilling${db.env}"
+						 autocommit="true"
+						 classpath="${lib.dir}/jdbc/oracle9i.jar"
+						 requiredversion="${required.version}"
+						 currentversion="${current.version}"
+						 operationType="READ"
+						 hostName="${env.HOSTNAME}"/>
+			</try>
+			<catch>
+				<echo message="[ERROR] Root cause: ${check-preconditions.error}" />
+				<echo message="[ERROR] Version compatibility failed" />
+				<fail message="Version compatibility failed"/>
+			</catch>
+		 </trycatch>
+
+	</target>
+
+	<target name="pre-install-utilties">
+		<if>
+			<equals arg1="${os.family}" arg2="windows"/>
+			<then>
+				<exec executable="${crestel.home}/utilities/serverscripts/bat/pre-install-utilties.bat"/>
+			</then>
+			<else>
+				<fixcrlf srcdir="${crestel.home}/utilities/serverscripts/sh/" eol="unix" eof="remove" includes="pre-install-utilties.sh" />
+				<chmod file="${crestel.home}/utilities/serverscripts/sh/pre-install-utilties.sh" perm="+x"/>
+				<exec executable="${crestel.home}/utilities/serverscripts/sh/pre-install-utilties.sh" dir="${crestel.home}/utilities/serverscripts/sh" failonerror="false">
+				</exec>
+			</else>
+		</if>
+			
+	</target>
+
+	<target name="post-install-utilties">
+		<if>
+			<equals arg1="${os.family}" arg2="windows"/>
+			<then>
+				<exec executable="${crestel.home}/utilities/serverscripts/bat/post-install-utilties.bat"/>
+			</then>
+			<else>
+				<fixcrlf srcdir="${crestel.home}/utilities/serverscripts/sh/" eol="unix" eof="remove" includes="post-install-utilties.sh" />
+				<chmod file="${crestel.home}/utilities/serverscripts/sh/post-install-utilties.sh" perm="+x"/>
+				<exec executable="${crestel.home}/utilities/serverscripts/sh/post-install-utilties.sh" dir="${crestel.home}/utilities/serverscripts/sh" failonerror="false">
+				</exec>
+			</else>
+		</if>
+	</target>
+
+
+	<target name="build-all"  description="Build everything">
+
+		<trycatch property="build-all.error">
+			
+			<try>
+				<antcall target="check-preconditions" />
+				<antcall target="upgrade"/>
+				<antcall target="version-upgrade"/>
+			</try>	
+			<catch>
+				<echo message="[ERROR] Root cause: ${build-all.error}" />
+				<fail message="${build-all.error}"/>
+			</catch>
+		</trycatch>
+	</target>
+
+
+	<target name="execute-dbscript" >
+
+		<propertyregex property="db.script" input="${dbscript}"
+              		regexp="((.*);(.*))|(.*)" select="\2\4" casesensitive="false" />
+
+		<propertyregex property="delimiter" input="${dbscript}"
+              		regexp="^(.*);(.*)$" select="\2" casesensitive="false" />
+		
+		<if>
+			<and>
+				<isset property="delimiter" />
+				<not>
+					<equals arg1="${delimiter}" arg2="" />
+				</not>
+			</and>
+		
+			<then>	
+				<property name="db.delimiter" value="${delimiter}"/>
+			</then>
+			<else>
+				<property name="db.delimiter" value=";"/>
+			</else>	
+		</if>		
+		
+		<!--
+		<condition property="db.delimiter"
+			value="${delimiter}"
+			else=";">
+				<and>
+					<isset property="delimiter" />
+					<not>
+						<equals arg1="${delimiter}" arg2="" />
+					</not>
+				</and>
+		</condition>	
+		-->
+		<echo message="Executing: ${db.userid}: ${crestel.home}/dbscripts/${db.script} with delimiter : ${db.delimiter}" />
+
+		
+		<sql
+		    driver="oracle.jdbc.driver.OracleDriver"
+		    url="${database.url}"
+		    userid="${db.userid}"
+		    password="${db.password}"
+		    classpath="${lib.dir}/jdbc/oracle9i.jar"
+		    onerror="continue"
+		    print="true"
+		    src="${crestel.home}/dbscripts/${db.script}"
+		    keepformat="true"
+		    delimiter="${db.delimiter}"
+		/>
+	</target>	
+
+	<target name="database-schema-upgrade" >
+
+		<property file="${installation.dir}/version.info"/>
+		<property file="${crestel.home}/dbscripts/${db.file}.properties" />
+	
+		<propertycopy name="dbscripts.order" from="${db.schema}"/>
+		
+		<echo message="Database scripts: ${dbscripts.order}" />
+		
+		<foreach list="${dbscripts.order}" param="dbscript" target="execute-dbscript">
+			<param name="db.userid" value="${db.schema}${db.env}" />
+			<param name="db.password" value="${db.schema}${db.env}" />
+		</foreach>
+	</target>
+
+
+	<target name="database-upgrade" >
+
+		<property file="${installation.dir}/version.info"/>
+		<property file="${crestel.home}/dbscripts/${db.file}.properties" />
+
+		<echo message="${database.schemas}" />
+		<if>
+			<and>
+				<isset property="database.schemas" />
+				<not>
+					<equals arg1="${database.schemas}" arg2="" />
+				</not>
+			</and>
+		
+			<then>	
+				<foreach list="${database.schemas}" param="db.schema" target="database-schema-upgrade">
+				</foreach>
+			</then>
+		</if>		
+	
+	</target>
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition ends      -->
+	<!-- ******************************** -->
+	<target name="all" depends="">
+		<antcall target="pre-install-utilties"/>
+		<antcall target="build-all"/>
+		<antcall target="post-install-utilties"/>
+
+	</target>
+</project> 

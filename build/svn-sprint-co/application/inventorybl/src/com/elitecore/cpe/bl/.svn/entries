@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16492"
+   kind="dir"
+   committed-date="2015-03-16T08:59:12.264136Z"/>
+<entry
+   name="agents"
+   kind="dir"/>
+<entry
+   name="constants"
+   kind="dir"/>
+<entry
+   name="controller"
+   kind="dir"/>
+<entry
+   name="data"
+   kind="dir"/>
+<entry
+   name="delegates"
+   kind="dir"/>
+<entry
+   name="entity"
+   kind="dir"/>
+<entry
+   name="exception"
+   kind="dir"/>
+<entry
+   name="facade"
+   kind="dir"/>
+<entry
+   name="factory"
+   kind="dir"/>
+<entry
+   name="message"
+   kind="dir"/>
+<entry
+   name="session"
+   kind="dir"/>
+<entry
+   name="vo"
+   kind="dir"/>
+<entry
+   name="ws"
+   kind="dir"/>
+</wc-entries>

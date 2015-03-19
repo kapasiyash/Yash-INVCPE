@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/report/html/com/elitecore/test/event"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16487"
+   kind="dir"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="8_AREventTestCase-err.txt"
+   checksum="2a52367916f0ce057894a88b44581b30"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="8_AREventTestCase-fails.html"
+   checksum="09aecaab8ebc85fb9272301779005559"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="8_AREventTestCase-out.txt"
+   checksum="081b2207c2f9eba6bd9bfcf2ce337a60"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="8_AREventTestCase.html"
+   checksum="3ef5922cf166925013e6a8ee7c0cb0e7"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="package-frame.html"
+   checksum="fbb7cbcb4de642982644a90031847181"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+<entry
+   name="package-summary.html"
+   checksum="aff77c61db57a90adef31e86bf41612c"
+   last-author="yash.kapasi"
+   committed-rev="16487"
+   text-time="2015-03-16T08:53:34.000000Z"
+   kind="file"
+   committed-date="2015-03-16T08:53:34.914864Z"/>
+</wc-entries>

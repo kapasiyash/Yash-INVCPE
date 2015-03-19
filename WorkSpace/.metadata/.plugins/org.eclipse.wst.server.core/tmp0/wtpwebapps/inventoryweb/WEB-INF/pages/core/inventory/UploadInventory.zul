@@ -1,0 +1,82 @@
+<zk>
+<window  id="uploadInventory"  style="overflow: visible;" width="100%"  
+		apply="com.elitecore.cpe.web.composer.inventory.UploadInventoryComposer">
+		    <include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="Inventory"/>
+	<tabbox width="100%" height="100%" tabscroll="false" id="createAttributeTabbox">
+	<tabs>
+		<tab id="createLPTab" label="${labels.inventory.uploadinventory}" />
+	</tabs>
+
+<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 0px;overflow:auto;" sclass="main-cont"> 
+				<hlayout height="100%" width="100%" style="overflow: visible;">
+					<vlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%">
+						<hlayout width="100%">
+							<vlayout width="800px">
+								
+								<separator bar="false"/>
+										<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+										<columns>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											
+										</columns>
+										<rows>
+											
+											<row>
+												<cell>
+													<label
+														value="${labels.item.name}">
+													</label>
+							<!-- 						<label value="*" style="color:red;" />
+							 -->					</cell>
+												
+												<cell colspan="3" > 
+													<combobox readonly="true"  id="cmbResourceName" width="140px" maxlength="100" />
+												</cell>
+											</row>
+
+											<row>
+												<cell>
+													<label value="${labels.inventory.uploadinventory}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > 
+													<textbox id="txtfileName" width="200" maxlength="100" constraint="no empty : Please Select File." disabled="true"/>
+														<space bar="false" />
+													<button id="btnBrowse" width="100px" mold="trendy" label="${labels.inventory.browseBtn}" upload="true"/>
+														<space bar="false" />
+														<button id="btnCsvFormat" width="100px" mold="trendy" label="${labels.inventory.csvformat}" />
+														<space bar="false" />
+													<button id="btnDownload" width="100px" mold="trendy" label="${labels.inventory.donwloadcsv}" />														
+												</cell>
+											</row>
+											
+											
+											
+										
+										</rows>
+										</grid>
+										
+										<hbox>
+											<button id="btnUpload" width="140px" mold="trendy" label="${labels.inventory.uploadBtn}"/>
+											<button id="btnCancel" width="140px" mold="trendy" label="${labels.global.cancelBtn}"/>
+										</hbox>
+										<separator bar="false" />
+										<separator bar="false" />
+										<hbox>
+									<label id="lblMessageforinv" visible="true" value="Note : Please,  Select &quot;Resource Name&quot; to generate Resource specific(withproper resource number and  attached attributes) sample CSV and CSV format." style="text-align: left;color: red;" />
+										</hbox>
+							</vlayout>
+						</hlayout>
+							<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+				</hlayout>
+			</tabpanel>
+		</tabpanels>
+		</tabbox> 
+
+</window>
+</zk>

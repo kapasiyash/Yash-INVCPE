@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/lib/svn"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15540"
+   kind="dir"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="JAVAHL-LICENSE"
+   checksum="ac35b7b8d4076ccf4bc49d4df769db30"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="SVNCLIENTADAPTER-LICENSE"
+   checksum="7f353b559cdaf6a1eee5f6674c6187a9"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="commons-net-3.0.1.jar"
+   checksum="920c3efc7f8d4d887936ddc3fc9a8316"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="ganymed.jar"
+   checksum="b843f4134cec7dc9a0ca0513e76f0914"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="javasvn.jar"
+   checksum="629c32cc7c1f607cd7faef0133ba6ef8"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="svnClientAdapter.jar"
+   checksum="e75bfde2c07a7b32102bd2a756a82b18"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="svnant.jar"
+   checksum="b100bcee31d730938cb1be6f1ea2e767"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+<entry
+   name="svnjavahl.jar"
+   checksum="ed218f8ce49d005288c5a46df73d6273"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:38.000000Z"/>
+</wc-entries>

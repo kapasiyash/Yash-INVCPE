@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?component name="dual-listbox" extends="div" class="com.elitecore.cpe.web.system.userwarehousemapping.DualListboxComposer"?>
+<zk>
+ 
+	<window id="userWarehouseMappingWin" style="padding: 0px; margin: 0px;" height="100%" width="100%" apply="com.elitecore.cpe.web.system.userwarehousemapping.UserWareHouseMappingComposer">
+ <include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="System Configuration"/>
+		<tabbox id="userWarehouseMappingTabbox" width="100%" height="100%" tabscroll="false">
+			<tabs>
+				<tab label="${labels.usrware.title}" id="searchTab"/>
+			</tabs>
+			<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;" sclass="main-cont">
+				<vlayout style="padding-left: 5px; padding-top: 2px;" width="100%">
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="155px"></column>
+							<column width="245px"></column>
+							<column width="155px"></column>
+							<column width="245px"></column>
+						</columns>
+						<rows>
+							<row>
+									<cell>
+										<label value="${labels.usrware.user}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > 
+									<combobox id="comboUser" constraint="no empty : Please select the user" width="155px" readonly="true" />
+									</cell>
+								</row>
+								
+							
+						</rows>
+					</grid>
+					
+					
+					<dual-listbox id="dualLBox" />
+					<separator bar="false" />
+					<separator bar="false" />
+					<hbox>
+						<button id="btnUpdate" width="140px" mold="trendy" label="${labels.global.updateBtn}" />
+					</hbox>
+					<separator bar="false" />
+					<separator bar="false" />
+					
+		<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					
+					</vlayout>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<project name="cpe-build" basedir="." default="build-artifacts" > 
+	<property file="build.properties" />
+	<property name="doc" location="doc"/>	
+	<property name="findbug" location="${lib}/findbug"/>	
+	
+	<target name="build-artifacts">
+		<antcall target="prepare-java-doc"/> 
+		<antcall target="prepare-db-doc" />
+		<antcall target="findbug"/>	
+	</target> 
+	
+	<target name="prepare-db-doc">
+		<delete dir="${doc}/db-docs" />
+		<mkdir dir="${doc}/db-docs" />
+		<java jar="${lib}/schemaspy/schemaSpy_5.0.0.jar" output="${doc}/db-docs/output.log" error="${doc}/db-docs/error.log" fork="true">				  		 		  		  
+
+			<arg line="-t orathin"/>
+			<arg line="-host ${db.host}"/>
+			<arg line="-port ${db.port}"/>
+			<arg line="-db ${db.sid}"/>
+			<arg line="-u ${db.username}"/>
+			<arg line="-p ${db.password}"/>
+			<arg line="-cp ${lib}/jdbc/oracle9i.jar"/>
+			<arg line="-o ${doc}/db-docs"/>		  
+		</java>
+	</target>
+
+	<target name="findbug" >    		
+
+		<findbugs home="${findbug}"  output="xml:withMessages" outputFile="findbugs-inventory-bl.xml" excludeFilter="${findbug}/findbugsExclude.xml" >          
+			<sourcePath path="${bl-module-app-dir}/src"  />				 
+			<class location="${release}/${inventory.svn.rev}/inventory.jar"/>  
+		</findbugs>  		
+
+
+		<findbugs home="${findbug}"   output="html" stylesheet="fancy-hist.xsl" outputFile="findbugs-inventory-bl.html" excludeFilter="${findbug}/findbugsExclude.xml" >          
+			<sourcePath path="${bl-module-app-dir}/src"  />				 
+			<class location="${release}/${inventory.svn.rev}/inventory.jar"/>  
+		</findbugs>  		
+
+
+		<findbugs home="${findbug}"  output="xml:withMessages" outputFile="findbugs-inventory-web.xml" excludeFilter="${findbug}/findbugsWebExclude.xml" >          
+			<sourcePath path="${exec-web-module-app-dir}/src"  />				 			
+			<class location="${release}/${inventory.svn.rev}/inventoryweb.jar"/>  
+		</findbugs>  		
+
+		<findbugs home="${findbug}"   output="html" stylesheet="fancy-hist.xsl" outputFile="findbugs-inventory-web.html" excludeFilter="${findbug}/findbugsWebExclude.xml" >          
+			<sourcePath path="${exec-web-module-app-dir}/src"  />				 			
+			<class location="${release}/${inventory.svn.rev}/inventoryweb.jar"/>  
+		</findbugs>  		
+
+	</target>
+
+	<target name="prepare-java-doc" >  		
+		<javadoc sourcepath="${bl-module-app-dir}/src" destdir="${doc}/arbl/" classpathref="classpath" 
+		 author="true"
+         use="true"
+         windowtitle="CPEBL-DOCS" group="BL com.elitecore.cpe.bl*,Core com.elitecore.cpe.core*,Util com.elitecore.cpe.util*" >   														
+			<doctitle>
+				<![CDATA[<h1>Crestel CPE </h1>]]></doctitle>
+			<bottom>
+				<![CDATA[<i>Copyright &#169; 2013 Elitecore Technologies Pvt.Ltd. All Rights Reserved.</i>]]></bottom>
+			<tag name="todo" scope="all" description="To do:"/>
+		</javadoc>
+	</target>  
+
+</project>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16483"
+   kind="dir"
+   committed-date="2015-03-16T07:20:39.912031Z"/>
+<entry
+   name=".classpath"
+   checksum="be11dd64b6de735a7f09f3249b076b99"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name=".project"
+   checksum="f28ecdae6c2571d66bd3c8417f63cd90"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:25.000000Z"/>
+<entry
+   name=".settings"
+   kind="dir"/>
+<entry
+   name="build"
+   kind="dir"/>
+<entry
+   name="config"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   name="webroot"
+   kind="dir"/>
+</wc-entries>

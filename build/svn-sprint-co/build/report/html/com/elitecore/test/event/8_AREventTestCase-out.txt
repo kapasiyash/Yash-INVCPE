@@ -1,0 +1,24 @@
+************* inside lookup - start *****************
+************* inside lookup - start *****************
+DebitNoteGeneration
+CreditNoteGeneration
+Writeoff
+RedeemPayment
+CashChequePayment
+Direct Debit Event
+CreditDebitPayment
+Online Event
+GenerateBill
+AdvancePayment
+EVENT00015	DebitNoteGeneration
+EVENT00016	CreditNoteGeneration
+EVENT00018	Writeoff
+EVENT00014	RedeemPayment
+EVENT00011	CashChequePayment
+EVENT00010	Direct Debit Event
+EVENT00013	CreditDebitPayment
+EVENT00009	Online Event
+EVENT00017	GenerateBill
+EVENT00019	AdvancePayment
+Junit Start
+

@@ -1,0 +1,44 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="deleteschedule" apply="com.elitecore.cpe.web.system.agent.DeleteAgentScheduleComposer">
+<vlayout width="800px">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.delschedule.title}" style="font-weight: bold;" />
+			</div>
+			<separator bar="false" />
+			<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								
+								<row>
+									<cell>
+										<label	value="${labels.delschedule.reason}" />
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3">
+										<textbox id="reasontb" constraint="no empty:Please provide reason for deactivation." multiline="true" rows="4" cols="40"/>
+									</cell>
+									
+								</row>
+								
+																
+							</rows>
+						</grid>
+			<separator bar="false" />
+			<separator bar="false" />
+			<hbox>
+				<button id="btnDelete" mold="trendy" label="${labels.delschedule.deactivate}" width="140px"/>
+				<button id="cancelBtn" mold="trendy" label="Cancel" onClick="deleteschedule.detach()" width="140px"/>
+			</hbox>
+			<separator bar="false" />
+			<separator bar="false" />
+			<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+</vlayout>
+</hlayout>
+</zk>

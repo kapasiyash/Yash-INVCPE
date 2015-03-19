@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<project name="cpe-build" default="app.build.incremental" basedir=".">
+
+	<property name="builder.name" value="yash.kapasi" />  	
+	<property file="${basedir}/svn.properties" />
+	<property file="${basedir}/hotfix.properties" />
+	<property name="source.new" value="${svn.checkout.dir}/${sprint.new.version}/modules"/>
+	<property name="source.old" value="${svn.checkout.dir}/${sprint.old.version}/modules"/>
+	<property name="source.upgrade" value="${svn.checkout.dir}/upgrade"/>
+	
+	
+	<path id="classpath">
+		<fileset dir="${basedir}/lib" includes="**/*.jar"/>		
+	</path>
+
+	<taskdef resource="com/elitecore/ant/taskdefs/taskdefs.properties" >
+		<classpath refid="classpath"/>
+	</taskdef>
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties" >
+		<classpath refid="classpath"/>
+	</taskdef>
+	
+	<taskdef name="fmpp" classname="fmpp.tools.AntTask" >
+		<classpath refid="classpath"/>
+	</taskdef>
+	<taskdef name="freemarker" classname="freemarker.ext.ant.FreemarkerXmlTask">
+		<classpath>
+			<pathelement location="${basedir}/lib/freemarker.jar" />
+		</classpath>
+	</taskdef>
+
+	<target name="clean" >
+		<delete dir="${svn.checkout.dir}" />		
+	</target>	
+
+	<target name="init" depends="clean" >		
+		<mkdir dir="${svn.checkout.dir}" />		
+	</target>	
+
+	<target name="checkout" depends="init" >
+		 <ant antfile="${basedir}/build-checkout.xml"  target="checkout" useNativeBasedir="false" inheritAll="true"/>
+	</target> 
+
+	
+	<target name="app.build.incremental" depends="init">
+	  <antcall target="svn.bundle.export">
+	     <param name="sprint.number.export" value="${sprint.new.version}"/>
+	  </antcall>
+	    
+	  <antcall target="svn.bundle.exportold">
+	     <param name="sprint.number.export" value="${sprint.old.version}"/>
+	  </antcall>
+	  
+		<delete dir="${basedir}/MR/template" />
+		<mkdir dir="${basedir}/MR/template" />
+		<copy todir="${basedir}/MR/template" >
+			<fileset dir="${basedir}/MR/mr">
+				<exclude name="*.svn" />
+			</fileset>		
+		</copy>
+
+	  <property name="bundle.name" value="INCREMENTAL-TEST01"/>
+
+	  <foreach list="${module.list}" param="module" trim="true"  target="make.hofix.difference" inheritall="false" />		
+	  <property name="core.name" value="Sprint-[${sprint.old.version}-${sprint.new.version}]"/>
+	  
+	  <property name="export.bundle.path" value="${svn.checkout.dir}/${project.name}-INC-${env.Version}-${core.name}.tar.gz" />
+	  
+	  <tar compression="gzip" destfile="${export.bundle.path}">
+					<tarfileset dir="${basedir}/MR/template">
+						<include name="**/**/*"/>                                                                     
+					</tarfileset>
+				</tar>
+				<mkdir dir="${svn.checkout.dir}/${core.name}" />
+				<move file="${export.bundle.path}" todir="${svn.checkout.dir}/${core.name}"/>
+	  <antcall target="svn.bundle.import"> 
+	    <param name="export.path" value="${svn.checkout.dir}/${core.name}" />
+	    <param name="import.version" value="${sprint.new.version}" />
+	    <param name="import.dir" value="${core.name}" />
+	  </antcall>
+	  
+	</target>
+	
+
+	<target name="app.build.versionbuild" depends="init">
+	  <antcall target="svn.bundle.export">
+	     <param name="sprint.number.export" value="${sprint.new.version}"/>
+	  </antcall>
+	    
+	  <antcall target="svn.bundle.exportold">
+	     <param name="sprint.number.export" value="${sprint.old.version}"/>
+	  </antcall>
+	  
+		<delete dir="${basedir}/MR/template" />
+		<mkdir dir="${basedir}/MR/template" />
+		<copy todir="${basedir}/MR/template" >
+			<fileset dir="${basedir}/MR/versionbuild">
+				<exclude name="*.svn" />
+			</fileset>		
+		</copy>
+		<tstamp>
+			<format property="build.number" pattern="yyyy_MM_dd_HHmmss" />
+		</tstamp>
+	<fmpp sourceFile="${basedir}/MR/versionbuild/version.info.ftl" outputFile="${basedir}/MR/template/version.info">		
+			<data expandProperties="yes">
+				 ant: antProperties()
+				 projectname:'${project.name}'
+				 versionNumber:'${version.number}'
+				 buildNumber:'${build.number}',
+		 	</data>
+	</fmpp>
+	<fmpp sourceFile="${basedir}/MR/versionbuild/cpe/version.info.ftl" outputFile="${basedir}/MR/template/cpe/version.info">		
+			<data expandProperties="yes">
+				 ant: antProperties()
+				 oldVersionNumber:'${old.version.number}'
+				 versionNumber:'${version.number}'
+				 buildNumber:'${build.number}',
+		 	</data>
+	</fmpp>
+	<fmpp sourceFile="${basedir}/MR/versionbuild/web/version.info.ftl" outputFile="${basedir}/MR/template/web/version.info">		
+			<data expandProperties="yes">
+				 ant: antProperties()
+				 oldVersionNumber:'${old.version.number}'
+				 versionNumber:'${version.number}'
+				 buildNumber:'${build.number}',
+		 	</data>
+	</fmpp>
+
+	  <property name="bundle.name" value="INCREMENTAL-TEST01"/>
+
+	  <foreach list="${module.list}" param="module" trim="true"  target="make.hofix.difference" inheritall="false" />		
+	  <property name="core.name" value="Sprint-[${sprint.old.version}-${sprint.new.version}]"/>
+	  
+	  <property name="export.bundle.path" value="${svn.checkout.dir}/${project.name}-INC-${old.version.number}-${version.number}-${core.name}.tar.gz" />
+	  
+	  <tar compression="gzip" destfile="${export.bundle.path}">
+					<tarfileset dir="${basedir}/MR/template">
+						<include name="**/**/*"/> 
+						<exclude name="**/*.ftl" />                                                                    
+					</tarfileset>
+				</tar>
+				<mkdir dir="${svn.checkout.dir}/${core.name}" />
+				<move file="${export.bundle.path}" todir="${svn.checkout.dir}/${core.name}"/>
+	  <antcall target="svn.bundle.import"> 
+	    <param name="export.path" value="${svn.checkout.dir}/${core.name}" />
+	    <param name="import.version" value="${sprint.new.version}" />
+	    <param name="import.dir" value="${core.name}" />
+	  </antcall>
+	  
+	</target>
+
+	<target name="make.hofix.difference">
+	  
+		<EliteUpgrade currentsource="${source.old}/${module}"
+				newsource="${source.new}/${module}"
+				upgradedir="${source.upgrade}/${module}" >	
+		</EliteUpgrade>
+
+		<propertycopy name="module.mr.dir" from="${module}.mr.dir"/>
+
+		<echo message="Module : ${module}" />
+		<echo message="Copying ${source.upgrade}/${module} to ${basedir}/${module.mr.dir}" />
+
+		<copy todir="${module.mr.dir}">
+			<fileset dir="${source.upgrade}/${module}"/>
+		</copy>
+
+	</target>
+	
+	
+	<!-- Exports bundle to sprint directories -->
+	<target name="svn.bundle.export">  
+		<mkdir dir="${svn.checkout.dir}/${sprint.number.export}" />
+		<property name="bundle.export.dir" value="${svn.checkout.dir}/${sprint.number.export}"/>
+		<property name="svn.url" value="${svn.repo.url}${sprint.number.export}${project.fullversion.path}/${project.fullversion.name}" />
+		<property name="svn.exportPath" value="${bundle.export.dir}" />	
+		<ant antfile="${basedir}/build-checkout.xml"  target="svn.export" useNativeBasedir="false" inheritAll="true"/>
+		 
+		<untar src="${bundle.export.dir}/${project.fullversion.name}" dest="${bundle.export.dir}" compression="gzip" />
+		<delete file="${bundle.export.dir}/${project.fullversion.name}"/>
+	</target> 
+
+	<target name="svn.bundle.exportold">  
+		<mkdir dir="${svn.checkout.dir}/${sprint.number.export}" />
+		<property name="bundle.export.dir" value="${svn.checkout.dir}/${sprint.number.export}"/>
+		<property name="svn.url" value="${svn.repo.url}${sprint.number.export}${project.fullversion.path}/${project.fullversion.oldname}" />
+		<property name="svn.exportPath" value="${bundle.export.dir}" />	
+		<ant antfile="${basedir}/build-checkout.xml"  target="svn.export" useNativeBasedir="false" inheritAll="true"/>
+		 
+		<untar src="${bundle.export.dir}/${project.fullversion.oldname}" dest="${bundle.export.dir}" compression="gzip" />
+		<delete file="${bundle.export.dir}/${project.fullversion.oldname}"/>
+	</target> 
+
+	
+	<target name="svn.bundle.import">
+	  <property name="svn.export.path" value="${export.path}" />
+	  <property name="sprint.number.import" value="${import.version}" />
+	  <property name="svn.import.path" value="${svn.repo.url}${sprint.new.version}/build/MR/${import.dir}" />
+	  <property name="svn.import.message" value="Commiting Incremental Build" />
+	  <ant antfile="${basedir}/build-checkout.xml"  target="svn.import" useNativeBasedir="false" inheritAll="true"/>
+	</target>
+	
+</project>

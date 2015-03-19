@@ -1,0 +1,1020 @@
+<?xml version="1.0"?>
+<project name="coreinstall" default="all" 
+xmlns:ora="antlib:net.sf.incanto">
+	
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+		<property environment="env"/>
+	<!-- ******************************** -->
+	<!-- Property declaration section ends-->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+
+		<taskdef resource="com/elitecore/ant/taskdefs/taskdefs.properties" classpath="elite-ant.jar" />
+		<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpath="ant-contrib-0.6.jar"/>		
+		<taskdef classpath="orangevolt-ant-tasks-1.3.2.jar" resource="com/orangevolt/tools/ant/taskdefs.properties"/>
+   	   	
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+ 
+	<!-- ******************************** -->
+	<!-- Macrodef declaration section     -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Macrodef declaration section ends-->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition ends      -->
+	<!-- ******************************** -->
+
+        <!-- ******************************** -->
+        <!-- Display Version Information      -->
+        <!-- ******************************** -->
+
+        <target name="display-current-version" description="Displays current installed version of this component">
+                 <trycatch property="error.message" reference="error.object">
+				 <echo message="DB URL :: ${database.url} == MODULE SCHEMA :: ${module.db.schema} == DB ENV :: ${database.env} == PASSWORD :: ${bil.db.password}" level="info"/>
+                            <try>
+                                        <antcallback target="get-db-password" return="bil.db.password">
+                                                    <param name="db.schema" value="${module.db.schema}"/>
+                                        </antcallback>
+
+                                        <sql
+                                            driver="oracle.jdbc.driver.OracleDriver"
+                                            url="${database.url}"
+                                            userid="${bil.db.user}"
+                                            password="${bil.db.password}"
+                                            showheaders="true"
+                                            print="true"
+                                            output="${versioninfo.output.file}"
+                                        >
+                                                    select modulename "COMPONENT NAME", currentversionnumber "CURRENT VERSION NUMBER", hostname "HOSTNAME", installationdate "LAST MODIFIED DATE"
+                                                    from
+                                                                tblmversion
+                                                    where
+                                                                modulename = '${component.name}' or
+                                                                modulename = '${component.name}-DB' 
+                                                    order by installationdate desc;
+                                        </sql>
+					<loadfile property="versioninfo" srcFile="${versioninfo.output.file}">
+						<filterchain>
+							<tailfilter lines="-1" skip="1"/>
+						</filterchain>
+					</loadfile>
+					<echo file="${versioninfo.output.file}" message="${versioninfo}" />
+                            </try>
+                            <catch>
+                                        <echo message="ERROR: Error while displaying version information of ${component.name}" level="error"/>
+                                        <throw message="ERROR: Error while displaying version information of ${component.name}. ${error.message}" refid="error.object"/>
+                            </catch>
+                 </trycatch>
+        </target>
+    
+
+	<!-- ******************************** -->
+	<!-- Executing dbscript               -->
+	<!-- ******************************** -->	
+
+	<target name="check-db-required-version" description="Checks db required version" unless="skip.version.check">
+
+		<echo message="In check-db-required-version" level="info" />                
+		
+                <switch value="${build.type}">
+                            <case value="HOTFIX_BUILD">
+                                        <if>
+                                            <or>
+                                                        <equals arg1="${prv.hotfix.number}" arg2="" />
+                                                        <equals arg1="${prv.hotfix.number}" arg2="00" />
+                                            </or>
+                                            <then>
+                                                        <property name="required.db.version" value="${version.number}"/>
+                                            </then>
+                                            <else>
+                                                        <property name="required.db.version" value="${version.number}.${prv.hotfix.number}"/>
+                                            </else>
+                                        </if>
+                                        <property name="current.db.version" value="${version.number}.${hotfix.number}"/>
+                            </case>
+                            <default>
+                                        <property name="required.db.version" value="${base.version.number}"/>
+                                        <property name="current.db.version" value="${version.number}"/>
+                            </default>                                  
+                </switch>
+                 
+                <echo message="Required database version: ${required.db.version}, New version: ${current.db.version}" level="info"/>
+                 
+                <antcallback target="get-db-password" return="bil.db.password">
+                            <param name="db.schema" value="${module.db.schema}"/>
+                </antcallback>
+                
+                 <trycatch property="error.message" reference="error.object">
+                            <try>
+								<echo message=" --- bil.db.user = ${bil.db.user}... bil.db.paswd = ${bil.db.password}"/>
+								<echo message="Hushen - DB URL :: ${database.url} == MODULE SCHEMA :: ${module.db.schema} == DB ENV :: ${database.env} == PASSWORD :: ${bil.db.password}" />
+                                        <sql
+                                            driver="oracle.jdbc.driver.OracleDriver"
+                                            url="${database.url}"
+                                            userid="${bil.db.user}"
+                                            password="${bil.db.password}"
+                                            showheaders="false"
+                                            print="true"
+                                            output="result.properties"
+                                        >
+                                                    select 
+                                                                'installed.db.version.number=' || currentversionnumber 
+                                                    from 
+                                                                tblmversion 
+                                                    where 
+                                                                modulename = '${component.name}-DB' and
+                                                                rownum=1;
+                                        </sql>
+                                        <property file="result.properties" />
+                                        
+                                        <echo message="Current database installed version: ${installed.db.version.number}" level="info"/>
+                                        
+                                        <if>
+                                        	<or>
+							<not>
+								<isset property="installed.db.version.number" />
+							</not>	
+							<contains string="${installed.db.version.number}" substring="${required.db.version}" />
+						</or>
+						<then>
+							<echo message="Required database version is available. Condition check successful" level="info" />
+							<property name="is-db-installed" value="false" />
+						</then>
+						<else>
+							<property name="is-db-installed" value="true" />
+							<property name="installed-db-version" value="${installed.db.version.number}" />
+							<property name="current-db-version" value="${current.db.version}" />
+						            
+						</else>
+                                        </if>
+                            </try>
+                            <catch>
+					<echo message="ERROR: Required database version check failed" level="error"/>
+					<throw message="ERROR: Required database version check failed. ${error.message}" refid="error.object"/>
+                            </catch>
+                 </trycatch>
+			
+	</target>
+
+	<target name="upgrade-database">
+	
+		<echo message="In upgrade-database" level="info" />
+		
+		<echo message="Loading script information from:${module.dbscripts.dir} " level="info"/>
+                <property file="${module.dbscripts.dir}/${db.file.name}.properties" />
+                
+                <echo message="Database schemas to upgrade: ${bil.db.user} from ${db.file.name}.properties" level="info"/>
+                <if>
+                            <and>
+                                        <isset property="bil.db.user" />
+                                        <not>
+                                                    <equals arg1="${bil.db.user}" arg2="" />
+                                        </not>
+                            </and>
+                            <then>  
+                                        <foreach list="${bil.db.user}" param="db.schema" target="upgrade-database-schema" inheritall="true">
+                                        </foreach>
+                            </then>
+                </if>                  
+	</target>
+	
+	
+	<target name="upgrade-database-schema">
+	
+		<echo message="In upgrade-database-schema" level="info" />
+		
+                <propertycopy name="dbscripts.order" from="${DBCLIST_Prop}"/>
+	       <!--  <propertycopy name="dbscripts.order" from="${db.schema}"/> -->
+                
+                <echo message="Database scripts to execute: ${dbscripts.order} on ${db.schema} from ${db.file.name}" level="info"/>
+                
+                <antcallback target="get-db-password" return="bil.db.password">
+                            <param name="db.schema" value="${module.db.schema}"/>
+                </antcallback>
+                <foreach list="${dbscripts.order}" param="dbscript" target="execute-dbscript" inheritall="true">
+                            <param name="db.userid" value="${bil.db.user}" />
+                            <param name="db.password" value="${bil.db.password}" />
+                </foreach>
+	</target>
+	
+	<target name="execute-dbscript">
+	
+		<if>
+			<isset property="use.oracle.client"/>
+		<then>
+
+			<property name="db.script" value="${dbscript}"/>
+	              				
+	                <echo message="Executing: ${bil.db.user}: ${installation.dir}/${db.script}" />
+	                
+	                <if>
+	                	<not>
+	                		<isset property="db.ip"/>
+	                	</not>	
+	                <then>
+				<propertyregex property="db.ip" input="${database.url}"
+		              		regexp="^(.*):(.*):(.*):@(.*):(.*):(.*)$" select="\4" casesensitive="false" />
+	              	</then>	
+			</if>
+	                <if>
+	                	<not>
+	                		<isset property="db.port"/>
+	                	</not>	
+	                <then>
+				<propertyregex property="db.port" input="${database.url}"
+		              		regexp="^(.*):(.*):(.*):@(.*):(.*):(.*)$" select="\5" casesensitive="false" />
+	              	</then>	
+			</if>
+	                <if>
+	                	<not>
+	                		<isset property="db.sid"/>
+	                	</not>	
+	                <then>
+				<propertyregex property="db.sid" input="${database.url}"
+		              		regexp="^(.*):(.*):(.*):@(.*):(.*):(.*)$" select="\6" casesensitive="false" />
+	              	</then>	
+			</if>
+	
+			
+			<ora:sqlplus start="${installation.dir}/${db.script}" 
+				logon="${bil.db.user}/${bil.db.password}@//${db.ip}:${db.port}/${db.sid}"	
+				silent="true">
+				<propertyset>
+					<propertyref prefix="database.env"/>
+					<propertyref prefix="db."/>
+					<propertyref prefix="partner.db.user"/>
+					<propertyref prefix="partner.db.password"/>    
+				</propertyset>				
+			</ora:sqlplus>			
+		</then>
+		<else>
+			<propertyregex property="db.script" input="${dbscript}"
+	              		regexp="((.*);(.*))|(.*)" select="\2\4" casesensitive="false" />
+	
+			<propertyregex property="delimiter" input="${dbscript}"
+	              		regexp="^(.*);(.*)$" select="\2" casesensitive="false" />
+	
+			<condition property="db.delimiter"
+				value="${delimiter}"
+				else=";">
+					<and>
+						<isset property="delimiter" />
+						<not>
+							<equals arg1="${delimiter}" arg2="" />
+						</not>
+					</and>
+			</condition>	
+		
+	                <echo message="Executing: ${bil.db.user}: ${module.dbscripts.dir}/${db.script} with delimiter ${db.delimiter}" level="info"/>
+	                <sql
+	                    driver="oracle.jdbc.driver.OracleDriver"
+	                    url="${database.url}"
+	                    userid="${bil.db.user}"
+	                    password="${bil.db.password}"
+	                    showheaders="false"
+	                    onerror="continue"
+	                    keepformat="true"
+	                    src="${module.dbscripts.dir}/${db.script}"
+	                    delimiter="${db.delimiter}"
+	                    expandproperties="true"
+	                />
+		</else>
+		</if>		
+	</target>
+	
+	<target name="update-db-installed-version" unless="skip.version.check">
+		
+		<echo message="In update-db-installed-version" level="info" />
+		
+                <switch value="${build.type}">
+                            <case value="HOTFIX_BUILD">
+                                        <property name="current.db.version" value="${version.number}.${hotfix.number}"/>
+                            </case>
+                            <default>
+                                        <property name="current.db.version" value="${version.number}"/>
+                            </default>                                  
+                </switch>
+                
+                <echo message="Updating database version : ${current.db.version}" level="info" />
+                
+                <antcallback target="get-db-password" return="bil.db.password">
+                            <param name="db.schema" value="${module.db.schema}"/>
+                </antcallback>
+                
+                <trycatch property="error.message" reference="error.object">
+                            <try>
+							<echo message="DB URL :: ${database.url} == MODULE SCHEMA :: ${module.db.schema} == DB ENV :: ${database.env} == PASSWORD :: ${bil.db.password}" level="info"/>
+                                        <sql
+                                            driver="oracle.jdbc.driver.OracleDriver"
+                                            url="${database.url}"
+                                            userid="${bil.db.user}"
+                                            password="${bil.db.password}"
+                                            showheaders="false"
+                                            print="true"
+                                        >
+                                                    insert into 
+                                                                tbltversionhistory(versionnumber, hostname, modulename, installationdate) 
+                                                    values
+                                                                            ('${current.db.version}','${env.HOSTNAME}','${component.name}-DB',sysdate);
+                                        </sql>
+                                        
+                                        <echo message="Database version history updated" level="info"/>
+                                        
+                                        <sql
+                                            driver="oracle.jdbc.driver.OracleDriver"
+                                            url="${database.url}"
+                                            userid="${bil.db.user}"
+                                            password="${bil.db.password}"
+                                            showheaders="false"
+                                            print="true"
+                                            output="result.properties"
+                                        >
+                                                    select 
+                                                                'installed.db.version.number=' || currentversionnumber 
+                                                    from 
+                                                                tblmversion 
+                                                    where 
+                                                                modulename = '${component.name}-DB' and
+                                                                rownum=1;
+                                        </sql>
+                                        
+                                        <property file="result.properties" />
+
+                                        <if>
+                                                    <isset property="installed.db.version.number" />
+                                                    <then>
+                                                                <sql
+                                                                    driver="oracle.jdbc.driver.OracleDriver"
+                                                                    url="${database.url}"
+                                                                    userid="${bil.db.user}"
+                                                                    password="${bil.db.password}"
+                                                                    showheaders="false"
+                                                                    print="true"
+                                                                >
+                                                                            update 
+                                                                                        tblmversion 
+                                                                            set 
+                                                                                        currentversionnumber='${current.db.version}',
+                                                                                        installationdate=sysdate,
+                                                                                        hostname='${env.HOSTNAME}'
+                                                                            where 
+                                                                                        modulename='${component.name}-DB';
+                                                                </sql>
+                                                                
+                                                                <echo message="Database version record updated from ${installed.db.version.number} to ${current.db.version}" level="info"/>
+                                                    </then>
+                                                    <else>
+                                                                <sql
+                                                                    driver="oracle.jdbc.driver.OracleDriver"
+                                                                    url="${database.url}"
+                                                                    userid="${bil.db.user}"
+                                                                    password="${bil.db.password}"
+                                                                    showheaders="false"
+                                                                    print="true"
+                                                                >
+                                                                            insert into 
+                                                                                        tblmversion(currentversionnumber, hostname, modulename, installationdate) 
+                                                                            values
+                                                                                        ('${current.db.version}','${env.HOSTNAME}','${component.name}-DB',sysdate);
+                                                                </sql>
+                                                                
+                                                                <echo message="Database version record inserted with ${current.db.version} version"/>
+                                                    </else>
+                                        </if>
+                                        
+                            </try>
+                            <catch>
+                                        <echo message="Error : Update of database version failed" level="error"/>
+                                        <fail message="Update of version data failed. Trying to update version to ${current.db.version}"/>
+                            </catch>
+                </trycatch>
+	</target>
+
+
+	<!-- ******************************** -->
+	<!-- Post Build                       -->
+	<!-- ******************************** -->
+	
+	<target name="post-build" description="Post Build">
+		
+		<echo message="In post-build. Executing file : ${module.upgrade.prepostinstallation.dir}/${post.install.file}" level="info"/>
+		
+		<trycatch property="error.message" reference="error.object">
+			<try>	
+				<if>
+					<isset property="post.install.file" />
+					<then>
+						<available file="${module.upgrade.prepostinstallation.dir}/${post.install.file}" 
+								property="post.file.present"/>	
+						<if>
+							<isset property="post.file.present" />
+							<then>
+								<ant antfile="${module.upgrade.prepostinstallation.dir}/${post.install.file}" inheritAll="true" >
+								</ant>
+							</then>
+						</if>
+					</then>
+				</if>
+			</try>						
+			<catch>
+				<echo message="Error: Error while executing post install build file : ${module.upgrade.prepostinstallation.dir}/${post.install.file}" 
+					level="error" />
+				<throw message="Error while executing post install build file : ${module.upgrade.prepostinstallation.dir}/${post.install.file}"
+					refid="error.object"/>
+			</catch>
+		</trycatch>
+			
+	</target>
+
+	<target name="post-build-all" description="Post Build">
+		<if>
+			<isset property="post.file.list" />
+			<then>
+				<echo message="In post-build-all. Post build file list: ${post.file.list}" level="info" />
+				
+				<foreach list="${post.file.list}" param="post.install.file"  target="post-build" inheritall="true" >
+				</foreach>
+			</then>
+		</if>
+		
+	</target>		
+
+	<!-- ******************************** -->
+	<!-- Post upgrade activity            -->
+	<!-- ******************************** -->
+	<target name="post-upgrade">
+		
+		<echo message="In post-upgrade" level="info"/>
+		
+		<copy todir="${module.home}" overwrite="true">
+			<fileset dir="${targetupgrade.dir}"/>
+		</copy>
+
+		<fixcrlf srcdir="${module.home}" eol="unix" eof="remove" includes="**/*.sh,**/*.xml,**/*.properties" />
+		<chmod dir="${module.home}" perm="ug+rwx" includes="**/*.sh"/>
+	</target>
+
+
+	<!-- ******************************** -->
+	<!-- Doing upgrad                    -->
+	<!-- ******************************** -->
+	<target name="do-upgrade">
+	
+		<echo message="In do-upgrade" level="info"/>
+		
+		<EliteInstall targetdir="${targetupgrade.dir}" datareader="${module.installation.dir}/Installfiles.txt"/> 
+
+		<echo message="Adding new files" level="info"/>
+			
+		<copy todir="${targetupgrade.dir}" overwrite="true">
+			<fileset dir="${module.installation.dir}/new" />
+		</copy>
+
+		<echo message="Updating existing files" level="info"/>
+		
+		<copy todir="${targetupgrade.dir}" overwrite="true">
+			<fileset dir="${module.installation.dir}/update"/>
+		</copy>
+
+		<antcallback target="get-db-password" return="bil.db.password">
+			<param name="db.schema" value="${module.db.schema}"/>
+		</antcallback>
+
+		<copy todir="${targetupgrade.dir}" overwrite="true">
+			<fileset dir="${module.installation.dir}/new">
+				<include name="**/*-ds.xml"/>
+				<include name="**/*-database-conf.xml"/>
+				<include name="**/database.properties"/>
+			</fileset>
+			<fileset dir="${module.installation.dir}/update">
+				<include name="**/*-ds.xml"/>
+				<include name="**/*-database-conf.xml"/>
+				<include name="**/database.properties"/>
+			</fileset>
+			<filterset>
+				<filter token="database.user" value="${bil.db.user}"/>
+				<filter token="database.password" value="${bil.db.password}"/>
+				<filter token="database.url" value="${database.url}"/>
+			</filterset>
+		</copy>
+		
+		<echo message="Deleting files" level="info"/>
+		
+		<safedelete failonerror="true">
+			<safefileset dir="${targetupgrade.dir}" includesfile="${module.installation.dir}/delete/delete-files.txt"
+		        	 excludesfile="${module.installation.dir}/delete/delete-exclude-files.txt"/>
+			<safefileset dir="${module.home}" includesfile="${module.installation.dir}/delete/delete-files.txt"
+		        	 excludesfile="${module.installation.dir}/delete/delete-exclude-files.txt"/>
+		</safedelete>
+
+		<Bundle targetdir="${targetupgrade.dir}"/> 
+	</target>
+
+
+	<!-- ******************************** -->
+	<!-- Pre-upgrade                      -->
+	<!-- ******************************** -->
+	<target name="pre-upgrade">
+		
+		<echo message="In pre-upgrade" level="info"/>
+		
+		<mkdir dir="${targetupgrade.dir}"/>
+
+		<copy todir="${targetupgrade.dir}" overwrite="true">
+			<fileset dir="${module.home}" >
+				<include name="**/*"/>
+				<exclude name="versions/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- ******************************** -->
+	<!-- Upgrading                        -->
+	<!-- ******************************** -->
+	<target name="upgrade" description="Perform upgradation">
+	
+		<echo message="In upgrade" level="info"/>
+		
+		<trycatch property="error.message" reference="error.object">
+			<try>
+				<antcall target="pre-upgrade"/>
+				<antcall target="do-upgrade"/>
+				<antcall target="post-upgrade"/>
+				<delete dir="${targetupgrade.dir}"/>				
+			</try>	
+			<catch>
+				<delete dir="${targetupgrade.dir}"/>
+				<echo message="Error : Error while applying upgrade" level="error"/>
+				<throw message="Error while doing upgrade. ${error.message}" refid="error.object"/>
+			</catch>
+		 </trycatch>
+	</target>
+
+	<!-- ******************************** -->
+	<!-- Gets DB Password                -->
+	<!-- ******************************** -->
+	
+	<target name="get-db-password">
+        	<!--	
+		<if>
+			<isset property="${db.schema}.password" />
+			<then>	
+				<propertycopy name="db.schema.password" from="${db.schema}.password" />
+			</then>
+			<else>
+				<var name="db.schema.password" value="${db.schema}${database.env}"/>
+			</else>
+		</if>
+		-->
+    	<var name="bil.db.password" value="${bil.db.password}"/>
+    	</target>
+
+	<!-- ******************************** -->
+	<!-- Check required version and Update version -->
+	<!-- ******************************** -->
+
+	<target name="check-required-version" description="Check required version" unless="skip.version.check">
+
+		<echo message="In check-required-version" level="debug"/>
+		
+		<switch value="${build.type}">
+		  	<case value="HOTFIX_BUILD">
+				<if>
+					<or>
+						<equals arg1="${prv.hotfix.number}" arg2="" />
+						<equals arg1="${prv.hotfix.number}" arg2="00" />
+					</or>
+					<then>
+				  		<property name="required.version" value="${version.number}"/>
+					</then>
+					<else>
+				  		<property name="required.version" value="${version.number}.${prv.hotfix.number}"/>
+					</else>
+				</if>
+				<property name="current.version" value="${version.number}.${hotfix.number}"/>
+			</case>
+			<default>
+				<property name="required.version" value="${base.version.number}"/>
+		  		<property name="current.version" value="${version.number}"/>
+			</default>
+		</switch>
+		 
+		<echo message="Required version: ${required.version}, New version: ${current.version}" level="info"/>
+		 
+		<antcallback target="get-db-password" return="bil.db.password">
+			<param name="db.schema" value="${module.db.schema}"/>
+		</antcallback>
+		
+		<trycatch property="error.message" reference="error.object">
+			<try>
+				<sql
+				    driver="oracle.jdbc.driver.OracleDriver"
+				    url="${database.url}"
+				    userid="${bil.db.user}"
+				    password="${bil.db.password}"
+				    showheaders="false"
+				    print="true"
+				    output="result.properties"
+				>
+					select 
+						'installed.version.number=' || currentversionnumber 
+					from 
+						tblmversion 
+					where 
+						modulename = '${component.name}' and
+						hostname = '${env.HOSTNAME}' and
+						rownum=1;
+				</sql>
+				<property file="result.properties" />
+				
+				<echo message="Current installed version: ${installed.version.number}" level="info"/>
+				
+				<if>
+					<isset property="installed.version.number" />
+					<then>
+						<compare arg1="${installed.version.number}" arg2="${current.version}" numeric="false">
+						    <lesser property="lesser.installed.version"/>
+						    <equal property="equal.installed.version"/>
+						</compare>
+						
+						<if>
+							<equals arg1="${lesser.installed.version}" arg2="true" />
+							<then>
+								<if>
+									<contains string="${installed.version.number}" substring="${required.version}"/>
+									<then>
+										<echo message="Required version is available. Condition check successful" level="info" />
+									</then>
+									<else>
+										<echo message="ERROR: Required version check failed. Current installed version is ${installed.version.number} and required version is ${required.version}" 
+											level="error"/>
+										<fail message="Required version check failed. Current installed version is ${installed.version.number} and required version is ${required.version}"/>
+									</else>
+								</if>
+							</then>
+							<elseif>
+								<equals arg1="${equal.installed.version}" arg2="true" />
+								<then>
+									<echo message="Version trying to install is already installed. Installed version is ${installed.version.number}" level="info"/>
+								</then>
+							</elseif>
+							<else>
+								<echo message="ERROR: Higher version is already installed. Installed version is ${installed.version.number}. Required version is ${required.version}" 
+									level="error"/>
+								<fail message="Higher version is already installed. Installed version is ${installed.version.number}. Required version is ${required.version}"/>
+							</else>
+						</if>
+					</then>
+				</if>
+			</try>
+			<catch>
+				<echo message="ERROR: Required version check failed" level="error"/>
+				<throw message="ERROR: Required version check failed. ${error.message}" refid="error.object"/>
+			</catch>
+		 </trycatch>
+
+	</target>
+
+	
+	<target name="update-installed-version" unless="skip.version.check">
+
+		<echo message="In update-installed-version" level="info"/>
+		
+		<switch value="${build.type}">
+		  	<case value="HOTFIX_BUILD">
+				<property name="current.version" value="${version.number}.${hotfix.number}"/>
+			</case>
+			<default>
+		  		<property name="current.version" value="${version.number}"/>
+			</default>			
+		</switch>
+		
+		<echo message="Updating version : ${current.version}" level="info" />
+		
+		<antcallback target="get-db-password" return="bil.db.password">
+			<param name="db.schema" value="${module.db.schema}"/>
+		</antcallback>
+		
+		<trycatch property="error.message" reference="error.object">
+			<try>
+				<sql
+				    driver="oracle.jdbc.driver.OracleDriver"
+				    url="${database.url}"
+				    userid="${bil.db.user}"
+				    password="${bil.db.password}"
+				    showheaders="false"
+				    print="true"
+				>
+					insert into 
+						tbltversionhistory(versionnumber, hostname, modulename, installationdate) 
+					values
+							('${current.version}','${env.HOSTNAME}','${component.name}',sysdate);
+				</sql>
+				
+				<echo message="Version history updated" level="info"/>
+				
+				<sql
+				    driver="oracle.jdbc.driver.OracleDriver"
+				    url="${database.url}"
+				    userid="${bil.db.user}"
+				    password="${bil.db.password}"
+				    showheaders="false"
+				    print="true"
+				    output="result.properties"
+				>
+					select 
+						'installed.version.number=' || currentversionnumber 
+					from 
+						tblmversion 
+					where 
+						modulename = '${component.name}' and
+						hostname = '${env.HOSTNAME}' and
+						rownum=1;
+				</sql>
+				
+				<property file="result.properties" />
+				
+				<echo message="database.url:${database.url},module.db.schema:${module.db.schema},database.env:${database.env},db.schema.password:${db.schema.password}"/>
+
+				<if>
+					<isset property="installed.version.number" />
+					<then>
+						<sql
+						    driver="oracle.jdbc.driver.OracleDriver"
+						    url="${database.url}"
+						    userid="${bil.db.user}"
+						    password="${bil.db.password}"
+						    showheaders="false"
+						    print="true"
+						>
+							update 
+								tblmversion 
+							set 
+								currentversionnumber='${current.version}',
+								installationdate=sysdate 
+							where 
+								modulename='${component.name}' and 
+								hostname='${env.HOSTNAME}';
+						</sql>
+						
+						<echo message="Version record updated from ${installed.version.number} to ${current.version}" level="info"/>
+					</then>
+					<else>
+						<sql
+						    driver="oracle.jdbc.driver.OracleDriver"
+						    url="${database.url}"
+						    userid="${bil.db.user}"
+						    password="${bil.db.password}"
+						    showheaders="false"
+						    print="true"
+						>
+							insert into 
+								tblmversion(currentversionnumber, hostname, modulename, installationdate) 
+							values
+									('${current.version}','${env.HOSTNAME}','${component.name}',sysdate);
+						</sql>
+						
+						<echo message="Version record inserted with ${current.version} version" level="info"/>
+					</else>
+				</if>
+				
+			</try>
+			<catch>
+				<echo message="database.url:${database.url},module.db.schema:${module.db.schema},database.env:${database.env},db.schema.password:${db.schema.password}"/>
+				<echo message="Error : Update of version data failed" level="error"/>
+				<fail message="Update of version data failed. Trying to update version to ${current.version}"/>
+			</catch>
+		</trycatch>
+					 
+	</target>
+
+	<!-- ******************************** -->
+	<!-- Installation scripts version upgrade -->
+	<!-- ******************************** -->
+
+	<target name="get-property">
+        	
+        	<property file="${prop-file}" />
+        	
+		<if>
+			<isset property="${prop-name}" />
+			<then>	
+				<propertycopy name="${ret-prop-name}" from="${prop-name}" />
+			</then>
+			<else>
+				<property name="${ret-prop-name}" value="${default-value}" />
+			</else>
+		</if>
+		
+    	</target>
+	
+	<target name="installscript-version-upgrade">
+		
+		<echo message="In installscript-version-upgrade" level="info" />	
+		
+		<antcallback target="get-property" return="installscript.current.version">
+			<param name="prop-file" value="${module.current.install.version.file}"/>
+			<param name="prop-name" value="installscript.version"/>
+			<param name="ret-prop-name" value="installscript.current.version"/>
+			<param name="default-value" value="0.0"/>
+			
+		</antcallback>
+		
+		<echo message="Installation script version of ${module.name}: ${installscript.current.version}" level="info"/>
+		
+		<property file="${module.upgrade.install.version.file}" />
+		
+		<echo message="Upcoming installation script version of ${module.name}: ${installscript.version}" level="info"/>
+		
+		<compare arg1="${installscript.current.version}" arg2="${installscript.version}" numeric="false">
+		    <lesser property="lesser.current.version"/>
+		</compare>
+		
+		<if>
+			<isset property="lesser.current.version" />
+			<then>
+				<echo message="Upgrading installation script for module ${module.name}" level="info"/>
+				
+				<copy todir="${module.current.installationscripts.dir}" overwrite="true">
+					<fileset dir="${module.upgrade.installationscripts.dir}">
+						<include name="install/install.properties"/>
+						<include name="install/install-module.xml"/>
+					</fileset>	
+				</copy>
+			</then>
+			<else>
+				<echo message="Latest/Higher version of installation script of module ${module.name} is available" level="info"/>
+			</else>
+		</if>
+				
+	</target>	
+
+	<target name="coreinstallscript-version-upgrade">
+	
+		<echo message="In coreinstallscript-version-upgrade" level="info" />	
+		
+		<antcallback target="get-property" return="coreinstallscript.current.version">
+			<param name="prop-file" value="${module.current.coreinstall.version.file}"/>
+			<param name="prop-name" value="coreinstallscript.version"/>
+			<param name="ret-prop-name" value="coreinstallscript.current.version"/>
+			<param name="default-value" value="0.0"/>
+		</antcallback>
+		
+		<echo message="Core installation script version of ${module.name}: ${coreinstallscript.current.version}" level="info"/>
+		
+		<property file="${module.upgrade.coreinstall.version.file}/" />
+		
+		<compare arg1="${coreinstallscript.current.version}" arg2="${coreinstallscript.version}" numeric="false">
+		    <lesser property="lesser.current.version"/>
+		</compare>
+		
+		<echo message="Upcoming core installation script version of ${module.name}: ${coreinstallscript.version}" level="info"/>
+		
+		<if>
+			<isset property="lesser.current.version" />
+			<then>
+				<echo message="Upgrading core installation script for module ${module.name}" level="info"/>
+				
+				<copy todir="${module.current.installationscripts.dir}/coreinstall" overwrite="true">
+					<fileset dir="${module.upgrade.installationscripts.dir}/coreinstall">
+						<include name="**/*"/>			
+					</fileset>	
+				</copy>
+			</then>
+			<else>
+				<echo message="Latest/Higher version of core installation script of module ${module.name} is available" level="info"/>
+			</else>
+		</if>
+				
+	</target>	
+
+	<!-- ******************************** -->
+	<!-- Pre Build                        -->
+	<!-- ******************************** -->
+
+	<target name="pre-build" description="Execute each pre-build file">
+	
+		<echo message="In pre-build. Executing file : ${module.upgrade.prepostinstallation.dir}/${pre.install.file}" level="info"/>
+		
+		<trycatch property="error.message" reference="error.object">
+			<try>
+				<available file="${module.upgrade.prepostinstallation.dir}/${pre.install.file}" property="file.present"/>	
+				<if>
+					<isset property="file.present" />
+					<then>
+						<ant antfile="${module.upgrade.prepostinstallation.dir}/${pre.install.file}" inheritAll="true" >
+						</ant>
+					</then>
+				</if>
+			</try>
+			<catch>
+				<echo message="Error: Error while executing pre install build file : ${module.upgrade.prepostinstallation.dir}/${pre.install.file}" 
+					level="error" />
+				<throw message="Error while executing pre install build file : ${module.upgrade.prepostinstallation.dir}/${pre.install.file}. ${error.message}"
+					refid="error.object"/>
+			</catch>
+		</trycatch>
+	</target>
+	
+	<target name="pre-build-all" description="Pre Build">
+		
+		<if>
+			<isset property="pre.file.list" />
+			<then>
+				<echo message="In pre-build-all. Pre file list: ${pre.file.list}" level="info" />
+				
+				<foreach list="${pre.file.list}" param="pre.install.file" target="pre-build" inheritall="true" >
+				</foreach>
+			</then>
+		</if>
+	</target>	
+
+
+	<!-- ******************************** -->
+	<!-- Functional Targets               -->
+	<!-- ******************************** -->
+	
+	<target name="do-database-upgrade" unless="use.oracle.client">
+		<antcall target="upgrade-database-version"/>
+	</target>	
+
+	<target name="upgrade-database-version">
+
+		<echo message="In update-database-version" level="info" />
+		<echo message="${reinstall.db.version}---Jay" level="info" />
+		<trycatch property="error.message" reference="error.object">
+			<try>
+		                <antcallback target="check-db-required-version" return="is-db-installed, installed-db-version, current-db-version">
+		                </antcallback>
+				<if>
+					<or>
+						<not>
+							<isset property="is-db-installed"/>
+						</not>
+						<equals arg1="${is-db-installed}" arg2="false" />
+					</or>	
+					<then>
+				                <foreach list="${db.file}" param="db.file.name" target="upgrade-database" inheritall="true" >
+				                </foreach>
+				                
+				                <antcall target="update-db-installed-version"/>
+					</then>
+		                	<elseif>
+		                		<and>
+			                		<isset property="reinstall.db.version"/>
+			                		<equals arg1="${reinstall.db.version}" arg2="true"/>
+			                		<equals arg1="${installed-db-version}" arg2="${current-db-version}"/>
+			                	</and>	
+			                	<then>	
+			                	
+			                		<echo message="Re-installing database version ${current-db-version}" />
+					                <foreach list="${db.file}" param="db.file.name" target="upgrade-database" inheritall="true" >
+					                </foreach>
+					                
+					                <antcall target="update-db-installed-version"/>
+			                        </then>        
+		                	</elseif>
+					<else>
+						<echo message="Database is already upgraded to higher/current version ${installed-db-version}. Therefore skipping current database ${current-db-version} installation" />
+					</else>
+					
+				</if>
+			</try>
+			<catch>
+				<echo message="Error: Error while upgrading database version" level="error" />
+				<throw message="Error while upgrading database version. ${error.essage}" refid="error.object"/>
+			</catch>
+		</trycatch>
+		
+	
+	</target>
+
+	<target name="pre-upgrade-version" depends="pre-build-all, coreinstallscript-version-upgrade, installscript-version-upgrade"/>
+	<target name="upgrade-version" depends="check-required-version, upgrade, update-installed-version, do-database-upgrade"/>
+	<target name="post-upgrade-version" depends="post-build-all"/>
+	
+	
+</project>
+

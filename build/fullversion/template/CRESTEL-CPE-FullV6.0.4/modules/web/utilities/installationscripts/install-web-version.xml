@@ -1,0 +1,467 @@
+<?xml version="1.0"?>
+<project name="web" default="all" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+
+	
+	<property name="lib.dir"                     		value="${crestel.home}/lib"/>
+	<property name="module.web.versions.dir"        	value="${crestel.home}/modules/web/versions"/>
+	<property file="${module.web.versions.dir}/build.properties"/>
+	
+	<property name="targetupgrade.dir"			value="${module.web.versions.dir}/targetupgrade" />
+	<property name="targetupgrade.web.dir"			value="${targetupgrade.dir}/web" />
+	<property name="temp-jndi.dir"				value="${module.web.versions.dir}/tempjndi" />
+	<property name="ear-src.dir" 				value="${module.web.versions.dir}/tempear" />
+	<property name="temp.dir" 				value="${module.web.versions.dir}/temp" />
+	<property name="temp-war.dir"				value="${module.web.versions.dir}/tempwars" />
+	   
+	   
+	
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+	<path id="lib.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  	<classpath>
+			<pathelement location="${lib.dir}/ant/ant-contrib-0.6.jar"/>
+	  	</classpath>
+	</taskdef>
+	
+	<taskdef name="EliteInstall" 
+  		 classname="com.elitecore.ant.taskdefs.UnbundleFromFile"
+  		 classpathref="lib.class.path"	/>
+	
+	<taskdef name="Bundle" 
+   		 classname="com.elitecore.ant.taskdefs.Bundle"
+  		 classpathref="lib.class.path"/>
+
+	<typedef name="safefileset" 
+		 classname="com.elitecore.ant.types.SafeFileSet"   
+		 classpathref="lib.class.path" />
+	
+	<taskdef name="safedelete"	 
+		 classname="com.elitecore.ant.taskdefs.SafeDelete" 
+		 classpathref="lib.class.path" />
+	
+	<taskdef name="EliteVersionCheck"
+		 classname="com.elitecore.ant.taskdefs.EliteVersionCheck"
+		 classpathref="lib.class.path"   />
+	
+	<typedef name="Unbundle" 
+		 classname="com.elitecore.ant.taskdefs.Unbundle" 
+		 classpathref="lib.class.path"/>
+	
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+	<target name="version-upgrade">
+		<property file="${installation.dir}/web/version.info"/>		
+		<property environment="env"/>
+		
+		<switch value="${build.type}">
+		  	<case value="HOTFIX_BUILD">
+				<property name="current.version" value="${component.name};${version.number}.${hotfix.number}"/>
+			</case>
+			<default>
+		  		<property name="current.version" value="${component.name};${version.number}"/>
+			</default>			
+			
+		</switch>
+		
+		<trycatch>
+			<try>
+				<EliteVersionCheck driver="oracle.jdbc.driver.OracleDriver"
+						 url="${database.url}"
+						 userid="jispbilcorbilling${db.env}"
+						 password="jispbilcorbilling${db.env}"
+						 autocommit="false"
+						 classpath="${lib.dir}/jdbc/oracle9i.jar"
+						 currentversion="${current.version}"
+						 operationType="WRITE"
+						 hostName="${env.HOSTNAME}"/> 
+			</try>
+			<catch>
+				<fail message="DATABASE VERSION UPDATE FAILED. INSTALLATION MODULE WEB FAILED"/>
+			</catch>
+		</trycatch>
+					 
+	</target>
+
+	<target name="clean-env">
+		<delete dir="${targetupgrade.dir}"/>
+		<delete dir="${temp-jndi.dir}"/>
+		<delete dir="${ear-src.dir}"/>
+		<delete dir="${temp.dir}"/>
+		<delete dir="${temp-war.dir}"/>
+	</target>
+
+	<target name="restore-files">
+		<copy todir="${crestel.home}/wars" overwrite="true">
+			<fileset dir="${temp-jndi.dir}">
+				<include name="**/images/logos/*"/>
+				<include name="**/WEB-INF/classes/*.properties"/>
+				<include name="**/WEB-INF/classes/replAsync-service.xml"/>
+			</fileset>
+		</copy>
+		
+		<delete dir="${temp-jndi.dir}"/>
+	</target>
+	
+	<target name="install-war">
+		<delete dir="${crestel.home}/wars/${webmodule}"/>
+		<mkdir dir="${crestel.home}/wars/${webmodule}"/>
+		
+		<unwar src="${crestel.home}/modules/web/clients/web/${webmodule}.war" dest="${crestel.home}/wars/${webmodule}"/>
+		
+		<copy todir="${crestel.home}/wars/${webmodule}" overwrite="true">
+			<fileset dir="${crestel.home}/wars/common-war">
+				<include name="**/lib/"/>
+			</fileset>
+		</copy>
+	</target>
+			
+	<target name="post-upgrade">
+		<copy todir="${web.home}" overwrite="true">
+			<fileset dir="${targetupgrade.web.dir}"/>
+		</copy>
+			
+		<foreach list="common-war,operations-manager,webselfcare,cwomwebservice,simulatorwebservice" param="webmodule" target="install-war">
+		</foreach>
+		
+		<delete dir="${crestel.home}/wars/common-war"/>
+		
+		<property file="${installation.dir}/web/version.info"/>	
+		
+		<replace dir="${crestel.home}/wars/operations-manager" value="${version.number}">
+	 	  	<include name="**/About.jsp"/>
+		  	<replacetoken>{current.version}</replacetoken>
+		</replace>
+
+		<replace dir="${crestel.home}/wars/operations-manager" value="${build.number}">
+		  	<include name="**/About.jsp"/>
+		  	<replacetoken>{build.number}</replacetoken>
+		</replace>
+		
+		<fixcrlf srcdir="${web.home}" eol="unix" eof="remove" includes="**/*.sh,**/*.xml,**/*.properties" />
+                <chmod dir="${web.home}" perm="ug+rwx" includes="**/*.sh"/>
+	</target>
+	
+	<target name="make-client-jars">
+		<delete dir="${temp.dir}" />
+		<delete dir="${ear-src.dir}" />
+		<delete dir="${temp-war.dir}" />
+		
+		<mkdir dir="${temp.dir}" />
+		<mkdir dir="${ear-src.dir}" />
+		<mkdir dir="${temp-war.dir}/common-war" />
+		
+		<copy todir="${ear-src.dir}" flatten="true" overwrite="true">
+			<fileset dir="${crestel.home}/modules/">
+				<include name="billing/ear/billing.ear"/>
+				<include name="contentmgmt/ear/contentmgmt.ear"/>
+				<include name="mediation/ear/mediation.ear"/>
+				<include name="numbermgmt/ear/numbermgmt.ear"/>
+				<include name="pin/ear/pin.ear"/>
+				<include name="product/ear/product.ear"/>
+				<include name="provisioning/ear/provisioning.ear"/>
+				<include name="reconciliation/ear/reconciliation.ear"/>
+				<include name="system/ear/system.ear"/>
+			</fileset>
+		</copy>
+		
+		<Unbundle TargetDir="${ear-src.dir}"/>
+		
+		<copy todir="${temp.dir}" flatten="true" overwrite="true">
+			<fileset dir="${ear-src.dir}">
+				<include name="**/*-ejb.jar"/>
+				<include name="**/*-entities.jar"/>
+			</fileset>
+		</copy>
+		
+		<move todir="${temp.dir}">
+			<fileset dir="${temp.dir}">
+				<include name="*.jar"/>
+			</fileset>
+			<mapper type="glob" from="*-ejb.jar" to="*-client-ejb.jar"/>
+		</move>
+
+		<move todir="${temp.dir}">
+			<fileset dir="${temp.dir}">
+				<include name="*.jar"/>
+			</fileset>
+			<mapper type="glob" from="*-entities.jar" to="*-client-entities.jar"/>
+		</move>
+		
+		<Unbundle TargetDir="${temp.dir}"/>
+		
+		<delete includeEmptyDirs="true">
+			<fileset dir="${temp.dir}">
+				<exclude name="**/interfaces/*" />
+				<exclude name="**/data/*" />
+				<exclude name="**/factory/*" />
+				<exclude name="**/pk/*" />
+				<exclude name="**/helper/*" />
+				<exclude name="**/META-INF/MANIFEST.MF" />
+			</fileset>
+		</delete>
+		
+		<Bundle Targetdir="${temp.dir}"/>
+		
+		<unzip src="${base.dir}/clients/web/common-war.war" dest="${temp-war.dir}/common-war"/>
+
+		<delete includeEmptyDirs="true">
+			<fileset dir="${temp-war.dir}/common-war">
+				<include name="**/*-client-entities.jar"/>
+				<include name="**/*-client-ejb.jar"/>
+			</fileset>
+		</delete>
+		
+		<copy todir="${temp-war.dir}/common-war/WEB-INF/lib" overwrite="true">
+			<fileset dir="${temp.dir}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</copy>
+		
+		<war destfile="${temp-war.dir}/common-war.war" webxml="${temp-war.dir}/common-war/WEB-INF/web.xml">
+	    	     <fileset dir="${temp-war.dir}/common-war">
+	      		   <exclude name="WEB-INF/web.xml" />
+	      		   <include name="**/*"/>
+	    	    </fileset>
+	       	</war>
+	       	<copy file="${temp-war.dir}/common-war.war" todir="${base.dir}/clients/web" overwrite="true"/>
+		
+		<delete dir="${temp.dir}" />
+		<delete dir="${ear-src.dir}" />
+		<delete dir="${temp-war.dir}" />
+	</target>
+	
+	<target name="delete">
+		<safedelete failonerror="true">
+			<safefileset dir="${targetupgrade.web.dir}" includesfile="${installation.dir}/web/delete/delete-files.txt"
+		        	 excludesfile="${installation.dir}/web/delete/delete-exclude-files.txt"/>
+			<safefileset dir="${web.home}" includesfile="${installation.dir}/web/delete/delete-files.txt"
+		        	 excludesfile="${installation.dir}/web/delete/delete-exclude-files.txt"/>
+		</safedelete>
+	</target>
+	
+	<target name="update">
+		<copy todir="${targetupgrade.web.dir}" overwrite="true">
+			<fileset dir="${installation.dir}/web/update"/>
+		</copy>
+	</target>
+	
+	<target name="new">
+		<copy todir="${targetupgrade.web.dir}" overwrite="true">
+			<fileset dir="${installation.dir}/web/new" />
+		</copy>
+	</target>	
+	
+	<target name="make-upgrade">
+		<echo message="${installation.dir}/web/Installfiles.txt" />
+		<EliteInstall targetdir="${targetupgrade.web.dir}" datareader="${installation.dir}/web/Installfiles.txt"/> 
+
+		<antcall target="new"/>
+		<antcall target="update"/>
+		<antcall target="delete"/> 
+		<Bundle targetdir="${targetupgrade.web.dir}"/> 
+	</target>
+	
+	<target name="pre-upgrade">
+		<copy todir="${targetupgrade.web.dir}" overwrite="true">
+			<fileset dir="${web.home}" >
+				<include name="**/*"/>
+				<exclude name="versions/**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="backup-files">
+		<mkdir dir="${temp-jndi.dir}"/>
+		
+		<copy todir="${temp-jndi.dir}" overwrite="true">
+			<fileset dir="${crestel.home}/wars">
+				<include name="**/images/logos/*"/>
+				<include name="**/WEB-INF/classes/*.properties"/>
+				<include name="**/WEB-INF/classes/replAsync-service.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="upgrade" description="Perform upgradation">
+		<trycatch>
+			<try>
+				<mkdir dir="${targetupgrade.web.dir}"/>
+				<antcall target="backup-files"/>
+				<antcall target="pre-upgrade"/>
+				<antcall target="make-upgrade"/>
+
+				<property file="${installation.dir}/web/version.info"/>
+				<if>
+					<equals arg1="${build.type}" arg2="HOTFIX_BUILD" />
+					<then>
+				  		
+					</then>
+					<else>
+						<antcall target="make-client-jars">
+							<param name="base.dir" value="${targetupgrade.web.dir}"/>
+						</antcall>
+					</else>
+				</if>
+				
+				
+				<antcall target="post-upgrade"/>
+				<antcall target="restore-files"/>
+				<delete dir="${targetupgrade.dir}"/>				
+			</try>	
+			<catch>
+				<antcall target="clean-env" />
+				<fail message="ERROR WHILE UPGRADING. INSTALLATION MODULE WEB FAILED"/>
+			</catch>
+		 </trycatch>
+		
+	</target>
+	
+	<target name="check-preconditions" description="Checks conditions for web">
+
+		<property file="${installation.dir}/web/version.info"/>
+		<property environment="env"/>
+		
+		<switch value="${build.type}">
+		  	<case value="HOTFIX_BUILD">
+				<if>
+					<or>
+						<equals arg1="${prv.hotfix.number}" arg2="" />
+						<equals arg1="${prv.hotfix.number}" arg2="00" />
+					</or>
+					<then>
+				  		<property name="required.version" value="${component.name};${version.number}"/>
+					</then>
+					<else>
+				  		<property name="required.version" value="${component.name};${version.number}.${prv.hotfix.number}"/>
+					</else>
+				</if>
+				<property name="current.version" value="${component.name};${version.number}.${hotfix.number}"/>
+			</case>
+			<default>
+				<property name="required.version" value="${component.name};${base.version.number}"/>
+		  		<property name="current.version" value="${component.name};${version.number}"/>
+
+			</default>			
+			
+		</switch>
+		 
+		 <trycatch>
+			<try>
+				<EliteVersionCheck driver="oracle.jdbc.driver.OracleDriver" 
+						 url="${database.url}"
+						 userid="jispbilcorbilling${db.env}"
+						 password="jispbilcorbilling${db.env}"
+						 autocommit="true"
+						 classpath="${lib.dir}/jdbc/oracle9i.jar"
+						 requiredversion="${required.version}"
+						 currentversion="${current.version}"
+						 operationType="READ"
+						 hostName="${env.HOSTNAME}"/>
+			</try>
+			<catch>
+				<fail message="VERSION CHECK FAILED. INSTALLATION MODULE WEB FAILED"/>
+			</catch>
+		 </trycatch>
+
+	</target>
+
+	<target name="build-all"  description="Build everything">
+		<trycatch>
+			<try>
+				<antcall target="check-preconditions" />
+				<antcall target="upgrade"/>
+				<antcall target="version-upgrade"/>
+			</try>	
+			<catch>
+				<fail message="ERROR WHILE INSTALLING WEB"/>
+			</catch>
+		</trycatch>
+	</target>
+
+
+	<target name="execute-dbscript" >
+
+		<echo message="Executing: ${db.userid}: ${web.home}/dbscripts/${dbscript}" />
+		<sql
+		    driver="oracle.jdbc.driver.OracleDriver"
+		    url="${database.url}"
+		    userid="${db.userid}"
+		    password="${db.password}"
+		    classpath="${lib.dir}/jdbc/oracle9i.jar"
+		    onerror="continue"
+		    showheaders="false"
+		    keepformat="true"
+		    src="${web.home}/dbscripts/${dbscript}"
+		/>
+	</target>	
+
+	<target name="database-schema-upgrade" >
+
+		<property file="${installation.dir}/web/version.info"/>
+		<property file="${web.home}/dbscripts/${db.file}.properties" />
+	
+		<propertycopy name="dbscripts.order" from="${db.schema}"/>
+		
+		<echo message="Database scripts: ${dbscripts.order}" />
+		
+		<foreach list="${dbscripts.order}" param="dbscript" target="execute-dbscript">
+			<param name="db.userid" value="${db.schema}${db.env}" />
+			<param name="db.password" value="${db.schema}${db.env}" />
+		</foreach>
+	</target>
+
+	<target name="database-upgrade" >
+
+		<property file="${installation.dir}/web/version.info"/>
+		<property file="${web.home}/dbscripts/${db.file}.properties" />
+
+		<echo message="${database.schemas}" />
+		<if>
+			<and>
+				<isset property="database.schemas" />
+				<not>
+					<equals arg1="${database.schemas}" arg2="" />
+				</not>
+			</and>
+		
+			<then>	
+				<foreach list="${database.schemas}" param="db.schema" target="database-schema-upgrade">
+				</foreach>
+			</then>
+		</if>		
+	
+	</target>
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition ends      -->
+	<!-- ******************************** -->
+	<target name="all" >
+		<antcall target="build-all"/> 
+	</target>
+</project> 

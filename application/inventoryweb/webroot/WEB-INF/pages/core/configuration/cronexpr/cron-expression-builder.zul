@@ -1,0 +1,244 @@
+<zk xmlns:w="client">
+<window id="cronbuilderwin"  height="100%" width="800px" apply="com.elitecore.cpe.web.system.configuration.cronexpr.CronExpressionBuilderComposer">
+		<tabbox id="searchPolicyTabbox"  width="600px" height="100%" tabscroll="false" mold="accordion" >
+			<tabs>
+				<tab label="${labels.cron.min}" style="border-right:solid 1px #e1e1e1;" />
+				<tab label="${labels.cron.hour}" style="border-right:solid 1px #e1e1e1;"/>
+				<tab label="${labels.cron.dayofmonth}" style="border-right:solid 1px #e1e1e1;"/>
+				<tab label="${labels.cron.month}" style="border-right:solid 1px #e1e1e1;"/>
+				<tab label="${labels.cron.week}" style="border-right:solid 1px #e1e1e1;"/>
+			</tabs>
+			<tabpanels height="100%" width="100%">
+			<tabpanel>
+				<vlayout  style="padding-top: 2px;">
+					<radiogroup id="mingroup" />
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="170px"></column>
+							<column width="229px"></column>
+							<column width="150px"></column>
+							<column width="249px"></column>
+						</columns>
+						<rows>
+								<row>
+									<cell>
+										<radio id="everymin" label="${labels.cron.everymin}" value="*" radiogroup="mingroup" selected="true"></radio>
+									</cell>
+									<cell>
+										<label value="*"/>
+									</cell>
+								</row>
+								<row> 
+									<cell>
+										<radio id="everynmin" label="${labels.cron.everynmin}" value="*/1" radiogroup="mingroup"></radio>
+									</cell>
+									<cell>
+										<slider id="minsilder" curpos="1" maxpos="59" 
+										slidingtext="Every {0} minute" 
+										onScroll='sildervalue.setValue(String.valueOf(self.getCurpos()));if(self.getCurpos()==0){sildervalue.setValue(String.valueOf(1));self.setCurpos(1);}if(self.getCurpos()>0){everynmin.setValue(new String("*/") +String.valueOf(self.getCurpos()));}else{everynmin.setValue("*/1");}'>
+										</slider>
+									</cell>
+									<label value="" id="sildervalue"/>
+								</row>
+								<row> 
+									<cell>
+										<radio id="everyselmin" label="${labels.cron.everyselectedmin}" radiogroup="mingroup"></radio>
+									</cell>
+									<cell>
+										<listbox id="everysellb" multiple="true" checkmark="true" height="300px">
+											<listhead>
+												<listheader label="Select Minutes"></listheader>
+											</listhead>
+										</listbox>
+									</cell>
+								</row>
+						</rows>
+					</grid>				
+					
+				</vlayout>
+			</tabpanel>
+			<tabpanel>
+			
+				<vlayout  style="padding-left: 5px; padding-top: 2px;">
+					<radiogroup id="hourgroup" />
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="150px"></column>
+							<column width="250px"></column>
+							<column width="150px"></column>
+							<column width="250px"></column>
+						</columns>
+						<rows>
+								<row>
+									<cell>
+										<radio id="everyhour" label="${labels.cron.hour}" value="*" radiogroup="hourgroup" selected="true"></radio>
+									</cell>
+									<cell>
+										<label value="*"/>
+									</cell>
+								</row>
+								<row> 
+									<cell>
+										<radio id="everynhour" label="${labels.cron.nhour}" value="*/1" radiogroup="hourgroup"></radio>
+									</cell>
+									<cell>
+										<slider id="hoursilder" slidingtext="Every {0} hour" curpos="1" maxpos="23" onScroll='hourslidervalue.setValue(String.valueOf(self.getCurpos()));if(self.getCurpos()==0){hourslidervalue.setValue(String.valueOf(1));self.setCurpos(1);}if(self.getCurpos()>0){everynhour.setValue(new String("*/") +String.valueOf(self.getCurpos()));}else{everynhour.setValue("*/1");}'/>
+									</cell>
+									<label value="" id="hourslidervalue"/>
+								</row>
+								<row> 
+									<cell>
+										<radio id="everyselhour" label="${labels.cron.selhour}" radiogroup="hourgroup"></radio>
+									</cell>
+									<cell>
+										<listbox id="everyselhrlb" multiple="true" checkmark="true" height="300px">
+											<listhead>
+												<listheader label="Select Hours"></listheader>
+											</listhead>
+										</listbox>
+									</cell>
+								</row>
+						</rows>
+					</grid>				
+				</vlayout>
+			</tabpanel>
+			<tabpanel>
+				<vlayout  style="padding-left: 5px; padding-top: 2px;">
+					<radiogroup id="daygroup" />
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="150px"></column>
+							<column width="250px"></column>
+							<column width="150px"></column>
+							<column width="250px"></column>
+						</columns>
+						<rows>
+								<row>
+									<cell>
+										<radio id="everyday" label="${labels.cron.day}" radiogroup="daygroup" value="*" selected="true"></radio>
+									</cell>
+									<cell>
+										<label value="*"/>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<radio id="everylastday" label="${labels.cron.lastday}" value="L" radiogroup="daygroup"></radio>
+									</cell>
+								</row>
+								<row> 
+									<cell>
+										<radio id="everyselday" label="${labels.cron.selday}" radiogroup="daygroup"></radio>
+									</cell>
+									<cell>
+										<listbox id="everyseldaylb" multiple="true" checkmark="true" height="300px">
+											<listhead>
+												<listheader label="Select Days"></listheader>
+											</listhead>
+										</listbox>
+									</cell>
+								</row>
+						</rows>
+					</grid>				
+				</vlayout>
+			
+			
+			</tabpanel>
+			<tabpanel>
+				<vlayout  style="padding-left: 5px; padding-top: 2px;">
+					<radiogroup id="monthgroup" />
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="150px"></column>
+							<column width="250px"></column>
+							<column width="150px"></column>
+							<column width="250px"></column>
+						</columns>
+						<rows>
+								<row>
+									<cell>
+										<radio id="everymonth" label="${labels.cron.mon}" value="*" radiogroup="monthgroup" selected="true"></radio>
+									</cell>
+									<cell>
+										<label value="*"/>
+									</cell>
+								</row>
+								<row> 
+									<cell>
+										<radio id="everyselmonth" label="${labels.cron.selmon}" radiogroup="monthgroup"></radio>
+									</cell>
+									<cell>
+										<listbox id="everyselmonthlb" multiple="true" checkmark="true" height="300px">
+											<listhead>
+												<listheader label="Select Month"></listheader>
+											</listhead>
+											<listitem label="January" value="1"></listitem>
+											<listitem label="February" value="2"></listitem>
+											<listitem label="March" value="3"></listitem>
+											<listitem label="April" value="4"></listitem>
+											<listitem label="May" value="5"></listitem>
+											<listitem label="June" value="6"></listitem>
+											<listitem label="July" value="7"></listitem>
+											<listitem label="August" value="8"></listitem>
+											<listitem label="September" value="9"></listitem>
+											<listitem label="October" value="10"></listitem>
+											<listitem label="November" value="11"></listitem>
+											<listitem label="December" value="12"></listitem>
+										</listbox>
+									</cell>
+								</row>
+						</rows>
+					</grid>				
+				</vlayout>
+			
+			
+			</tabpanel>
+			<tabpanel>
+			
+				<vlayout  style="padding-left: 5px; padding-top: 2px;" >
+					<radiogroup id="weekdaygroup" />
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+						<columns>
+							<column width="150px"></column>
+							<column width="250px"></column>
+							<column width="150px"></column>
+							<column width="250px"></column>
+						</columns>
+						<rows>
+								<row>
+									<cell>
+										<radio id="everyweek" label="${labels.cron.week}" value="*" radiogroup="weekdaygroup" selected="true"></radio>
+									</cell>
+									<cell>
+										<label value="*"/>
+									</cell>
+								</row>
+								<row> 
+									<cell>
+										<radio id="everyselweek" label="${labels.cron.selweek}" radiogroup="weekdaygroup"></radio>
+									</cell>
+									<cell>
+									<listbox id="everyselweeklb" multiple="true" checkmark="true" height="250px">
+										<listhead>
+											<listheader label="Select Week Day"></listheader>
+										</listhead>
+										<listitem label="Sunday" value="0"></listitem>
+										<listitem label="Monday" value="1"></listitem>
+										<listitem label="Tuesday" value="2"></listitem>
+										<listitem label="Wednesday" value="3"></listitem>
+										<listitem label="Thrusday" value="4"></listitem>
+										<listitem label="Friday" value="5"></listitem>
+										<listitem label="Saturday" value="6"></listitem>
+									</listbox>
+									</cell>
+								</row>
+						</rows>
+					</grid>	
+								
+				</vlayout>
+			
+			</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

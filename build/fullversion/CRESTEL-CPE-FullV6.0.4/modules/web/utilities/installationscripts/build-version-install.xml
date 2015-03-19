@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+
+<project name="Web" default="all" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+
+	<property file="build.properties"/>
+	<property name="lib.dir"    value="${crestel.home}/lib"/>
+
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  	<classpath>
+			<pathelement location="${lib.dir}/ant/ant-contrib-0.6.jar"/>
+	  	</classpath>
+	</taskdef>
+
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+	
+	<target name="build-all" description="Build everything">
+
+		<trycatch>
+			<try>	
+				<available file="${installation.dir}/installationscripts/pre-install-web-version.xml" 
+						property="file.present"/>	
+				<if>
+					<isset property="file.present" />
+					<then>
+						<ant antfile="${installation.dir}/installationscripts/pre-install-web-version.xml" inheritAll="false" >
+							<property name="crestel.home" value="${crestel.home}" />
+							<property name="installation.dir" value="${installation.dir}" />
+						</ant>
+					</then>
+				</if>
+			</try>
+			<catch>
+				<fail message="PRE INSTALLATION OF WEB FAILED"/>
+			</catch>
+		</trycatch>
+
+		<trycatch>
+			<try>	
+				<ant antfile="${installation.dir}/installationscripts/install-web-version.xml" inheritAll="false" >
+					<property name="crestel.home" value="${crestel.home}" />
+					<property name="installation.dir" value="${installation.dir}" />
+				</ant>
+			</try>		
+			<catch>
+				<fail message="INSTALLATION OF WEB FAILED"/>
+			</catch>
+		</trycatch>
+
+		<trycatch>
+			<try>	
+				<available file="${installation.dir}/installationscripts/post-install-web-version.xml" 
+						property="post.file.present"/>	
+				<if>
+					<isset property="post.file.present" />
+					<then>
+						<ant antfile="${installation.dir}/installationscripts/post-install-web-version.xml" inheritAll="false" >
+							<property name="crestel.home" value="${crestel.home}" />
+							<property name="installation.dir" value="${installation.dir}" />
+						</ant>
+					</then>
+				</if>
+			</try>						
+			<catch>
+				<fail message="POST INSTALLATION OF WEB FAILED"/>
+			</catch>
+		</trycatch>
+			
+	</target>
+
+	<target name="database-upgrade" description="">
+
+		<trycatch>
+			<try>	
+				<ant antfile="${installation.dir}/installationscripts/install-web-version.xml" 
+					target="database-upgrade"	inheritAll="false" >
+					<property name="crestel.home" value="${crestel.home}" />
+					<property name="installation.dir" value="${installation.dir}" />
+				</ant>
+			</try>			
+			<catch>
+				<fail message="WEB DATABASE UPGRADE FAILED"/>
+			</catch>
+		</trycatch>
+			
+	</target>
+	
+	<target name="unzip-tar.gz"  description="Unzips upgrade.tar.gz file" >
+		<echo message="${file.path}/${file.name}" />
+		
+		<trycatch>
+			<try>	
+				<mkdir dir="${installation.dir}" />
+				<gunzip src="${file.path}/${file.name}.tar.gz" dest="${basedir}"/>
+				<untar src="${basedir}/${file.name}.tar" dest="${installation.dir}"/>
+				<touch>
+				    <fileset dir="${installation.dir}"/>
+				</touch>
+				<delete file="${basedir}/${file.name}.tar"/>
+			</try>
+			<catch>
+				<fail message="ERROR WHILE EXTRACTING VERSION FILE. INSTALLATION MODULE WEB FAILED"/>
+			</catch>
+		</trycatch>
+	</target>
+
+	<target name="file-check" >
+		<available file="${file.path}/${file.name}.tar.gz" property="tar.gz.present"/>	
+		<if>
+			<not>
+				<isset property="tar.gz.present" />
+			</not>	
+			<then>
+				<fail message="${file.path}/${file.name}.tar.gz IS NOT PRESENT."/>				
+			</then>
+		</if>
+		
+	</target>
+	
+	<target name="arg-check" unless="file.name">
+		<echo message="INSTALLATION FILENAME NOT GIVEN"/>
+		<fail message="USAGE: install-web-version.sh CRESTEL-${COMPONENTNAME}-YYYYV.X.X.X.X"/>	
+	</target>
+
+	<!-- ******************************** -->
+	<!-- Unit target definition ends      -->
+	<!-- ******************************** -->
+
+	<target name="all" >
+		<trycatch>
+			<try>	
+				<antcall target="arg-check" />
+				<antcall target="file-check"/>
+				<antcall target="unzip-tar.gz"/>
+				<antcall target="build-all"/>
+				<delete dir="${installation.dir}"/>
+			</try>
+			<catch>
+				<delete dir="${installation.dir}"/>
+				<fail message=""/>
+			</catch>
+		</trycatch>
+	</target>
+
+	<target name="install-db" >
+
+		<trycatch>
+			<try>	
+				<antcall target="arg-check" />
+				<antcall target="file-check"/>
+				<antcall target="unzip-tar.gz"/>
+				<antcall target="database-upgrade"/>
+				<delete dir="${installation.dir}"/>
+			</try>
+			<catch>
+				<delete dir="${installation.dir}"/>
+				<fail message=""/>
+			</catch>
+		</trycatch>
+	
+	</target>
+	
+</project> 
+

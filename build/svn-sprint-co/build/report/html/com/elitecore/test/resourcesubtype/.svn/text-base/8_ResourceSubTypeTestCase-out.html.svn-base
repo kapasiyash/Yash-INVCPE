@@ -1,0 +1,17 @@
+<html xmlns:string="xalan://java.lang.String" xmlns:lxslt="http://xml.apache.org/xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Standard Output from ResourceSubTypeTestCase</title>
+</head>
+<body>
+<pre>Load from properties file.
+************* inside lookup - start *****************
+************* inside lookup - start *****************
+SearchResourceTypeVO [resourceTypeId=281, name=SUB, alias=SUB, description=SUB]
+SearchResourceTypeVO [resourceTypeId=241, name=demonew, alias=DEMONEW, description=demonew]
+SearchResourceTypeVO [resourceTypeId=241, name=DemoNewA, alias=DEMONEWA, description=DemoNewA]
+SearchResourceTypeVO [resourceTypeId=224, name=DemoTest, alias=DEMOTEST, description=DemoTest]
+Junit Start
+</pre>
+</body>
+</html>

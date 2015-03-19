@@ -1,0 +1,33 @@
+************* inside lookup - start *****************
+************* inside lookup - start *****************
+Reveneue GL Map Created Successfully
+Payment Revenue1
+ADSL 1M 2
+ADSL 1M 3
+Payment Revenue2
+Payment Revenue3
+1 ADSL
+2 ADSL
+3 ADSL
+4 ADSL
+RevenueGL Test
+PHONEBOOK 2012 1
+PHONEBOOK 2012 2
+PHONEBOOK 2012 3
+PHONEBOOK 2012 4
+REVGL00003	Payment Revenue1
+REVGL00007	ADSL 1M 2
+REVGL00008	ADSL 1M 3
+REVGL00004	Payment Revenue2
+REVGL00005	Payment Revenue3
+REVGL00009	1 ADSL
+REVGL00010	2 ADSL
+REVGL00011	3 ADSL
+REVGL00012	4 ADSL
+REVGL00002	RevenueGL Test
+REVGL00013	PHONEBOOK 2012 1
+REVGL00014	PHONEBOOK 2012 2
+REVGL00015	PHONEBOOK 2012 3
+REVGL00016	PHONEBOOK 2012 4
+Junit Start
+

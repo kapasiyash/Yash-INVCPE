@@ -1,0 +1,63 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%" id="changeInventorySubStatus" 
+		 apply="com.elitecore.cpe.web.composer.inventory.search.ChangeInventorySubStatusComposer">
+		 
+<vlayout width="800px">
+			<separator bar="false" />
+			<div sclass="sectionTitle" width="800px">
+				<label value="${labels.ciss.title}" style="font-weight: bold;" />
+			</div>
+			
+			<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+							<columns>
+								<column width="160px"></column>
+								<column width="240px"></column>
+								<column width="160px"></column>
+								<column width="240px"></column>
+							</columns>
+							<rows>
+								<!-- <row>
+									<cell>
+											<label value="${labels.cis.status}"></label>
+											
+									</cell>
+									<cell colspan="3" >
+										<label style="text-align: left;" id="lbStatus"/>
+									</cell>
+								</row> -->
+								<row>
+									<cell>
+										<label value="${labels.ciss.status}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > 
+									<combobox id="comboStatus" width="150px" readonly="true" constraint="no empty : Please Select Sub Status"/>
+									</cell>
+								</row>
+								
+								<row>
+									<cell>
+										<label value="${labels.global.remarks}"></label>
+										<label value="*" style="color:red;" />
+									</cell>
+									<cell colspan="3" > <textbox id="txtRemarks" multiline="true"  rows="3" cols="40" width="140" maxlength="200" constraint="no empty : Please enter Remarks." /></cell>
+								</row>
+								
+							
+							</rows>
+						</grid>
+						
+						
+						
+			<separator bar="false" />
+			<separator bar="false" />
+			<hbox>
+				<button id="btnUpdate" mold="trendy" label="${labels.global.updateBtn}" width="140px"/>
+				<button id="cancelBtn" mold="trendy" label="Cancel" onClick="changeInventorySubStatus.detach();" width="140px"/>
+			</hbox>
+			<separator bar="false" />
+			<separator bar="false" />
+</vlayout>
+</hlayout>
+</zk>

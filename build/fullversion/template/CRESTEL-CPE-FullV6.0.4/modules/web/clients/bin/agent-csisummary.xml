@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<project name="CSISummary" default="run-agent" basedir=".">
+    <description>
+        CSI SummaryAgent 
+    </description>
+  
+<property file="${basedir}/agent.properties"/>
+
+<!-- Path that is common to both the local machine and system-->
+<path id="agent.class.path">
+    <fileset dir="${operationsmanager.home}/WEB-INF/lib">
+		<include name="*.jar" />
+    </fileset>
+    
+</path>
+
+<target name="run-agent"  depends="" description="Run CSI Summary Agent" >
+	<java classname="com.elitecore.billing.agent.RunCSISummaryAgent" 
+		classpathref="agent.class.path" 
+		classpath="."
+		failonerror="true" >
+	</java>
+</target>
+
+
+</project>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/images/gadget/icons"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15558"
+   kind="dir"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="16"
+   kind="dir"/>
+<entry
+   name="ajax-loader.gif"
+   checksum="57ca1a2085d82f0574e3ef740b9a5ead"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:49:02.000000Z"
+   committed-rev="15558"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="favicon.ico"
+   checksum="93cd9d64fa3cf5eceffd5257b696ff18"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:49:02.000000Z"
+   committed-rev="15558"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="gray_bg1.jpg"
+   checksum="09043c8dfb6b6e24116a43d7e44b6a1b"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:49:02.000000Z"
+   committed-rev="15558"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="line.png"
+   checksum="63389e183e0dbcd49c002cb55ce82fe6"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:49:02.000000Z"
+   committed-rev="15558"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="logo-crestel.png"
+   checksum="47c590839905a8e5b10bd56f86792341"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:49:02.000000Z"
+   committed-rev="15558"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+<entry
+   name="logo-icon.png"
+   checksum="670f40bac7e467f30613e177ad6e36ab"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T07:49:02.000000Z"
+   committed-rev="15558"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"
+   prop-time="2015-03-16T09:20:09.000000Z"/>
+</wc-entries>

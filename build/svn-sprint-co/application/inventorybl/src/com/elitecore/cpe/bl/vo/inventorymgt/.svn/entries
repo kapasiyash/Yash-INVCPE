@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/vo/inventorymgt"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16287"
+   kind="dir"
+   committed-date="2015-03-04T07:27:26.635701Z"/>
+<entry
+   name="BatchSummaryVO.java"
+   checksum="456e65da44690728292bea617e36ff17"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="BulkChangeInventoryStatusVO.java"
+   checksum="e8d760ec8b3ed1a63bc93ea0f4de87b0"
+   last-author="rinkal.sadariya"
+   committed-rev="15858"
+   text-time="2015-02-12T12:59:43.000000Z"
+   kind="file"
+   committed-date="2015-02-12T12:59:43.955740Z"/>
+<entry
+   name="ChangeInventoryStatusVO.java"
+   checksum="43b9480fa84267bfcba9c65213fd312a"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ChangeInventorySubStatusVO.java"
+   checksum="57da748568286d87894faf3b0ade3e1a"
+   last-author="rinkal.sadariya"
+   committed-rev="16101"
+   text-time="2015-02-25T08:18:17.000000Z"
+   kind="file"
+   committed-date="2015-02-25T08:18:17.954671Z"/>
+<entry
+   name="InventoryBatchViewVO.java"
+   checksum="7813132beea58477e0bc6c067f9f5a7e"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventoryDetailVO.java"
+   checksum="d8a1ab505f9fbc31958b206f16bc99ec"
+   last-author="yash.kapasi"
+   committed-rev="16287"
+   text-time="2015-03-04T07:27:26.000000Z"
+   kind="file"
+   committed-date="2015-03-04T07:27:26.635701Z"/>
+<entry
+   name="InventoryStatusLogVO.java"
+   checksum="348ec522be4f3a6560f39c311f71d986"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventoryUploadVO.java"
+   checksum="55aad33f887254a5696721b9335b8ba5"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventoryVO.java"
+   checksum="2e38173f4c72aad6e731898d5bbb25c3"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventoryWrapperVO.java"
+   checksum="f14e2eecd6926cbc4e98e30f8782073b"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="PlaceOrderNotificationEmailVO.java"
+   checksum="c61b8a1f66740822ab72390f8136c7d4"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="PlaceOrderVO.java"
+   checksum="984265b78ae3401b7d25b009b01afdf6"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ResourceAttributeVO.java"
+   checksum="14c23450e4f9a37188aac579a28f0fe6"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchInventoryVO.java"
+   checksum="fe06dbe2b9e7669ee92936535680a8a1"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchTransferInventory.java"
+   checksum="199d5eab74bbb93e1808a3f4b7bee4ac"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="SearchWarehouseInventoryStatusVO.java"
+   checksum="bc1d73625736a34fead961072b979d27"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ThresholdNotificationEmailVO.java"
+   checksum="c1c04d70e629b26759f88acd6ffa19e5"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ThresholdNotificationVO.java"
+   checksum="fe6dff01c2ac93ce44740a3a9e8e43bb"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="TransferInventorySummaryViewVO.java"
+   checksum="028bbb9099e10ddf6b18612b04c39017"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="WarehouseInventoryStatusVO.java"
+   checksum="27a054aa5555e30cd9831ea1eab8e34f"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="migration"
+   kind="dir"/>
+</wc-entries>

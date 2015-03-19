@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/util"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16480"
+   kind="dir"
+   committed-date="2015-03-16T07:13:55.429336Z"/>
+<entry
+   name="CSVDataExporter.java"
+   checksum="0e72498d66c9882981ce42596bd1e13e"
+   last-author="yash.kapasi"
+   committed-rev="16480"
+   text-time="2015-03-16T07:13:55.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:55.429336Z"/>
+<entry
+   name="DateAndTimeFormateUtility.java"
+   checksum="eadfaa861f98c552432dd019a9dc1818"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ElapseCalculator.java"
+   checksum="553b4751e8f91307da312a8e74bf207b"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="GeneralUtility.java"
+   checksum="02ab9368384c7c4f0b9a9d280f9e9229"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="JAXBUtil.java"
+   checksum="fc1bd38982bf179757441f0c4241cfd6"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="TransactionNoteBuilder.java"
+   checksum="ee0169e08cc53de272d5a6cd1a8d9729"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ValidityUtils.java"
+   checksum="8da21e35c566428c568bd79630fe0f93"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="encryption"
+   kind="dir"/>
+<entry
+   name="expr"
+   kind="dir"/>
+<entry
+   name="ftp"
+   kind="dir"/>
+<entry
+   name="logger"
+   kind="dir"/>
+<entry
+   name="notification"
+   kind="dir"/>
+</wc-entries>

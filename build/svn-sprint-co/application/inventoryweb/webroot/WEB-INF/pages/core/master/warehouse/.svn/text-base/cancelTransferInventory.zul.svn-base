@@ -1,0 +1,63 @@
+<zk>
+<window border="normal" width="700px" height="400px" title="${labels.warehouse.cancelTransferInventory }" id="cancelTransferInvnetoryWin" mode="modal"
+		  position="center,center" closable="true" style="overflow-x:hidden;overflow-y:auto;" 
+		  apply="com.elitecore.cpe.web.composer.master.warehouse.CancelTransferInventoryComposer">
+	<tabbox width="100%" height="100%" tabscroll="false" id="createAttributeTabbox">
+	<tabs>
+		<tab id="createLPTab" label="${labels.warehouse.cancelTransferInventory}" />
+	</tabs>
+
+<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 20px;overflow:auto;" sclass="main-cont"> 
+				<hlayout height="100%" width="100%" style="overflow: visible;">
+					<vlayout style="padding-left: 5px; padding-top: 2px;" width="800px" height="100%">
+						<hlayout width="100%">
+							<vlayout width="800px">
+								
+								<separator bar="false"/>
+										<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+										<columns>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											<column width="160px"></column>
+											<column width="240px"></column>
+										</columns>
+										<rows>
+											<row>
+												<cell>
+													<label value="${labels.warehouse.orderNo}"  style="text-align: left;" />
+													
+												</cell>
+												<cell colspan="3" > <label style="text-align: left;" id="lblOrderNo"/></cell>
+											</row>
+											
+											<row>
+												<cell>
+													<label value="${labels.vagenthistory.remarks}" style="text-align: left;" />
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <textbox id="txtRemark" width="140" maxlength="100"  rows="3"  constraint="no empty : Please enter Remark."/></cell>
+											</row>
+											
+										</rows>
+										</grid>
+										
+										<hbox>
+											<button id="btnSave" mold="trendy" label="${labels.global.submitBtn}" width="140px"/>	
+											
+										</hbox>
+										<hbox>
+											<label value="Note: Please Enter Remarks to cancel the Order" style="color:red;" id="lblNote" />
+											
+										</hbox>
+							</vlayout>
+						</hlayout>
+						<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+				</hlayout>
+			</tabpanel>
+		</tabpanels>
+		</tabbox> 
+
+</window>
+</zk>

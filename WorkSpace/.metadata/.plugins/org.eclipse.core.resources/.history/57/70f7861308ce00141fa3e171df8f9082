@@ -1,0 +1,16 @@
+package com.elitecore.cpe.bl.vo.system.threshold;
+
+import java.io.Serializable;
+
+public class ThresholdVO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Long warehousId;
+	private Long resourceTypeId;
+	private Long resourceSubTypeId;
+
+}

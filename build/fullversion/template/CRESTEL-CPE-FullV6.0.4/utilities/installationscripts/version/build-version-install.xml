@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+
+<project name="Billing" default="all" basedir=".">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+
+	<property file="build.properties"/>
+	<property name="crestel.home"    value="${billing.home}"/>
+	<property name="lib.dir"    value="${crestel.home}/lib"/>
+
+	<!-- ******************************** -->
+	<!-- Property declaration section ends --> 
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  	<classpath>
+			<pathelement location="${lib.dir}/ant/ant-contrib-0.6.jar"/>
+	  	</classpath>
+	</taskdef>
+
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+	
+	<target name="build-all" description="Build everything">
+
+		<echo message="Starting pre-installation of Billing component" />
+		<trycatch property="pre-install.error">
+			<try>	
+				<available file="${installation.dir}/installationscripts/pre-install-version.xml" 
+						property="file.present"/>	
+				<if>
+					<isset property="file.present" />
+					<then>
+						<ant antfile="${installation.dir}/installationscripts/pre-install-version.xml" inheritAll="false" >
+							<property name="crestel.home" value="${crestel.home}" />
+							<property name="installation.dir" value="${installation.dir}" />
+						</ant>
+					</then>
+				</if>
+			</try>
+			<catch>
+				<echo message="[ERROR] Root cause: ${pre-install.error}" />
+				<echo message="[ERROR] Pre installation of Billing component failed" />
+				<fail message="Pre installation of Billing component failed"/>
+			</catch>
+		</trycatch>
+		
+		
+		<echo message="Starting version-installation of Billing component" />
+		<trycatch property="install-version.error">
+			<try>	
+				<ant antfile="${installation.dir}/installationscripts/install-version.xml" inheritAll="false" >
+					<property name="crestel.home" value="${crestel.home}" />
+					<property name="installation.dir" value="${installation.dir}" />
+				</ant>
+			</try>		
+			<catch>
+				<echo message="[ERROR] Root cause: ${install-version.error}" />
+				<echo message="[ERROR] Version installation of Billing component failed" />
+				<fail message="Version installation of Billing component failed"/>
+			</catch>
+		</trycatch>
+
+		<echo message="Starting post-installation of Billing component" />
+		<trycatch property="post-install.error">
+			<try>	
+				<available file="${installation.dir}/installationscripts/post-install-version.xml" 
+						property="file.present"/>	
+				<if>
+					<isset property="file.present" />
+					<then>
+						<ant antfile="${installation.dir}/installationscripts/post-install-version.xml" inheritAll="false" >
+							<property name="crestel.home" value="${crestel.home}" />
+							<property name="installation.dir" value="${installation.dir}" />
+						</ant>
+					</then>
+				</if>
+			</try>						
+			<catch>
+				<echo message="[ERROR] Root cause: ${post-install.error}" />
+				<echo message="[ERROR] Post installation of Billing component failed" />
+				<fail message="Post installation of Billing component failed"/>
+			</catch>
+		</trycatch>
+			
+	</target>
+
+	<target name="database-upgrade" description="">
+		<trycatch property="database-upgrade.error">
+			<try>	
+				<ant antfile="${installation.dir}/installationscripts/install-version.xml" 
+					target="database-upgrade"	inheritAll="false" >
+					<property name="crestel.home" value="${crestel.home}" />
+					<property name="installation.dir" value="${installation.dir}" />
+				</ant>
+			</try>			
+			<catch>
+				<echo message="[ERROR] Root cause: ${database-upgrade.error}"/>
+				<echo message="[ERROR] Failed to start DB installation" />				
+				<fail message="Failed to start DB installation"/>
+			</catch>
+		</trycatch>
+			
+	</target>
+	
+	<target name="unzip-tar.gz"  description="Unzips upgrade.tar.gz file" >
+		<echo message="Extracting ${file.path}/${file.name}.tar.gz" />
+		
+		<trycatch property="unzip-tar.gz.error">
+			<try>	
+				<mkdir dir="${installation.dir}" />
+				<gunzip src="${file.path}/${file.name}.tar.gz" dest="${basedir}"/>
+				<untar src="${basedir}/${file.name}.tar" dest="${installation.dir}"/>
+				<touch>
+				    <fileset dir="${installation.dir}"/>
+				</touch>
+				<delete file="${basedir}/${file.name}.tar"/>
+			</try>
+			<catch>
+				<echo message="[ERROR] Root cause: ${unzip-tar.gz.error}" />
+				<echo message="[ERROR] Error while extracting ${file.path}/${file.name}.tar.gz" />
+				<fail message="Error while extracting ${file.path}/${file.name}.tar.gz"/>
+			</catch>
+		</trycatch>
+	</target>
+
+	<target name="file-check" >
+		<echo message="Checking if file ${file.path}/${file.name}.tar.gz is available" />
+		<available file="${file.path}/${file.name}.tar.gz" property="tar.gz.present"/>	
+		<if>
+			<not>
+				<isset property="tar.gz.present" />
+			</not>	
+			<then>
+				
+				<echo message="[ERROR] File ${file.path}/${file.name}.tar.gz is not available. Check for valid argument to install-version.sh" />
+				<fail message="File ${file.path}/${file.name}.tar.gz is not available. Check for valid argument to install-version.sh"/>
+			</then>
+		</if>
+		
+	</target>
+	
+	<target name="arg-check" unless="file.name">
+		<echo message="[ERROR] Invalid argument given. USAGE: install-version.sh CRESTEL-${COMPONENTNAME}-YYYYV.X.X.X.X"/>
+		<fail message="Invalid argument given. USAGE: install-version.sh CRESTEL-${COMPONENTNAME}-YYYYV.X.X.X.X"/>	
+	</target>
+
+	<!-- ******************************** -->
+	<!-- Unit target definition ends      -->
+	<!-- ******************************** -->
+
+	<target name="all" >
+		<echo message="Starting installation of Billing component"  />
+		<trycatch property="all.error">
+			<try>	
+				<antcall target="arg-check" />
+				<antcall target="file-check"/>
+				<antcall target="unzip-tar.gz"/>
+				<antcall target="build-all"/>
+				<delete dir="${installation.dir}"/>
+			</try>
+			<catch>
+				<delete dir="${installation.dir}"/>
+				<echo message="[ERROR] Root cause: ${all.error}" />
+				<echo message="[ERROR] Installation of Billing component failed"  />
+				<fail message="Installation of Billing component failed"/>
+			</catch>
+		</trycatch>
+	</target>
+
+	<target name="install-db" >
+		<echo message="Starting DB installation of Billing" />
+		<trycatch property="install-db.error">
+			<try>	
+				<antcall target="arg-check" />
+				<antcall target="file-check"/>
+				<antcall target="unzip-tar.gz"/>
+				<antcall target="database-upgrade"/>
+				<delete dir="${installation.dir}"/>
+			</try>
+			<catch>
+				<delete dir="${installation.dir}"/>
+				<echo message="[ERROR] Root cause: ${install-db.error}" />
+				<echo message="[ERROR] DB installation of Billing component failed"  />
+				<fail message="DB installation of Billing component failed"/>
+			</catch>
+		</trycatch>
+	
+	</target>
+	
+</project> 
+

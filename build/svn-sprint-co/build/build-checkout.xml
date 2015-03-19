@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<project name="cpe-build" basedir="." default="checkout" > 
+	<property name="lib" value="${basedir}/lib" />
+	<path id="path.svnant">
+		<fileset dir="lib">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+
+	<property file="${basedir}/build.properties"/>	
+	
+	<!-- <svnSetting id="svn.settings" username="${svn.username}" password="${svn.password}" 
+javahl="false" svnkit="true" failonerror="true"/> -->
+
+	
+	<path id="classpath">
+		<fileset dir="${lib}" includes="**/**/*.jar"/>		
+	</path>
+
+	<taskdef resource="org/tigris/subversion/svnant/svnantlib.xml" classpath="svnant.jar">
+		<classpath refid="classpath"/>  
+	</taskdef>
+	
+
+	<target name="checkout">
+		<echo message="checking out crestel cpe source from ${svn.repo.url}${sprint.number}/ " />
+		<svn javahl="true" username="${svn.username}" password="${svn.password}">
+			<checkout url="${svn.repo.url}${sprint.number}/" destPath="${svn.checkout.dir}"/>
+		</svn>
+	</target>
+
+	<target name="update">
+		<echo message="updating to head revision crestel cpe source from ${svn.repo.url} " />
+		<svn javahl="true" username="${svn.username}" password="${svn.password}">
+			<update dir="${svn.checkout.dir}" revision="HEAD" recurse="true" />
+		</svn>
+	</target>
+
+	<target name="commit-fullversions">
+		<echo message="Commiting fullversion ${fullversion} ${svn.username} ${svn.password}" />	
+		<svn username="${svn.username}" password="${svn.password}" failonerror="true" >
+			<commit  message="Committing fullversions ">
+				<fileset dir="${fullversion}">
+					<include name="**/*.tar.gz"/>
+				</fileset>
+			</commit>
+		</svn>
+	</target>
+	
+	<target name="svn.export" >
+		<echo message="Exporting from ${svn.url} to ${svn.exportPath}" />	
+		<svn username="${svn.username}" password="${svn.password}" failonerror="true" >
+		  <export srcUrl="${svn.url}"   destPath="${svn.exportPath}" revision="HEAD" />
+		</svn>
+	</target>
+	
+	
+	<target name="svn.import">
+		<echo message="Importing  from ${svn.export.path}  to ${svn.import.path} " />	
+		<svn username="${svn.username}" password="${svn.password}" failonerror="true" >
+		  <import path="${svn.export.path}" url="${svn.import.path}" message="${svn.import.message}" />
+		</svn>
+	</target>
+	
+	<target name="update-release" description="Committing All Binaries">
+		<svn username="${svn.username}" password="${svn.password}">
+			<add recurse="${recursive.flag}"  >
+				
+				<fileset dir="${release}/binaries">
+					<include name="**/*"/>
+					<include name="**/*.war"/>
+					<include name="**/*.ear"/>
+					<include name="**/*.sar"/>
+				</fileset>
+				<fileset dir="${release}/bin">
+					<include name="**/*"/>
+					<include name="**/*.war"/>
+					<include name="**/*.ear"/>
+					<include name="**/*.sar"/>
+				</fileset>
+
+				<fileset dir="${fullversion.release}"> 
+					<include name="*.tar.gz"/>
+				</fileset>
+				<fileset dir="${rmiclient}"> 
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${mr.dir}">
+					<include name="*.tar.gz"/>
+				</fileset>
+			</add>
+		</svn>
+		<svn username="${svn.username}" password="${svn.password}">
+			<commit  message="Committing binaries">
+				<fileset dir="${release}/binaries">
+					<include name="**/*"/>
+					<include name="**/*.war"/>
+					<include name="**/*.ear"/>
+					<include name="**/*.sar"/>
+				</fileset>
+				<fileset dir="${release}/bin">
+					<include name="**/*"/>
+					<include name="**/*.war"/>
+					<include name="**/*.ear"/>
+					<include name="**/*.sar"/>
+				</fileset>
+				<fileset dir="${fullversion.release}">
+					<include name="*.tar.gz"/>
+				</fileset>
+				<fileset dir="${rmiclient}">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${mr.dir}">
+					<include name="*.tar.gz"/>
+				</fileset>
+			</commit>
+		</svn>
+		<!--svn username="${svn.username}" password="${svn.password}">
+			<revert  dir="${release}/MR" recurse="true" />
+		</svn-->
+	</target>
+
+<target name="update-mr" description="Committing All DB MR">
+		<svn username="${svn.username}" password="${svn.password}">
+			<add recurse="${recursive.flag}"  >
+				
+				<fileset dir="${MR-DIR}">
+					<include name="*.tar.gz"/>
+				</fileset>
+			</add>
+		</svn>
+		<svn username="${svn.username}" password="${svn.password}">
+			<commit  message="Committing MR.">
+				<fileset dir="${MR-DIR}">
+					<include name="*.tar.gz"/>
+				</fileset>
+			</commit>
+		</svn>
+		<!--svn username="${svn.username}" password="${svn.password}">
+			<revert  dir="${release}/MR" recurse="true" />
+		</svn-->
+	</target>
+	
+</project>

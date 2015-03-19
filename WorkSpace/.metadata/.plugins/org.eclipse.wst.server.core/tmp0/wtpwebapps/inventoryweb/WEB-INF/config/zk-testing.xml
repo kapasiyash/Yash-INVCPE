@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	Created by ZK Studio
+-->
+
+<zk>
+	<device-config>
+		<device-type>ajax</device-type>
+		<timeout-uri>/timeout.zul</timeout-uri><!-- An empty URL can cause the browser to reload the same URL -->
+	</device-config>
+		<library-property>
+		<name>org.zkoss.zul.progressbox.position</name>
+		<value>center</value>
+	</library-property>
+	<client-config>
+		<processing-prompt-delay>1000</processing-prompt-delay>
+	</client-config>
+
+	<system-config>
+		<label-location>/WEB-INF/labels/ar-label.properties</label-location>
+		<disable-event-thread>false</disable-event-thread>
+	</system-config>
+	  <system-config>
+	    <id-generator-class>com.elitecore.cpe.web.base.ui.core.StaticIdGenerator</id-generator-class>
+	  </system-config>
+</zk>

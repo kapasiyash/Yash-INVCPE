@@ -1,0 +1,14 @@
+build-app
+checkout
+clean
+commit-fullversion
+compile
+findbug
+init
+junit
+make-binaries
+make-database-fullversion
+make-fullversion
+make-inventory-fullversion
+prepare-db-doc
+prepare-java-doc

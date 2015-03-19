@@ -1,0 +1,17 @@
+<zk xmlns:n="xhtml">
+<window border="none" width="100%" height="100%" >
+	<n:table width="552" border="0" align="center" cellpadding="0" cellspacing="0">
+			<n:tr > 
+				<n:td align = "center"> </n:td>
+			</n:tr>
+			<n:tr>
+				<n:td align = "center"> </n:td>
+			</n:tr>
+			<n:tr > 
+				<n:td align = "center">
+					<n:b>Please wait ... You are being redirected to the Account &amp; Receivable Management System...</n:b>
+				</n:td>
+			</n:tr>
+			</n:table>
+</window>
+</zk>

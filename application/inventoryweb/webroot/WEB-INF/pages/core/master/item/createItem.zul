@@ -1,0 +1,157 @@
+<zk>
+<window  id="createResource"  style="overflow: visible;" width="100%"  
+		apply="com.elitecore.cpe.web.composer.master.item.CreateItemComposer">
+		
+		<hlayout height="100%" width="100%" style="overflow: visible;">
+					<vlayout style="padding-left: 5px; padding-top: 2px;" width="100%" height="100%">
+						<!--  <div sclass="sectionTitle">
+							<label value="${labels.item.createtitle}" style="font-weight: bold;" />
+							</div>  -->
+							<hlayout width="100%">
+						<vlayout width="100%">
+							<separator bar="false"/>
+		
+	
+										<grid width="100%"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+										<columns>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											<column width="160px"></column>
+											<column width="240px"></column>
+										</columns>
+										<rows>
+										
+											<row>
+												<cell>
+													<label value="${labels.item.name}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <textbox id="txtName" width="140px" maxlength="50" constraint="no empty,/^[a-zA-Z0-9 ]*/ : Please enter valid alphanumeric Item Name."/></cell>
+											</row>
+											<row>
+												<cell>
+													<label value="${labels.item.extreferenceid}"></label>
+												</cell>
+												<cell colspan="3" > <textbox id="txtrefid" width="140px" maxlength="50" /></cell>
+											</row>
+											<row>
+												<cell>
+													<label value="${labels.item.modelNumber}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <textbox id="txtmodelnumber" width="140px" maxlength="50" constraint="no empty : Please enter Model Number."/></cell>
+											</row>
+											
+											 <row>
+												 <cell>
+														<label value="${labels.item.inventorynotype}"></label>
+														<label value="*" style="color:red;" />
+													</cell>
+												 <cell>
+													<combobox id="cmbInventoryGenerationType" constraint="no empty : Please select Inventory Generation Type" readonly="true" width="148px"></combobox> 
+												</cell>
+											</row>
+											
+											<row id="prefixRow" visible="false">
+												<cell>
+													<label value="${labels.item.prefix}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <textbox id="txtprefix" width="140px" maxlength="3" constraint="no empty/^[a-zA-Z0-9]*/ : Please enter Alphanumeric Prefix."/></cell>
+											</row>
+										   <row>
+												<cell>
+													<label value="${labels.item.vendor}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <textbox id="txtvendor" width="140px" maxlength="50" constraint="no empty : Please enter Vendor."/></cell>
+											</row>
+											 <row>
+												 <cell>
+														<label value="${labels.item.type}"></label>
+														<label value="*" style="color:red;" />
+													</cell>
+												 <cell>
+													<combobox
+															id="cmbResourceType" readonly="true" width="148px">
+	<!-- 														<comboitem -->
+	<!-- 															label="Select from Below"  width="150px"/> -->
+													</combobox> 
+												</cell>
+											</row>
+											 <row>
+											 	<cell>
+											 		<label
+											 			value="${labels.item.subtype}" />
+											 			<label value="*" style="color:red;" />
+											 	</cell>
+											 	<cell>
+											 		<combobox id="cmbResourceSubType" constraint="no empty : Please select Resource Subtype" readonly="true" width="148px"></combobox>
+											 	</cell>
+											 </row>
+											  <!-- <row>
+											 	<cell>
+											 		<label
+											 			value="${labels.item.category}" />
+											 	</cell>
+											 	<cell>
+											 		<combobox id="cmbResourceCategory" constraint="no empty : Please select Resource Category" readonly="true" width="150px"></combobox>
+											 	</cell>
+											 </row> -->
+											 
+											<row>
+												<cell>
+													<label value="${labels.global.description}"></label>
+													<!--  <label value="*" style="color:red;" /> -->
+												</cell>
+												<cell colspan="3" > <textbox id="txtDesc" multiline="true"  rows="3" cols="40" width="140" maxlength="255"   /></cell>
+											</row>
+								 <row>
+											 	<cell>
+											 		<label
+											 			value="${labels.item.attribute}" />
+											 	</cell>
+											 	<cell>
+											 	<hbox>
+											 		<combobox id="cmbResourceAttribute"  readonly="true" width="150px"></combobox>
+											 		<image id="addAttributes" src="/images/icons/add16.png"/>
+											 	</hbox>
+											 	</cell>
+											 </row>
+								<row  spans="1,3">
+								<cell>
+									<label value="${labels.resattr.title}" />
+								</cell>
+									<vlayout width="100%">
+									<div width="100%" align="right">
+									
+									</div>
+												<listbox id="attrlist" oddRowSclass="non-odd" sclass="formList" width="99%" height="150px">
+													<listhead sizable="true">
+															<listheader label="Sr no." width="10%" sort="auto(srNo)" />
+															<listheader label="Attributes" sort="auto(bucketType)" />
+															<listheader label="" width="10%"/>
+															
+													</listhead>
+												</listbox>
+									
+									</vlayout>
+								</row>
+										
+										</rows>
+										</grid>
+										<separator bar="false"/>
+										<separator bar="false"/>
+										<hbox>
+											<button id="btnCreate" width="140px" mold="trendy" label="${labels.global.createBtn}"/>
+											<button id="btnCancel" width="140px" mold="trendy" label="${labels.global.cancelBtn}"/>
+										</hbox>
+										<separator bar="false"/>
+										<separator bar="false"/>
+							</vlayout>
+						</hlayout>
+						<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+				</hlayout>
+</window>
+</zk>

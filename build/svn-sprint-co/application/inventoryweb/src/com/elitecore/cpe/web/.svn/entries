@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/src/com/elitecore/cpe/web"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16483"
+   kind="dir"
+   committed-date="2015-03-16T07:20:39.912031Z"/>
+<entry
+   name="CheckSession.java"
+   checksum="af896a25a8ef22a8de60d399d6bcfd1c"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="base"
+   kind="dir"/>
+<entry
+   name="bl"
+   kind="dir"/>
+<entry
+   name="common"
+   kind="dir"/>
+<entry
+   name="composer"
+   kind="dir"/>
+<entry
+   name="configuration"
+   kind="dir"/>
+<entry
+   name="constants"
+   kind="dir"/>
+<entry
+   name="core"
+   kind="dir"/>
+<entry
+   name="system"
+   kind="dir"/>
+<entry
+   name="systemparameter"
+   kind="dir"/>
+<entry
+   name="utils"
+   kind="dir"/>
+</wc-entries>

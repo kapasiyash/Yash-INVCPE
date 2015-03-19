@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/src/com/elitecore/cpe/web/composer/inventory/transfer"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16479"
+   kind="dir"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="TransferInventory.java"
+   checksum="9b624c52996fc66778d0ab5f8246e541"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="TransferInventoryBatch.java"
+   checksum="443f916d00383901a76205002c7f0f3a"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="TransferInventoryComposer.java"
+   checksum="4d31bd398293cb2bc8252584ba92c757"
+   last-author="yash.kapasi"
+   committed-rev="16479"
+   text-time="2015-03-16T07:13:50.000000Z"
+   kind="file"
+   committed-date="2015-03-16T07:13:50.309679Z"/>
+<entry
+   name="TransferInventoryP.java"
+   checksum="5368820e7e6ce7dbd97e91703d8b889d"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ViewTransferOrderDetailComposer.java"
+   checksum="b258562467dfd8f5e584a4428d7e907f"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

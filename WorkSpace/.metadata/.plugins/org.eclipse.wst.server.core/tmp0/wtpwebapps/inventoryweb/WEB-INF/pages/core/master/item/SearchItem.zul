@@ -1,0 +1,94 @@
+<zk>
+<window  id="searchItem"  style="overflow: visible;" width="100%" height="100%"  
+		apply="com.elitecore.cpe.web.composer.master.item.SearchItemComposer">
+		 <include  id="header" src="/WEB-INF/pages/core/common/Header.zul" title="Resource Management"/>
+	<tabbox width="100%" height="100%" tabscroll="false" id="searchItemTabbox">
+	<tabs>
+		<tab label="${labels.item.searchtitle}" id="searchTab"/>
+	</tabs>
+
+<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 0px; overflow: auto;" sclass="main-cont">
+				<vlayout style="padding-left: 5px; padding-top: 2px;padding-bottom: 50px;" width="100%" >
+					<grid width="800px" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+										<columns>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											<column width="160px"></column>
+											<column width="240px"></column>
+										</columns>
+										<rows>
+										
+											<row>
+												<cell>
+													<label value="${labels.item.extreferenceid}"></label>
+													<label value="" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <textbox id="txtreferenceid" width="140px" maxlength="100" /></cell>
+											</row>
+											<row>
+												<cell>
+													<label value="${labels.item.resourceNumber}"></label>
+													<label value="" style="color:red;" />
+												</cell>
+												<cell > <textbox id="txtresourceNumber" width="140px" maxlength="100" /></cell>
+												<cell>
+													<label value="${labels.item.name}"></label>
+													<label value="" style="color:red;" />
+												</cell>
+												<cell > <textbox id="txtName" width="140px" maxlength="100" /></cell>
+											</row>
+										
+											<row>
+												<cell>
+													<label value="${labels.crst.type}"></label>
+												</cell>
+												<cell  > 
+													<combobox id="cmbResourceType" width="148px" readonly="true" />
+												</cell>
+												<cell>
+											 		<label
+											 			value="${labels.item.subtype}" />
+											 	</cell>
+											 	<cell>
+											 		<combobox id="cmbResourceSubType" readonly="true" width="148px"></combobox>
+											 	</cell>
+											</row>
+											
+										</rows>
+										</grid>
+										
+										<separator bar="false" />
+										<separator bar="false" />
+										<hbox>
+											<button id="btnSearch" type="button" label="${labels.global.searchBtn}" mold="trendy" width="140px" />
+											<button id="btnCreate" type="button" label="${labels.global.createBtn}" mold="trendy" width="140px" visible="false"/>
+											<button id="btnCancel" type="button" label="${labels.global.cancelBtn}" mold="trendy" width="140px" />
+										</hbox>
+										<separator bar="false" />
+										<separator bar="false" />
+										<separator bar="false" />
+										<listbox id="searchResultGrid" visible="false"  mold="paging"  forward="onDoubleClick=onDoubleClickedSearchItem" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd" width="99%">
+											<listhead sizable="true">
+												<listheader label="${labels.global.sr.no}" width="20%" />
+												<listheader label="${labels.item.resourceNumber}" width="42%" sort="auto(resourceNumber)" />
+												<listheader label="${labels.item.name}" width="42%"  sort="auto(name)" />
+												<listheader label="${labels.item.extreferenceid}" width="42%"  sort="auto(referenceID)" />
+												<listheader label="${labels.item.modelNumber}" width="42%"  sort="auto(modelnumber)" />
+												<listheader label="${labels.item.type}" width="42%"  />
+												<listheader label="${labels.item.subtype}" width="42%"   />
+												<listheader label="${labels.global.createDate}" width="42%"  sort="auto(createdate)" />
+												<listheader label="${labels.global.view}"  width="20%"  />
+											</listhead>
+										</listbox>
+										<separator bar="false" />
+										<separator bar="false" />
+								<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+								</vlayout>
+			</tabpanel>
+		</tabpanels>
+		</tabbox> 
+
+</window>
+</zk>

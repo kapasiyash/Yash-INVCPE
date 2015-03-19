@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/build/lib/findbug/lib"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15540"
+   kind="dir"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="annotations.jar"
+   checksum="35ef911c85603829ded63f211feb2d68"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="ant.jar"
+   checksum="5c8acc130823219fe778b7c2f8d47912"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="asm-3.3.jar"
+   checksum="3e72fd86483f86e2fd230da8ee84fbc7"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="asm-analysis-3.3.jar"
+   checksum="dacfc8f74a21ad0040095952f965f1b7"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:40.000000Z"/>
+<entry
+   name="asm-commons-3.3.jar"
+   checksum="1077b7a298bda8c2e7e816effdbc27af"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="asm-tree-3.3.jar"
+   checksum="5807f25ddc9289f06837dd6f92adf018"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="asm-util-3.3.jar"
+   checksum="690a95b89b25bc5e193e3c721dca83e2"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="asm-xml-3.3.jar"
+   checksum="783e4b0ae457318ace53782ef3ed7557"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="bcel.jar"
+   checksum="3c85ba4d27942975aca0b080ced75399"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="buggy.icns"
+   checksum="448c6839f3b891fd615ae263b9326f16"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="commons-lang-2.4.jar"
+   checksum="237a8e845441bad2e535c57d985c8204"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="dom4j-1.6.1.jar"
+   checksum="4d8f51d3fe3900efc6e395be48030d6d"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="findbugs-ant.jar"
+   checksum="6d8255ea46cf970b293edf8f9f3eaae4"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="findbugs.jar"
+   checksum="d3e7c731eb2a60bf3c3c65433b3728d4"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:40.000000Z"/>
+<entry
+   name="jFormatString.jar"
+   checksum="a54a527bb715d214c70193a37aa568f4"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="jaxen-1.1.1.jar"
+   checksum="261d1aa59865842ecc32b3848b0c6538"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="jcip-annotations.jar"
+   checksum="1efdf39c29a885cb90a03e007071c338"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="jdepend-2.9.jar"
+   checksum="a6b40992c4c4f5680641cf2a8df80351"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="jsr305.jar"
+   checksum="144c0767e2aaf0c21a935908d0e52c68"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+<entry
+   name="yjp-controller-api-redist.jar"
+   checksum="6d99b5157299ab4dd54f74468839e12e"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:19:39.000000Z"/>
+</wc-entries>

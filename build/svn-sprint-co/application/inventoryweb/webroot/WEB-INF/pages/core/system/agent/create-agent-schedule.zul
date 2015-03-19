@@ -1,0 +1,365 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:c="client">
+	<window id="createAgentScheduleWin" style="overflow: visible;" width="100%"  apply="com.elitecore.cpe.web.system.agent.CreateAgentScheduleComposer">
+		<!-- <tabbox id="agentScheduleCreate" width="100%" height="100%" tabscroll="false">
+			<tabs>
+				<tab id="createAgentScheduleUserTab" label="${labels.cagntsche.title}" />
+			</tabs>
+			<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 20px; overflow: auto;" sclass="main-cont">
+					
+					 -->
+					 
+					<vlayout width="100%" id="viewComponents" visible="false">
+						<div sclass="sectionTitle">
+							<label value="Agent Schedule Information" style="font-weight: bold;" />
+						</div>
+					</vlayout>
+					
+					<vlayout width="100%" id="Components">
+					</vlayout>
+					
+					<hlayout height="100%" width="100%" style="overflow: visible;">
+					<vlayout width="100%">
+						
+						<hlayout height="100%" width="100%" style="overflow: visible;">
+						<vlayout width="100%" id="page1">
+						<div sclass="sectionTitle">
+							<label value="${labels.cagntsche.agentSelect}" style="font-weight: bold;" />
+						</div>
+						<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%" >
+							<vlayout>
+											
+										
+										<listbox id="agentLB" multiple="true" width="100%" emptyMessage="No Agent found." checkmark="true" sclass="formList" oddRowSclass="non-odd" >
+											<listhead sizable="true">
+												<listheader  label="${labels.agentslb.srno}" width="10%"/>
+												<listheader  label="${labels.agentslb.name}" width="30%"/>
+												<listheader  label="${labels.agentslb.description}" />
+											</listhead>										
+										</listbox>
+									
+									
+							</vlayout>
+						</hlayout>
+						<separator bar="false" />
+						<separator bar="false" />
+						<separator bar="false" />
+						<hbox>
+							
+							<button id="btnNext1" type="button" label="${labels.global.nextBtn}" mold="trendy" width="140px" />
+							
+						</hbox>
+						<separator bar="false" />
+						</vlayout>
+						</hlayout>
+						
+						<hlayout height="100%" width="100%" style="overflow: visible;">
+						<vlayout width="100%"  id="page2" visible="false">
+						<div sclass="sectionTitle">
+							<label value="${labels.cagntsche.bdtitle}" style="font-weight: bold;" />
+						</div>
+						<hlayout style="padding-left: 0px;padding-right: 10px; padding-top: 2px;" width="100%" >
+							<vlayout>
+							
+							<grid width="100%" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+								<columns>
+									<column width="150px"></column>
+									<column width="250px"></column>
+									<column width="150px"></column>
+									<column width="250px"></column>
+								</columns>
+								<rows>
+									<row spans="1, 3" align="top">
+										<cell>
+											<label value="${labels.cagntsche.agentname}" style="text-align: left;" />
+											<label value="*" style="color:red;" />
+										</cell>
+										<cell>
+											<label id="lbAgentName2"/>
+										</cell>
+									</row>
+									<row spans="1, 3" align="top">
+										<cell>
+											<label value="${labels.cagntsche.schedulename}" style="text-align: left;" />
+											<label value="*" style="color:red;" />
+										</cell>
+										<cell>
+											<textbox id="txtScheduleName" width='150px' maxlength="100" constraint="no empty,/^[a-zA-Z0-9 ]*/:Please enter Name" />
+										</cell>
+									</row>
+									<row align="top">
+										<cell>
+											<label	value="${labels.cagntsche.priority}" />
+											<label value="*" style="color:red;"/>
+										</cell>
+										<cell>
+											<combobox readonly="true" id="priorityType"  constraint="no empty:Please select priority."/>
+										</cell>
+										<cell>
+											<label value="${labels.cagntsche.exeType}" style="text-align: left;" />
+											<label value="*" style="color:red;" />
+										</cell>
+										<cell>
+										<radiogroup	id="executionType"  >
+											<radio label="Manual" id="RadioManual" ></radio>
+											<radio label="Automatic" id="RadioAuto" checked="true"></radio>
+										</radiogroup>
+										</cell>
+									</row>
+									<!-- <row align="top" id="exeintervalRow">
+										<cell>
+											<label value="${labels.cagntsche.execinterval}" style="text-align: left;" />
+											<label value="*" style="color:red;" />
+										</cell>
+										<cell>
+											<textbox id="txtDays" width='80px' maxlength="3" constraint="/[0-9]+/: Enter valid Days" />
+											<label value="${labels.cagntsche.Days}" style="text-align: left;" />
+										</cell>
+										<cell>
+											<combobox readonly="true" width="80px" id="Hour" />
+											<label value="${labels.cagntsche.Hours}" style="text-align: left;" />
+										</cell>
+										<cell>
+											<combobox readonly="true" width="80px" id="Minute" />
+											<label value="${labels.cagntsche.Mins}" style="text-align: left;" />
+										</cell>
+										
+									</row> -->
+									
+									<row align="top" id="numOfExecRow">
+										<cell>
+											<label value="${labels.cagntsche.reqnoOfexecutions}" style="text-align: left;" />
+											<label value="*" style="color:red;" />
+										</cell>
+										<cell>
+										<radiogroup	id="requiredNumOfExe">
+											<radio label="Forever" id="RadioForeever" checked="true"></radio>
+											<radio label="Fixed" id="RadioFixed"></radio>
+										</radiogroup>
+										</cell>
+										<cell id="execCell" visible="false">
+											<label value="${labels.cagntsche.numofexec}" style="text-align: left;" />
+											<label value="*" style="color:red;" />
+										</cell>
+										<cell id="execText" visible="false">
+											<textbox id="txtFixed" width='150px' maxlength="6" constraint="/[0-9]+/: Enter valid Number" />
+										</cell>
+									</row>
+									<row align="top">
+										<cell>
+											<label value="${labels.cagntsche.execstartdate}" style="text-align: left;" />
+											<label value="*" style="color:red;" />
+										</cell>
+										<cell>
+											<datebox id="dtDate" width="150px" format="dd/MM/yyyy" readonly="true" constraint="no empty, no past:Please select Date"></datebox>
+										</cell>
+										<cell>
+											<label value="${labels.cagntsche.execstarttime}" style="text-align: left;" />
+											<label value="*" style="color:red;" />
+										</cell>
+										<cell>
+											<timebox id="dtTime" width="150px" format="HH:mm:ss" onCreate="self.value = new Date()" readonly="true" constraint="no empty, no past:Please select Time"></timebox>
+										</cell>
+									</row>
+									<row>
+									<cell>
+										<label
+											value="${labels.cagntsche.reason}" />
+									</cell>
+									<cell colspan="3">
+										<textbox id="txtReason"
+											multiline="true" rows="3" maxlength="255" cols="50" width="535px" />
+									</cell>
+								</row>
+								</rows>
+							</grid>
+							<separator bar="false"/>
+							<div sclass="sectionTitle">
+								<label value="${labels.cagntsche.scheduleAgent}" style="font-weight: bold;" />
+							</div>
+							<separator bar="false"/>
+							<div id="scheduleContent" width="798px"  />
+							
+							</vlayout>
+						</hlayout>
+						<separator bar="false" />
+						<separator bar="false" />
+						<separator bar="false" />
+						<hbox>
+							<button id="btnBack2" type="button" label="${labels.global.back}" mold="trendy" width="140px"/>
+							<button id="btnNext2" type="button" label="${labels.global.nextBtn}" mold="trendy" width="140px" />
+							<button id="btnCancel2" type="button" label="Reset"  mold="trendy" width="140px" />
+						</hbox>
+						<separator bar="false" />
+						</vlayout>
+						</hlayout>
+						
+						<hlayout height="100%" width="100%" style="overflow: visible;">
+						<vlayout width="100%" id="page3" visible="false">
+						<grid id="viewusergrid" width="100%"  oddRowSclass="non-odd" sclass="viewGrid" zclass="none">
+								<columns>
+									<column width="150px"></column>
+									<column width="250px"></column>
+									<column width="150px"></column>
+									<column width="250px"></column>
+								</columns>
+								<rows>
+									<row spans="1, 3" align="top">
+											<label value="${labels.cagntsche.agentname}" style="text-align: left;" />
+											<label style="text-align: left;" id="lbAgentName"/>
+									</row>
+									<row spans="1, 3" align="top">
+											<label value="${labels.cagntsche.schedulename}" style="text-align: left;" />
+											<label style="text-align: left;" id="lbScheduleName"/>
+									</row>
+								</rows>
+							</grid>
+							
+						<separator bar="false" />
+						<separator bar="false" />
+						
+						
+						<vlayout width="100%">
+						<div sclass="sectionTitle">
+							<label value="${labels.cagntsche.scheduleparaminfo}" style="font-weight: bold;" />
+						</div>
+						
+						<grid width="100%" sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+								<columns>
+									<column width="150px"></column>
+									<column width="250px"></column>
+									<column width="150px"></column>
+									<column width="250px"></column>
+								</columns>
+								
+								
+								<rows>
+									<row spans="1, 3" align="top">
+										<cell>
+											<label id="paramAliasMode" style="text-align: left;" />
+										</cell>
+										<cell id="ComponenetCellMode">
+											
+										</cell>
+										
+									</row>
+									<row spans="1, 3" align="top">
+										<cell>
+											<label value="Value" id="paramAlias" style="text-align: left;" />
+										</cell>
+										<cell id="ComponenetCell">
+											
+										</cell>
+										<cell>
+										<radiogroup id="policySelect">
+											<!-- <radio label="${labels.cagntsche.all}" id="All"></radio>
+											<radio label="${labels.cagntsche.selected}" id="Selected"></radio> -->
+										</radiogroup>
+										</cell>
+									</row>
+									<row spans="1, 3" align="top">
+									<cell></cell>
+									<cell>
+										<vlayout>
+											
+										
+										<listbox id="SelectedLB" checkmark="true" visible="false" mold="paging" multiple="true" emptyMessage="No Data found." sclass="formList" oddRowSclass="non-odd" width="550px">
+											<listhead sizable="true">
+												<listheader  label="${labels.cagntsche.sr}" width="83px"/>
+												<listheader  label="${labels.cagntsche.key}" width="200px"/>
+												<listheader  label="${labels.cagntsche.key}" width="267px"/>
+												
+											</listhead>										
+										</listbox>
+									
+									
+										</vlayout>
+										</cell>
+									</row>
+									
+								</rows>
+							</grid>
+						
+						
+						
+					</vlayout>
+					
+						<separator bar="false" />
+						<separator bar="false" />
+						<hbox>
+							<button id="btnBack3" type="button" label="${labels.global.back}" mold="trendy" width="140px"/>
+							<button id="btnNext3" type="button" label="${labels.global.nextBtn}" mold="trendy" width="140px" />
+							
+						</hbox>
+						<separator bar="false" />
+						</vlayout>
+						
+						</hlayout>
+						
+						<hlayout height="100%" width="100%" style="overflow: visible;">
+						<vlayout width="100%" id="page4" visible="false">
+						<hlayout style="padding-left: 5px; padding-top: 2px;" width="100%"  >
+							<vlayout width="100%">
+							<grid  width="100%"  oddRowSclass="non-odd" sclass="viewGrid" zclass="none">
+								<columns>
+									<column width="148px"></column>
+									<column width="247px"></column>
+									<column width="148px"></column>
+									<column width="247px"></column>
+								</columns>
+								<rows>
+									<row spans="1, 3" align="top">
+											<label value="${labels.cagntsche.agentname}" style="text-align: left;" />
+											<label style="text-align: left;" id="lbAgentName1"/>
+											
+									</row>
+									<row spans="1, 3" align="top">
+											<label value="${labels.cagntsche.schedulename}" style="text-align: left;" />
+											<label style="text-align: left;" id="lbScheduleName1"/>
+									</row>
+									<row align="top">
+											<label value="${labels.cagntsche.priority}" style="text-align: left;" />
+											<label style="text-align: left;" id="lbPriority"/>
+											<label value="${labels.cagntsche.execinterval}" style="text-align: left;" />
+											<label style="text-align: left;" id="lbExeInterval"/>
+									</row>
+									
+									<row align="top">
+											<label value="${labels.cagntsche.exeType}" style="text-align: left;" />
+											<label style="text-align: left;" id="lbExeType"/>
+											<label value="${labels.cagntsche.reqnoOfexecutions}" style="text-align: left;" />
+											<label style="text-align: left;" id="lbNoOfExec"/>
+									</row>
+									
+									<row spans="1, 3" align="top">
+											<label value="${labels.cagntsche.execstartdate}" style="text-align: left;" />
+											<label style="text-align: left;" id="lbExeStartDate"/>
+									</row>
+									<row spans="1, 3" align="top">
+											<label value="${labels.cagntsche.reason}" style="text-align: left;" />
+											<label style="text-align: left;" id="lbReason"/>
+									</row>
+								</rows>
+							</grid>
+							</vlayout>
+						</hlayout>
+						<separator bar="false" />
+						<separator bar="false" />
+						<separator bar="false" />
+						<hbox>
+							<button id="btnBack4" type="button" label="${labels.global.back}" mold="trendy" width="140px" />
+							<button id="btnFinish" type="button" label="${labels.global.finish}" mold="trendy" width="140px" />
+							
+						</hbox>
+						<separator bar="false" />
+						</vlayout>
+						</hlayout>
+						<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+					</hlayout>
+				<!-- </tabpanel>
+			</tabpanels>
+		</tabbox> -->
+	</window>
+</zk>

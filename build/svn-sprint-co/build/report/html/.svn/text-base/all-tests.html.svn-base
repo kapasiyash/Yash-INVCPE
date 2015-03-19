@@ -1,0 +1,231 @@
+<html xmlns:string="xalan://java.lang.String" xmlns:lxslt="http://xml.apache.org/xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Unit Test Results: All Tests</title>
+<link rel="stylesheet" type="text/css" title="Style" href="stylesheet.css">
+</head>
+<body onload="open('allclasses-frame.html','classListFrame')">
+<h1>Unit Test Results.</h1>
+<table width="100%">
+<tr>
+<td align="left"></td><td align="right">Designed for use with <a href="http://www.junit.org/">JUnit</a> and <a href="http://ant.apache.org/">Ant</a>.</td>
+</tr>
+</table>
+<hr size="1">
+<h2>All Tests</h2>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Class</th><th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/0_AgentTestCase.html">AgentTestCase</a></td><td><a name="testAgentScheduleSearch"></a><a href="com/elitecore/test/agent/0_AgentTestCase.html#testAgentScheduleSearch">testAgentScheduleSearch</a></td><td>Success</td><td></td><td>1.495</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/0_AgentTestCase.html">AgentTestCase</a></td><td><a name="testAgentRunInQueueSearch"></a><a href="com/elitecore/test/agent/0_AgentTestCase.html#testAgentRunInQueueSearch">testAgentRunInQueueSearch</a></td><td>Success</td><td></td><td>0.042</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/0_AgentTestCase.html">AgentTestCase</a></td><td><a name="testAgentSearch"></a><a href="com/elitecore/test/agent/0_AgentTestCase.html#testAgentSearch">testAgentSearch</a></td><td>Success</td><td></td><td>0.086</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/0_AgentTestCase.html">AgentTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/agent/0_AgentTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.045</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="testgetAgentServiceSummary"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#testgetAgentServiceSummary">testgetAgentServiceSummary</a></td><td>Success</td><td></td><td>0.501</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="testgetMonitorShortDescription"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#testgetMonitorShortDescription">testgetMonitorShortDescription</a></td><td>Success</td><td></td><td>0.042</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="teststopScheduleByAgentRunId"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#teststopScheduleByAgentRunId">teststopScheduleByAgentRunId</a></td><td>Success</td><td></td><td>0.046</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="testgetServiceState"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#testgetServiceState">testgetServiceState</a></td><td>Success</td><td></td><td>0.055</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="testgetAgentServiceThreadPools"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#testgetAgentServiceThreadPools">testgetAgentServiceThreadPools</a></td><td>Success</td><td></td><td>0.052</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="testgetAgentRunStates"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#testgetAgentRunStates">testgetAgentRunStates</a></td><td>Success</td><td></td><td>0.066</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="testdoThreadMonitoring"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#testdoThreadMonitoring">testdoThreadMonitoring</a></td><td>Success</td><td></td><td>0.053</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="teststopAgentRunByScheduleId"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#teststopAgentRunByScheduleId">teststopAgentRunByScheduleId</a></td><td>Success</td><td></td><td>0.041</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="teststopAgentRunByName"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#teststopAgentRunByName">teststopAgentRunByName</a></td><td>Success</td><td></td><td>0.037</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="testgetAgentManagerDetails"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#testgetAgentManagerDetails">testgetAgentManagerDetails</a></td><td>Success</td><td></td><td>0.094</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html">SystemAgentTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/agent/1_SystemAgentTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.046</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/attributemgt/2_AttributeTestCase.html">AttributeTestCase</a></td><td><a name="testAttributeCreate"></a><a href="com/elitecore/test/attributemgt/2_AttributeTestCase.html#testAttributeCreate">testAttributeCreate</a></td><td>Failure</td><td>N/A<br>
+<br>
+<code>junit.framework.AssertionFailedError<br>	at com.elitecore.test.attributemgt.AttributeTestCase.testAttributeCreate(Unknown Source)<br>
+</code></td><td>0.692</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/attributemgt/2_AttributeTestCase.html">AttributeTestCase</a></td><td><a name="testAttributeSearch"></a><a href="com/elitecore/test/attributemgt/2_AttributeTestCase.html#testAttributeSearch">testAttributeSearch</a></td><td>Success</td><td></td><td>0.416</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/attributemgt/2_AttributeTestCase.html">AttributeTestCase</a></td><td><a name="testAttributeUpdate"></a><a href="com/elitecore/test/attributemgt/2_AttributeTestCase.html#testAttributeUpdate">testAttributeUpdate</a></td><td>Failure</td><td>N/A<br>
+<br>
+<code>junit.framework.AssertionFailedError<br>	at com.elitecore.test.attributemgt.AttributeTestCase.testAttributeUpdate(Unknown Source)<br>
+</code></td><td>0.115</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/attributemgt/2_AttributeTestCase.html">AttributeTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/attributemgt/2_AttributeTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.051</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/audit/3_AuditTestCase.html">AuditTestCase</a></td><td><a name="testAuditSearch"></a><a href="com/elitecore/test/audit/3_AuditTestCase.html#testAuditSearch">testAuditSearch</a></td><td>Failure</td><td>Search SystemAudit operation failed, reason: null<br>
+<br>
+<code>junit.framework.AssertionFailedError: Search SystemAudit operation failed, reason: null<br>	at com.elitecore.test.audit.AuditTestCase.testAuditSearch(Unknown Source)<br>
+</code></td><td>0.535</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/audit/3_AuditTestCase.html">AuditTestCase</a></td><td><a name="testWSAuditSearch"></a><a href="com/elitecore/test/audit/3_AuditTestCase.html#testWSAuditSearch">testWSAuditSearch</a></td><td>Success</td><td></td><td>0.173</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/audit/3_AuditTestCase.html">AuditTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/audit/3_AuditTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.039</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/base/4_BaseTestCase.html">BaseTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/base/4_BaseTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.000</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/inventorymgt/5_InventoryTestCase.html">InventoryTestCase</a></td><td><a name="testInventorySearch"></a><a href="com/elitecore/test/inventorymgt/5_InventoryTestCase.html#testInventorySearch">testInventorySearch</a></td><td>Success</td><td></td><td>3.662</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/inventorymgt/5_InventoryTestCase.html">InventoryTestCase</a></td><td><a name="testInventoryBatchSearch"></a><a href="com/elitecore/test/inventorymgt/5_InventoryTestCase.html#testInventoryBatchSearch">testInventoryBatchSearch</a></td><td>Success</td><td></td><td>0.083</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/inventorymgt/5_InventoryTestCase.html">InventoryTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/inventorymgt/5_InventoryTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.037</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/migration/6_MigrationTestCase.html">MigrationTestCase</a></td><td><a name="testMigrationAPI"></a><a href="com/elitecore/test/migration/6_MigrationTestCase.html#testMigrationAPI">testMigrationAPI</a></td><td>Failure</td><td>Could not obtain connection to any of these urls: 10.105.1.32:1199 and discovery failed with error: javax.naming.CommunicationException: Receive timed out [Root exception is java.net.SocketTimeoutException: Receive timed out]
+	at org.jnp.interfaces.NamingContext.discoverServer(NamingContext.java:1690)
+	at org.jnp.interfaces.NamingContext.checkRef(NamingContext.java:1761)
+	at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:695)
+	at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:688)
+	at javax.naming.InitialContext.lookup(InitialContext.java:392)
+	at com.elitecore.test.migration.MigrationTestCase.testMigrationAPI(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at junit.framework.TestCase.runTest(TestCase.java:176)
+	at junit.framework.TestCase.runBare(TestCase.java:141)
+	at junit.framework.TestResult$1.protect(TestResult.java:122)
+	at junit.framework.TestResult.runProtected(TestResult.java:142)
+	at junit.framework.TestResult.run(TestResult.java:125)
+	at junit.framework.TestCase.run(TestCase.java:129)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:532)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.launch(JUnitTestRunner.java:1179)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.main(JUnitTestRunner.java:1030)
+Caused by: java.net.SocketTimeoutException: Receive timed out
+	at java.net.PlainDatagramSocketImpl.receive0(Native Method)
+	at java.net.PlainDatagramSocketImpl.receive(PlainDatagramSocketImpl.java:145)
+	at java.net.DatagramSocket.receive(DatagramSocket.java:725)
+	at org.jnp.interfaces.NamingContext.discoverServer(NamingContext.java:1659)
+	... 20 more
+<br>
+<br>
+<code>junit.framework.AssertionFailedError: Could not obtain connection to any of these urls: 10.105.1.32:1199 and discovery failed with error: javax.naming.CommunicationException: Receive timed out [Root exception is java.net.SocketTimeoutException: Receive timed out]<br>	at org.jnp.interfaces.NamingContext.discoverServer(NamingContext.java:1690)<br>	at org.jnp.interfaces.NamingContext.checkRef(NamingContext.java:1761)<br>	at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:695)<br>	at org.jnp.interfaces.NamingContext.lookup(NamingContext.java:688)<br>	at javax.naming.InitialContext.lookup(InitialContext.java:392)<br>	at com.elitecore.test.migration.MigrationTestCase.testMigrationAPI(Unknown Source)<br>Caused by: java.net.SocketTimeoutException: Receive timed out<br>	at java.net.PlainDatagramSocketImpl.receive0(Native Method)<br>	at java.net.PlainDatagramSocketImpl.receive(PlainDatagramSocketImpl.java:145)<br>	at java.net.DatagramSocket.receive(DatagramSocket.java:725)<br>	at org.jnp.interfaces.NamingContext.discoverServer(NamingContext.java:1659)<br>
+<br>	at com.elitecore.test.migration.MigrationTestCase.testMigrationAPI(Unknown Source)<br>
+</code></td><td>8.133</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/migration/6_MigrationTestCase.html">MigrationTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/migration/6_MigrationTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.003</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/resource/7_ResourceTestCase.html">ResourceTestCase</a></td><td><a name="testResourceCreate"></a><a href="com/elitecore/test/resource/7_ResourceTestCase.html#testResourceCreate">testResourceCreate</a></td><td>Failure</td><td>N/A<br>
+<br>
+<code>junit.framework.AssertionFailedError<br>	at com.elitecore.test.resource.ResourceTestCase.testResourceCreate(Unknown Source)<br>
+</code></td><td>0.556</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/resource/7_ResourceTestCase.html">ResourceTestCase</a></td><td><a name="testResourceSearch"></a><a href="com/elitecore/test/resource/7_ResourceTestCase.html#testResourceSearch">testResourceSearch</a></td><td>Success</td><td></td><td>0.933</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/resource/7_ResourceTestCase.html">ResourceTestCase</a></td><td><a name="testResourceUpdate"></a><a href="com/elitecore/test/resource/7_ResourceTestCase.html#testResourceUpdate">testResourceUpdate</a></td><td>Failure</td><td>N/A<br>
+<br>
+<code>junit.framework.AssertionFailedError<br>	at com.elitecore.test.resource.ResourceTestCase.testResourceUpdate(Unknown Source)<br>
+</code></td><td>0.122</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/resource/7_ResourceTestCase.html">ResourceTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/resource/7_ResourceTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.052</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/resourcesubtype/8_ResourceSubTypeTestCase.html">ResourceSubTypeTestCase</a></td><td><a name="testResourceSubTypeCreate"></a><a href="com/elitecore/test/resourcesubtype/8_ResourceSubTypeTestCase.html#testResourceSubTypeCreate">testResourceSubTypeCreate</a></td><td>Failure</td><td>java.lang.NullPointerException<br>
+<br>
+<code>junit.framework.AssertionFailedError: java.lang.NullPointerException<br>	at com.elitecore.test.resourcesubtype.ResourceSubTypeTestCase.testResourceSubTypeCreate(Unknown Source)<br>
+</code></td><td>0.491</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/resourcesubtype/8_ResourceSubTypeTestCase.html">ResourceSubTypeTestCase</a></td><td><a name="testResourceSubTypeSearch"></a><a href="com/elitecore/test/resourcesubtype/8_ResourceSubTypeTestCase.html#testResourceSubTypeSearch">testResourceSubTypeSearch</a></td><td>Success</td><td></td><td>0.381</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/resourcesubtype/8_ResourceSubTypeTestCase.html">ResourceSubTypeTestCase</a></td><td><a name="testResourceSubTypeUpdate"></a><a href="com/elitecore/test/resourcesubtype/8_ResourceSubTypeTestCase.html#testResourceSubTypeUpdate">testResourceSubTypeUpdate</a></td><td>Success</td><td></td><td>0.120</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/resourcesubtype/8_ResourceSubTypeTestCase.html">ResourceSubTypeTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/resourcesubtype/8_ResourceSubTypeTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.142</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/resourcetype/9_ResourceTypeTestCase.html">ResourceTypeTestCase</a></td><td><a name="testResourceTypeSearch"></a><a href="com/elitecore/test/resourcetype/9_ResourceTypeTestCase.html#testResourceTypeSearch">testResourceTypeSearch</a></td><td>Success</td><td></td><td>0.455</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/resourcetype/9_ResourceTypeTestCase.html">ResourceTypeTestCase</a></td><td><a name="testResourceTypeUpdate"></a><a href="com/elitecore/test/resourcetype/9_ResourceTypeTestCase.html#testResourceTypeUpdate">testResourceTypeUpdate</a></td><td>Success</td><td></td><td>0.044</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/resourcetype/9_ResourceTypeTestCase.html">ResourceTypeTestCase</a></td><td><a name="testResourceTypeCreate"></a><a href="com/elitecore/test/resourcetype/9_ResourceTypeTestCase.html#testResourceTypeCreate">testResourceTypeCreate</a></td><td>Failure</td><td>java.lang.NullPointerException<br>
+<br>
+<code>junit.framework.AssertionFailedError: java.lang.NullPointerException<br>	at com.elitecore.test.resourcetype.ResourceTypeTestCase.testResourceTypeCreate(Unknown Source)<br>
+</code></td><td>0.053</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/resourcetype/9_ResourceTypeTestCase.html">ResourceTypeTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/resourcetype/9_ResourceTypeTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.000</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/warehouse/10_WarehouseTestCase.html">WarehouseTestCase</a></td><td><a name="testWarehouseCreate"></a><a href="com/elitecore/test/warehouse/10_WarehouseTestCase.html#testWarehouseCreate">testWarehouseCreate</a></td><td>Failure</td><td>N/A<br>
+<br>
+<code>junit.framework.AssertionFailedError<br>	at com.elitecore.test.warehouse.WarehouseTestCase.testWarehouseCreate(Unknown Source)<br>
+</code></td><td>0.474</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/warehouse/10_WarehouseTestCase.html">WarehouseTestCase</a></td><td><a name="testWarehouseSearch"></a><a href="com/elitecore/test/warehouse/10_WarehouseTestCase.html#testWarehouseSearch">testWarehouseSearch</a></td><td>Success</td><td></td><td>0.650</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/warehouse/10_WarehouseTestCase.html">WarehouseTestCase</a></td><td><a name="testWarehouseUpdate"></a><a href="com/elitecore/test/warehouse/10_WarehouseTestCase.html#testWarehouseUpdate">testWarehouseUpdate</a></td><td>Failure</td><td>N/A<br>
+<br>
+<code>junit.framework.AssertionFailedError<br>	at com.elitecore.test.warehouse.WarehouseTestCase.testWarehouseUpdate(Unknown Source)<br>
+</code></td><td>0.084</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/warehouse/10_WarehouseTestCase.html">WarehouseTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/warehouse/10_WarehouseTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.048</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/warehousetype/11_WarehouseTypeTestCase.html">WarehouseTypeTestCase</a></td><td><a name="testWarehouseTypeCreate"></a><a href="com/elitecore/test/warehousetype/11_WarehouseTypeTestCase.html#testWarehouseTypeCreate">testWarehouseTypeCreate</a></td><td>Failure</td><td>N/A<br>
+<br>
+<code>junit.framework.AssertionFailedError<br>	at com.elitecore.test.warehousetype.WarehouseTypeTestCase.testWarehouseTypeCreate(Unknown Source)<br>
+</code></td><td>0.462</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/warehousetype/11_WarehouseTypeTestCase.html">WarehouseTypeTestCase</a></td><td><a name="testWarehouseTypeSearch"></a><a href="com/elitecore/test/warehousetype/11_WarehouseTypeTestCase.html#testWarehouseTypeSearch">testWarehouseTypeSearch</a></td><td>Success</td><td></td><td>0.421</td>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="com/elitecore/test/warehousetype/11_WarehouseTypeTestCase.html">WarehouseTypeTestCase</a></td><td><a name="testWarehouseTypeUpdate"></a><a href="com/elitecore/test/warehousetype/11_WarehouseTypeTestCase.html#testWarehouseTypeUpdate">testWarehouseTypeUpdate</a></td><td>Failure</td><td>N/A<br>
+<br>
+<code>junit.framework.AssertionFailedError<br>	at com.elitecore.test.warehousetype.WarehouseTypeTestCase.testWarehouseTypeUpdate(Unknown Source)<br>
+</code></td><td>0.097</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a href="com/elitecore/test/warehousetype/11_WarehouseTypeTestCase.html">WarehouseTypeTestCase</a></td><td><a name="testBaseTestCase"></a><a href="com/elitecore/test/warehousetype/11_WarehouseTypeTestCase.html#testBaseTestCase">testBaseTestCase</a></td><td>Success</td><td></td><td>0.048</td>
+</tr>
+</table>
+</body>
+</html>

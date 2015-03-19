@@ -1,0 +1,213 @@
+<?xml version="1.0" ?>
+<project name="Database MR" default="mr.default" basedir="." >
+	
+  	<property name="builder.name" value="yash.kapasi" />  	
+	<property name="release" value="${basedir}/release" />  
+	<property file="${basedir}/svn.properties" />
+	<property file="${basedir}/hotfix.properties" />
+
+	
+	
+	<path id="classpath">
+		<fileset dir="${basedir}/lib" includes="**/*.jar"/>		
+	</path>
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties" >
+		<classpath refid="classpath"/>
+	</taskdef>
+	
+	
+  
+  <!-- Doing configurations and changes related app.build.db.hotfix-->
+	
+	<taskdef name="fmpp" classname="fmpp.tools.AntTask" >
+		<classpath refid="classpath"/>
+	</taskdef>
+	<taskdef name="freemarker" classname="freemarker.ext.ant.FreemarkerXmlTask">
+		<classpath>
+			<pathelement location="${basedir}/lib/freemarker.jar" />
+		</classpath>
+	</taskdef>
+	
+	<property name="bl.module.name" value="inventorybl" />
+	
+	<target name="app.build.db.hotfix" >
+	  	
+		
+		<antcall target="db-mr">
+		  
+		</antcall>
+	  
+	</target>
+
+	<target name="app.build.versiondb.hotfix" >
+	  	
+		
+		<antcall target="versiondb-mr">
+		  
+		</antcall>
+	  
+	</target>
+
+	<!-- Exports bundle to sprint directories -->
+	<target name="svn.bundle.export">  
+		<property name="bundle.export.dir" value="${svn.checkout.dir}/${sprint.number.export}"/>
+		<property name="svn.url" value="${svn.repo.url}${sprint.number.export}/application/${bl.module.name}/setup/" />
+		<property name="svn.exportPath" value="${bundle.export.dir}" />	
+		<ant antfile="${basedir}/build-checkout.xml"  target="svn.export" useNativeBasedir="false" inheritAll="true"/>
+	</target> 
+	
+	
+	
+	<property name="db.commited" location="${basedir}/source-checkout/dbscript" />
+	<property name="versiondb.commited" location="${basedir}/source-checkout/versiondbscript" />
+	<property name="db.mr.dir" location="${basedir}/release/MR/dbscript" />
+	<property name="versiondb.mr.dir" location="${basedir}/release/MR/versiondbscript" />
+	<property name="db.mr.files" value="" />
+	<property name="db.temp.dir" location="${basedir}/dbtmp" />
+	<property name="file.dir" location="../application/${bl.module.name}/setup" />
+	<property name="MR-DIR" location="${basedir}/MR" />
+	<property name="core.name" value="Sprint-[${sprint.old.version}-${sprint.new.version}]"/>
+
+	<target name="versiondb-mr" description="Creates Database MR" >
+
+		<property name="db.mr.name" value="${project.name}-INC-DB-${old.version.number}-${version.number}-${core.name}" />
+		<delete dir="${db.temp.dir}" />
+		<mkdir dir="${db.temp.dir}" />
+		<mkdir dir="${db.temp.dir}/${db.mr.name}"/>
+
+		<foreach list="${db.mr.files}" delimiter=":" param="db.file" trim="true"  target="prepare-mr" inheritall="false" >	
+
+		</foreach>
+
+
+		<mkdir dir="${db.temp.dir}/${db.mr.name}/${project.version}" />
+		<property name="db.mr.temp.dir" location="${db.temp.dir}/${db.mr.name}" />
+		<move todir="${db.mr.temp.dir}/${project.version}">
+			<fileset dir="${db.temp.dir}">
+				<include name="*.sql" />
+			</fileset>
+		</move>
+
+		<copy  todir="${db.mr.temp.dir}">
+			<fileset dir="${MR-DIR}/versiondbscript"/>
+		</copy>
+		<pathconvert dirsep="/" pathsep="," property="released.files">
+			<map from="${db.mr.temp.dir}/" to="" />
+			<!-- This is the trick. Remove slash to make path absolute. -->
+			<fileset dir="${db.mr.temp.dir}/${project.version}" includes="**/*.sql" />
+		</pathconvert>
+		<echo message="Released files : ${released.files}"/>
+		
+	
+		<property name="databaseschemas" value="${database.schema.name}" />
+		
+		<tstamp>
+			<format property="build.number" pattern="yyyy_MM_dd_HHmmss" />
+		</tstamp>
+		<fmpp sourceFile="${MR-DIR}/versiondbscript/version.info.ftl" outputFile="${db.mr.temp.dir}/version.info">		
+			<data expandProperties="yes">
+				 ant: antProperties()
+				 versionNumber: '${version.number}'
+				 mrname:'${db.mr.name}'
+				oldVersionNumber:'${old.version.number}',
+ 	  			 buildNumber:'${build.number}',
+				 databaseschemas:'${databaseschemas}'
+			</data>
+		</fmpp>
+
+		<fmpp sourceFile="${MR-DIR}/versiondbscript/mr.properties.ftl" outputFile="${db.mr.temp.dir}/${project.name}-INC-DB-${old.version.number}-${version.number}-${core.name}.properties">
+			<data expandProperties="yes">
+                 ant: antProperties()
+				 releasedfiles:'${released.files}'
+				 databaseschemas:'${databaseschemas}'
+			</data>
+		</fmpp>
+		<tar compression="gzip" destfile="${db.mr.name}.tar.gz">
+			<tarfileset dir="${db.mr.temp.dir}" >
+				<include name="**/**/*"/>	
+				<exclude name="**/*.ftl" />
+			</tarfileset>
+		</tar>		
+		<move file="${db.mr.name}.tar.gz" todir="${MR-DIR}" />
+		<antcall target="svn-commit" />
+	</target>
+
+
+	<target name="db-mr" description="Creates Database MR" >
+
+		<property name="db.mr.name" value="${project.name}-DB-${version.number}_MR${env.MRDB}" />
+		<delete dir="${db.temp.dir}" />
+		<mkdir dir="${db.temp.dir}" />
+		<mkdir dir="${db.temp.dir}/${db.mr.name}"/>
+
+		<foreach list="${db.mr.files}" delimiter=":" param="db.file" trim="true"  target="prepare-mr" inheritall="false" >	
+
+		</foreach>
+
+
+		<mkdir dir="${db.temp.dir}/${db.mr.name}/${project.version}" />
+		<property name="db.mr.temp.dir" location="${db.temp.dir}/${db.mr.name}" />
+		<move todir="${db.mr.temp.dir}/${project.version}">
+			<fileset dir="${db.temp.dir}">
+				<include name="*.sql" />
+			</fileset>
+		</move>
+
+		<copy  todir="${db.mr.temp.dir}">
+			<fileset dir="${MR-DIR}/dbscript"/>
+		</copy>
+		<pathconvert dirsep="/" pathsep="," property="released.files">
+			<map from="${db.mr.temp.dir}/" to="" />
+			<!-- This is the trick. Remove slash to make path absolute. -->
+			<fileset dir="${db.mr.temp.dir}/${project.version}" includes="**/*.sql" />
+		</pathconvert>
+		<echo message="Released files : ${released.files}"/>
+		
+	
+		<property name="databaseschemas" value="${database.schema.name}" />
+		
+		<tstamp>
+			<format property="build.number" pattern="yyyy_MM_dd_HHmmss" />
+		</tstamp>
+		<fmpp sourceFile="${MR-DIR}/dbscript/version.info.ftl" outputFile="${db.mr.temp.dir}/version.info">		
+			<data expandProperties="yes">
+				 ant: antProperties()
+				 versionNumber: '${version.number}'
+				 mrname:'${db.mr.name}'
+				 envMRDB:'${env.MRDB}',
+ 	  			 buildNumber:'${build.number}',
+				 envPREVIOUSMRDB:'${env.PREVIOUS.MRDB}'
+				 databaseschemas:'${databaseschemas}'
+			</data>
+		</fmpp>
+
+		<fmpp sourceFile="${MR-DIR}/dbscript/mr.properties.ftl" outputFile="${db.mr.temp.dir}/${project.name}-DB-${version.number}_MR${env.MRDB}.properties">
+			<data expandProperties="yes">
+                 ant: antProperties()
+				 releasedfiles:'${released.files}'
+				 databaseschemas:'${databaseschemas}'
+			</data>
+		</fmpp>
+		<tar compression="gzip" destfile="${db.mr.name}.tar.gz">
+			<tarfileset dir="${db.mr.temp.dir}" >
+				<include name="**/**/*"/>	
+				<exclude name="**/*.ftl" />
+			</tarfileset>
+		</tar>		
+		<move file="${db.mr.name}.tar.gz" todir="${MR-DIR}" />
+		<antcall target="svn-commit" />
+	</target>
+
+	<target name="prepare-mr" description="Preparing for MR" >
+
+		<copy file="${file.dir}/${db.file}" todir="${db.temp.dir}" />
+	</target>
+
+	
+	 <target name="svn-commit">
+	  <ant antfile="build-checkout.xml"  target="update-mr" useNativeBasedir="false" inheritAll="true" />
+	</target>
+
+	
+</project>

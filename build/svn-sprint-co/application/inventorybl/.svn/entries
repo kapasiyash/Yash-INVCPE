@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16492"
+   kind="dir"
+   committed-date="2015-03-16T08:59:12.264136Z"/>
+<entry
+   name=".classpath"
+   checksum="a4a0ce89828ee49ff17b947d274b30cf"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:06.000000Z"/>
+<entry
+   name=".project"
+   checksum="e643e7ea9d61f0a8511a102b964ddb9a"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:06.000000Z"/>
+<entry
+   name=".settings"
+   kind="dir"/>
+<entry
+   name="build"
+   kind="dir"/>
+<entry
+   name="lib"
+   kind="dir"/>
+<entry
+   name="setup"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   name="transaction.log"
+   checksum="d41d8cd98f00b204e9800998ecf8427e"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+</wc-entries>

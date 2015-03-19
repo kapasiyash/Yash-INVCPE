@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<project name="cpe-build" default="build-app" basedir=".">
+
+	<property name="builder.name" value="yash.kapasi" />  	
+	
+	<property file="${basedir}/svn.properties" />
+	<property file="${basedir}/hotfix.properties" />
+
+	
+	
+	<path id="classpath">
+		<fileset dir="${basedir}/lib" includes="**/*.jar"/>		
+	</path>
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties" >
+		<classpath refid="classpath"/>
+	</taskdef>
+	
+	
+	
+	<target name="clean" >
+		<delete dir="${svn.checkout.dir}" />		
+	</target>	
+
+	<target name="init" depends="clean" >		
+		<mkdir dir="${svn.checkout.dir}" />		
+	</target>	
+
+	<target name="checkout" depends="init" >
+		 <ant antfile="${basedir}/build-checkout.xml"  target="checkout" useNativeBasedir="false" inheritAll="true"/>
+	</target> 
+
+	<target name="app.build.fullversion" depends="checkout" >
+	    <ant antfile="${svn.checkout.dir}/build/build.xml"  target="build-fullversion" useNativeBasedir="true" inheritAll="false"/>
+	</target>
+	<target name="app.build.hotfix" depends="checkout">
+	 
+		
+				      <ant antfile="${svn.checkout.dir}/build/build.xml"  target="build-hotfix" useNativeBasedir="true" inheritAll="false"/>
+	</target>
+<target name="app.versionbuild.hotfix" depends="checkout">
+	 
+		
+				      <ant antfile="${svn.checkout.dir}/build/hudson-incremental-build.xml"  target="app.build.versionbuild" useNativeBasedir="true" inheritAll="false"/>
+	</target>
+	
+	
+	<target name="build-app">
+	  
+	   <trycatch>
+			<try>
+				<if>
+					<isset property="BUILDTYPE"/>
+					<then>
+					      <if>
+						<equals arg1="APP-HOTFIX" arg2="${BUILDTYPE}" />
+					      <then>
+							
+							      <antcall target="app.build.hotfix" />
+						</then>
+						
+						<elseif>
+							<equals arg1="DB-HOTFIX" arg2="${BUILDTYPE}" />
+						<then>
+									    <antcall target="app.build.db.hotfix" />
+							    
+								   </then>
+						</elseif>
+						<elseif>
+							<equals arg1="APP-VERSIONBUILD" arg2="${BUILDTYPE}" />
+						<then>
+									    <antcall target="app.versionbuild.hotfix" />
+							    
+								   </then>
+						</elseif>
+<elseif>
+							<equals arg1="DB-VERSIONBUILD" arg2="${BUILDTYPE}" />
+						<then>
+									    <antcall target="app.versionbuild.db.hotfix" />
+							    
+								   </then>
+						</elseif>
+							    <else>
+								    <echo message="No valid target found for ${BUILDTYPE} " />
+							    </else>
+						    </if>
+
+					</then>
+					<else>
+						<echo message="Parameter Not found. please set BUILDTYPE as paremeter " />
+					</else>
+				</if>
+
+			</try>
+			<catch>
+
+			</catch>
+		</trycatch>
+	  
+	</target>
+
+	<target name="versionbuild-app">
+	  
+	   <trycatch>
+			<try>
+				<if>
+					<isset property="BUILDTYPE"/>
+					<then>
+					      <if>
+						<equals arg1="APP-VERSIONBUILD" arg2="${BUILDTYPE}" />
+					      <then>
+							
+							      <antcall target="app.versionbuild.hotfix" />
+								    </then>
+						
+												<elseif>
+								    <equals arg1="DB-VERSIONBUILD" arg2="${BUILDTYPE}" />
+								    <then>
+									    <antcall target="app.versionbuild.db.hotfix" />
+							    
+								    </then>
+							    </elseif>
+							    <else>
+								    <echo message="No valid target found for ${BUILDTYPE} " />
+							    </else>
+						    </if>
+
+					</then>
+					<else>
+						<echo message="Parameter Not found. please set BUILDTYPE as paremeter " />
+					</else>
+				</if>
+			</try>
+			<catch>
+
+			</catch>
+		</trycatch>
+	  
+	</target>
+
+	
+<target name="app.versionbuild.db.hotfix" depends="checkout">
+	  	
+		
+		  <ant antfile="${svn.checkout.dir}/build/build-db-mr.xml"  target="app.build.versiondb.hotfix" useNativeBasedir="true" inheritAll="false"/>
+	  
+	</target>
+
+	<target name="app.build.db.hotfix" depends="checkout">
+	  	
+		
+		  <ant antfile="${svn.checkout.dir}/build/build-db-mr.xml"  target="app.build.db.hotfix" useNativeBasedir="true" inheritAll="false"/>
+	  
+	</target>
+	
+</project>

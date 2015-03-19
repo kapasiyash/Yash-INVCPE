@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventorybl/src/com/elitecore/cpe/bl/entity/inventory/inventorymgt"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16287"
+   kind="dir"
+   committed-date="2015-03-04T07:27:26.635701Z"/>
+<entry
+   name="BatchData.java"
+   checksum="ed6cd7b3e9888228bc4c282e40816b47"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="BatchSummaryData.java"
+   checksum="084d2a500879810f923d1ed44849ad79"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InvalidInventoryData.java"
+   checksum="48a7b66665e015837a64eeb6b4310f22"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventoryData.java"
+   checksum="e49110053c1b545228f9f8bc769704da"
+   last-author="rinkal.sadariya"
+   committed-rev="16096"
+   text-time="2015-02-25T08:13:09.000000Z"
+   kind="file"
+   committed-date="2015-02-25T08:13:09.591153Z"/>
+<entry
+   name="InventoryReserveData.java"
+   checksum="55af4ef983215539370ef26be588b8e7"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventoryReserveDetailData.java"
+   checksum="e456f4d933196fe14dba2f58340c9be8"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventoryStatusData.java"
+   checksum="c9377b16c6e0b1ddd1bc17145f44024b"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventoryStatusLogData.java"
+   checksum="cc4888f8ffba1c7be40de020cee4f8be"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventoryStatusTransition.java"
+   checksum="45467952bcd5cc31d08f1c77292c4725"
+   last-author="rinkal.sadariya"
+   committed-rev="15845"
+   text-time="2015-02-12T12:36:20.000000Z"
+   kind="file"
+   committed-date="2015-02-12T12:36:20.532927Z"/>
+<entry
+   name="InventorySubStatusData.java"
+   checksum="cbc2cf96481d69be944815191eab2edf"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="InventorySubStatusTransition.java"
+   checksum="54687eec6ae1d14fdc874a17acfda643"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="OrderData.java"
+   checksum="6bb8cf0a782b58fd5dc1e508e421bd13"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="ResourceAttributeRel.java"
+   checksum="89e3f6696b85f2327912fe8d2b4d7a13"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="TransferOrderData.java"
+   checksum="874f915d8cef0bdeb5b3c6db2b3376de"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="TransferOrderDetailData.java"
+   checksum="c6693059dcc1ff3a594879edd79c5f98"
+   last-author="yash.kapasi"
+   committed-rev="16287"
+   text-time="2015-03-04T07:27:26.000000Z"
+   kind="file"
+   committed-date="2015-03-04T07:27:26.635701Z"/>
+<entry
+   name="WarehouseInventoryStatusData.java"
+   checksum="88d0314b593870e29feb4c06ef9e439f"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+<entry
+   name="WarehouseInventoryStatusHistoryData.java"
+   checksum="50548b1de1ef077147093ae99e3cc5fc"
+   last-author="yash.kapasi"
+   committed-rev="15558"
+   text-time="2015-02-06T07:49:02.000000Z"
+   kind="file"
+   committed-date="2015-02-06T07:49:02.964762Z"/>
+</wc-entries>

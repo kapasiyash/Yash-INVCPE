@@ -1,0 +1,1 @@
+java -jar SLADataRead.jar $1 dbCon.properties

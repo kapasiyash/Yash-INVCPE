@@ -1,0 +1,60 @@
+<zk>
+	<window id="" width="100%" style="overflow: visible;" 
+			apply="com.elitecore.cpe.web.composer.master.item.ViewResourceSubTypeComposer">
+		<hlayout height="100%" width="100%" style="overflow: visible;">
+			 <vlayout width="100%" height="100%">
+		    	<hbox width="100%" style="border: 1px solid #ccc;border-width: 0 1px;">
+		            <div align="right">
+		                <menubar id="actionMenubar" autodrop="true" width="798px" sclass="top-menu"/>
+		            </div>
+		        </hbox>
+				<hlayout width="100%">
+					<vlayout width="100%">
+						<grid id="viewbucketgrid" width="798px"  oddRowSclass="non-odd" sclass="viewGrid" zclass="none">
+							<columns>
+								<column width="150px" />
+			                    <column width="249px" />
+			                    <column width="150px" />
+			                    <column width="249px" />
+							</columns>
+							<rows>
+								<row spans="1, 3" align="top">
+									<label value="${labels.crst.name}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbResourceSubTypeName"/>
+								</row>
+								<row spans="1, 3" align="top">
+									<label value="Resource Type Name" style="text-align: left;" />
+									<a><label style="text-align: left;" id="lbResourceTypeName"/></a>
+								</row>
+<!-- 								<row spans="1, 3" align="top"> -->
+<!-- 									<label value="${labels.warehouse.alias}" style="text-align: left;" /> -->
+<!-- 									<label style="text-align: left;" id="lbResourceSubTypeAlias"/> -->
+<!-- 								</row> -->
+								<row spans="1, 3" align="top">
+									<label value="${labels.global.description}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbResourceSubTypeDesc"/>
+								</row>
+								<row align="top">
+									<label value="${labels.global.createDate}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbCreatedDate"  />
+									<label value="${labels.global.createDateBy}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbCreatedBy" />
+								</row>
+								<row align="top">
+									<label value="${labels.global.lastModifiedDate}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbUpdateDate"  />
+									<label value="${labels.global.lastModifiedBy}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbUpdatedBy" />
+								</row>
+							</rows>
+						</grid>
+						<separator bar="false"/>
+						<div id="viewActionContent"  width="100%" />
+						<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+						</vlayout>
+				</hlayout>
+			</vlayout>
+		</hlayout>
+	</window>
+
+</zk>

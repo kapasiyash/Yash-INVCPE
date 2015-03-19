@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryapp/.settings"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="15540"
+   kind="dir"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name=".jsdtscope"
+   checksum="bee2cc53cc0a78f47e937c67d2c171c3"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:25.000000Z"/>
+<entry
+   name="org.eclipse.jst.j2ee.ejb.annotations.xdoclet.prefs"
+   checksum="0c2f1b46f261ef7ec77610d2dfdc1ac1"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="org.eclipse.ltk.core.refactoring.prefs"
+   checksum="ef84b6c98e5692353b06f74dc76c35fb"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="org.eclipse.wst.common.component"
+   checksum="8a11835f0b8f83e0996c27055ac43863"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:25.000000Z"/>
+<entry
+   name="org.eclipse.wst.common.project.facet.core.xml"
+   checksum="d1390ab0d503c5494d9229c390f270fe"
+   last-author="yash.kapasi"
+   text-time="2015-02-06T05:24:23.000000Z"
+   committed-rev="15540"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"
+   prop-time="2015-03-16T09:20:25.000000Z"/>
+<entry
+   name="org.eclipse.wst.jsdt.ui.superType.container"
+   checksum="b27d1cf62dde4473bab7c433317bb0ce"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="org.eclipse.wst.jsdt.ui.superType.name"
+   checksum="c89686a387d2b12b3c729ce35a0bcb5b"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+<entry
+   name="org.jboss.ide.eclipse.as.core.prefs"
+   checksum="7247dc889202fd3bdd2a09c91204d431"
+   last-author="yash.kapasi"
+   committed-rev="15540"
+   text-time="2015-02-06T05:24:23.000000Z"
+   kind="file"
+   committed-date="2015-02-06T05:24:23.564497Z"/>
+</wc-entries>

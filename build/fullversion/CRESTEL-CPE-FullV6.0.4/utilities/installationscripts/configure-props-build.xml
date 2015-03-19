@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="all" name="Install Full V Build">
+
+	<!-- ******************************** --> 
+	<!--    Property declaration section  -->
+	<!-- ******************************** -->
+	
+	<property environment="env"/>
+	<property name="lib.dir" value="${env.ANT_HOME}/lib"/>
+	
+	<!-- ******************************** -->
+	<!-- Property declaration section ends -->
+	<!-- ******************************** -->
+
+
+	<!-- ******************************** -->
+	<!--    Path declaration section      -->
+	<!-- ******************************** -->
+	
+	<!-- ******************************** -->
+	<!--    Path declaration section ends -->
+	<!-- ******************************** -->
+
+
+	<!-- ******************************** -->
+	<!--  Taskdef declaration section     -->
+	<!-- ******************************** -->
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  	<classpath>
+			<pathelement location="${lib.dir}/ant-contrib-0.6.jar"/>
+	  	</classpath>
+	</taskdef>
+	
+	<!-- ******************************** -->
+	<!-- Taskdef declaration section ends -->
+	<!-- ******************************** -->
+
+
+	<!-- ******************************** -->
+	<!-- Macrodef declaration section     -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!-- Macrodef declaration section ends-->
+	<!-- ******************************** -->
+
+
+	<!-- ******************************** -->
+	<!-- Unit target definition	      -->
+	<!-- ******************************** -->
+
+
+	<target name="clean-jboss">
+		<delete>
+			<fileset dir="${jboss.home}/server/default/log" >
+				<include name="**/*"/>
+			</fileset>
+			<fileset dir="${jboss.home}/server/default/tmp" >
+				<include name="**/*"/>
+			</fileset>
+			<fileset dir="${jboss.home}/server/default/data" >
+				<include name="**/*"/>
+			</fileset>
+		</delete>
+	</target>
+	
+	<target name="clean-tomcat">
+		<delete>
+			<fileset dir="${tomcat.home}/logs" >
+				<include name="**/*"/>
+			</fileset>
+			<fileset dir="${tomcat.home}/work" >
+				<include name="**/*"/>
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="clean-others">
+		<delete>
+			<fileset dir="${setup.home}" >
+				<include name="upgrade/*.tar.gz"/>
+				<include name="upgrade/*.log"/>
+				<include name="modules/mediation/logs/*"/>
+				<include name="patches/*.tar.gz"/>
+				<include name="patches/*.log"/>
+			</fileset>
+		</delete>
+	</target>
+	
+	<target name="clean-modules">
+		<delete>
+			<fileset dir="${setup.home}" >
+				<include name="modules/${module.name}/versions/*.log"/>
+				<include name="modules/${module.name}/versions/*.tar.gz"/>
+			</fileset>
+		</delete>
+	</target>
+	
+	<target name="set-tomcat-env">
+	
+	</target>
+	<target name="update-jboss-jndi-properties">
+
+		<replaceregexp match="java.naming.factory.initial=(.*)" 
+				replace="java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.factory.url.pkgs=(.*)" 
+				replace="java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.provider.url=(.*)" 
+				replace="java.naming.provider.url=${jboss.ip}:${jboss.port}"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.security.principal=(.*)" 
+				replace="java.naming.security.principal="
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.security.credentials=(.*)" 
+				replace="java.naming.security.credentials="
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.security.authentication=(.*)" 
+				replace="java.naming.security.authentication="
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+
+		
+	</target>
+
+	<target name="update-oracleas-jndi-properties">
+
+		<replaceregexp match="java.naming.factory.initial=(.*)" 
+				replace="java.naming.factory.initial=oracle.j2ee.rmi.RMIInitialContextFactory"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.factory.url.pkgs=(.*)" 
+				replace="java.naming.factory.url.pkgs="
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.provider.url=(.*)" 
+				replace="java.naming.provider.url=${oracleas.url}/billing"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.provider.url=(.*)" 
+				replace="java.naming.provider.url=${oracleas.url}/mediation"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/mediation_jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.provider.url=(.*)" 
+				replace="java.naming.provider.url=${oracleas.url}/contentmgmt"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/contentmgmt_jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.provider.url=(.*)" 
+				replace="java.naming.provider.url=${oracleas.url}/numbermgmt"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/numbermgmt_jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.provider.url=(.*)" 
+				replace="java.naming.provider.url=${oracleas.url}/pin"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/pin_jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.provider.url=(.*)" 
+				replace="java.naming.provider.url=${oracleas.url}/product"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/product_jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.provider.url=(.*)" 
+				replace="java.naming.provider.url=${oracleas.url}/provisioning"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/provisioning_jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.provider.url=(.*)" 
+				replace="java.naming.provider.url=${oracleas.url}/crestelsystem"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/system_jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp match="java.naming.security.principal=(.*)" 
+				replace="java.naming.security.principal=${oracleas.principal}"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.security.credentials=(.*)" 
+				replace="java.naming.security.credentials=${oracleas.credential}"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="java.naming.security.authentication=(.*)" 
+				replace="java.naming.security.authentication=simple"
+				byline="true">
+			<fileset dir="${setup.home}">
+				<include name="wars/${web.dir}/**/*jndi.properties"/>
+			</fileset>
+		</replaceregexp>
+
+
+	</target>
+
+	<target name="update-billing-jboss-env-props">
+
+		<replaceregexp 
+			file="${billing.home}/utilities/installationscripts/jboss/deploy-jboss.properties"
+			match="jboss.home=(.*)"
+			replace="jboss.home=${jboss.home}"
+			byline="true"/>
+		
+		<replaceregexp 
+			file="${billing.home}/utilities/installationscripts/jboss/deploy-jboss.properties"
+			match="billing.home=(.*)"
+			replace="billing.home=${billing.home}"
+			byline="true"/>
+
+			
+	</target>	
+
+	<target name="update-billing-oracleas-env-props">
+
+		<replaceregexp 
+			file="${billing.home}/utilities/installationscripts/oracleas/deploy-oracle.properties"
+			match="oracle.home=(.*)"
+			replace="oracle.home=${oracleas.home}"
+			byline="true"/>
+
+		<replaceregexp 
+			file="${billing.home}/utilities/installationscripts/oracleas/deploy-oracle.properties"
+			match="oc4j.home=(.*)"
+			replace="oc4j.home=${oracleas.home}"
+			byline="true"/>
+
+		<replaceregexp 
+			file="${billing.home}/utilities/installationscripts/oracleas/deploy-oracle.properties"
+			match="java.home=(.*)"
+			replace="java.home=${env.JAVA_HOME}"
+			byline="true"/>
+
+		<replaceregexp 
+			file="${billing.home}/utilities/installationscripts/oracleas/deploy-oracle.properties"
+			match="billing.home=(.*)"
+			replace="billing.home=${billing.home}"
+			byline="true"/>
+
+		<replaceregexp 
+			file="${billing.home}/utilities/installationscripts/oracleas/deploy-oracle.properties"
+			match="deployer.uri=(.*)"
+			replace="deployer.uri=deployer:oc4j:${oracleas.url}"
+			byline="true"/>
+
+		<replaceregexp 
+			file="${billing.home}/utilities/installationscripts/oracleas/deploy-oracle.properties"
+			match="oc4j.admin.user=(.*)"
+			replace="oc4j.admin.user=${oracleas.principal}"
+			byline="true"/>
+
+		<replaceregexp 
+			file="${billing.home}/utilities/installationscripts/oracleas/deploy-oracle.properties"
+			match="oc4j.admin.password=(.*)"
+			replace="oc4j.admin.password=${oracleas.credential}"
+			byline="true"/>
+	
+	</target>
+
+	<target name="update-rating-env-props">
+		
+		<replaceregexp 
+			file="${rating.home}/modules/rating/utilities/installationscripts/jboss/deploy-jboss.properties"
+			match="jboss.home=(.*)"
+			replace="jboss.home=${jboss.home}"
+			byline="true"/>
+		
+		<replaceregexp 
+			file="${rating.home}/modules/rating/utilities/installationscripts/jboss/deploy-jboss.properties"
+			match="rating.home=(.*)"
+			replace="rating.home=${rating.home}"
+			byline="true"/>
+		
+	</target>	
+
+	<target name="update-mediation-env-props">
+
+		<replaceregexp  file="${mediation.home}/modules/mediation/config/database/oracle-database-conf.xml"
+		                match="(&lt;connection-url&gt;)(.*)(&lt;/connection-url&gt;)" replace="\1${database.url}\3" byline="true"/>
+		<replaceregexp 	file="${mediation.home}/modules/mediation/config/database/oracle-database-conf.xml" 
+				match="(&lt;user-name&gt;crestelmediation)(.*)(&lt;/user-name&gt;)" replace="\1${db.env}\3" />
+		<replaceregexp 	file="${mediation.home}/modules/mediation/config/database/oracle-database-conf.xml" 
+				match="(&lt;password&gt;crestelmediation)(.*)(&lt;/password&gt;)" replace="\1${db.env}\3" />
+		<replaceregexp 	file="${mediation.home}/modules/mediation/config/database/oracle-database-conf.xml" 
+				match="(&lt;user-name&gt;jispratcorbilling)(.*)(&lt;/user-name&gt;)" replace="\1${db.env}\3" />
+		<replaceregexp 	file="${mediation.home}/modules/mediation/config/database/oracle-database-conf.xml" 
+				match="(&lt;password&gt;jispratcorbilling)(.*)(&lt;/password&gt;)" replace="\1${db.env}\3" />
+
+	</target>	
+	
+	<target name="update-servermanager-env-props">
+	
+		<replaceregexp  file="${sm.home}/wars/servermanager/WEB-INF/classes/config/database.properties"
+		                match="hibernate.connection.url=(.*)" replace="hibernate.connection.url=${database.url}" byline="true"/>
+		                
+		<replaceregexp  file="${sm.home}/wars/servermanager/WEB-INF/classes/config/database.properties"
+		                match="hibernate.connection.username=(.*)" replace="hibernate.connection.username=crestelsm${db.env}" byline="true"/>
+		
+		<replaceregexp  file="${sm.home}/wars/servermanager/WEB-INF/classes/config/database.properties"
+		                match="hibernate.connection.password=(.*)" replace="hibernate.connection.password=crestelsm${db.env}" byline="true"/>
+	
+	</target>
+	
+	<target name="update-version-props">
+
+		<replaceregexp
+			match="database.url=(.*)"
+			replace="database.url=${database.url}"
+			byline="true">		
+			<fileset dir="${setup.home}">
+				<include name="modules/${module.name}/versions/build.properties"/>
+				<include name="upgrade/build.properties"/>
+				<include name="patches/build.properties"/>
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp
+			match="db.env=(.*)"
+			replace="db.env=${db.env}"
+			byline="true">		
+			<fileset dir="${setup.home}">
+				<include name="modules/${module.name}/versions/build.properties"/>
+				<include name="upgrade/build.properties"/>
+				<include name="patches/build.properties"/>
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp
+			match="crestel.home=(.*)"
+			replace="crestel.home=${setup.home}"
+			byline="true">		
+			<fileset dir="${setup.home}">
+				<include name="modules/${module.name}/versions/build.properties"/>
+				<include name="upgrade/build.properties"/>
+				<include name="patches/build.properties"/>
+			</fileset>
+		</replaceregexp>
+
+		
+	</target>	
+
+	<target name="update-reportstool-env-props">
+		
+		<replaceregexp  match="JDBCConnectionURL(\s)*=(.*)" replace="JDBCConnectionURL=${database.url}" byline="true">
+			<fileset dir="${billing.home}/wars/corereports/reportstool/WEB-INF/classes">
+				<include name="EliteReader.properties"/>
+				<include name="JISP5_x.properties"/>
+				<include name="CrestelviewsReader.properties"/>
+				<include name="Reader.properties"/>
+				<include name="ReportsReader.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp  match="User(\s)*=(.*)" replace="User=${rep.database}" byline="true">
+			<fileset dir="${billing.home}/wars/corereports/reportstool/WEB-INF/classes">
+				<include name="Reader.properties"/>
+				<include name="ReportsReader.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp  match="Password(\s)*=(.*)" replace="Password=${rep.database}" byline="true">
+			<fileset dir="${billing.home}/wars/corereports/reportstool/WEB-INF/classes">
+				<include name="Reader.properties"/>
+				<include name="ReportsReader.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp  match="DataBaseName(\s)*=(.*)" replace="DataBaseName=${rep.database}" byline="true">
+			<fileset dir="${billing.home}/wars/corereports/reportstool/WEB-INF/classes">
+				<include name="Reader.properties"/>
+				<include name="ReportsReader.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp  match="User(\s)*=(.*)" replace="User=${bil.database}" byline="true">
+			<fileset dir="${billing.home}/wars/corereports/reportstool/WEB-INF/classes">
+				<include name="EliteReader.properties"/>
+				<include name="JISP5_x.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp  match="Password(\s)*=(.*)" replace="Password=${bil.database}" byline="true">
+			<fileset dir="${billing.home}/wars/corereports/reportstool/WEB-INF/classes">
+				<include name="EliteReader.properties"/>
+				<include name="JISP5_x.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp  match="DataBaseName(\s)*=(.*)" replace="DataBaseName=${bil.database}" byline="true">
+			<fileset dir="${billing.home}/wars/corereports/reportstool/WEB-INF/classes">
+				<include name="EliteReader.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp  match="User(\s)*=(.*)" replace="User=${views.database}" byline="true">
+			<fileset dir="${billing.home}/wars/corereports/reportstool/WEB-INF/classes">
+				<include name="CrestelviewsReader.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp  match="Password(\s)*=(.*)" replace="Password=${views.database}" byline="true">
+			<fileset dir="${billing.home}/wars/corereports/reportstool/WEB-INF/classes">
+				<include name="CrestelviewsReader.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+		<replaceregexp  match="DataBaseName(\s)*=(.*)" replace="DataBaseName=${views.database}" byline="true">
+			<fileset dir="${billing.home}/wars/corereports/reportstool/WEB-INF/classes">
+				<include name="CrestelviewsReader.properties"/>
+			</fileset>
+		</replaceregexp>
+		
+	</target>
+	
+	<target name="set-billing-env">
+		<input message="Please enter BILLING_HOME directory (e.g. /opt/crestelsetup/billing) :" addproperty="billing.home" />
+		
+		<input message="Please enter database URL    	(e.g. 'jdbc:oracle:thin:@192.168.1.171:1521:orcl92') :" addproperty="database.url" />
+		<input message="Please enter database environment(e.g. 'prd501/sqa501/ngt501') :" addproperty="db.env" />
+		
+		<foreach list="system,reconciliation,mediation,contentmgmt,provisioning,numbermgmt,pin,product,billing,web"
+		        param="module.name"
+		        target="update-version-props" 
+		>
+			<param name="setup.home" value="${billing.home}" />
+			<param name="database.url" value="${database.url}" />
+			<param name="db.env" value="${db.env}" />
+		</foreach>
+		
+
+		<input message="Please enter application server: (e.g. jboss/oracleas):" addproperty="app.server" />		
+
+		<if>
+			<equals arg1="${app.server}" arg2="jboss" />
+			<then>
+
+			<input message="Please enter Billing JBOSS_HOME path (e.g /opt/crestelsetup/jboss-3.2.6) :" addproperty="jboss.home" />	
+			<input message="Please enter Billing JBoss machine IP   :" addproperty="jboss.ip" />
+			<input message="Please enter Billing JBoss port :" addproperty="jboss.port" />
+				
+				<foreach
+				        list="cwomwebservice,operations-manager,simulatorwebservice,webselfcare"
+				        param="web.dir"
+				        target="update-jboss-jndi-properties" 
+				>
+					<param name="setup.home" value="${billing.home}" />
+					<param name="jboss.home" value="${jboss.home}" />
+					<param name="jboss.ip" value="${jboss.ip}" />
+					<param name="jboss.port" value="${jboss.port}" />
+				</foreach>
+				
+				
+				<delete dir="${jboss.home}/server/default/deploy/billing" />	
+				<mkdir dir="${jboss.home}/server/default/deploy/billing" />	
+				<copy file="${billing.home}/utilities/dbdatasources/jboss/crestel-ds.xml" 
+					tofile="${jboss.home}/server/default/deploy/billing/crestel-ds.xml" overwrite="true">
+					<filterset>
+						<filter token="database.url" value="${database.url}" />
+						<filter token="database.env" value="${db.env}" />
+					</filterset>
+				</copy>
+				<copy file="${billing.home}/wars/operations-manager/WEB-INF/classes/provisioning_jndi.properties" 
+						tofile="${jboss.home}/server/default/conf/provisioning_jndi.properties" />
+						
+				<exec executable="${billing.home}/utilities/installationscripts/jboss/jboss-deploy.sh" 
+		                        dir="${billing.home}/utilities/installationscripts/jboss"/>		
+				
+			</then>
+			<elseif>
+				<equals arg1="${app.server}" arg2="oracleas" />
+			<then>
+
+			<input message="Please enter OracleAS Home path (e.g /u01/oracle/product/10.1.3/OracleAS_1) :" addproperty="oracleas.home" />	
+			<input message="Please enter OracleAS URL  (e.g. opmn:ormi://127.0.0.1:6005:home) :" addproperty="oracleas.url" />
+			<input message="Please enter OracleAS Principal :" addproperty="oracleas.principal" />
+			<input message="Please enter OracleAS Credential :" addproperty="oracleas.credential" />
+
+				<foreach
+				        list="cwomwebservice,operations-manager,simulatorwebservice,webselfcare"
+				        param="web.dir"
+				        target="update-oracleas-jndi-properties" 
+				>
+					<param name="setup.home" value="${billing.home}" />
+					<param name="oracleas.home" value="${oracleas.home}" />
+					<param name="oracleas.url" value="${oracleas.url}" />
+					<param name="oracleas.principal" value="${oracleas.principal}" />
+					<param name="oracleas.credential" value="${oracleas.credential}" />
+				</foreach>
+			
+			</then>
+			</elseif>
+			<else>
+		  		<echo message="Please enter jboss/oracleas as per environment setup" />
+		  		<fail message="Please enter jboss/oracleas as per environment setup"/>
+			</else>
+		</if>
+		
+	</target>
+	
+	<target name="set-mediation-env">
+	
+		<input message="Please enter MEDIATION_HOME directory (e.g. /opt/crestelsetup/EliteMediation) :" addproperty="mediation.home" />
+		
+		<input message="Please enter database URL    	(e.g. 'jdbc:oracle:thin:@192.168.1.171:1521:orcl92') :" addproperty="database.url" />
+		<input message="Please enter database environment(e.g. 'prd501/sqa501/ngt501') :" addproperty="db.env" />
+
+		<antcall target="update-version-props">
+			<param name="setup.home" value="${mediation.home}" />
+			<param name="database.url" value="${database.url}" />
+			<param name="db.env" value="${db.env}" />
+			<param name="module.name" value="mediation" />
+		</antcall>
+
+		<antcall target="update-mediation-env-props">
+			<param name="mediation.home" value="${mediation.home}" />
+			<param name="database.url" value="${database.url}" />
+			<param name="db.env" value="${db.env}" />
+		</antcall>
+	</target>
+
+	<target name="set-rating-env">
+	
+		<input message="Please enter RATING_HOME directory (e.g. /opt/crestelsetup/RatingServer) :" addproperty="rating.home" />
+		
+		<input message="Please enter database URL    	(e.g. 'jdbc:oracle:thin:@192.168.1.171:1521:orcl92') :" addproperty="database.url" />
+		<input message="Please enter database environment(e.g. 'prd501/sqa501/ngt501') :" addproperty="db.env" />
+		
+		<foreach list="rating"
+		        param="module.name"
+		        target="update-version-props" 
+		>
+			<param name="setup.home" value="${rating.home}" />
+			<param name="database.url" value="${database.url}" />
+			<param name="db.env" value="${db.env}" />
+		</foreach>
+
+		<antcall target="update-rating-env-props">
+			<param name="rating.home" value="${rating.home}" />
+			<param name="database.url" value="${database.url}" />
+			<param name="db.env" value="${db.env}" />
+		</antcall>
+
+		<input message="Please enter Rating JBOSS_HOME path (e.g /opt/crestelsetup/jboss-rating) :" addproperty="rating.jboss.home" />	
+		<input message="Please enter Rating JBoss machine IP   :" addproperty="rating.jboss.ip" />
+		<input message="Please enter Rating JBoss port :" addproperty="rating.jboss.port" />
+		
+		
+		<delete dir="${rating.jboss.home}/server/default/deploy/rating" />	
+		<mkdir dir="${rating.jboss.home}/server/default/deploy/rating" />	
+	  	<copy file="${rating.home}/modules/rating/utilities/dbdatasources/jboss/rating-ds.xml"
+			todir="${rating.jboss.home}/server/default/deploy/rating" overwrite="true">
+			<filterset>
+                  		<filter token="database.url" value="${database.url}" />
+                  		<filter token="database.env" value="${db.env}" />
+            		</filterset>
+      		</copy>
+		
+		<exec executable="${rating.home}/modules/rating/utilities/installationscripts/jboss/jboss-deploy.sh" 
+                        dir="${rating.home}/modules/rating/utilities/installationscripts/jboss"/>		
+	</target>
+
+	<target name="set-servermanager-env">
+	
+		<input message="Please enter SM_HOME directory (e.g. /opt/crestelsetup/ServerManager) :" addproperty="sm.home" />
+		
+		<input message="Please enter database URL    	(e.g. 'jdbc:oracle:thin:@192.168.1.171:1521:orcl92') :" addproperty="database.url" />
+		<input message="Please enter database environment(e.g. 'prd501/sqa501/ngt501') :" addproperty="db.env" />
+		
+		<foreach list="servermanager"
+		        param="module.name"
+		        target="update-version-props" 
+		>
+			<param name="setup.home" value="${sm.home}" />
+			<param name="database.url" value="${database.url}" />
+			<param name="db.env" value="${db.env}" />
+		</foreach>
+
+		<antcall target="update-servermanager-env-props">
+			<param name="sm.home" value="${sm.home}" />
+			<param name="database.url" value="${database.url}" />
+			<param name="db.env" value="${db.env}" />
+		</antcall>
+	</target>
+
+	<target name="set-reportstool-env">
+	
+		<input message="Please enter BILLING_HOME directory (e.g. /opt/crestelsetup/billing) :" addproperty="billing.home" />
+		
+		<input message="Please enter database URL    	(e.g. 'jdbc:oracle:thin:@192.168.1.171:1521:orcl92') :" addproperty="database.url" />
+		<input message="Please enter database environment(e.g. 'prd501/sqa501/ngt501') :" addproperty="db.env" />
+		
+		<foreach list="reportstool"
+		        param="module.name"
+		        target="update-version-props" 
+		>
+			<param name="setup.home" value="${billing.home}" />
+			<param name="database.url" value="${database.url}" />
+			<param name="db.env" value="${db.env}" />
+		</foreach>
+
+    		<antcall target="update-reportstool-env-props">
+    			<param name="billing.home" value="${billing.home}" />
+			<param name="database.url" value="${database.url}" />
+			<param name="rep.database" value="jisprepcorbilling${db.env}" />
+			<param name="bil.database" value="jispbilcorbilling${db.env}" />
+			<param name="views.database" value="crestelviews${db.env}" />
+		</antcall>
+
+	</target>
+
+	<target name="set-cwsc-env">
+	
+		<input message="Please enter BILLING_HOME directory (e.g. /opt/crestelsetup/billing) :" addproperty="billing.home" />
+		
+		<input message="Please enter database URL    	(e.g. 'jdbc:oracle:thin:@192.168.1.171:1521:orcl92') :" addproperty="database.url" />
+		<input message="Please enter database environment(e.g. 'prd501/sqa501/ngt501') :" addproperty="db.env" />
+		
+		<foreach list="voipwsc,datawsc,contentwsc,providerwsc"
+		        param="module.name"
+		        target="update-version-props" 
+		>
+			<param name="setup.home" value="${billing.home}" />
+			<param name="database.url" value="${database.url}" />
+			<param name="db.env" value="${db.env}" />
+		</foreach>
+		
+
+		<input message="Please enter application server: (e.g. jboss/oracleas):" addproperty="app.server" />		
+
+		<if>
+			<equals arg1="${app.server}" arg2="jboss" />
+			<then>
+
+			<input message="Please enter Billing JBOSS_HOME path (e.g /opt/crestelsetup/jboss-3.2.6) :" addproperty="jboss.home" />	
+			<input message="Please enter Billing JBoss machine IP   :" addproperty="jboss.ip" />
+			<input message="Please enter Billing JBoss port :" addproperty="jboss.port" />
+				
+				<foreach
+				        list="voipwsc,datawsc,contentwsc,providerwsc"
+				        param="web.dir"
+				        target="update-jboss-jndi-properties" 
+				>
+					<param name="setup.home" value="${billing.home}" />
+					<param name="jboss.home" value="${jboss.home}" />
+					<param name="jboss.ip" value="${jboss.ip}" />
+					<param name="jboss.port" value="${jboss.port}" />
+				</foreach>
+				
+			</then>
+			<elseif>
+				<equals arg1="${app.server}" arg2="oracleas" />
+			<then>
+
+			<input message="Please enter OracleAS Home path (e.g /u01/oracle/product/10.1.3/OracleAS_1) :" addproperty="oracleas.home" />	
+			<input message="Please enter OracleAS URL  (e.g. opmn:ormi://127.0.0.1:6005:home) :" addproperty="oracleas.url" />
+			<input message="Please enter OracleAS Principal :" addproperty="oracleas.principal" />
+			<input message="Please enter OracleAS Credential :" addproperty="oracleas.credential" />
+
+				<foreach
+				        list="voipwsc,datawsc,contentwsc,providerwsc"
+				        param="web.dir"
+				        target="update-oracleas-jndi-properties" 
+				>
+					<param name="setup.home" value="${billing.home}" />
+					<param name="oracleas.home" value="${oracleas.home}" />
+					<param name="oracleas.url" value="${oracleas.url}" />
+					<param name="oracleas.principal" value="${oracleas.principal}" />
+					<param name="oracleas.credential" value="${oracleas.credential}" />
+				</foreach>
+			
+			</then>
+			</elseif>
+			<else>
+		  		<echo message="Please enter jboss/oracleas as per environment setup" />
+		  		<fail message="Please enter jboss/oracleas as per environment setup"/>
+			</else>
+		</if>
+
+	</target>
+
+	<target name="clean-env">
+	
+		<input message="Please enter BILLING_HOME directory (e.g. /opt/crestelsetup/billing) :" addproperty="billing.home" />
+		
+		<foreach list="system,reconciliation,mediation,contentmgmt,provisioning,numbermgmt,pin,product,billing,web,datawsc,providerwsc,voipwsc,reportstool,contentwsc"
+		        param="module.name"
+		        target="clean-modules" 
+		>
+			<param name="setup.home" value="${billing.home}" />
+		</foreach>
+
+		<input message="Please enter MEDIATION_HOME directory (e.g. /opt/crestelsetup/EliteMediation) :" addproperty="mediation.home" />
+		
+		<antcall target="clean-modules">
+			<param name="setup.home" value="${mediation.home}" />
+			<param name="module.name" value="mediation" />
+		</antcall>
+		
+		<input message="Please enter RATING_HOME directory (e.g. /opt/crestelsetup/RatingServer) :" addproperty="rating.home" />
+		
+		<foreach list="rating"
+		        param="module.name"
+		        target="clean-modules" 
+		>
+			<param name="setup.home" value="${rating.home}" />
+		</foreach>
+
+		
+		<input message="Please enter SM_HOME directory (e.g. /opt/crestelsetup/ServerManager) :" addproperty="sm.home" />
+		
+		<foreach list="servermanager"
+		        param="module.name"
+		        target="clean-modules" 
+		>
+			<param name="setup.home" value="${sm.home}" />
+		</foreach>
+		
+		<antcall target="clean-others">
+			<param name="setup.home" value="${billing.home}" />
+		</antcall>
+
+		<input message="Please enter Billing JBOSS_HOME path (e.g /opt/crestelsetup/jboss-3.2.6) :" addproperty="jboss.home" />	
+		
+		<antcall target="clean-jboss">
+			<param name="jboss.home" value="${jboss.home}" />
+		</antcall>
+
+		<input message="Please enter Rating JBOSS_HOME path (e.g /opt/crestelsetup/jboss-rating) :" addproperty="rating.jboss.home" />	
+		<antcall target="clean-jboss">
+			<param name="jboss.home" value="${rating.jboss.home}" />
+		</antcall>
+
+		<input message="Please enter TOMCAT_HOME path (e.g /opt/crestelsetup/jakarta-tomcat-4.1.24) :" addproperty="tomcat.home" />	
+		<antcall target="clean-tomcat">
+			<param name="tomcat.home" value="${tomcat.home}" />
+		</antcall>
+			
+	</target>
+	
+	<target name="all">
+
+	</target>
+	
+</project>
+

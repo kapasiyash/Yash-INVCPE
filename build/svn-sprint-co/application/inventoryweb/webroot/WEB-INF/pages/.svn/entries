@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://crestelsvn:3690/svn/MTNICE"
+   name=""
+   revision="16494"
+   last-author="yash.kapasi"
+   url="http://crestelsvn:3690/svn/MTNICE/Crestel-PSG/branch/CrestelCPE-MTNICE/Sprint-4/application/inventoryweb/webroot/WEB-INF/pages"
+   uuid="d1d34ee0-c529-4698-9774-1d969c24a232"
+   committed-rev="16482"
+   kind="dir"
+   committed-date="2015-03-16T07:20:33.188526Z"/>
+<entry
+   name="core"
+   kind="dir"/>
+</wc-entries>
