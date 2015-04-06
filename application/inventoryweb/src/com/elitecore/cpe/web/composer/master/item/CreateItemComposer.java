@@ -283,6 +283,7 @@ private static final long serialVersionUID = 2L;
 				ResourceSubTypeVO subTypeVO = new ResourceSubTypeVO();
 				ComboData selectedData = cmbResourceSubType.getSelectedItem().getValue();
 				subTypeVO.setResourceSubTypeId(selectedData.getId());
+				subTypeVO.setResourceSubTypeName(selectedData.getName());
 				resourceTypeVO.setResourceSubTypeVO(subTypeVO);
 			}
 			

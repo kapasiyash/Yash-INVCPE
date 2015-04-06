@@ -1,6 +1,6 @@
 package com.elitecore.cpe.bl.session.inventorymgt;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,14 +21,11 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import org.hibernate.exception.ConstraintViolationException;
-
 import com.elitecore.cpe.bl.constants.inventorymgt.InventoryStatusConstants;
 import com.elitecore.cpe.bl.constants.master.EntityConstants;
 import com.elitecore.cpe.bl.constants.system.DataSourceConstant;
 import com.elitecore.cpe.bl.constants.system.audit.AuditConstants;
 import com.elitecore.cpe.bl.constants.system.audit.AuditTagConstant;
-import com.elitecore.cpe.bl.data.system.audit.AuditSummaryDetail;
 import com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryData;
 import com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryReserveData;
 import com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryReserveDetailData;
@@ -44,12 +41,12 @@ import com.elitecore.cpe.bl.entity.inventory.inventorymgt.WarehouseInventoryStat
 import com.elitecore.cpe.bl.entity.inventory.master.AttributeTransData;
 import com.elitecore.cpe.bl.entity.inventory.master.ItemData;
 import com.elitecore.cpe.bl.entity.inventory.master.WarehouseData;
+import com.elitecore.cpe.bl.entity.inventory.order.OrderAgentHistoryData;
 import com.elitecore.cpe.bl.entity.inventory.system.systemparameter.SystemParameter;
 import com.elitecore.cpe.bl.exception.CreateBLException;
 import com.elitecore.cpe.bl.exception.SearchBLException;
 import com.elitecore.cpe.bl.exception.UpdateBLException;
 import com.elitecore.cpe.bl.facade.inventorymgt.InventoryManagementUtil;
-import com.elitecore.cpe.bl.facade.system.audit.AuditDataConversionUtilities;
 import com.elitecore.cpe.bl.facade.system.internal.SystemInternalDataConversionUtil;
 import com.elitecore.cpe.bl.facade.ws.WSFacadeUtil;
 import com.elitecore.cpe.bl.session.BaseSessionBean;
@@ -62,12 +59,14 @@ import com.elitecore.cpe.bl.vo.inventorymgt.SearchTransferInventory;
 import com.elitecore.cpe.bl.vo.inventorymgt.SearchWarehouseInventoryStatusVO;
 import com.elitecore.cpe.bl.vo.inventorymgt.TransferInventorySummaryViewVO;
 import com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO;
+import com.elitecore.cpe.bl.vo.order.OrderDetailVo;
 import com.elitecore.cpe.bl.ws.data.input.request.InventoryDetailsRequestData;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusResponseVO;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.CPEInventoryVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.InventoryAttributeVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.InventoryRequestVO;
+import com.elitecore.cpe.bl.ws.data.input.vo.ReleaseInventoryVO;
 import com.elitecore.cpe.bl.ws.data.util.InventoryMgtResponseCode;
 import com.elitecore.cpe.core.IBLSession;
 import com.elitecore.cpe.util.logger.Logger;
@@ -1591,8 +1590,8 @@ public class InventoryManagementSessionBean extends BaseSessionBean implements I
 						
 						
 						statusVO.setInventoryStaus(newStatusData.getName());
-						//statusVO.setResponseCode("0");
-						//statusVO.setResponseMessage("Success");
+						statusVO.setResponseCode("0");
+						statusVO.setResponseMessage("Success");
 						inventoryStatusVOs.add(statusVO);
 					} else {
 						inventoryStatusVOs.add(new InventoryStatusVO(inventoryRequestVO.getInventoryNo(),InventoryMgtResponseCode.responceCodeToE2ECode(-1L), "Not a Valid Inventory Number or Wrong Old Status"));
@@ -2345,7 +2344,7 @@ try {
 
 
 	@Override
-	public List<InventoryStatusResponseVO> releaseCPEResource(List<CPEInventoryVO> inventoryVos ,IBLSession iblSession) throws UpdateBLException {
+	public List<InventoryStatusResponseVO> releaseCPEResource(List<ReleaseInventoryVO> inventoryVos ,IBLSession iblSession) throws UpdateBLException {
 		if(isTraceLevel()){
 			Logger.logTrace(MODULE, "inside releaseCPEResource");
 		}
@@ -2353,7 +2352,7 @@ try {
 		Logger.logInfo(MODULE, "inside releaseCPEResource");
 		try {
 			if(inventoryVos!=null && !inventoryVos.isEmpty()){
-				for(CPEInventoryVO inventoryVo:inventoryVos){
+				for(ReleaseInventoryVO inventoryVo:inventoryVos){
 					Map<String,Object> fieldValueMap = new HashMap<String, Object>();
 					fieldValueMap.put("inventoryNo", inventoryVo.getInventoryNo());
 					List filterList = getFilterDataBy(EntityConstants.INVENTORY_DATA, fieldValueMap);
@@ -2377,7 +2376,7 @@ try {
 									responseVO.setInventoryNumber(inventoryData.getInventoryNo());
 									responseVO.setInventoryStatus(InventoryStatusConstants.RELEASED_STATUS);
 									InventoryStatusLogData inventoryStatusLogData1 = InventoryManagementUtil.prepareInventoryStatusLogData(inventoryData.getInventoryId(),inventoryData.getInventoryStatusId(),InventoryStatusConstants.FAULTY, 
-											inventoryData.getStatusData().getName(), InventoryStatusConstants.FAILED_STATUS,"WS:releaseCPEResource", iblSession);
+											inventoryData.getStatusData().getName(), InventoryStatusConstants.FAULTY_STATUS,"WS:releaseCPEResource", iblSession);
 									InventoryStatusLogData inventoryStatusLogData2 = InventoryManagementUtil.prepareInventoryStatusLogData(inventoryData.getInventoryId(),InventoryStatusConstants.FAULTY,InventoryStatusConstants.RELEASED, 
 											InventoryStatusConstants.FAULTY_STATUS, InventoryStatusConstants.RELEASED_STATUS,"WS: releaseCPEResource", iblSession);
 									inventoryData.setInventoryStatusId(InventoryStatusConstants.RELEASED);
@@ -2526,6 +2525,204 @@ try {
 		Logger.logTrace(MODULE, "Total Inventory count::"+total);
 		return total;
 	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean isEligiblePlaceOrder(Long warehouseId, Long resourceTypeId,
+			Long resourceSubTypeId, Long itemId) throws SearchBLException {
+		
+		
+		boolean result  = true;
+		try {
+			
+			String query = "select o from OrderData o where o.fromWarehouseId=:warehouseId and o.resourceTypeId=:resourceTypeId and o.orderStatusId in ('101','102','103') ";
+			
+			if(resourceSubTypeId!=null) {
+				query = query + " and o.resourceSubTypeId='"+resourceSubTypeId+"' ";
+			} else {
+				query = query + " and o.resourceSubTypeId is null ";
+			}
+			
+			if(itemId!=null) {
+				query = query + " and o.itemId='"+itemId+"' ";
+			} else {
+				query = query + " and o.itemId is null ";
+			}
+			
+			
+			List<OrderData> orderDatas = getEntityManager().createQuery(query)
+			.setParameter("warehouseId", warehouseId)
+			.setParameter("resourceTypeId", resourceTypeId)
+			.getResultList();
+			
+			if(orderDatas!=null && !orderDatas.isEmpty()) {
+				result = false;
+			}
+			
+			
+		}catch (NoResultException e) {
+			result  = true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			result  = true;
+		}
+		
+		return result;
+		
+	}
+	
+	//Jahanvi Code Start
+		/**
+		 * Get Pending PlaceOrder Child
+		 * @author jahanvi.patel
+		 * @return {@link List}<{@link Object}> data.
+		 * @throws CreateBLException
+		 */
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<OrderData> getPendingPlaceOrderChild(String minDays, Long warehouseid){
+			
+			if(isTraceLevel()){
+				Logger.logTrace(MODULE, "inside getPendingPlaceOrderChild bean");
+			}
+			Integer minNumOFDays = Integer.valueOf(minDays);
+			List<OrderData> orderData =null;
+			
+			try {
+				
+				
+				Logger.logTrace(MODULE, "-----------------"+minNumOFDays);
+				String hql="select o from OrderData o where o.orderStatusId in ('101','102','103') and trunc(sysdate) - to_date(o.createdate, 'dd-mon-yy')>"+minNumOFDays+" and o.toWarehouseId="+warehouseid;
+				
+				orderData = getEntityManager().createQuery(hql).getResultList();
+				
+				
+			} catch (NoResultException e) { 
+				return null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return orderData;
+			
+		}
+		/**
+		 * Get Pending PlaceOrder Child
+		 * @author jahanvi.patel
+		 * @return {@link List}<{@link Object}> data.
+		 * @throws CreateBLException
+		 */
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<TransferOrderData> getPendingTransferOrderChild(String minDays, Long warehouseid){
+			
+			if(isTraceLevel()){
+				Logger.logTrace(MODULE, "inside getPendingTransferOrderChild bean");
+			}
+			Integer minNumOFDays = Integer.valueOf(minDays);
+			List<TransferOrderData> orderData =null;
+			
+			try {
+				
+				
+				Logger.logTrace(MODULE, "-----------------------------------------------------"+minNumOFDays);
+				String hql="select o from TransferOrderData o where o.inventoryOrderStatusId='101' and trunc(sysdate) - to_date(o.createdate, 'dd-mon-yy')>"+minNumOFDays+"and o.toWarehouseId="+warehouseid;
+				
+				orderData = getEntityManager().createQuery(hql).getResultList();
+				
+			} catch (NoResultException e) { 
+				return null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return orderData;
+			
+		}
+		/**
+		 * Get Pending PlaceOrder Child
+		 * @author jahanvi.patel
+		 * @return {@link List}<{@link Object}> data.
+		 * @throws CreateBLException
+		 */
+		@Override
+		@TransactionAttribute( TransactionAttributeType.REQUIRED )
+		public Boolean saveOrderNotificationAgentHistory(OrderDetailVo orderDetailVo) throws CreateBLException{
+			OrderAgentHistoryData agentHistoryData =null;
+			try{
+				
+				agentHistoryData=InventoryManagementUtil.getAgentHistoryData(orderDetailVo);
+				
+				getEntityManager().persist(agentHistoryData);
+				getEntityManager().flush();
+				getEntityManager().refresh(agentHistoryData);
+				 
+			}catch(Exception e){
+				
+				e.printStackTrace();
+				
+				getSessionContext().setRollbackOnly();
+				
+		    	throw new CreateBLException("save Place Order  Failed, Reason : " + e.getMessage(), e);
+			}
+		return true;
+			
+		}
+		
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<Long> getPendingPlaceOrderMaster (String minDays){
+			
+			if(isTraceLevel()){
+				Logger.logTrace(MODULE, "inside getPendingPlaceOrderMaster bean");
+			}
+			Integer minNumOFDays = Integer.valueOf(minDays);
+			
+			List<Long> result = null;
+			try {
+				
+				
+				String hql= "select o.toWarehouseId from OrderData o where o.orderStatusId in ('101','102','103') and trunc(sysdate) - to_date(o.createdate, 'dd-mon-yy')>"+minNumOFDays +" group by o.toWarehouseId";
+				
+				result = getEntityManager().createQuery(hql).getResultList();
+				
+			} catch(NoResultException e) {
+				return null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}		
+			return result;
+		}
+		//Jahanvi Code Stop 
+
+
+		@Override
+		public List<Long> getPendingTransferOrderMaster(String minPendingDays)
+				throws SearchBLException {
+			
+			if(isTraceLevel()){
+				Logger.logTrace(MODULE, "inside getPendingTransferOrderMaster bean");
+			}
+			Integer minNumOFDays = Integer.valueOf(minPendingDays);
+			
+			List<Long> result = null;
+			try {
+				
+				
+				
+				String hql= "select o.toWarehouseId from TransferOrderData o where o.inventoryOrderStatusId in ('101') and trunc(sysdate) - to_date(o.createdate, 'dd-mon-yy')>"+minNumOFDays +" group by o.toWarehouseId";
+				
+				result = getEntityManager().createQuery(hql).getResultList();
+				
+			} catch(NoResultException e) {
+				return null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}		
+			return result;
+		}
 	
 	
 }
+

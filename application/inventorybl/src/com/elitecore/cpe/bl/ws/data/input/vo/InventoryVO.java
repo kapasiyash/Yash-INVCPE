@@ -1,8 +1,21 @@
 package com.elitecore.cpe.bl.ws.data.input.vo;
 
 import java.io.Serializable;
-import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+import com.elitecore.cpe.bl.ws.data.input.request.AttributeList;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NICE_Inventory", propOrder = {
+    "inventoryNumber",
+    "inventoryStaus",
+    "batchNumber",
+    "attributeList"
+})
 public class InventoryVO implements  Serializable {
 
 	/**
@@ -11,10 +24,11 @@ public class InventoryVO implements  Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String inventoryNumber;
+	@XmlElement(name="inventoryStatus")
 	private String inventoryStaus;
 	private String batchNumber;
-	
-	private List<InventoryAttributeVO> attributeVOs;
+	@XmlElement(name = "NICE_AttributeList")
+	private AttributeList attributeList;
 
 	public String getInventoryNumber() {
 		return inventoryNumber;
@@ -40,43 +54,23 @@ public class InventoryVO implements  Serializable {
 		this.batchNumber = batchNumber;
 	}
 
-	
-
-	public List<InventoryAttributeVO> getAttributeVOs() {
-		return attributeVOs;
+	public AttributeList getAttributeList() {
+		return attributeList;
 	}
 
-	public void setAttributeVOs(List<InventoryAttributeVO> attributeVOs) {
-		this.attributeVOs = attributeVOs;
+	public void setAttributeList(AttributeList attributeList) {
+		this.attributeList = attributeList;
 	}
 
-	/* 
-	 * 
-	 */
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("InventoryVO [" );
-		if(inventoryNumber!=null){
-		builder.append("inventoryNumber=").append(inventoryNumber);
-		}
-		if(inventoryStaus!=null){
-		builder.append(", inventoryStaus=").append(inventoryStaus);
-		}
-		if(batchNumber!=null){
-			
-		builder.append(", batchNumber=").append(batchNumber);
-		}
-		
-		if(attributeVOs!=null){
-		builder.append(", attributeVOs=").append(attributeVOs);
-		}
-		builder.append("]");
-		return builder.toString();
+		return "InventoryVO [inventoryNumber=" + inventoryNumber
+				+ ", inventoryStaus=" + inventoryStaus + ", batchNumber="
+				+ batchNumber + ", attributeList=" + attributeList + "]";
 	}
+
 	
-	
-	
+
 	
 
 }

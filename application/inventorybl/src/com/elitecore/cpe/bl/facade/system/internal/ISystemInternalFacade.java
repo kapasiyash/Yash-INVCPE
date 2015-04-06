@@ -36,5 +36,5 @@ public interface ISystemInternalFacade {
 
 	public List<ComboData> findUserWareHouseMapping(String userId) throws SearchBLException;
 
-	public void updateUserWarehouseMapping(String userId,List<ComboData> selectedData, IBLSession blSession) throws UpdateBLException;
+	public void updateUserWarehouseMapping(String name,String userId,List<ComboData> selectedData, IBLSession blSession) throws UpdateBLException;
 }

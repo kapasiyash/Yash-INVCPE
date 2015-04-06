@@ -20,7 +20,7 @@ public class InventoryMigrationVO implements Serializable  {
 	private String resourceNumber;
 	private String inventoryNumber;
 	private String GuaranteeWarrantyMode;
-	private Timestamp warrantyDate;
+	private String warrantyDate; // dd/mm/yyyy
 	private String warrantyType;
 	
 	private String status;
@@ -44,10 +44,13 @@ public class InventoryMigrationVO implements Serializable  {
 	public void setGuaranteeWarrantyMode(String guaranteeWarrantyMode) {
 		GuaranteeWarrantyMode = guaranteeWarrantyMode;
 	}
-	public Timestamp getWarrantyDate() {
+	
+	
+	
+	public String getWarrantyDate() {
 		return warrantyDate;
 	}
-	public void setWarrantyDate(Timestamp warrantyDate) {
+	public void setWarrantyDate(String warrantyDate) {
 		this.warrantyDate = warrantyDate;
 	}
 	public String getWarrantyType() {

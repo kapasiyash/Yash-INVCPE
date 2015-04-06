@@ -2,8 +2,17 @@ package com.elitecore.cpe.bl.ws.data.input.response;
 
 import java.io.Serializable;
 
-import com.elitecore.cpe.bl.ws.data.input.vo.ResourceAvailibilityVO;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NICE_BookCPEResourceResponse", propOrder = {
+    "responseCode",
+    "responseMessage",
+    "resourceAvailibilityVOList"
+})
 public class BookCPEResponseData implements Serializable{
 
 
@@ -11,7 +20,9 @@ public class BookCPEResponseData implements Serializable{
 	
 	private String responseCode;
 	private String responseMessage;
-	private ResourceAvailibilityVO resourceAvailibilityVO;
+	
+	 @XmlElement(name = "NICE_BookResourceAvailabilityList")
+	private ResourceAvailibilityVOList resourceAvailibilityVOList;
 	
 	public String getResponseCode() {
 		return responseCode;
@@ -25,33 +36,20 @@ public class BookCPEResponseData implements Serializable{
 	public void setResponseMessage(String responseMessage) {
 		this.responseMessage = responseMessage;
 	}
-	public ResourceAvailibilityVO getResourceAvailibilityVO() {
-		return resourceAvailibilityVO;
+	public ResourceAvailibilityVOList getResourceAvailibilityVOList() {
+		return resourceAvailibilityVOList;
 	}
-	public void setResourceAvailibilityVO(
-			ResourceAvailibilityVO resourceAvailibilityVO) {
-		this.resourceAvailibilityVO = resourceAvailibilityVO;
+	public void setResourceAvailibilityVOList(
+			ResourceAvailibilityVOList resourceAvailibilityVOList) {
+		this.resourceAvailibilityVOList = resourceAvailibilityVOList;
 	}
-	
-	
-	
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("BookCPEResponseData [");
-		if(responseCode!=null){
-		builder.append("responseCode=").append(responseCode);
-		}
-		if(responseMessage!=null){
-		builder.append(", responseMessage=").append(responseMessage);
-		}
-		if(resourceAvailibilityVO!=null){
-		builder.append(", resourceAvailibilityVO=").append(resourceAvailibilityVO);
-		}
-		builder.append("]");
-		return builder.toString();
+		return "BookCPEResponseData [responseCode=" + responseCode
+				+ ", responseMessage=" + responseMessage
+				+ ", resourceAvailibilityVOList=" + resourceAvailibilityVOList
+				+ "]";
 	}
-	
 	
 	
 }

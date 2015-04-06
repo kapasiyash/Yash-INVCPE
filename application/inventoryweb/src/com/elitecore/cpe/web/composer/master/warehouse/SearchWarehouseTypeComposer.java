@@ -25,6 +25,7 @@ import com.elitecore.cpe.bl.vo.master.WarehouseTypeVO;
 import com.elitecore.cpe.util.logger.Logger;
 import com.elitecore.cpe.web.base.ui.core.BaseSearchComposer;
 import com.elitecore.cpe.web.base.ui.module.BaseConstants;
+import com.elitecore.cpe.web.constants.ActionAlias;
 import com.elitecore.cpe.web.constants.Pages;
 import com.elitecore.cpe.web.core.exception.ModuleInitializationException;
 
@@ -50,7 +51,9 @@ public class SearchWarehouseTypeComposer  extends BaseSearchComposer {
 	//	this.searchWareHouseType = comp;
 		
 		searchResultGrid.setVisible(false);
-		addViewTab("-100", "Create WarehouseType", searchWarehouseTypeTabbox, Pages.CREATE_WAREHOUSETYPE_EVENT,null,false);
+		if(isPermittedAction(ActionAlias.CREATE_WAREHOUSETYPE)) {
+			addViewTab("-100", "Create WarehouseType", searchWarehouseTypeTabbox, Pages.CREATE_WAREHOUSETYPE_EVENT,null,false);
+		}
 		searchTab.setSelected(true);
 	}
 

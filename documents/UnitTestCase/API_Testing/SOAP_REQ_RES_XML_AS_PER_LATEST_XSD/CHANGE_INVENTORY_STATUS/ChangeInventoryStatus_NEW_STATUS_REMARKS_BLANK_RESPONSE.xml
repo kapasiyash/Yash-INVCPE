@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_ChangeInventoryStatusResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>err-211032</responseCode>
+         <responseMessage>Not able to change status , find details in response object. EMA000000011: Inventory New Status can not be blank or empty.,
+INV90000015: Remarks should not be blank or empty</responseMessage>
+      </NICE_ChangeInventoryStatusResponse>
+   </soap:Body>
+</soap:Envelope>

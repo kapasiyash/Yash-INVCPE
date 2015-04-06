@@ -82,8 +82,10 @@
 												<listheader label="${labels.global.sr.no}" width="55px" />
 												<listheader label="${labels.item.type}" width="25%"  />
 												<listheader label="${labels.item.subtype}" width="25%"  />
+												<listheader label="${labels.item.resourceName}" width="22%"  />
 												<listheader label="${labels.threshold.type}" width="25%"  />
 												<listheader label="${labels.threshold.value}"  width="25%"  />
+												<listheader label="${labels.item.automaticorder}"  width="22%"  />
 												<listheader label="${labels.threshold.quantity}"  width="22%"  />
 												<listheader label="${labels.threshold.email}"  width="22%"  />
 												<listheader label="${labels.threshold.mobile}"  width="22%"  />

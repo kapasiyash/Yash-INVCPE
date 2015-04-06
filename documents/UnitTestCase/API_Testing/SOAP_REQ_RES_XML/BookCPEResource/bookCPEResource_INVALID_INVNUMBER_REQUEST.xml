@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.bl.cpe.elitecore.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:bookCPEResource>
+         <!--Optional:-->
+         <arg0>
+            <!--Optional:-->
+            <isResourceRecoverable/>
+            <operationType>1</operationType>
+            <!--Optional:-->
+            <orderLineItemID>TEST12</orderLineItemID>
+            <!--Zero or more repetitions:-->
+            <reserveAllocateRequestVO>
+               <!--Optional:-->
+               <inventoryNo>DFDF</inventoryNo>
+               <!--Optional:-->
+               <serialNumber/>
+            </reserveAllocateRequestVO>
+            <reserveAllocateRequestVO>
+               <!--Optional:-->
+               <inventoryNo>FGFGH</inventoryNo>
+               <!--Optional:-->
+               <serialNumber/>
+            </reserveAllocateRequestVO>
+         </arg0>
+      </ws:bookCPEResource>
+   </soapenv:Body>
+</soapenv:Envelope>

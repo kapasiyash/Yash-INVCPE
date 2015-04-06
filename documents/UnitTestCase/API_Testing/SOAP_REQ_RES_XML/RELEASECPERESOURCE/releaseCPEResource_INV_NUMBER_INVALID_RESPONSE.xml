@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <ns2:releaseCPEResourceResponse xmlns:ns2="http://ws.bl.cpe.elitecore.com/">
+         <return>
+            <responseCode>err-211043</responseCode>
+            <responseMessage>Not able to Release all CPE Resource,Please try again later.IE22000000013:Invalid Inventory Number
+,E220000000013:Invalid Inventory Number</responseMessage>
+         </return>
+      </ns2:releaseCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,5 @@
+package com.elitecore.cpe.bl.entity.inventory.order;
+
+public class AgentHistoryData {
+
+}

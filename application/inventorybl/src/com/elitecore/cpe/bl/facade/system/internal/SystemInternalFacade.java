@@ -524,7 +524,7 @@ public class SystemInternalFacade extends BaseFacade implements SystemInternalFa
 	}
 
 	@Override
-	public void updateUserWarehouseMapping(String userId,List<ComboData> selectedData, IBLSession blSession)
+	public void updateUserWarehouseMapping(String name,String userId,List<ComboData> selectedData, IBLSession blSession)
 			throws UpdateBLException {
 		
 		
@@ -545,7 +545,7 @@ public class SystemInternalFacade extends BaseFacade implements SystemInternalFa
 			
 			// Audit entry for TransferOrderData
 			Map<String,Object> mapAudit = new HashMap<String, Object>();
-			mapAudit.put(AuditTagConstant.NAME,userId);
+			mapAudit.put(AuditTagConstant.NAME,name);
 			addToAuditDynamicMessage(AuditConstants.USER_WAREHOUSE_MAPPING, "Creating User-Warehouse Mapping",AuditConstants.CREATE_AUDIT_TYPE, mapAudit, blSession);
 			
 		}

@@ -27,6 +27,7 @@ import com.elitecore.cpe.bl.exception.TechnicalException;
 import com.elitecore.cpe.bl.vo.master.SearchResourceTypeVO;
 import com.elitecore.cpe.web.base.ui.core.BaseSearchComposer;
 import com.elitecore.cpe.web.base.ui.module.BaseConstants;
+import com.elitecore.cpe.web.constants.ActionAlias;
 import com.elitecore.cpe.web.constants.Pages;
 import com.elitecore.cpe.web.core.exception.ModuleInitializationException;
 
@@ -53,8 +54,12 @@ public class SearchResourceTypeComposer extends BaseSearchComposer {
 	public void afterCompose(Window comp) throws ModuleInitializationException {
 	//	this.searchResourceTypeWin = comp;
 		
-		//changes require to resolve JIRA MTCBSS-229
-		addViewTab("-1", "Create Resource Type", searchResourceTypeTabbox, Pages.CREATE_RESOURCE_TYPE,null,false);
+		
+		if(isPermittedAction(ActionAlias.CREATE_RESOURCETYPE)) {
+			
+			//changes require to resolve JIRA MTCBSS-229
+			addViewTab("-1", "Create Resource Type", searchResourceTypeTabbox, Pages.CREATE_RESOURCE_TYPE,null,false);
+		}
 		
 		searchTab.setSelected(true);
 	}

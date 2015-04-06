@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:NICE_ReleaseCPEResourceRequest>
+         <!--Optional:-->
+         <man:operationType>1</man:operationType>
+         <man:NICE_ReleaseInventoryList>
+                </man:NICE_ReleaseInventoryList>
+      </man:NICE_ReleaseCPEResourceRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

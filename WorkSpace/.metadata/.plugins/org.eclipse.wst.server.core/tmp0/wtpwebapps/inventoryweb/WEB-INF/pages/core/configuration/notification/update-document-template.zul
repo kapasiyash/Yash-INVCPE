@@ -33,7 +33,7 @@
                        	<label value="*" style="color:red;" />
                      	</cell>
                        <cell colspan="3">
-                       	<combobox id="comboSMSTemplate" width='200px' constraint="no empty, strict:Please select Yes If You Want To Create SMS Template " readonly="true" disabled="true">
+                       	<combobox id="comboSMSTemplate" width='200px' constraint="no empty, strict:Please select Yes If You Want To Create SMS Template " readonly="true">
                        		<comboitem label="Yes" value="Y"/>
 							<comboitem label="No"  value="N"/>
 						</combobox>

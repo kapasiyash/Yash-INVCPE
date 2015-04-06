@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.bl.cpe.elitecore.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:changeInventoryStatus>
+         <!--Zero or more repetitions:-->
+         <arg0>
+            <!--Optional:-->
+            <inventoryNo/>
+            <!--Optional:-->
+            <newStatus/>
+            <!--Optional:-->
+            <oldStatus/>
+            <!--Optional:-->
+            <orderLineItemID/>
+            <!--Optional:-->
+            <remarks/>
+            <!--Optional:-->
+            <serialNumber/>
+         </arg0>
+      <arg0>
+            <!--Optional:-->
+            <inventoryNo/>
+            <!--Optional:-->
+            <newStatus/>
+            <!--Optional:-->
+            <oldStatus/>
+            <!--Optional:-->
+            <orderLineItemID/>
+            <!--Optional:-->
+            <remarks/>
+            <!--Optional:-->
+            <serialNumber/>
+         </arg0>
+      </ws:changeInventoryStatus>
+   </soapenv:Body>
+</soapenv:Envelope>

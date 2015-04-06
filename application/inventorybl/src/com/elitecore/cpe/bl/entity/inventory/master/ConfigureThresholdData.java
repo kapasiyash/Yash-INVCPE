@@ -48,11 +48,14 @@ public class ConfigureThresholdData implements Serializable{
 	private Long warehouseId; 
 	private Long resourceTypeId;
 	private Long resourceSubTypeId;
+	private Long itemId;
 	
 	private WarehouseData warehousedata;
 	private ResourceTypeData resourceTypedata;
 	private ResourceSubTypeData resourceSubTypeData;
+	private ItemData itemData;
 	
+	private Character automaticOrder;
 	private Long thresholdValue;
 	private Timestamp createdate;
 	private Timestamp updatedate;
@@ -97,6 +100,17 @@ public class ConfigureThresholdData implements Serializable{
 
 	public void setWarehouseId(Long warehouseId) {
 		this.warehouseId = warehouseId;
+	}
+	
+	
+	
+	@Column(name = "AUTOMATICORDER")
+	public Character getAutomaticOrder() {
+		return automaticOrder;
+	}
+
+	public void setAutomaticOrder(Character automaticOrder) {
+		this.automaticOrder = automaticOrder;
 	}
 
 	@Column(name = "THRESHOLDVALUE")
@@ -213,6 +227,28 @@ public class ConfigureThresholdData implements Serializable{
 
 	public void setResourceTypeId(Long resourceTypeId) {
 		this.resourceTypeId = resourceTypeId;
+	}
+
+	
+	
+	@Column(name = "RESOURCEID")
+	public Long getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
+	}
+
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="RESOURCEID",insertable=false,updatable=false)
+	public ItemData getItemData() {
+		return itemData;
+	}
+
+	public void setItemData(ItemData itemData) {
+		this.itemData = itemData;
 	}
 
 	/**

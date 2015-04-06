@@ -18,12 +18,19 @@ public class CheckInventoryVO implements Serializable {
 	private String warehouseName;
 	private String resourceType;
 	private String resourceSubtype;
+	private String resource;
 	
 	//For Rejected Inventory
 	private String remark;
 	
 	
 	
+	public String getResource() {
+		return resource;
+	}
+	public void setResource(String resource) {
+		this.resource = resource;
+	}
 	public String getRemark() {
 		return remark;
 	}

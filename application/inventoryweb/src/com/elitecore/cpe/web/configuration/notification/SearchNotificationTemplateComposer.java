@@ -33,6 +33,7 @@ import com.elitecore.cpe.bl.vo.configuration.notification.SearchDocumentTemplate
 import com.elitecore.cpe.bl.vo.master.SearchResourceSubTypeVO;
 import com.elitecore.cpe.web.base.ui.core.BaseSearchComposer;
 import com.elitecore.cpe.web.base.ui.module.BaseConstants;
+import com.elitecore.cpe.web.constants.ActionAlias;
 import com.elitecore.cpe.web.constants.Pages;
 import com.elitecore.cpe.web.core.exception.ModuleInitializationException;
 
@@ -69,7 +70,10 @@ public class SearchNotificationTemplateComposer extends BaseSearchComposer {
 	@Override
 	public void afterCompose(Window comp) throws ModuleInitializationException {
 		populatedata();
-		addViewTab("-1", "Create Document Template", searchDocTemplateTabbox, Pages.CREATE_DOCUMENT_TEMPLATE,null,false);
+		
+		if(isPermittedAction(ActionAlias.CREATE_DOCUMENT_TEMPLATE)) {
+			addViewTab("-1", "Create Document Template", searchDocTemplateTabbox, Pages.CREATE_DOCUMENT_TEMPLATE,null,false);
+		}
 		searchDocumentTemplateTab.setSelected(true);
 		
 	}

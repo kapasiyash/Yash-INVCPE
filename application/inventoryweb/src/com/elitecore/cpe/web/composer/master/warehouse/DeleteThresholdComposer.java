@@ -99,8 +99,10 @@ public class DeleteThresholdComposer extends BaseModuleViewComposer {
 			item.appendChild(new Listcell(String.valueOf(no)));
 			item.appendChild(new Listcell(data.getResourceTypeName()));
 			item.appendChild(new Listcell(GeneralUtility.displayValueIfNull(data.getResourceSubTypeName())));
+			item.appendChild(new Listcell(GeneralUtility.displayValueIfNull(data.getResourceName())));
 			item.appendChild(new Listcell(data.getThresholdType()));
 			item.appendChild(new Listcell(String.valueOf(data.getThresholdValue())));
+			item.appendChild(new Listcell(data.getAutomaticOrder()));
 			
 			if(data.getQuantity()!=null) {
 				item.appendChild(new Listcell(String.valueOf(data.getQuantity())));

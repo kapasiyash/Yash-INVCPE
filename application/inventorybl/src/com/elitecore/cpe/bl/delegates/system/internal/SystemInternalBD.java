@@ -156,12 +156,12 @@ public class SystemInternalBD extends BaseBusinessDelegate {
 	 * @param selectedData
 	 * @throws UpdateBLException
 	 */
-	public void updateUserWarehouseMapping(String userId,
+	public void updateUserWarehouseMapping(String name,String userId,
 			List<ComboData> selectedData) throws UpdateBLException {
 		if(isTraceLevel())
 			logTrace(MODULE, "Inside updateUserWarehouseMapping");
 		try {
-			getFacade().updateUserWarehouseMapping(userId,selectedData,getBLSession());
+			getFacade().updateUserWarehouseMapping(name,userId,selectedData,getBLSession());
 		} catch (NamingException e) {
 			e.printStackTrace();
 			throw new UpdateBLException(e.getMessage());

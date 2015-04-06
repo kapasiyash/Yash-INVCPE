@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <ns2:bookCPEResourceResponse xmlns:ns2="http://ws.bl.cpe.elitecore.com/">
+         <return>
+            <responseCode>err-211037</responseCode>
+            <responseMessage>Some of Inventory not found in Available Status. Please try again later.E22000000059:Status change not allowed from Reserved to Reserved
+,sjh000000001:Status change not allowed from Reserved to Reserved</responseMessage>
+         </return>
+      </ns2:bookCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

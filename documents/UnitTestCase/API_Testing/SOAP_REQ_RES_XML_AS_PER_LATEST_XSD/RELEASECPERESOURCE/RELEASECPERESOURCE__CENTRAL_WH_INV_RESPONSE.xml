@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_ReleaseCPEResourceResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>err-211043</responseCode>
+         <responseMessage>Not able to Release all CPE Resource,Please try again later.INVMIG91:Central Warehouse Inventory can not be changed to Reserved,Allocated,Delivered or Recovered
+,INVMIG94:Inventory is not in Reserved,Allocated,Delivered status.</responseMessage>
+      </NICE_ReleaseCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

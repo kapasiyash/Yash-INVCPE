@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_ChangeInventoryStatusResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>0</responseCode>
+         <responseMessage>Success</responseMessage>
+         <inventoryvos>
+            <inventoryNumber>EMA000000011</inventoryNumber>
+            <inventoryStaus>Faulty</inventoryStaus>
+         </inventoryvos>
+         <inventoryvos>
+            <inventoryNumber>INV90000015</inventoryNumber>
+            <inventoryStaus>Available</inventoryStaus>
+         </inventoryvos>
+      </NICE_ChangeInventoryStatusResponse>
+   </soap:Body>
+</soap:Envelope>

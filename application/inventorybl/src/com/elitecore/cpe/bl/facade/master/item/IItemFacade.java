@@ -70,4 +70,8 @@ public interface IItemFacade {
 
 	public CheckInventoryVO checkInventoryInWarehouse(String inventoryNumber,Long warehouseId,List<Integer> inventoryStatus) throws SearchBLException;
 
+	public List<ComboData> getAllResourceTypeDataByResourceTypeId(Long resourceTypeId,Long warehouseId) throws SearchBLException;
+
+	public List<ComboData> getAllResourceTypeDataByResourceTypeAndSubTypeId(Long resourceTypeId, Long resourceSubTypeId,Long warehouseId) throws SearchBLException;
+
 }

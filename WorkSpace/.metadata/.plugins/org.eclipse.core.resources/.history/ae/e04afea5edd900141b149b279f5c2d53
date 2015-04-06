@@ -1,0 +1,149 @@
+package com.elitecore.cpe.bl.entity.inventory.order;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+
+	@Entity
+	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
+	@Table(name = "TBLMAGENTHISTORY")
+public class AgentHistoryData implements Serializable{
+		
+		private static final long serialVersionUID = 1L;
+		private Long placeOrderId;
+		private String placeOrderNo;
+		private Long fromWarehouseId;
+		private Long toWarehouseId;
+		private Long agentrundetailId;
+		private Timestamp agentrundate;
+		private String Status;
+		private Timestamp emailSendDate;
+		private Timestamp smsSendDate;
+		private Long agentHistoryId;
+		private String transferOrderNo;
+
+		
+		@SequenceGenerator(name="generator", sequenceName="TBLMAGENTHISTORY_SEQ", allocationSize=1)
+	    @Id
+	    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="generator")
+		@Column(name="AGENTHISTORYID")
+		public Long getAgentHistoryId() {
+			return agentHistoryId;
+		}
+		public void setAgentHistoryId(Long agentHistoryId) {
+			this.agentHistoryId = agentHistoryId;
+		}
+	    @Column(name="PLACEORDERID")
+		public Long getPlaceOrderId() {
+			return placeOrderId;
+		}
+		public void setPlaceOrderId(Long placeOrderId) {
+			this.placeOrderId = placeOrderId;
+		}
+		
+		 @Column(name="PLACEORDERNO")
+		public String getPlaceOrderNo() {
+			return placeOrderNo;
+		}
+		public void setPlaceOrderNo(String placeOrderNo) {
+			this.placeOrderNo = placeOrderNo;
+		}
+		@Column(name="FROMWAREHOUSEID")
+			public Long getFromWarehouseId() {
+			return fromWarehouseId;
+		}
+			public void setFromWarehouseId(Long fromWarehouseId) {
+			this.fromWarehouseId = fromWarehouseId;
+		}
+			
+		@Column(name="TOWAREHOUSEID")
+		public Long getToWarehouseId() {
+			return toWarehouseId;
+		}
+		public void setToWarehouseId(Long toWarehouseId) {
+			this.toWarehouseId = toWarehouseId;
+		}
+		
+		@Column(name="AGENTRUNDETAILID")
+		public Long getAgentrundetailId() {
+			return agentrundetailId;
+		}
+		public void setAgentrundetailId(Long agentrundetailId) {
+			this.agentrundetailId = agentrundetailId;
+		}
+		
+		
+	    @Column(name="AGENTRUNDATE")
+		public Timestamp getAgentRunDate() {
+			return agentrundate;
+		}
+		public void setAgentRunDate(Timestamp agentrundate) {
+			this.agentrundate = agentrundate;
+		}
+		@Column(name="EMAILSENDDATE")
+		public Timestamp getEmailSendDate() {
+			return emailSendDate;
+		}
+		public void setEmailSendDate(Timestamp emailSendDate) {
+			this.emailSendDate = emailSendDate;
+		}
+		
+		 @Column(name="SMSSENDDATE")
+		public Timestamp getSmsSendDate() {
+			return smsSendDate;
+		}
+		public void setSmsSendDate(Timestamp smsSendDate) {
+			this.smsSendDate = smsSendDate;
+		}
+		
+		@Column(name="STATUS")
+		public String getStatus() {
+			return Status;
+		}
+		public void setStatus(String Status) {
+			this.Status = Status;
+		}
+		@Column(name="TRANSFERORDERNO")
+		public String getTransferOrderNo() {
+			return transferOrderNo;
+		}
+		public void setTransferOrderNo(String transferOrderNo) {
+			this.transferOrderNo = transferOrderNo;
+		}	 
+		 
+		@Override
+		public String toString() {
+			StringBuilder builder = new StringBuilder();
+			builder.append("AgentHistoryData [placeOrderNo=");
+			builder.append(placeOrderId);
+			builder.append(", placeOrderNo=");
+			builder.append(placeOrderNo);
+			builder.append(", fromWarehouseId=");
+			builder.append(fromWarehouseId);
+			builder.append(", toWarehouseId=");
+			builder.append(toWarehouseId);
+			builder.append(", agentrundetailId=");
+			builder.append(agentrundetailId);
+			builder.append(", emailSendDate=");
+			builder.append(emailSendDate);
+			builder.append(", smsSendDate=");
+			builder.append(smsSendDate);
+			builder.append(", Status=");
+			builder.append(Status);
+			builder.append(", transferOrderNo=");
+			builder.append(transferOrderNo);
+			builder.append("]");
+			return builder.toString();
+		}
+}

@@ -15,7 +15,7 @@ public class DemoExecutorUsage {
             try
             {
                 checkTasks();
-//                Thread.sleep(1000);
+                Thread.sleep(1000);
             } catch (Exception e) {
                 System.err.println("Caught exception: " + e.getMessage());
             }
@@ -46,7 +46,7 @@ class TestOne implements Runnable {
             System.out.println("Executing task one");
             try
             {
-//                Thread.sleep(1000);
+                Thread.sleep(1000);
             } catch (Throwable e) {
                 e.printStackTrace();
             }
@@ -62,7 +62,7 @@ class TestTwo implements Runnable {
             System.out.println("Executing task two");
             try
             {
-//                Thread.sleep(1000);
+                Thread.sleep(1000);
             } catch (Throwable e) {
                 e.printStackTrace();
             }

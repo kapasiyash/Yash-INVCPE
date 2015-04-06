@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_BookCPEResourceResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>err-211011</responseCode>
+         <responseMessage>Order Line Item ID should not be blank</responseMessage>
+      </NICE_BookCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

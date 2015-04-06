@@ -1,16 +1,27 @@
 package com.elitecore.cpe.bl.ws.data.input.request;
 
 import java.io.Serializable;
-import java.util.List;
-import com.elitecore.cpe.bl.ws.data.input.vo.CPEInventoryVO;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NICE_ReleaseCPEResourceRequest", propOrder = {
+    "operationType",
+    "releaseInventoryList"
+})
 public class ReleaseCPERequestVO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	
 	private Integer operationType;
-	private List<CPEInventoryVO> inventoryVOs;
+	
+	@XmlElement(name = "NICE_ReleaseInventoryList", required = true)
+	private ReleaseInventoryList releaseInventoryList;
+	 
 	
 	public Integer getOperationType() {
 		return operationType;
@@ -18,15 +29,23 @@ public class ReleaseCPERequestVO implements Serializable {
 	public void setOperationType(Integer operationType) {
 		this.operationType = operationType;
 	}
-	public List<CPEInventoryVO> getInventoryVOs() {
-		return inventoryVOs;
+	public ReleaseInventoryList getReleaseInventoryList() {
+		return releaseInventoryList;
 	}
-	public void setInventoryVOs(List<CPEInventoryVO> inventoryVOs) {
-		this.inventoryVOs = inventoryVOs;
+	public void setReleaseInventoryList(ReleaseInventoryList releaseInventoryList) {
+		this.releaseInventoryList = releaseInventoryList;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "ReleaseCPERequestVO [operationType=" + operationType
-				+ ", inventoryVOs=" + inventoryVOs + "]";
+				+ ", releaseInventoryList=" + releaseInventoryList + "]";
 	}
+	
+	
+	
+	
+	
+	
 }

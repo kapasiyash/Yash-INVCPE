@@ -1,0 +1,221 @@
+<zk>
+<window border="normal" width="800px" height="600px" title="${labels.warehouse.transferPlaceOrder}" id="transferPlaceOrderWin" mode="modal"
+		  position="center,center" closable="true" style="overflow-x:hidden;overflow-y:auto;" 
+		  apply="com.elitecore.cpe.web.composer.master.warehouse.TransferPlaceOrderComposer">
+	<tabbox width="100%" height="100%" tabscroll="false" id="transferPlaceOrderTabbox">
+	<tabs>
+		<tab id="createLPTab" label="${labels.warehouse.transferPlaceOrder}" />
+	</tabs>
+
+<tabpanels height="100%" width="100%">
+				<tabpanel style="padding-top: 10px; padding-left: 20px;overflow:auto;" sclass="main-cont"> 
+				<hlayout height="100%" width="100%" style="overflow: visible;">
+					<vlayout style="padding-left: 5px; padding-top: 2px;" width="800px" height="100%">
+						<hlayout width="100%">
+							<vlayout width="800px" id="page1">
+								
+								<separator bar="false"/>
+										<grid width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+										<columns>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											<column width="160px"></column>
+											<column width="240px"></column>
+										</columns>
+										<rows>
+											<row>
+											 <cell>
+												<label value="${labels.warehouse.placeorderNo} " style="text-align: left;"  id="lblPlaceOrderNo"/>
+											</cell>
+											<cell>
+												<label  style="text-align: left;"  id="lblPlaceOrderNoValue"/>
+											</cell>
+											</row>
+											<row>
+											 <cell>
+												<label value="${labels.inventory.orderStatus} " style="text-align: left;"  />
+											</cell>
+											<cell>
+												<label  style="text-align: left;"  id="lblPlaceOrderStatus"/>
+											</cell>
+											</row>
+											<row>
+											 <cell>
+												<label value="${labels.inventory.qty}" style="text-align: left;"  />
+											</cell>
+											<cell>
+												<label  style="text-align: left;"  id="lblQuantity"/>
+											</cell>
+											</row>
+											<row>
+											 <cell>
+												<label value="${labels.warehouse.acceptedqty}" style="text-align: left;"  />
+											</cell>
+											<cell>
+												<label  style="text-align: left;"  id="lblAcceptQuantity"/>
+											</cell>
+											</row>
+											<row visible="false">
+											 <cell >
+												<label value="${labels.warehouse.orderNo}" style="text-align: left;"  id="lblTransferNo"/>
+												<label value="*" style="color:red;" />
+												 </cell>
+												<cell>
+												<textbox id="txtTransferNo" width="140px" maxlength="20" constraint="no empty : Please enter Transfer Order Number "   /> 
+													<space bar="false" />
+													
+													
+												</cell>
+											</row>
+											
+											
+										</rows>
+										</grid>
+										
+										<hbox>
+											<!-- <button id="btnSave" mold="trendy" label="${labels.global.submitBtn}" width="140px"/> -->	
+											<button id="btnNext1" type="button" label="${labels.global.nextBtn}" mold="trendy" width="140px" />
+										</hbox>
+										
+							</vlayout>
+						</hlayout>
+						
+						<hlayout>
+							<vlayout width="100%" id="page2" visible="false">
+								<div sclass="sectionTitle">
+									<label value="Tranfer Inventory" style="font-weight: bold;" />
+								</div>
+								<hlayout height="100%" width="100%" style="overflow: visible;">
+					<vlayout style="padding-left: 5px; padding-top: 2px;padding-bottom: 50px;" width="100%" height="100%">
+								
+								<separator bar="false"/>
+									
+										<grid id="transferInventorygrid" width="800px"  sclass="form-grid" style="border: 0px;" oddRowSclass="non-odd">
+										<columns>
+											<column width="160px"></column>
+											<column width="240px"></column>
+											<column width="160px"></column>
+											<column width="240px"></column>
+										</columns>
+										<rows>
+										
+											<row>
+												<cell>
+													<label
+														value="${labels.inventory.qty}" style="text-align: left;" />
+												</cell>
+												<cell>
+													<label
+														style="text-align: left;" id="lblQuantity1" />
+												</cell>
+												<cell>
+													<label
+														value="${labels.warehouse.acceptedqty}"
+														style="text-align: left;" />
+												</cell>
+												<cell>
+													<label
+														style="text-align: left;" id="lblAcceptQuantity1" />
+												</cell>
+											</row>
+
+											<row>
+												<cell>
+													<label value="${labels.inventory.currentwh}"></label>
+													<label value="*" style="color:red;" />
+												</cell>
+
+												<cell> <combobox  id="cmbWarehouse" disabled="true" width="145px" readonly="true" maxlength="100" constraint="no empty : Please Select Warehouse Name."/></cell>
+												<cell>
+													<label
+														value="${labels.inventory.newwh}">
+													</label>
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell>	
+													<combobox id="cmbTransferwarehouse" disabled="true" width="145px" maxlength="100" readonly="true" constraint="no empty : Please Select To be Transfered Warehouse." />
+												</cell>
+
+
+											</row>
+
+											<row>
+
+												<cell>
+													<label
+														value="Add Inventory No">
+													</label>
+
+												</cell>
+												<cell>
+													<textbox
+														id="txtAddInventoryId" width="140px" maxlength="100" />
+												</cell>
+
+												<cell>
+													<label
+														value="Remove Inventory No">
+													</label>
+
+												</cell>
+												<cell>
+													<textbox
+														id="txtRemoveInventoryId" width="140px" maxlength="100" />
+												</cell>
+
+											</row>
+											<row>
+												<cell>
+													<label value="${labels.vagenthistory.remarks}" style="text-align: left;" />
+													<label value="*" style="color:red;" />
+												</cell>
+												<cell colspan="3" > <textbox id="txtRemark" width="140" maxlength="100"  rows="3"  constraint="no empty : Please enter Remark."/></cell>
+											</row>
+
+										</rows>
+										</grid>
+										
+										<separator bar="false" />
+										<separator bar="false" />
+										<separator bar="false" />
+										<listbox id="searchResultGrid"  mold="paging" height="150px" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="95%">
+										<listhead sizable="true">
+											<listheader label="${labels.global.sr.no}" width="55px" />
+											<listheader label="${labels.transfer.batchNumber}" width="15%" sort="auto(batchNumber)" />
+											<listheader label="${labels.transfer.inventoryNo}" width="20%" sort="auto(inventoryNumber)" />
+											<listheader label="${labels.transfer.status}" width="15%" sort="auto(inventoryStatus)" />
+											<listheader label="${labels.transfer.warehouseName}" width="25%" sort="auto(warehouseName)" />
+											<listheader label="${labels.transfer.resourceType}" width="15%" sort="auto(resourceType)" />
+											<listheader label="${labels.transfer.resourceSubType}" width="15%" sort="auto(resourceSubtype)" />
+										</listhead>
+										</listbox>
+										<separator bar="false" />
+										<separator bar="false" />
+									
+													
+										<hbox id="hboxTransfer" >
+											<button id="btnBack2" type="button" label="${labels.global.back}" mold="trendy" width="140px"/>
+											<button id="btnTransfer" type="button" label="${labels.transfer.transfer}" mold="trendy" width="140px" />
+											<!-- <button id="btnallTransfer" type="button" label="${labels.inventory.alltransferplaceinventory}" mold="trendy" width="200px" /> -->
+										</hbox>
+					</vlayout>
+				</hlayout> 
+							
+						
+							
+							
+							</vlayout>
+						</hlayout>
+						
+						
+						
+						<include  id="footer" width="99%"   src="/WEB-INF/pages/core/common/Footer.zul" />
+					</vlayout>
+				</hlayout>
+			</tabpanel>
+		</tabpanels>
+		</tabbox> 
+
+</window>
+</zk>

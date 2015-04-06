@@ -3,6 +3,7 @@ package com.elitecore.cpe.web.composer.inventory.transfer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -22,6 +23,7 @@ import com.elitecore.cpe.bl.delegates.inventorymgt.InventoryManagementBD;
 import com.elitecore.cpe.bl.delegates.master.ItemBD;
 import com.elitecore.cpe.bl.delegates.master.WareHouseBD;
 import com.elitecore.cpe.bl.exception.SearchBLException;
+import com.elitecore.cpe.bl.exception.UpdateBLException;
 import com.elitecore.cpe.bl.vo.inventorymgt.InventoryDetailVO;
 import com.elitecore.cpe.bl.vo.inventorytransfer.CheckInventoryVO;
 import com.elitecore.cpe.core.IBDSessionContext;
@@ -130,12 +132,21 @@ public class TransferInventoryComposer extends BaseSearchComposer{
 					
 					if(modelList!=null && !modelList.isEmpty()) {
 						Iterator<CheckInventoryVO> iterator =  modelList.iterator();
+						boolean isPresent = false;
 						while(iterator.hasNext()) {
 							if(iterator.next().getInventoryNumber().equals(txtRemoveInventoryId.getValue())) {
 								iterator.remove();
+								isPresent = true;
+								resetComponents(txtRemoveInventoryId, txtRemoveInventoryId);
 							}
 							
 						}
+						
+						if(!isPresent) {
+							MessageUtility.failureInformation("Error", "No Inventory Added with this Inventory No");
+							resetComponents(txtRemoveInventoryId, txtRemoveInventoryId);
+						}
+						
 						searchResultGrid.setModel(modelList);
 						searchResultGrid.setItemRenderer(new InventoryTransferRenderer());
 					}
@@ -235,6 +246,7 @@ public class TransferInventoryComposer extends BaseSearchComposer{
 			item.appendChild(new Listcell(data.getInventoryNumber()));
 			item.appendChild(new Listcell(data.getInventoryStatus()));
 			item.appendChild(new Listcell(data.getWarehouseName()));
+			item.appendChild(new Listcell(data.getResource()));
 			item.appendChild(new Listcell(data.getResourceType()));
 			item.appendChild(new Listcell(data.getResourceSubtype()));
 		}
@@ -255,6 +267,9 @@ public class TransferInventoryComposer extends BaseSearchComposer{
 		IBDSessionContext sessionContext = getBDSessionContext();
 		WareHouseBD  wareHouseBD = new WareHouseBD(sessionContext);
 		List<ComboData> comboBoxDatas = wareHouseBD.getAllWarehouseData();
+		
+		comboBoxDatas = filterDataByWarehouseMapping(comboBoxDatas);
+		
 		cmbWarehouse.setModel(new ListModelList<ComboData>(comboBoxDatas));
 		cmbWarehouse.setItemRenderer(new ComboItemDataRenderer());
 		
@@ -271,6 +286,24 @@ public class TransferInventoryComposer extends BaseSearchComposer{
 	
 	
 	
+	private List<ComboData> filterDataByWarehouseMapping(
+			List<ComboData> comboBoxDatas) {
+		
+		List<ComboData> list = new ArrayList<ComboData>();
+		Set<Long> userWarehouses = getBDSessionContext().getBLSession().getUserWarehouseMappings();
+		
+		if(comboBoxDatas!=null && !comboBoxDatas.isEmpty()) {
+			for(ComboData comboData : comboBoxDatas) {
+				if(userWarehouses!=null && userWarehouses.contains(comboData.getId())) {
+					list.add(comboData);
+				}
+			}
+		}
+		
+		return list;
+	}
+
+
 	private void callTransfer(List<InventoryDetailVO> finalInventoryDetailVOs){
 		Long newWarehouseId=null,currentwarehouseId = null;
 		if(cmbWarehouse.getSelectedItem() != null){

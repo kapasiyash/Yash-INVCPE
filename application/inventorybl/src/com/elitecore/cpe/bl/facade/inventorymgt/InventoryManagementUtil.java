@@ -26,17 +26,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.sql.rowset.CachedRowSet;
 
-import oracle.sql.TIMESTAMP;
-
-
-
-
-
-
-import com.sun.rowset.CachedRowSetImpl;
-import com.elitecore.cpe.bl.constants.inventorymgt.InventoryStatusConstants;
 import com.elitecore.cpe.bl.constants.notification.NotificationConstants;
-import com.elitecore.cpe.bl.constants.policy.CPECommonConstants;
 import com.elitecore.cpe.bl.data.notification.NotificationData;
 import com.elitecore.cpe.bl.entity.inventory.inventorymgt.BatchData;
 import com.elitecore.cpe.bl.entity.inventory.inventorymgt.BatchSummaryData;
@@ -49,11 +39,10 @@ import com.elitecore.cpe.bl.entity.inventory.inventorymgt.TransferOrderData;
 import com.elitecore.cpe.bl.entity.inventory.inventorymgt.TransferOrderDetailData;
 import com.elitecore.cpe.bl.entity.inventory.inventorymgt.WarehouseInventoryStatusData;
 import com.elitecore.cpe.bl.entity.inventory.inventorymgt.WarehouseInventoryStatusHistoryData;
-import com.elitecore.cpe.bl.entity.inventory.master.AttributeData;
 import com.elitecore.cpe.bl.entity.inventory.master.AttributeTransData;
-import com.elitecore.cpe.bl.entity.inventory.master.ConfigureThresholdData;
 import com.elitecore.cpe.bl.entity.inventory.master.ItemData;
 import com.elitecore.cpe.bl.entity.inventory.master.WarehouseData;
+import com.elitecore.cpe.bl.entity.inventory.order.OrderAgentHistoryData;
 import com.elitecore.cpe.bl.exception.NoSuchControllerException;
 import com.elitecore.cpe.bl.exception.SearchBLException;
 import com.elitecore.cpe.bl.facade.master.warehouse.WarehouseUtil;
@@ -65,24 +54,25 @@ import com.elitecore.cpe.bl.vo.inventorymgt.InventoryDetailVO;
 import com.elitecore.cpe.bl.vo.inventorymgt.InventoryStatusLogVO;
 import com.elitecore.cpe.bl.vo.inventorymgt.PlaceOrderNotificationEmailVO;
 import com.elitecore.cpe.bl.vo.inventorymgt.PlaceOrderVO;
-import com.elitecore.cpe.bl.vo.inventorymgt.ThresholdNotificationEmailVO;
 import com.elitecore.cpe.bl.vo.inventorymgt.WarehouseInventoryStatusVO;
-import com.elitecore.cpe.bl.vo.master.AttributeVO;
 import com.elitecore.cpe.bl.vo.master.ThresholdStatusVO;
-import com.elitecore.cpe.bl.vo.master.WarehouseTypeVO;
+import com.elitecore.cpe.bl.vo.order.OrderDetailVo;
+import com.elitecore.cpe.bl.vo.order.TransferOrderVO;
 import com.elitecore.cpe.bl.vo.system.user.UserVO;
+import com.elitecore.cpe.bl.ws.data.input.request.AttributeList;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryDetailsResponseData;
 import com.elitecore.cpe.bl.ws.data.input.vo.InventoryAttributeVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.InventoryVO;
 import com.elitecore.cpe.core.IBLSession;
 import com.elitecore.cpe.util.CSVDataExporter;
 import com.elitecore.cpe.util.logger.Logger;
+import com.sun.rowset.CachedRowSetImpl;
 
 
 public class InventoryManagementUtil {
 
 	
-	public static final String strModule="InventoryManagementUtil";
+	public static final String Module="InventoryManagementUtil";
 	@EJB private SystemInternalSessionBeanLocal systemInternalSessionBeanLocal;
 	
 	public static Timestamp getCurrentTimestamp(){
@@ -90,7 +80,7 @@ public class InventoryManagementUtil {
 	}
 
 	public static List<InventoryDetailVO> getInventoryDetailVO(List<Object> data) {
-		Logger.logTrace(strModule, "Inside getInventoryDetailVO method");
+		Logger.logTrace(Module, "Inside getInventoryDetailVO method");
 		List<InventoryDetailVO> inventoryDetailVOs=null;
 		if(data != null && data.size()>0){
 		 inventoryDetailVOs  = new ArrayList<InventoryDetailVO>();
@@ -101,7 +91,7 @@ public class InventoryManagementUtil {
 	try{	
 		
 		if (data != null && (data.size()>0) ) {
-			Logger.logTrace(strModule, "Inside getInventoryDetailVO method DATA Size:"+data.size());
+			Logger.logTrace(Module, "Inside getInventoryDetailVO method DATA Size:"+data.size());
 			String temp="";
 			InventoryDetailVO inventoryDetailVO = new InventoryDetailVO();
 			for (int cnt = 0; cnt < data.size(); cnt++) {
@@ -121,27 +111,27 @@ public class InventoryManagementUtil {
 					for (int cnt2 = 0; cnt2 < obj.length; cnt2++) 
 					{
 						if (cnt2 == 0) {
-							Logger.logTrace(strModule,"Status 0:"+obj[cnt2].toString());
+							Logger.logTrace(Module,"Status 0:"+obj[cnt2].toString());
 							inventoryDetailVO.setBatchId(obj[cnt2].toString());
 						} else if (cnt2 == 1) {
-							Logger.logTrace(strModule,"Status 1:"+obj[cnt2].toString());
+							Logger.logTrace(Module,"Status 1:"+obj[cnt2].toString());
 							inventoryDetailVO.setInventoryId(obj[cnt2].toString());
 							
 						} else if (cnt2 == 2) {
-							Logger.logTrace(strModule,"Status 2:"+obj[cnt2].toString());
+							Logger.logTrace(Module,"Status 2:"+obj[cnt2].toString());
 							inventoryDetailVO.setStatus(obj[cnt2].toString());
 						}  
 						else if(cnt2 == 3){
 							
-							Logger.logTrace(strModule,"Size of obeject array:"+obj.length);
+							Logger.logTrace(Module,"Size of obeject array:"+obj.length);
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 3:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 3:"+obj[cnt2].toString());
 							inventoryDetailVO.setDistributorNumber(obj[cnt2].toString());
 							}
 							
 						}else if(cnt2 == 4){
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 4:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 4:"+obj[cnt2].toString());
 							inventoryDetailVO.setCustomerRefNumber(obj[cnt2].toString());
 							}
 							
@@ -149,49 +139,49 @@ public class InventoryManagementUtil {
 						else if(cnt2 == 5){
 							
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 5:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 5:"+obj[cnt2].toString());
 							inventoryDetailVO.setOrderNumber(obj[cnt2].toString());
 							}
 						}else if(cnt2 == 6){
 							
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 6:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 6:"+obj[cnt2].toString());
 							inventoryDetailVO.setWareHouseName(obj[cnt2].toString());
 							}
 						}else if(cnt2 == 7){
 							
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 7:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 7:"+obj[cnt2].toString());
 							inventoryDetailVO.setWarehouseId(Long.parseLong(obj[cnt2].toString()));
 							}
 						}else if(cnt2 == 8){
 							
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 8:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 8:"+obj[cnt2].toString());
 							inventoryDetailVO.setResourceType(obj[cnt2].toString());
 							}
 						}else if(cnt2 == 9){
 							
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 9:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 9:"+obj[cnt2].toString());
 							inventoryDetailVO.setResourceSubType(obj[cnt2].toString());
 							}
 						}else if(cnt2 == 10){
 							
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 10:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 10:"+obj[cnt2].toString());
 							inventoryDetailVO.setCreateDate((Timestamp)obj[cnt2]);
 							}
 						}else if(cnt2 == 11){
 							
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 11:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 11:"+obj[cnt2].toString());
 							inventoryDetailVO.setCreatedby(UserFactory.findUserById(obj[cnt2].toString()).getName());
 							}
 						}else if(cnt2 == 12){
 							
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 12:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 12:"+obj[cnt2].toString());
 							inventoryDetailVO.setUpdatedDate((Timestamp)obj[cnt2]);
 							}else{
 								inventoryDetailVO.setUpdatedDate((Timestamp)obj[cnt2]);
@@ -199,7 +189,7 @@ public class InventoryManagementUtil {
 						}else if(cnt2 == 13){
 							
 							if(obj[cnt2]!=null){
-								Logger.logTrace(strModule,"Status 13:"+obj[cnt2].toString());
+								Logger.logTrace(Module,"Status 13:"+obj[cnt2].toString());
 								inventoryDetailVO.setUpdatedby(UserFactory.findUserById(obj[cnt2].toString()).getName());
 							}else{
 								inventoryDetailVO.setUpdatedby("-");
@@ -207,7 +197,7 @@ public class InventoryManagementUtil {
 						}else if(cnt2 == 14){
 							
 							if(obj[cnt2]!=null){
-							Logger.logTrace(strModule,"Status 14:"+obj[cnt2].toString());
+							Logger.logTrace(Module,"Status 14:"+obj[cnt2].toString());
 							inventoryDetailVO.setTransferStatus(obj[cnt2].toString());
 							}
 						}/*else if(cnt2 == 15){
@@ -240,41 +230,41 @@ public class InventoryManagementUtil {
 								}
 							}
 						}*/ else if(cnt2 == 15){
-							Logger.logTrace(strModule,"Status 15:"+obj[cnt2]);
+							Logger.logTrace(Module,"Status 15:"+obj[cnt2]);
 							if(obj[cnt2]!=null){
 								inventoryDetailVO.setExternalBatchNumber(obj[cnt2].toString());
 							}
 						} else if(cnt2 == 16){
-							Logger.logTrace(strModule,"Status 16:"+obj[cnt2]);
+							Logger.logTrace(Module,"Status 16:"+obj[cnt2]);
 							if(obj[cnt2]!=null){
 								inventoryDetailVO.setResourceName(obj[cnt2].toString());
 							}
 						} else if(cnt2 == 17){
-							Logger.logTrace(strModule,"Status 17:"+obj[cnt2]);
+							Logger.logTrace(Module,"Status 17:"+obj[cnt2]);
 							if(obj[cnt2]!=null){
 								inventoryDetailVO.setResourceNumber(obj[cnt2].toString());
 							}
 						} else if(cnt2 == 18){
-							Logger.logTrace(strModule,"Status 18:"+obj[cnt2]);
+							Logger.logTrace(Module,"Status 18:"+obj[cnt2]);
 							if(obj[cnt2]!=null){
 								inventoryDetailVO.setResourceNo(Long.parseLong(obj[cnt2].toString()));
 							}
 						}
 						//Added By Rinkal--start
 						 else if(cnt2 == 19){
-								Logger.logTrace(strModule,"Status 19:"+obj[cnt2]);
+								Logger.logTrace(Module,"Status 19:"+obj[cnt2]);
 								if(obj[cnt2]!=null){
 									inventoryDetailVO.setSubStatus((obj[cnt2].toString()));
 								}
 						 }
 						//Added By Rinkal--end
 						else {
-							Logger.logTrace(strModule,"Status counter ::"+cnt2);
-							Logger.logTrace(strModule,"Status 20:"+obj[cnt2].toString());
+							Logger.logTrace(Module,"Status counter ::"+cnt2);
+							Logger.logTrace(Module,"Status 20:"+obj[cnt2].toString());
 							temp = inventoryDetailVO.getInventoryId();
 							HashMap<String, String> attributeMap = new HashMap();
 							attributeMap.put(obj[cnt2].toString(),obj[++cnt2].toString());
-							Logger.logTrace(strModule,"Attribute map:"+attributeMap);
+							Logger.logTrace(Module,"Attribute map:"+attributeMap);
 						//	attributeList.add(obj[cnt2].toString());
 							inventoryDetailVO.setAttribute(attributeMap);
 							
@@ -351,9 +341,9 @@ public class InventoryManagementUtil {
 	
 	
 	public static void getUploadInventoryVO(String path,CachedRowSetImpl cachedRowSet,Set <String> headerSet){
-		Logger.logTrace(strModule, "In side getUploadInventoryVO() Path:"+path);
-		Logger.logTrace(strModule, "In side getUploadInventoryVO() Path:"+path);
-		Logger.logTrace(strModule, "In side getUploadInventoryVO() headerSet:"+headerSet);
+		Logger.logTrace(Module, "In side getUploadInventoryVO() Path:"+path);
+		Logger.logTrace(Module, "In side getUploadInventoryVO() Path:"+path);
+		Logger.logTrace(Module, "In side getUploadInventoryVO() headerSet:"+headerSet);
 		CSVDataExporter exporter=null;
 		long time = Calendar.getInstance().getTimeInMillis();
 	
@@ -378,14 +368,14 @@ public class InventoryManagementUtil {
 		 
 		 List<String> list=new ArrayList<String>(headerSet);
 		exporter.append(list);
-		Logger.logTrace(strModule, "After header list send to print:");
+		Logger.logTrace(Module, "After header list send to print:");
 		while(rs.next()){
 				list.clear();
 				list.add(String.valueOf(count++));
 				for (String column : headerSet) {
-					Logger.logTrace(strModule, "column:"+column);
+					Logger.logTrace(Module, "column:"+column);
 					if (!column.equalsIgnoreCase("Sr.No")) {
-						Logger.logTrace(strModule, "column value from DB:"+rs.getString(column));
+						Logger.logTrace(Module, "column value from DB:"+rs.getString(column));
 						list.add((rs.getString(column)!=null)?rs.getString(column):"");
 					}
 					
@@ -515,7 +505,10 @@ public class InventoryManagementUtil {
 							attributeVO.setAttributeValue(rs.getString(column.replace(" ", "_")));
 							attributeVOs.add(attributeVO);
 						}
-						inventoryVO.setAttributeVOs(attributeVOs);
+						
+						AttributeList attributeList = new AttributeList();
+						attributeList.setAttributeVOs(attributeVOs);
+						inventoryVO.setAttributeList(attributeList);
 						
 					}
 					
@@ -539,7 +532,7 @@ public class InventoryManagementUtil {
 	public static TransferOrderData getTransferOrderData(List<InventoryDetailVO> inventoryDetailVOs,Long warehouseId,String orderNo,IBLSession iblSession){
 		TransferOrderData transferOrderData=new TransferOrderData();
 		try{
-			Logger.logTrace(strModule, "Inside getTransferOrderData method");
+			Logger.logTrace(Module, "Inside getTransferOrderData method");
 			transferOrderData.setRemarks("Creating Transfer Order");
 				transferOrderData.setTransferOrderNo(orderNo);
 				transferOrderData.setToWarehouseId(warehouseId);
@@ -560,7 +553,7 @@ public class InventoryManagementUtil {
 	public static List<TransferOrderDetailData> getTransferOrderDetailData(List<InventoryDetailVO> inventoryDetailVOs,TransferOrderData transferOrderData,IBLSession iblSession){
 		List<TransferOrderDetailData> transferOrderDetailDatas=new ArrayList<TransferOrderDetailData>();
 		try{
-			Logger.logTrace(strModule, "Inside getTransferOrderDetailData method");
+			Logger.logTrace(Module, "Inside getTransferOrderDetailData method");
 				for(InventoryDetailVO inventoryDetailVO:inventoryDetailVOs){
 					TransferOrderDetailData transferOrderDetailData=new TransferOrderDetailData();
 					transferOrderDetailData.setTransferOrderId(transferOrderData.getTransferOrderId());
@@ -575,7 +568,7 @@ public class InventoryManagementUtil {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		Logger.logTrace(strModule, "Size of List in getTransferOrderDetailData method:"+transferOrderDetailDatas.size());
+		Logger.logTrace(Module, "Size of List in getTransferOrderDetailData method:"+transferOrderDetailDatas.size());
 		return transferOrderDetailDatas;
 	}
 	
@@ -641,7 +634,7 @@ public class InventoryManagementUtil {
 	public static List<BatchSummaryVO> getBatchSummaryVO(List<BatchSummaryData> batchSummaryDatas){
 		List<BatchSummaryVO> batchSummaryVOs=new ArrayList<BatchSummaryVO>();
 		try{
-			Logger.logTrace(strModule, "Inside getBatchSummaryVO method");
+			Logger.logTrace(Module, "Inside getBatchSummaryVO method");
 				for(BatchSummaryData batchSummaryData:batchSummaryDatas){
 					BatchSummaryVO batchSummaryVO=new BatchSummaryVO();
 					batchSummaryVO.setResource(batchSummaryData.getResource().getName());
@@ -657,18 +650,18 @@ public class InventoryManagementUtil {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		Logger.logTrace(strModule, "Size of List in getBatchSummaryVO method:"+batchSummaryVOs.size());
-		Logger.logTrace(strModule, "Util  getBatchSummaryVO method:"+batchSummaryVOs);
+		Logger.logTrace(Module, "Size of List in getBatchSummaryVO method:"+batchSummaryVOs.size());
+		Logger.logTrace(Module, "Util  getBatchSummaryVO method:"+batchSummaryVOs);
 		return batchSummaryVOs;
 		
 	}
 	public static List<InventoryStatusLogVO> getInventoryStatusLogVo (List<InventoryStatusLogData> inventoryStatusLogDatas){
-		Logger.logTrace(strModule, "Inside getInventoryStatusLogVo method");
+		Logger.logTrace(Module, "Inside getInventoryStatusLogVo method");
 		List<InventoryStatusLogVO> inventoryStatusLogVOs=null;
 		if(inventoryStatusLogDatas !=null && inventoryStatusLogDatas.size()>0){
 			inventoryStatusLogVOs  = new ArrayList<InventoryStatusLogVO>();
 			
-			Logger.logTrace(strModule, "inventoryStatusLogDatas not null");
+			Logger.logTrace(Module, "inventoryStatusLogDatas not null");
 				for(InventoryStatusLogData inveStatusLogData:inventoryStatusLogDatas){
 					InventoryStatusLogVO inventoryStatusLogVO=new InventoryStatusLogVO();
 					inventoryStatusLogVO.setInventoryId(inveStatusLogData.getInventoryId());
@@ -740,7 +733,7 @@ public class InventoryManagementUtil {
 	public static OrderData getOrderData(PlaceOrderVO placeOrderVO,String orderNo,IBLSession iblSession){
 		OrderData orderData=new OrderData();
 		try{
-			Logger.logTrace(strModule, "Inside getOrderData method");
+			Logger.logTrace(Module, "Inside getOrderData method");
 			orderData.setOrderNo(orderNo);
 			orderData.setFromWarehouseId(placeOrderVO.getFromwarehouseId());
 			orderData.setToWarehouseId(placeOrderVO.getTowarehouseId());
@@ -750,8 +743,9 @@ public class InventoryManagementUtil {
 			orderData.setCreatedby(iblSession.getSessionUserId());
 			orderData.setCreatedate(getCurrentTimestamp());
 			orderData.setRemarks(placeOrderVO.getRemark());
-			orderData.setOrderType(placeOrderVO.getOrderType());
-			//orderData.setUpdatedby(iblSession.getSessionUserId());
+	/*		orderData.setOrderType(placeOrderVO.getOrderType());
+			orderData.setItemId(placeOrderVO.getItemId());
+	*/		//orderData.setUpdatedby(iblSession.getSessionUserId());
 			//orderData.setUpdatedate(getCurrentTimestamp());
 				
 		}catch(Exception e){
@@ -773,7 +767,7 @@ public class InventoryManagementUtil {
 		Map<String, String> map = new HashMap<String, String>();
 		
 		
-		Logger.logTrace(strModule, "Inside convertPlaceOrderEmailVO method.");
+		Logger.logTrace(Module, "Inside convertPlaceOrderEmailVO method.");
 		System.out.println("alias:::"+alias);
 		ArrayList <String> emailIds=new ArrayList<String>();
 		map.put(NotificationConstants.CPE_FROM_WAREHOUSE, orderData.getFromWarehouseData().getName());
@@ -788,7 +782,17 @@ public class InventoryManagementUtil {
 			map.put(NotificationConstants.CPE_RESOURCE_SUBTYPENAME," ");
 		}
 		
-		
+		//--added start for SMS-Notification
+		ArrayList<String> listMobileNumber=new ArrayList<String>();
+		if(orderData.getFromWarehouseData().getContactNo()!=null && !orderData.getFromWarehouseData().getContactNo().isEmpty()){
+			listMobileNumber.add(orderData.getFromWarehouseData().getContactNo());
+		}
+		if(orderData.getToWarehouseData().getContactNo()!=null && !orderData.getToWarehouseData().getContactNo().isEmpty()){
+			listMobileNumber.add(orderData.getToWarehouseData().getContactNo());
+		}
+		notificationData.setMobilenumbers(listMobileNumber);
+		//--added end for SMS-Notification
+
 		
 		emailIds.add(orderData.getFromWarehouseData().getEmailId());
 		emailIds.add(orderData.getToWarehouseData().getEmailId());
@@ -806,7 +810,7 @@ public class InventoryManagementUtil {
 	
 	
 public static Properties readEmailProperty(String filename){
-	Logger.logTrace(strModule, "Inside readEmailProperty method");
+	Logger.logTrace(Module, "Inside readEmailProperty method");
 		Properties  props = new Properties();
 		try{
 			ResourceBundle rb = ResourceBundle.getBundle(filename);
@@ -825,7 +829,7 @@ public static Properties readEmailProperty(String filename){
 				}
 				
 				String value = rb.getString(key);
-				Logger.logTrace(strModule, "Inside readEmailProperty method::Key::"+key+" Value::"+value);
+				Logger.logTrace(Module, "Inside readEmailProperty method::Key::"+key+" Value::"+value);
 				
 			}
 			
@@ -839,7 +843,7 @@ public static void processPlaceOrderNotificationEmailCommon(PlaceOrderNotificati
 	
 	Map <String,ThresholdStatusVO> map=new LinkedHashMap<String, ThresholdStatusVO>();
 	try{
-		Logger.logTrace(strModule,"processPlaceOrderNotificationEmailCommon() called");
+		Logger.logTrace(Module,"processPlaceOrderNotificationEmailCommon() called");
 		boolean flag=true;
 		final Properties propsEmailconfig =readEmailProperty("EmailConfig");
 		
@@ -910,10 +914,10 @@ public static void processPlaceOrderNotificationEmailCommon(PlaceOrderNotificati
 			if(flag){
 			Transport.send(message);
 			}else{
-				Logger.logTrace(strModule,"No Need to send email");
+				Logger.logTrace(Module,"No Need to send email");
 			}
 
-			Logger.logTrace(strModule,"processPlaceOrderNotificationEmailCommon() Completed");
+			Logger.logTrace(Module,"processPlaceOrderNotificationEmailCommon() Completed");
 		
 		
 	}catch(Exception e){
@@ -927,7 +931,7 @@ public static void processAcceptPlaceOrderNotificationEmail(PlaceOrderNotificati
 	
 	Map <String,ThresholdStatusVO> map=new LinkedHashMap<String, ThresholdStatusVO>();
 	try{
-		Logger.logTrace(strModule,"processAcceptPlaceOrderNotificationEmail() called");
+		Logger.logTrace(Module,"processAcceptPlaceOrderNotificationEmail() called");
 		boolean flag=true;
 		final Properties propsEmailconfig =readEmailProperty("EmailConfig");
 		
@@ -999,10 +1003,10 @@ public static void processAcceptPlaceOrderNotificationEmail(PlaceOrderNotificati
 			if(flag){
 			Transport.send(message);
 			}else{
-				Logger.logTrace(strModule,"No Need to send email");
+				Logger.logTrace(Module,"No Need to send email");
 			}
 
-			Logger.logTrace(strModule,"processAcceptPlaceOrderNotificationEmail() Completed");
+			Logger.logTrace(Module,"processAcceptPlaceOrderNotificationEmail() Completed");
 		
 		
 	}catch(Exception e){
@@ -1015,13 +1019,20 @@ public static void processAcceptPlaceOrderNotificationEmail(PlaceOrderNotificati
 
 public static PlaceOrderVO getPlaceOrderVO(OrderData orderData){
 	PlaceOrderVO placeOrderVO = new PlaceOrderVO();
-	Logger.logTrace(strModule,"getPlaceOrderVO() called");
+	Logger.logTrace(Module,"getPlaceOrderVO() called");
 	if(orderData != null){
 		placeOrderVO.setOrderNo(orderData.getOrderNo());
 		placeOrderVO.setFromwarehouseId(orderData.getFromWarehouseId());
 		placeOrderVO.setTowarehouseId(orderData.getToWarehouseId());
 		placeOrderVO.setFromwarehouse(orderData.getFromWarehouseData().getName());
 		placeOrderVO.setTowarehouse(orderData.getToWarehouseData().getName());
+		
+		placeOrderVO.setOrderId(orderData.getOrderId());
+		placeOrderVO.setEmailId(orderData.getToWarehouseData().getEmailId()); // Added by Jahanvi
+		if(orderData.getToWarehouseData().getParentWarehouse() !=null){
+			placeOrderVO.setParentEmailId(orderData.getToWarehouseData().getParentWarehouse().getEmailId());
+		}
+		
 		try{
 			placeOrderVO.setCreatedby(UserFactory.findUserById(orderData.getCreatedby()).getName());
 			placeOrderVO.setCreateDate(orderData.getCreatedate());
@@ -1040,7 +1051,15 @@ public static PlaceOrderVO getPlaceOrderVO(OrderData orderData){
 		if(orderData.getResourceSubTypeData()!=null){
 		placeOrderVO.setResourceSubtype(orderData.getResourceSubTypeData().getName());
 		}
+		
+		if(orderData.getItemData()!=null) {
+			placeOrderVO.setResourceName(orderData.getItemData().getName());
+			placeOrderVO.setItemId(orderData.getItemId());
+		}
+		
+		placeOrderVO.setOrderType(orderData.getOrderType());
 		placeOrderVO.setStatus(orderData.getOrderStatus().getName());
+
 		placeOrderVO.setQuantity(orderData.getQuantity());
 		if(orderData.getAcceptQuantity()!=null){
 			placeOrderVO.setAcceptquantity(orderData.getAcceptQuantity());
@@ -1059,7 +1078,7 @@ public static PlaceOrderVO getPlaceOrderVO(OrderData orderData){
 		}
 		
 	}
-	Logger.logTrace(strModule,"getPlaceOrderVO() Completed::"+placeOrderVO);
+	Logger.logTrace(Module,"getPlaceOrderVO() Completed::"+placeOrderVO);
 	return placeOrderVO;
 }
 
@@ -1159,7 +1178,7 @@ public static PlaceOrderVO getPlaceOrderVO(OrderData orderData){
 		Map<String, String> map = new HashMap<String, String>();
 		
 		
-		Logger.logTrace(strModule, "Inside convertPlaceOrderEmailVO method.");
+		Logger.logTrace(Module, "Inside convertPlaceOrderEmailVO method.");
 		System.out.println("alias:::"+alias);
 		ArrayList <String> emailIds=new ArrayList<String>();
 		map.put(NotificationConstants.CPE_FROM_WAREHOUSE, orderData.getFromWarehouseData().getName());
@@ -1175,11 +1194,20 @@ public static PlaceOrderVO getPlaceOrderVO(OrderData orderData){
 			map.put(NotificationConstants.CPE_RESOURCE_SUBTYPENAME," ");
 		}
 		
+		//--added start for SMS-Notification
+		ArrayList<String> listMobileNumber=new ArrayList<String>();
+		if(orderData.getFromWarehouseData().getContactNo()!=null && !orderData.getFromWarehouseData().getContactNo().isEmpty()){
+			listMobileNumber.add(orderData.getFromWarehouseData().getContactNo());
+		}
+		if(orderData.getToWarehouseData().getContactNo()!=null && !orderData.getToWarehouseData().getContactNo().isEmpty()){
+			listMobileNumber.add(orderData.getToWarehouseData().getContactNo());
+		}
+		notificationData.setMobilenumbers(listMobileNumber);
+		//--added end for SMS-Notification
 		
 		emailIds.add(orderData.getFromWarehouseData().getEmailId());
 		emailIds.add(orderData.getToWarehouseData().getEmailId());
 		notificationData.setToEmails(emailIds);
-		
 		map.put(NotificationConstants.CPE_ORDER_NUMBER, orderData.getOrderNo());
 		if(orderData.getAcceptQuantity()!=null){
 			map.put(NotificationConstants.CPE_ACCEPTED_QUANTITY, orderData.getAcceptQuantity()+"");
@@ -1189,5 +1217,61 @@ public static PlaceOrderVO getPlaceOrderVO(OrderData orderData){
 		
 		return notificationData;
 	}
+	
+	
+	public static OrderAgentHistoryData getAgentHistoryData(OrderDetailVo orderDetailVo){
+		OrderAgentHistoryData agentHistoryData=new OrderAgentHistoryData();
+		try{
+			Logger.logTrace(Module, "Inside getOrderData method");
+			agentHistoryData.setOrderNo(orderDetailVo.getOrderNo());
+			agentHistoryData.setFromWarehouseId(orderDetailVo.getFromWarehouseId());
+			agentHistoryData.setToWarehouseId(orderDetailVo.getToWarehouseId());
+			agentHistoryData.setOrderId(orderDetailVo.getOrderId());
+			agentHistoryData.setOrderType(orderDetailVo.getOrderType());
+			agentHistoryData.setAgentrundate(orderDetailVo.getAgentRunDate());
+			agentHistoryData.setEmailSendDate(orderDetailVo.getEmailSendDate());
+			agentHistoryData.setSmsSendDate(orderDetailVo.getSmsSendDate());
+			agentHistoryData.setStatus(orderDetailVo.getStatus());
+			agentHistoryData.setAgentrundetailId(orderDetailVo.getAgentRunDetailId());
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return agentHistoryData;
+	}
+
+	public static TransferOrderVO getTransferOrderVO(TransferOrderData orderData) {
+		
+		TransferOrderVO  transferOrderVO = null;
+		
+		if(orderData!=null) {
+			transferOrderVO = new TransferOrderVO();
+			transferOrderVO.setCreatedate(orderData.getCreatedate());
+			transferOrderVO.setCreatedby(orderData.getCreatedby());
+			transferOrderVO.setFromWarehouseId(orderData.getFromWarehouseId());
+			transferOrderVO.setInventoryOrderStatusId(orderData.getInventoryOrderStatusId());
+			transferOrderVO.setRemarks(orderData.getRemarks());
+			transferOrderVO.setToWarehouseId(orderData.getToWarehouseId());
+			transferOrderVO.setTransferOrderId(orderData.getTransferOrderId());
+			transferOrderVO.setTransferOrderNo(orderData.getTransferOrderNo());
+			transferOrderVO.setUpdatedate(orderData.getUpdatedate());
+			transferOrderVO.setUpdatedby(orderData.getUpdatedby());
+			
+			if(orderData.getToWarehouseData()!=null) {
+				transferOrderVO.setEmailId(orderData.getToWarehouseData().getEmailId());
+				
+				if(orderData.getToWarehouseData().getParentWarehouse()!=null) {
+					transferOrderVO.setParentEmailId(orderData.getToWarehouseData().getParentWarehouse().getEmailId());
+				}
+				
+			}
+			
+		}
+		
+		
+		return transferOrderVO;
+	}
+	
 	
 }

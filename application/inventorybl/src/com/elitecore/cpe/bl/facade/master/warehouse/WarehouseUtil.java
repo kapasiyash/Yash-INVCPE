@@ -192,6 +192,19 @@ public class WarehouseUtil {
 			if(configureThresholdVO.getThresholdID()!=null){
 				configureThresholdData.setThresholdID(configureThresholdVO.getThresholdID());
 			}
+			
+			if(configureThresholdVO.getAutomaticOrder()!=null) {
+				if(configureThresholdVO.getAutomaticOrder().equals("Yes")) {
+					configureThresholdData.setAutomaticOrder('Y');
+				} else if(configureThresholdVO.getAutomaticOrder().equals("No")) {
+					configureThresholdData.setAutomaticOrder('N');
+				}
+			}
+			
+			if(configureThresholdVO.getItemId()!=null) {
+				configureThresholdData.setItemId(configureThresholdVO.getItemId());
+			}
+			
 			configureThresholdData.setWarehouseId(configureThresholdVO.getWarehouseID());
 			configureThresholdData.setThresholdType(configureThresholdVO.getThresholdType());
 			configureThresholdData.setThresholdValue(configureThresholdVO.getThresholdValue());
@@ -230,6 +243,19 @@ public class WarehouseUtil {
 				}
 			}
 			
+			if(configureThresholdData.getItemData()!=null) {
+				configureThresholdVO.setResourceName(configureThresholdData.getItemData().getName());
+			}
+			
+			if(configureThresholdData.getAutomaticOrder()!=null) {
+				if(configureThresholdData.getAutomaticOrder() == 'Y') {
+					configureThresholdVO.setAutomaticOrder("Yes");
+				} else {
+					configureThresholdVO.setAutomaticOrder("No");
+				}
+			} 
+			
+			configureThresholdVO.setItemId(configureThresholdData.getItemId());
 			configureThresholdVO.setThresholdID(configureThresholdData.getThresholdID());
 			configureThresholdVO.setThresholdValue(configureThresholdData.getThresholdValue());
 			configureThresholdVO.setThresholdType(configureThresholdData.getThresholdType());

@@ -34,6 +34,8 @@ public interface WarehouseSessionBeanLocal {
 	public void updateWarehouse(WarehouseData warehouseData) throws UpdateBLException;
 		
 	public List getFilterDataBy(String entityName,Map<String,Object> fieldValueMap);
+	
+	public List getQueryData(String query) ;
 
 	public void deleteWarehouse(WarehouseData warehouseData) throws UpdateBLException;
 	
@@ -48,7 +50,7 @@ public interface WarehouseSessionBeanLocal {
 	
 	public CachedRowSetImpl searchThresholdStatus();
 
-	public ConfigureThresholdData findThresholdValue(Long wareHouseId, Long resourceTypeId,Long resourceSubTypeId) throws SearchBLException;
+	public ConfigureThresholdData findThresholdValue(Long thresholdId) throws SearchBLException;
 	public CachedRowSetImpl getAllResourceTypeWithResource (Long warehouseid);
 	public Boolean isWarehouseExist(String name);
 	public Boolean isWarehouseTypeExist(String name);

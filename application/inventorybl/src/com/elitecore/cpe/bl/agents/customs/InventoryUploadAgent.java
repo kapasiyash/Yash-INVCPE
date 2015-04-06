@@ -166,7 +166,7 @@ public class InventoryUploadAgent  extends BaseAgentRun implements Serializable 
 					 Logger.logTrace(MODULE, "Filename change file:"+change.getAbsolutePath() );
 					 Logger.logTrace(MODULE, "Filename After change status:"+Oldfile.getAbsolutePath() );
 					Logger.logTrace(MODULE, "File Added:" + Oldfile);
-					retList.add(new BaseEntity("/"+change.getAbsolutePath()));
+  				    retList.add(new BaseEntity("/"+change.getAbsolutePath()));
 					
 					
 					}
@@ -217,7 +217,10 @@ public class InventoryUploadAgent  extends BaseAgentRun implements Serializable 
 				
 					Logger.logTrace(MODULE,"Path of Source file"+agentRunEntity.getEntityId());
 					if (agentRunEntity != null) {
-						file = new File( agentRunEntity.getEntityId());
+//commented today file = new File(new URI("file://" + agentRunEntity.getEntityId()));
+						
+						file = new File(agentRunEntity.getEntityId());
+						
 						// file = new
 						// File("file://"+"/home/elitecore/InventoryUpload.csv");
 

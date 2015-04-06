@@ -3,7 +3,16 @@ package com.elitecore.cpe.bl.ws.data.input.response;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NICE_ReleaseCPEResourceResponse", propOrder = {
+    "responseCode",
+    "responseMessage",
+    "responseVo"
+})
 public class ReleaseCPEResponseVO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

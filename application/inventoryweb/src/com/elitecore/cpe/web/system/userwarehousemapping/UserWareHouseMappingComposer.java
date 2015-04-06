@@ -91,12 +91,16 @@ public class UserWareHouseMappingComposer extends BaseModuleComposer  {
 		if(comboUser.getSelectedItem()!=null) {
 			ComboBoxData comboBoxData = comboUser.getSelectedItem().getValue();
 			String userId = comboBoxData.getId();
-			
+			String name=comboBoxData.getName();
+			if(name!=null){
+				name=name.substring(name.indexOf("(")+1, name.indexOf(")"));
+			}
+			System.out.println("Name:::::::"+name);
 			List<ComboData> selectedData = dualLBox.getChosenDataList();
 			
 			SystemInternalBD systemInternalBD = new  SystemInternalBD(getBDSessionContext());
 			try {
-				systemInternalBD.updateUserWarehouseMapping(userId,selectedData);
+				systemInternalBD.updateUserWarehouseMapping(name,userId,selectedData);
 				MessageUtility.successInformation("Success", "User Warehouse Mapping Updated Successfully");
 				
 			} catch (UpdateBLException e) {

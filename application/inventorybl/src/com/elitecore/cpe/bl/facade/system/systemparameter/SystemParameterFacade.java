@@ -181,6 +181,7 @@ public class SystemParameterFacade extends BaseFacade implements SystemParameter
 	 */
 	@Override
 	public String getSystemParameterValue(String systemParameterAlias) throws SearchBLException{
+		Logger.logDebug(MODULE,"In getSystemParameterValue");
 		Map<String, String> sysParam = getAllSystemParameterValue();
 		return sysParam.get(systemParameterAlias);
 		

@@ -3,6 +3,20 @@ package com.elitecore.cpe.bl.ws.data.input.vo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(name = "NICE_CheckResourceAvailability", propOrder = {
+	    "warehouseName",
+	    "resourceName",
+	    "resourceType",
+	    "resourceSubType",
+	    "model",
+	    "vendor",
+	    "resourceId",
+	    "availableResourceCount",
+	    "warehouseCode"
+	})
 public class ResourceAvailibilityVO implements Serializable{
 
 	/**
@@ -18,7 +32,7 @@ public class ResourceAvailibilityVO implements Serializable{
 	private Long availableResourceCount;
 	private String model;
 	private String vendor;
-	private List<InventoryVO> inventoryList;
+//	private List<InventoryVO> inventoryList;
 	
 	
 	
@@ -40,6 +54,8 @@ public class ResourceAvailibilityVO implements Serializable{
 	public void setWarehouseName(String warehouseName) {
 		this.warehouseName = warehouseName;
 	}
+	
+	@XmlElement(name="productName")
 	public String getResourceName() {
 		return resourceName;
 	}
@@ -64,6 +80,8 @@ public class ResourceAvailibilityVO implements Serializable{
 	public void setVendor(String vendor) {
 		this.vendor = vendor;
 	}
+	
+	@XmlElement(name="noOfResource")
 	public Long getAvailableResourceCount() {
 		return availableResourceCount;
 	}
@@ -71,50 +89,33 @@ public class ResourceAvailibilityVO implements Serializable{
 		this.availableResourceCount = availableResourceCount;
 	}
 	
+	@XmlElement(name="rfsID")
 	public String getResourceId() {
 		return resourceId;
 	}
 	public void setResourceId(String resourceId) {
 		this.resourceId = resourceId;
 	}
-	public List<InventoryVO> getInventoryList() {
+	/*public List<InventoryVO> getInventoryList() {
 		return inventoryList;
 	}
 	public void setInventoryList(List<InventoryVO> inventoryList) {
 		this.inventoryList = inventoryList;
-	}
-	
+	}*/
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("ResourceAvailibilityVO [" );
-		if(warehouseName!=null){
-		builder.append(	"warehouseName=").append(warehouseName);
-		}
-		if(resourceName!=null){
-		builder.append(", resourceName=").append(resourceName);
-		}
-		if(resourceType!=null){
-		builder.append(", resourceType=").append(resourceType);
-		}
-		if(model!=null){
-		builder.append(", model=").append(model);
-		}
-		if(vendor!=null){
-		builder.append(", vendor=").append(vendor);
-		}
-		if(availableResourceCount!=null){
-		builder.append(", availableResourceCount=").append(availableResourceCount);
-		}
-		if(resourceId!=null){
-		builder.append(", resourceId=").append(resourceId);
-		}
-		if(inventoryList!=null){
-		builder.append(", inventoryList=").append(inventoryList);
-		}
-		builder.append("]");
-		return builder.toString();
+		return "ResourceAvailibilityVO [warehouseName=" + warehouseName
+				+ ", warehouseCode=" + warehouseCode + ", resourceId="
+				+ resourceId + ", resourceName=" + resourceName
+				+ ", resourceType=" + resourceType + ", resourceSubType="
+				+ resourceSubType + ", availableResourceCount="
+				+ availableResourceCount + ", model=" + model + ", vendor="
+				+ vendor + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

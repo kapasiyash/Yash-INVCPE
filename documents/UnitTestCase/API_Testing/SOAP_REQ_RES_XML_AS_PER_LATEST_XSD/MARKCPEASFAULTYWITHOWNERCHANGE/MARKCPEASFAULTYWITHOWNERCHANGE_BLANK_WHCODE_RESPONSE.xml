@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_MarkCPEAsFaultyWithOwnerChangResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>err-211047</responseCode>
+         <responseMessage>Warehouse code should not be blank or empty</responseMessage>
+      </NICE_MarkCPEAsFaultyWithOwnerChangResponse>
+   </soap:Body>
+</soap:Envelope>

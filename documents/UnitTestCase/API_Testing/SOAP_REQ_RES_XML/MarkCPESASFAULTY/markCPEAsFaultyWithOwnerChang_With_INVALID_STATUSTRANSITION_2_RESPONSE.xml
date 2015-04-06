@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <ns2:markCPEAsFaultyWithOwnerChangResponse xmlns:ns2="http://ws.bl.cpe.elitecore.com/">
+         <return>
+            <responseCode>err-211046</responseCode>
+            <responseMessage>Not able to mark all CPEs As Faulty,Please try again later.E22000000013:Status change not allowed from Repaired to Faulty
+,E22000000011:Status change not allowed from Faulty to Faulty</responseMessage>
+         </return>
+      </ns2:markCPEAsFaultyWithOwnerChangResponse>
+   </soap:Body>
+</soap:Envelope>

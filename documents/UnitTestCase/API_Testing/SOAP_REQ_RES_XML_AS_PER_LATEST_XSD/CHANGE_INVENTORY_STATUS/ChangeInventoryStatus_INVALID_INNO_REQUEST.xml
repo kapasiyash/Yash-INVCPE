@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:NICE_ChangeInventoryStatusRequest>
+         <man:NICE_ChangeInventoryStatusList>
+            <!--1 or more repetitions:-->
+            <man:NICE_ChangeInventoryStatus>
+               <!--Optional:-->
+               <man:inventoryNumber>EMA0FF00000011</man:inventoryNumber>
+               <!--Optional:-->
+               <man:oldStatus/>
+               <!--Optional:-->
+               <man:newStatus>16</man:newStatus>
+               <!--Optional:-->
+               <man:remarks>CHC</man:remarks>
+               <!--Optional:-->
+               <man:serialNumber/>
+               <!--Optional:-->
+               <man:orderLineItemID/>
+            </man:NICE_ChangeInventoryStatus>
+            <!--1 or more repetitions:-->
+            <man:NICE_ChangeInventoryStatus>
+               <!--Optional:-->
+               <man:inventoryNumber>INV90000015</man:inventoryNumber>
+               <!--Optional:-->
+               <man:oldStatus/>
+               <!--Optional:-->
+               <man:newStatus>2</man:newStatus>
+               <!--Optional:-->
+               <man:remarks>CHC</man:remarks>
+               <!--Optional:-->
+               <man:serialNumber/>
+               <!--Optional:-->
+               <man:orderLineItemID/>
+            </man:NICE_ChangeInventoryStatus>
+         </man:NICE_ChangeInventoryStatusList>
+      </man:NICE_ChangeInventoryStatusRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

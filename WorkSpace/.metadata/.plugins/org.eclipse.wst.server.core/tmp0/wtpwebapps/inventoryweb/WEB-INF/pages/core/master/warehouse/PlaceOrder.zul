@@ -46,11 +46,18 @@
 								</row>
 								
 								<row>
+								<cell>
+											<label value="${labels.item.resourceName}"></label>
+											
+									</cell>
+									<cell  > <combobox readonly="true" id="cmbResource" width="145px" maxlength="100" /></cell>
+									
+								
 									<cell>
 										<label value="${labels.inventory.qty}"></label>
 										<label value="*" style="color:red;" />
 									</cell>
-									<cell colspan="3" ><intbox id="txtQuantity" width="140px" maxlength="5" constraint="no empty,no negative : Please enter Quantity "  /></cell>
+									<cell ><intbox id="txtQuantity" width="140px" maxlength="5" constraint="no empty,no negative : Please enter Quantity "  /></cell>
 								</row>
 								
 								

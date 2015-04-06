@@ -130,12 +130,22 @@ public class RejectTransferInventoryComposer extends BaseModuleComposer {
 					
 					if(modelList!=null && !modelList.isEmpty()) {
 						Iterator<InventoryVO> iterator =  modelList.iterator();
+						boolean isPresent = false;
 						while(iterator.hasNext()) {
 							if(iterator.next().getInventoryNo().equals(txtRemoveInventoryId.getValue())) {
 								iterator.remove();
+								isPresent = true;
+								resetComponents(txtRemoveInventoryId, txtRemoveInventoryId);
 							}
 							
 						}
+						
+						
+						if(!isPresent) {
+							MessageUtility.failureInformation("Error", "No Inventory Added with this Inventory No");
+							resetComponents(txtRemoveInventoryId, txtRemoveInventoryId);
+						}
+						
 						searchResultGrid.setModel(modelList);
 						searchResultGrid.setItemRenderer(new InventoryTransferRenderer());
 					}

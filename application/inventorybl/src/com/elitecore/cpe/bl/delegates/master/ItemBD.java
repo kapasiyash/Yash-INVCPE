@@ -388,4 +388,25 @@ public class ItemBD extends BaseBusinessDelegate{
 			return null;
 		}
 	}
+
+	public List<ComboData> getAllResourceTypeDataByResourceTypeId(Long resourceTypeId,Long warehouseId) {
+		
+		
+		try {
+			return  getFacade().getAllResourceTypeDataByResourceTypeId(resourceTypeId,warehouseId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public List<ComboData> getAllResourceTypeDataByResourceTypeAndSubTypeId(
+			Long resourceTypeId, Long resourceSubTypeId,Long warehouseId) {
+		try {
+			return  getFacade().getAllResourceTypeDataByResourceTypeAndSubTypeId(resourceTypeId,resourceSubTypeId,warehouseId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

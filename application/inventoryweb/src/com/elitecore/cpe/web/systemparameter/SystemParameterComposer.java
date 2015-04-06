@@ -57,7 +57,6 @@ public class SystemParameterComposer extends BaseModuleComposer {
 	private SystemParameterBD systemParameterBD;
 	private List<SystemParameterGroupWrapperData> systemParameterGroupWrapperDatas;
 	private Map<Long, Component> systemParameterMap = new HashMap<Long, Component>();
-
 	public void afterCompose(Window comp) throws ModuleInitializationException {
 		super.afterCompose(comp);
 		systemParameterBD = new SystemParameterBD(getBDSessionContext());
@@ -103,7 +102,19 @@ public class SystemParameterComposer extends BaseModuleComposer {
 									}
 									systemParameterMap.put(systemParameterWrapperData.getSystemParameterId(), textbox);
 									row.appendChild(textbox);
-								}else if(systemParameterWrapperData.getCustomFieldTypeId().equals(SystemParameterConstants.COMBO_BOX) || systemParameterWrapperData.getCustomFieldTypeId().equals(SystemParameterConstants.SQL_COMBO_BOX)){
+								}
+								//--added for password field start
+								if(systemParameterWrapperData.getCustomFieldTypeId().equals(SystemParameterConstants.PASSWORD)){
+									Textbox textbox = new Textbox(systemParameterWrapperData.getValue());
+									textbox.setType("password");
+									if(systemParameterWrapperData.getRegEx()!=null){
+										textbox.setConstraint("no empty, /"+systemParameterWrapperData.getRegEx()+"/" + ": Please enter valid value. ");
+									}
+									systemParameterMap.put(systemParameterWrapperData.getSystemParameterId(), textbox);
+									row.appendChild(textbox);
+								}
+								//--added for password field end
+								else if(systemParameterWrapperData.getCustomFieldTypeId().equals(SystemParameterConstants.COMBO_BOX) || systemParameterWrapperData.getCustomFieldTypeId().equals(SystemParameterConstants.SQL_COMBO_BOX)){
 										Combobox combobox = new Combobox();
 										if(systemParameterWrapperData.getComboBoxMap() != null && !systemParameterWrapperData.getComboBoxMap().isEmpty()){
 											Logger.logTrace(MODULE, "Size of Encryption Data "+systemParameterWrapperData.getComboBoxMap().size());

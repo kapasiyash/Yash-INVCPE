@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.bl.cpe.elitecore.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:releaseCPEResource>
+         <!--Optional:-->
+         <arg0>
+            <!--Zero or more repetitions:-->
+            <inventoryVOs>
+               <!--Optional:-->
+               <inventoryNo>sjh000000010</inventoryNo>
+            </inventoryVOs>
+          <inventoryVOs>
+               <!--Optional:-->
+               <inventoryNo>sjh000000003</inventoryNo>
+            </inventoryVOs>
+         <!--Optional:-->
+            <operationType>1</operationType>
+         </arg0>
+      </ws:releaseCPEResource>
+   </soapenv:Body>
+</soapenv:Envelope>

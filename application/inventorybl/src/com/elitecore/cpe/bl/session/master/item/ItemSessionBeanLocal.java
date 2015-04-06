@@ -61,4 +61,18 @@ public interface ItemSessionBeanLocal {
 
 	public CheckInventoryVO checkInventoryInWarehouse(String inventoryNumber,Long warehouseId, List<Integer> inventoryStatus) throws SearchBLException;
 
+	/**
+	 * This Method checks the uniqueness in Resource based on four Combinations as resourceTypeId + resourceSubTypeId + modelnumber + vendor
+	 * @param resourceTypeId
+	 * @param resourceSubTypeId
+	 * @param modelnumber
+	 * @param vendor
+	 * @return
+	 */
+	public boolean isUniqueFourExistsinResource(Long resourceTypeId,Long resourceSubTypeId, String modelnumber, String vendor,Long ignoreResourceId);
+
+	public List<ItemData> getAllResourceTypeDataByResourceTypeId(Long resourceTypeId, Long warehouseId) throws SearchBLException;
+
+	public List<ItemData> getAllResourceTypeDataByResourceTypeAndSubTypeId(Long resourceTypeId, Long resourceSubTypeId, Long warehouseId) throws SearchBLException;
+
 }

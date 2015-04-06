@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:NICE_MarkCPEAsFaultyWithOwnerChangRequest>
+         <!--Optional:-->
+         <man:warehouseCode>DemoCodeWH1</man:warehouseCode>
+         <man:NICE_FaultyInventoryList>
+            <!--1 or more repetitions:-->
+            <man:NICE_FaultyInventory>
+               <!--Optional:-->
+               <man:inventoryNumber>INV00yu00011</man:inventoryNumber>
+            </man:NICE_FaultyInventory>
+         <!--1 or more repetitions:-->
+            <man:NICE_FaultyInventory>
+               <!--Optional:-->
+               <man:inventoryNumber>INV90000016</man:inventoryNumber>
+            </man:NICE_FaultyInventory>
+       </man:NICE_FaultyInventoryList>
+      </man:NICE_MarkCPEAsFaultyWithOwnerChangRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -67,12 +67,14 @@
 												<listheader label="${labels.inventory.orderno}" width="18%" sort="auto(orderNo)" />
 												<listheader label="${labels.inventory.currentwh}" width="15%" sort="auto(fromwarehouse)" />
 												<listheader label="${labels.inventory.newwh}" width="15%" sort="auto(towarehouse)" />
-												<listheader label="${labels.item.type}" width="22%"  sort="auto(resourceType)"/>
+												<listheader label="${labels.item.ordertype}" width="10%"  sort="auto(orderType)"/>
+												<listheader label="${labels.item.type}" width="18%"  sort="auto(resourceType)"/>
 												<listheader label="${labels.item.subtype}"  width="17%" sort="auto(resourceSubtype)" />
+												<listheader label="${labels.item.resourceName}" width="22%" sort="auto(resourceName)" />
 												<listheader label="${labels.inventory.qty}"  width="65px" sort="auto(quantity)" />
 												<listheader label="${labels.cis.status}"  width="15%"  sort="auto(status)"/>
-												<listheader label="${labels.global.actions}"  width="65px"  />
-												<listheader label="${labels.inventoryplaceorder.action}"  width="65px"  />
+												<listheader label="${labels.global.actions}"  width="45px"  />
+												<listheader label="${labels.inventoryplaceorder.action}"  width="45px"  />
 											<!-- <listheader label="${labels.global.createDate}"  width="10%"  /> -->	
 											<!-- <listheader label="${labels.global.edit}"  width="10%"  />
 												<listheader label="${labels.global.deleteBtn}"  width="10%"  /> -->	
@@ -93,11 +95,13 @@
 												<listheader label="${labels.inventory.orderno}" width="15%" sort="auto(orderNo)"/>
 												<listheader label="${labels.inventory.currentwh}" width="15%"  sort="auto(fromwarehouse)"/>
 												<listheader label="${labels.inventory.newwh}" width="15%" sort="auto(towarehouse)" />
+												<listheader label="${labels.item.ordertype}" width="10%"  sort="auto(orderType)"/>
 												<listheader label="${labels.item.type}" width="15%"  sort="auto(resourceType)"/>
-												<listheader label="${labels.item.subtype}"  width="17%"  sort="auto(resourceSubtype)"/>
+												<listheader label="${labels.item.subtype}"  width="15%"  sort="auto(resourceSubtype)"/>
+												<listheader label="${labels.item.resourceName}" width="22%"  sort="auto(resourceName)"/>
 												<listheader label="${labels.inventory.qty}"  width="65px" sort="auto(quantity)" />
-												<listheader label="${labels.cis.status}"  width="15%"  sort="auto(status)"/>
-												<listheader label="${labels.global.actions}"  width="65px"  />
+												<listheader label="${labels.cis.status}"  width="12%"  sort="auto(status)"/>
+												<listheader label="${labels.global.actions}"  width="45px"  />
 											<!-- <listheader label="${labels.global.createDate}"  width="10%"  /> -->	
 											<!-- <listheader label="${labels.global.edit}"  width="10%"  />
 												<listheader label="${labels.global.deleteBtn}"  width="10%"  /> -->	

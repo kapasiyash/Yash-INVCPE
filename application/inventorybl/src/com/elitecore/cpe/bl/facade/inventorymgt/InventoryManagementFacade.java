@@ -1,6 +1,5 @@
 package com.elitecore.cpe.bl.facade.inventorymgt;
 
-import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ import com.elitecore.cpe.bl.constants.notification.NotificationConstants;
 import com.elitecore.cpe.bl.constants.policy.CPECommonConstants;
 import com.elitecore.cpe.bl.constants.system.audit.AuditConstants;
 import com.elitecore.cpe.bl.constants.system.audit.AuditTagConstant;
-import com.elitecore.cpe.bl.constants.user.UserConstants;
+import com.elitecore.cpe.bl.constants.system.parameter.SystemParameterConstants;
 import com.elitecore.cpe.bl.data.common.ComboBoxData;
 import com.elitecore.cpe.bl.data.common.ComboData;
 import com.elitecore.cpe.bl.data.notification.NotificationData;
@@ -51,6 +50,7 @@ import com.elitecore.cpe.bl.entity.inventory.master.AttributeData;
 import com.elitecore.cpe.bl.entity.inventory.master.AttributeTransData;
 import com.elitecore.cpe.bl.entity.inventory.master.ItemData;
 import com.elitecore.cpe.bl.entity.inventory.master.WarehouseData;
+import com.elitecore.cpe.bl.entity.inventory.system.agent.history.SystemAgentRunQueue;
 import com.elitecore.cpe.bl.entity.inventory.transfer.InventoryTransferOrderStatus;
 import com.elitecore.cpe.bl.exception.AccessDeniedException;
 import com.elitecore.cpe.bl.exception.CreateBLException;
@@ -69,6 +69,7 @@ import com.elitecore.cpe.bl.session.inventorytransfer.InventoryTransferSessionBe
 import com.elitecore.cpe.bl.session.master.attribute.AttributeSessionBeanLocal;
 import com.elitecore.cpe.bl.session.master.item.ItemSessionBeanLocal;
 import com.elitecore.cpe.bl.session.master.warehouse.WarehouseSessionBeanLocal;
+import com.elitecore.cpe.bl.session.system.agent.SystemAgentSessionBeanLocal;
 import com.elitecore.cpe.bl.session.system.internal.SystemInternalSessionBeanLocal;
 import com.elitecore.cpe.bl.vo.inventorymgt.BatchSummaryVO;
 import com.elitecore.cpe.bl.vo.inventorymgt.BulkChangeInventoryStatusVO;
@@ -90,6 +91,8 @@ import com.elitecore.cpe.bl.vo.inventorymgt.migration.InventoryMigrationResponse
 import com.elitecore.cpe.bl.vo.inventorymgt.migration.InventoryMigrationVO;
 import com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO;
 import com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO.InventoryVO;
+import com.elitecore.cpe.bl.vo.order.OrderDetailVo;
+import com.elitecore.cpe.bl.vo.order.TransferOrderVO;
 import com.elitecore.cpe.bl.vo.system.user.UserVO;
 import com.elitecore.cpe.bl.ws.data.input.request.InventoryDetailsRequestData;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryDetailsResponseData;
@@ -112,6 +115,7 @@ public class InventoryManagementFacade extends BaseFacade implements InventoryMa
 	@EJB private ItemSessionBeanLocal itemSessionBeanLocal;
 	@EJB private SystemParameterFacadeLocal systemParameterFacadeLocal;
 	@EJB private InventoryTransferSessionBeanLocal transferSessionBeanLocal;
+	@EJB private SystemAgentSessionBeanLocal systemAgentSessionBeanLocal;
 	@EJB private UserFacadeLocal userFacadeLocal;
 	
 	private Object transferObj = new Object(); 
@@ -187,7 +191,7 @@ public class InventoryManagementFacade extends BaseFacade implements InventoryMa
 		if(inventoryVOs!=null && !inventoryVOs.isEmpty()) {
 		
 			Logger.logTrace(MODULE, "inside Upload Generic Inventory isValidate :" +isValidate);
-			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 				
 				String uploadStatus = systemParameterFacadeLocal.getSystemParameterValue("AUTOMATIC_INVENTORY_UPLOAD");
 				List<AttributeData> attriList = null;
@@ -346,6 +350,16 @@ public class InventoryManagementFacade extends BaseFacade implements InventoryMa
 								if(migrationVO.getGuaranteeWarrantyMode().equals("Warranty")) {
 									if(migrationVO.getWarrantyDate()!=null && 
 											(migrationVO.getWarrantyType().equals("Supplier date") || migrationVO.getWarrantyType().equals("Purchase date"))  ) {
+										
+										try {
+											 dateFormat.parse(migrationVO.getWarrantyDate());
+											
+										} catch (Exception e) {
+											e.printStackTrace();
+											errorStr.append(" and valid Date format for warrantyDate is dd/MM/yyyy");
+											validateRecord = false;
+										}
+										
 										Logger.logTrace(MODULE, "Valid Gurantee/Warranty");
 									} else {
 										errorStr.append(" and with mode as Warranty , warranty date is mandatory and warrantyType can be Supplier date/Purchase date:"+migrationVO.getGuaranteeWarrantyMode());
@@ -447,7 +461,8 @@ public class InventoryManagementFacade extends BaseFacade implements InventoryMa
 							inventoryData.setItemId(itemData.getItemId());
 							inventoryData.setGurrantyWarrantyMode(migrationVO.getGuaranteeWarrantyMode());
 							if(migrationVO.getWarrantyDate()!=null) {
-								inventoryData.setWarrantyDate(migrationVO.getWarrantyDate());
+								Date date = dateFormat.parse(migrationVO.getWarrantyDate());
+								inventoryData.setWarrantyDate(new Timestamp(date.getTime()));
 							}
 							if(migrationVO.getWarrantyType()!=null) {
 								inventoryData.setWarrantyType(migrationVO.getWarrantyType());
@@ -870,7 +885,6 @@ public class InventoryManagementFacade extends BaseFacade implements InventoryMa
         			}
         		}else{
         			
-        			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         			
         			String warehouseName = null,resourceRefName = null, inventoryNumber = null,guaranteeWarrantyMode=null,warrantyDate=null,warrantyType=null,batchNumber = null;
         			
@@ -922,8 +936,7 @@ public class InventoryManagementFacade extends BaseFacade implements InventoryMa
         					
         					warrantyDate = rowValues[no];
         					if(warrantyDate!=null && !warrantyDate.isEmpty()) {
-        						Date warrantyTime = dateFormat.parse(warrantyDate);
-        						migrationVO.setWarrantyDate(new Timestamp(warrantyTime.getTime()));
+        						migrationVO.setWarrantyDate(warrantyDate);
         					}
         				}else if(headerName.equalsIgnoreCase("Warranty Type")) {
         					
@@ -2897,12 +2910,11 @@ public class InventoryManagementFacade extends BaseFacade implements InventoryMa
 					if((statusVO.getStatusNewName()).equals(InventoryStatusConstants.AVAILABLE_STATUS)&&((data.getStatusData().getName()).equals(InventoryStatusConstants.NEW_STATUS)) ){
 						data.setInventorySubStatusId(Long.valueOf((InventoryStatusConstants.NEW)));
 					}
-	
+					AuditSummaryDetail auditSummaryDetail = AuditDataConversionUtilities.prepareChangeStatusUpdateAudit(statusVO.getStatusToId().intValue(), data,blSession);
 					data.setInventoryStatusId(statusVO.getStatusToId().intValue());
 					inventoryManagementSessionBeanLocal.updateInventory(data);
 					updateCount++;
 					//--Audit Start 
-					AuditSummaryDetail auditSummaryDetail = AuditDataConversionUtilities.prepareChangeStatusUpdateAudit(statusVO.getStatusToId().intValue(), data,blSession);
 					InventoryStatusLogData inventoryStatusLogData = InventoryManagementUtil.prepareInventoryStatusLogData(data.getInventoryId(),statusVO.getStatusFromId().intValue(), statusVO.getStatusToId().intValue(), data.getStatusData().getName(),statusVO.getStatusNewName(),statusVO.getRemarks(), blSession);
 					inventoryManagementSessionBeanLocal.persistInventoryStatusLog(inventoryStatusLogData);
 					Map<String,Object> mapAudit = new HashMap<String, Object>();
@@ -2923,5 +2935,125 @@ public class InventoryManagementFacade extends BaseFacade implements InventoryMa
 		}
 		return updateCount;
 		}
+	
+	@Override
+	public List<Long> getPendingPlaceOrderMaster () throws SearchBLException {
+		if(isTraceLevel()){
+			Logger.logTrace(MODULE, "inside getPendingPlaceOrderMaster");
+		}
+
+		//List<WarehouseVO> data = null;
+		String minPendingDays = null;
+		try {
+			minPendingDays = systemParameterFacadeLocal.getSystemParameterValue(SystemParameterConstants.MIN_DAYS_OF_PENDING_ORDER);
+		} catch (SearchBLException e) {
+			e.printStackTrace();
+		}
+
+		List<Long> warehouseIds = inventoryManagementSessionBeanLocal.getPendingPlaceOrderMaster(minPendingDays);
+		
+		
+		return warehouseIds;
+	}
+	
+	
+	@Override
+	public List<TransferOrderVO> getPendingTransferOrderChild(Long towarehouseid) throws SearchBLException {
+		if(isTraceLevel()){
+			Logger.logTrace(MODULE, "inside getPendingTransferOrderChild");
+		}
+		List<TransferOrderData> childdata = null;
+		List<TransferOrderVO> orderDetailVos = new ArrayList<TransferOrderVO>();
+		try {
+			String minPendingDays = systemParameterFacadeLocal.getSystemParameterValue(SystemParameterConstants.MIN_DAYS_OF_PENDING_ORDER);
+			
+			childdata = inventoryManagementSessionBeanLocal.getPendingTransferOrderChild(minPendingDays,towarehouseid);
+			
+			if(childdata!=null && !childdata.isEmpty()){
+				for (TransferOrderData orderData : childdata){
+					orderDetailVos.add(InventoryManagementUtil.getTransferOrderVO(orderData));				
+				}
+			}
+			
+			Logger.logTrace(MODULE, "getPendingPlaceOrderChild");
+			
+		} catch (SearchBLException e) {
+			e.printStackTrace();
+		}
+		return orderDetailVos;
+		
+	}
+	@Override
+	public List<PlaceOrderVO> getPendingPlaceOrderChild (Long towarehouseid) throws SearchBLException {
+		if(isTraceLevel()){
+			Logger.logTrace(MODULE, "inside getPendingPlaceOrderChild");
+		}
+		List<OrderData> childdata = null;
+		
+		List<PlaceOrderVO> orderDetailVos = new ArrayList<PlaceOrderVO>();
+		
+		try {
+			String minPendingDays = systemParameterFacadeLocal.getSystemParameterValue(SystemParameterConstants.MIN_DAYS_OF_PENDING_ORDER);
+			childdata = inventoryManagementSessionBeanLocal.getPendingPlaceOrderChild(minPendingDays,towarehouseid);
+			
+			if(childdata!=null && !childdata.isEmpty()) {
+				for (OrderData orderData : childdata){
+					orderDetailVos.add(InventoryManagementUtil.getPlaceOrderVO(orderData));
+				}
+			}
+			Logger.logTrace(MODULE, "getPendingPlaceOrderChild");
+			
+		} catch (SearchBLException e) {
+			e.printStackTrace();
+		}
+		return orderDetailVos;
+		
+	}
+	
+	@Override
+	public Boolean saveOrderNotificationAgentHistory(OrderDetailVo orderDetailVo) throws CreateBLException{
+		if(isTraceLevel()){
+			Logger.logTrace(MODULE, "inside saveOrderNotificationAgentHistory");
+		}
+		Boolean agentHistoryData=null;
+		//List<WarehouseVO> data = null;
+		
+		try {
+			
+			SystemAgentRunQueue agentRunQueue = systemAgentSessionBeanLocal.findAgentRunInQueue(orderDetailVo.getAgenetRunQueueId());
+			orderDetailVo.setAgentRunDetailId(agentRunQueue.getAgentrundetailid());
+			
+		} catch (SearchBLException e) {
+			e.printStackTrace();
+		}
+		
+		agentHistoryData = inventoryManagementSessionBeanLocal.saveOrderNotificationAgentHistory(orderDetailVo);
+		
+		return true;
+	}
+
+
+	@Override
+	public List<Long> getPendingTransferOrderMaster() throws SearchBLException {
+		
+		if(isTraceLevel()){
+			Logger.logTrace(MODULE, "inside getPendingTransferOrderMaster");
+		}
+
+		String minPendingDays = null;
+		try {
+			minPendingDays = systemParameterFacadeLocal.getSystemParameterValue(SystemParameterConstants.MIN_DAYS_OF_PENDING_ORDER);
+		} catch (SearchBLException e) {
+			e.printStackTrace();
+		}
+
+		List<Long> warehouseIds = inventoryManagementSessionBeanLocal.getPendingTransferOrderMaster(minPendingDays);
+		
+		
+		return warehouseIds;
+		
+	}
+	
+	
 }
 

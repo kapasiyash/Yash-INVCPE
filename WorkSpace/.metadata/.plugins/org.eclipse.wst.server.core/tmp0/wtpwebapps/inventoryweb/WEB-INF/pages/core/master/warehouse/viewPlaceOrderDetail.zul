@@ -28,13 +28,15 @@
 									<label value="${labels.warehouse.placeorderNo}" style="text-align: left;" />
 									<label style="text-align: left;" id="lbOrderNo"/>
 								</row>
-								<row spans="1, 3" align="top">
+								<row  align="top">
 									<label value="${labels.inventory.currentwh}" style="text-align: left;" />
 									<label style="text-align: left;" id="lbFrmWh"/>
-								</row>
-								<row spans="1, 3" align="top">
 									<label value="${labels.inventory.newwh}" style="text-align: left;" />
 									<label style="text-align: left;" id="lbToWh"/>
+								</row>
+								<row spans="1, 3" align="top">
+									<label value="${labels.item.resourceName}" style="text-align: left;" />
+									<label style="text-align: left;" id="lbResourceName"/>
 								</row>
 								<row align="top">
 									<label value="${labels.srst.typename}" style="text-align: left;" />

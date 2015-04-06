@@ -3,6 +3,16 @@ package com.elitecore.cpe.bl.ws.data.input.response;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NICE_ChangeInventoryStatusResponse", propOrder = {
+    "responseCode",
+    "responseMessage",
+    "inventoryvos"
+})
 public class ChangeInventoryStatusResponseData implements Serializable{
 
 	/**

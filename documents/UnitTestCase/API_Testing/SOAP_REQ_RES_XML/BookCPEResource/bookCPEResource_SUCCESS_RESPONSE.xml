@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <ns2:bookCPEResourceResponse xmlns:ns2="http://ws.bl.cpe.elitecore.com/">
+         <return>
+            <resourceAvailibilityVO>
+               <inventoryList>
+                  <attributeVOs>
+                     <attributeName>Serial Number</attributeName>
+                     <attributeValue>TestValue2</attributeValue>
+                  </attributeVOs>
+                  <inventoryNumber>INV00000200117</inventoryNumber>
+                  <inventoryStaus>Reserved</inventoryStaus>
+               </inventoryList>
+               <inventoryList>
+                  <attributeVOs>
+                     <attributeName>Serial Number</attributeName>
+                     <attributeValue>TestValue3</attributeValue>
+                  </attributeVOs>
+                  <inventoryNumber>INV00000200118</inventoryNumber>
+                  <inventoryStaus>Reserved</inventoryStaus>
+               </inventoryList>
+            </resourceAvailibilityVO>
+            <responseCode>0</responseCode>
+            <responseMessage>Success</responseMessage>
+         </return>
+      </ns2:bookCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

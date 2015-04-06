@@ -1,0 +1,102 @@
+package com.elitecore.cpe.bl.vo.order;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+public class OrderDetailVo implements  Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String placeOrderNo,status,transferOrderNo;
+	private Long placeOrderId,agentRunDetailId,fromWarehouseId,toWarehouseId;
+	private Timestamp agentRunDate,emailSendDate,smsSendDate;
+	
+	//private String mandatory,unique;
+
+	public String getPlaceOrderNo() {
+		return placeOrderNo;
+	}
+
+	public void setPlaceOrderNo(String placeOrderNo) {
+		this.placeOrderNo = placeOrderNo;
+	}
+	public String getTransferOrderNo() {
+		return transferOrderNo;
+	}
+
+	public void setTransferOrderNo(String transferOrderNo) {
+		this.transferOrderNo = transferOrderNo;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public Long getPlaceOrderId() {
+		return placeOrderId;
+	}
+
+	public void setPlaceOrderId(Long placeOrderId) {
+		this.placeOrderId = placeOrderId;
+	}
+	
+	
+	public Long getFromWarehouseId() {
+		return fromWarehouseId;
+	}
+
+	public void setFromWarehouseId(Long fromWarehouseId) {
+		this.fromWarehouseId = fromWarehouseId;
+	}
+	public Long getAgentRunDetailId() {
+		return agentRunDetailId;
+	}
+
+	public void setAgentRunDetailId(Long agentRunDetailId) {
+		this.agentRunDetailId = agentRunDetailId;
+	}
+	public Long getToWarehouseId() {
+		return toWarehouseId;
+	}
+
+	public void setToWarehouseId(Long toWarehouseId) {
+		this.toWarehouseId = toWarehouseId;
+	}
+	public Timestamp getAgentRunDate() {
+		return agentRunDate;
+	}
+
+	public void setAgentRunDate(Timestamp agentRunDate) {
+		this.agentRunDate = agentRunDate;
+	}
+
+	public Timestamp getEmailSendDate() {
+		return emailSendDate;
+	}
+
+	public void setEmailSendDate(Timestamp emailSendDate) {
+		this.emailSendDate = emailSendDate;
+	}
+	public Timestamp getSmsSendDate() {
+		return smsSendDate;
+	}
+
+	public void setSmsSendDate(Timestamp smsSendDate) {
+		this.smsSendDate = smsSendDate;
+	}
+
+
+	@Override
+	public String toString() {
+		return "OrderDetailVo [placeOrderId=" + placeOrderId + ", placeOrderNo="
+				+ placeOrderNo + ", fromWarehouseId=" + fromWarehouseId + ", toWarehouseId="
+				+ toWarehouseId + ", agentRunDetailId="+ agentRunDetailId + ", agentRunDate="
+				+ agentRunDate +", status="+ status +", emailSendDate="+ emailSendDate +", smsSendDate="
+				+ smsSendDate +", transferOrderNo="+ transferOrderNo +"]";
+	}
+}

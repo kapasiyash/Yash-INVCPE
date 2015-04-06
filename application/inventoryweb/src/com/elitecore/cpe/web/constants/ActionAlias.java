@@ -62,7 +62,12 @@ public class ActionAlias {
 	
 	public static final String UPDATE_SYSTEM_PARAMETER = "UPDATE_AR_SYSTEM_PARAMETER";
 	public static final String UPDATE_RESOURCETYPE = "UPDATE_RESOURCETYPE";
+	
+	public static final String CREATE_RESOURCETYPE = "CREATE_RESOURCETYPE";
 	public static final String UPDATE_RESOURCESUBTYPE = "UPDATE_RESOURCESUBTYPE";
+	public static final String CREATE_RESOURCESUBTYPE = "CREATE_RESOURCESUBTYPE";
+	
+	public static final String  CREATE_RESOURCE = "CREATE_RESOURCE";
 	public static final String UPDATE_RESOURCE = "UPDATE_RESOURCE";
 	
 	public static final String UPDATE_WAREHOUSETYPE = "UPDATE_WAREHOUSETYPE";
@@ -71,6 +76,8 @@ public class ActionAlias {
 	public static final String CHANGE_INVENTORY_SUBSTATUS="CHANGE_INVENTORY_SUBSTATUS";
 	public static final String SEARCH_PLACE_ORDER = "SEARCH_PLACE_ORDER";
 	
+	
+	public static final String CREATE_WAREHOUSETYPE = "CREATE_WAREHOUSETYPE";
 	public static final String VIEW_WAREHOUSE_HIERARCHY = "VIEW_WAREHOUSE_HIERARCHY";
 	public static final String TRANSFER_INVENTORY_SUMMARY = "TRANSFER_INVENTORY_SUMMARY";
 	public static final String DELETE_WAREHOUSE = "DELETE_WAREHOUSE";
@@ -86,6 +93,9 @@ public class ActionAlias {
 		public static final String UPDATE_ATTRIBUTE = "UPDATE_ATTRIBUTE";
 	
 		public static final String DELETE_THRESHOLDS = "DELETE_THRESHOLDS";
+		public static final String CREATE_WAREHOUSE = "CREATE_WAREHOUSE";
+		public static final String CREATE_DOCUMENT_TEMPLATE = "CREATE_DOCUMENT_TEMPLATE";
+		public static final String CREATE_ATTRIBUTE = "CREATE_ATTRIBUTE";
 
 
 }

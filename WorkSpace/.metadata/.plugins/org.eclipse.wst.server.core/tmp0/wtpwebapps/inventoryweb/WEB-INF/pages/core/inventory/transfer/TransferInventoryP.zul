@@ -77,14 +77,15 @@
 										<separator bar="false" />
 										<separator bar="false" />
 										<separator bar="false" />
-										<listbox id="searchResultGrid"  mold="paging" height="150px" pagingPosition="top" pageSize="${$composer.pageSize}"   
-												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="99%">
+										<listbox id="searchResultGrid"  mold="paging" height="350px" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="95%">
 										<listhead sizable="true">
 											<listheader label="${labels.global.sr.no}" width="55px" />
 											<listheader label="${labels.transfer.batchNumber}" width="15%" sort="auto(batchNumber)" />
 											<listheader label="${labels.transfer.inventoryNo}" width="20%" sort="auto(inventoryNumber)" />
 											<listheader label="${labels.transfer.status}" width="15%" sort="auto(inventoryStatus)" />
 											<listheader label="${labels.transfer.warehouseName}" width="25%" sort="auto(warehouseName)" />
+											<listheader label="${labels.item.resourceName}" width="15%" sort="auto(resource)" />
 											<listheader label="${labels.transfer.resourceType}" width="15%" sort="auto(resourceType)" />
 											<listheader label="${labels.transfer.resourceSubType}" width="15%" sort="auto(resourceSubtype)" />
 										</listhead>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_CheckCPEResourceResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>err-211026</responseCode>
+         <responseMessage>No Resources Found</responseMessage>
+      </NICE_CheckCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

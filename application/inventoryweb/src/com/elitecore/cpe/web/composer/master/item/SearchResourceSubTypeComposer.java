@@ -29,6 +29,7 @@ import com.elitecore.cpe.bl.exception.TechnicalException;
 import com.elitecore.cpe.bl.vo.master.SearchResourceSubTypeVO;
 import com.elitecore.cpe.web.base.ui.core.BaseSearchComposer;
 import com.elitecore.cpe.web.base.ui.module.BaseConstants;
+import com.elitecore.cpe.web.constants.ActionAlias;
 import com.elitecore.cpe.web.constants.Pages;
 import com.elitecore.cpe.web.core.exception.ModuleInitializationException;
 
@@ -64,8 +65,11 @@ public class SearchResourceSubTypeComposer extends BaseSearchComposer {
 			comboResourceType.setItemRenderer(new ComboItemDataRenderer());
 		}
 		
-		//changes require to resolve JIRA MTCBSS-229
-		addViewTab("-1", "Create Resource Subtype", searchResourceSubTypeTabbox, Pages.CREATE_RESOURCE_SUBTYPE,null,false);
+		if(isPermittedAction(ActionAlias.CREATE_RESOURCESUBTYPE)) {
+			//changes require to resolve JIRA MTCBSS-229
+			addViewTab("-1", "Create Resource Subtype", searchResourceSubTypeTabbox, Pages.CREATE_RESOURCE_SUBTYPE,null,false);
+			
+		}
 		
 		searchTab.setSelected(true);
 	}

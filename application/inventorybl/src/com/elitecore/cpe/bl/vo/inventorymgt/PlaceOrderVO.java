@@ -11,6 +11,7 @@ public class PlaceOrderVO implements Serializable,Comparable<PlaceOrderVO>{
 	private String remark;
 	private Long resourceTypeId;
 	private Long resourceSubTypeId;
+	private Long itemId;
 	private String createdby;
 	private String updatedby;
 	private Timestamp createDate;
@@ -20,6 +21,7 @@ public class PlaceOrderVO implements Serializable,Comparable<PlaceOrderVO>{
 	private String towarehouse;
 	private String resourceType;
 	private String resourceSubtype;
+	private String resourceName;
 	private String status;
 	private Timestamp fromDate;
 	private Timestamp toDate;
@@ -31,8 +33,43 @@ public class PlaceOrderVO implements Serializable,Comparable<PlaceOrderVO>{
 	
 	private Long orderType;
 	
+	private Long orderId;
+	private String emailId;
+	private String parentEmailId;
 	
 	
+	
+	
+		public Long getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	public String getParentEmailId() {
+		return parentEmailId;
+	}
+	public void setParentEmailId(String parentEmailId) {
+		this.parentEmailId = parentEmailId;
+	}
+		public String getResourceName() {
+		return resourceName;
+	}
+	public void setResourceName(String resourceName) {
+		this.resourceName = resourceName;
+	}
+		public Long getItemId() {
+		return itemId;
+	}
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
+	}
 		public Long getOrderType() {
 		return orderType;
 	}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_BookCPEResourceResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>err-211033</responseCode>
+         <responseMessage>Not able to allocate all inventories , please try later. Failed Inventories : INV000001910</responseMessage>
+      </NICE_BookCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

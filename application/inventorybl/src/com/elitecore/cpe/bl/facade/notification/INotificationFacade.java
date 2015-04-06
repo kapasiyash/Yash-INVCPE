@@ -14,6 +14,7 @@ import com.elitecore.cpe.bl.vo.configuration.notification.CheckValidDateForTempl
 import com.elitecore.cpe.bl.vo.configuration.notification.NotificationCategoryVO;
 import com.elitecore.cpe.bl.vo.configuration.notification.SearchDocumentTemplateVO;
 import com.elitecore.cpe.bl.vo.configuration.notification.ViewDocumentTemplateVO;
+import com.elitecore.cpe.bl.vo.order.OrderDetailVo;
 import com.elitecore.cpe.core.IBLSession;
 
 public interface INotificationFacade {
@@ -41,5 +42,8 @@ public interface INotificationFacade {
 	//public String checkValidDateForTemplate(Long documentCategoryId,Timestamp validFormDate, Timestamp validToDate);
 	public String checkValidDateForTemplate(CheckValidDateForTemplateVO checkValidDateForTemplateVO);
 	public void sendNotificationService(NotificationData data);
+
+	
+	public boolean isEligiblePendingOrderNotification(OrderDetailVo orderDetailVo);
 	
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.bl.cpe.elitecore.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:markCPEAsFaultyWithOwnerChang>
+         <!--Optional:-->
+         <arg0>
+            <!--Zero or more repetitions:-->
+            <listCpeInventoryVOs>
+               <!--Optional:-->
+               <inventoryNo>E22000000002</inventoryNo>
+            </listCpeInventoryVOs>
+            <!--Optional:-->
+            <warehouseCode>NRETESTS</warehouseCode>
+         </arg0>
+      </ws:markCPEAsFaultyWithOwnerChang>
+   </soapenv:Body>
+</soapenv:Envelope>

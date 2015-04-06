@@ -115,6 +115,24 @@ public abstract class BaseSessionBean extends BaseBL {
 		
 	}
 	
+	public List getQueryData(String query) {
+		
+		
+		List list = null;
+		try {
+			
+			
+			list = getEntityManager().createQuery(query).getResultList();
+			
+		} catch (NoResultException e) {
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
+	
 	
 	public List getFilterDataBy(String entityName,Map<String,Object> fieldValueMap){
 		
@@ -141,7 +159,7 @@ public abstract class BaseSessionBean extends BaseBL {
 				}
 			
 			
-//			Logger.logTrace(MODULE, "Final HQL :"+hql); 
+			Logger.logTrace(MODULE, "Final HQL :"+hql); 
 			
 				Query query = getEntityManager().createQuery(hql.toString());
 				for(Entry<String, Object> entrykey : fieldValueMap.entrySet()){

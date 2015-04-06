@@ -14,6 +14,7 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Combobox;
+import org.zkoss.zul.Comboitem;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Hlayout;
 import org.zkoss.zul.Image;
@@ -27,6 +28,7 @@ import org.zkoss.zul.Textbox;
 
 import com.elitecore.cpe.bl.data.common.ComboBoxData;
 import com.elitecore.cpe.bl.data.common.ComboData;
+import com.elitecore.cpe.bl.delegates.master.ItemBD;
 import com.elitecore.cpe.bl.delegates.master.WareHouseBD;
 import com.elitecore.cpe.bl.exception.CreateBLException;
 import com.elitecore.cpe.bl.vo.master.ConfigureThresholdVO;
@@ -53,10 +55,15 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 	
 	private Intbox txtThreshold,txtQuantity;
 	private Button btnSave,btnAddNew;
-	private Combobox cmbResourceType,cmbResourceSubType,cmbThresholdType;
+	private Combobox cmbResourceType,cmbResourceSubType,cmbThresholdType,cmbResource,cmbAutomaticOrder;
 	private Listbox configThresholdGrid,viewThresholdGrid;
 	private Div thresholdNoConfig,thresholdConfigDiv;
 	private Textbox txtEmail,txtMobile;
+	
+	private ListModelList<ConfigureThresholdVO> thresholdModel;
+	private int editIndex;
+	private boolean editMode;
+	private ConfigureThresholdVO editConfigureThresholdVO;
 	
 	private Integer count;
 	Map<ComboData,List<ComboData>> resultMap=null; 
@@ -69,14 +76,22 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 	public void afterCompose(Hlayout comp) throws ModuleInitializationException {
 		// TODO Auto-generated method stub
 	//	this.configureThreshold = comp;
+		
+		thresholdModel = new ListModelList<ConfigureThresholdVO>();
+		
 		viewThresholdGrid.setVisible(false);
 		fetchViewEntity();
 	}
 	private void fetchViewEntity(){
 		
-		// WarehouseVO warehouseVO = new WarehouseVO();
-		//
-		// warehouseVO.setWarehouseId(getViewEntityId());
+		
+		
+		List<ComboBoxData> automaticOrder = new ArrayList<ComboBoxData>();
+		automaticOrder.add(new ComboBoxData("Yes", "Yes"));
+		automaticOrder.add(new ComboBoxData("No", "No"));
+		cmbAutomaticOrder.setModel(new ListModelList<ComboBoxData>(automaticOrder));
+		cmbAutomaticOrder.setItemRenderer(new ComboBoxItemDataRenderer());
+		
 		ConfigureThresholdVO configureThresholdVO = new ConfigureThresholdVO();
 		configureThresholdVO.setWarehouseID(getViewEntityId());
 		List<ConfigureThresholdVO> listConfigureThresholdVOs = wareHouseBD.searchThresholdData(configureThresholdVO);
@@ -86,8 +101,6 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 		resultMap = wareHouseBD.getAllResourceTypeWithResource(getViewEntityId());
 		Logger.logTrace("Threshold","Size of ResourceType Map:"+resultMap.keySet().size());
 		if (resultMap.keySet().size()==0){
-		// Executions.sendRedirect("/configureThreshold_empty.zul");
-		// Executions.createComponents("/WEB-INF/pages/core/master/warehouse/configureThreshold_empty.zul", configureThreshold, null);
 			thresholdConfigDiv.setVisible(false);
 			thresholdNoConfig.setVisible(true);
 			
@@ -115,7 +128,8 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 			count=listConfigureThresholdVOs.size();
 			configThresholdGrid.setVisible(true);
 			configThresholdGrid.setMultiple(true);
-			configThresholdGrid.setModel(new ListModelList<ConfigureThresholdVO>(listConfigureThresholdVOs));
+			thresholdModel = new ListModelList<ConfigureThresholdVO>(listConfigureThresholdVOs);
+			configThresholdGrid.setModel(thresholdModel);
 			configThresholdGrid.setItemRenderer(new SearchListItemRenderer());
 			
 		} else {
@@ -132,26 +146,71 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 		
 		}
 
-			public void onChange$cmbResourceType(Event e) throws InterruptedException{
-			//	Messagebox.show("Hi combo");
-				List<ComboData> comboBoxDatas=null;
-			//	comboBoxDatas.clear();
-				//String selectedValue=cmbResourceType.getSelectedItem().getLabel();
-				if(cmbResourceType.getSelectedItem() != null){
-				ComboData selectedData = cmbResourceType.getSelectedItem().getValue();
-				Logger.logInfo("WAREHOUSE", "ComboData :"+selectedData.getId()+"::"+selectedData.getName());
-				 comboBoxDatas = resultMap.get(selectedData);
-				for(ComboData comboData1:comboBoxDatas){
-					Logger.logInfo("Threshold", "ComboData :"+comboData1.getId()+"::"+comboData1.getName());
-				}
-			
-				cmbResourceSubType.setModel(new ListModelList<ComboData>(comboBoxDatas));
-				cmbResourceSubType.setItemRenderer(new ComboItemDataRenderer());
-				
+	
+	
+	public void onChange$cmbAutomaticOrder(Event event) {
+		
+		if (cmbAutomaticOrder.getSelectedItem() != null) {
+			ComboBoxData comboBoxData = cmbAutomaticOrder.getSelectedItem().getValue();
+			if(comboBoxData.getName().equals("No")) {
+				txtQuantity.setValue(null);
+				txtQuantity.setDisabled(true);
+			} else {
+				txtQuantity.setDisabled(false);
 			}
-		//	Messagebox.show("Hi combo:"+cmbResourceType.getSelectedItem().getLabel());
+		}
+		
+	}
+	
+	public void onChange$cmbResourceSubType(Event e) throws InterruptedException {
+		
+		cmbResource.setSelectedItem(null);
+		ItemBD itemBD = new ItemBD(getBDSessionContext());
+		if (cmbResourceType.getSelectedItem() != null) {
+			ComboData selectedTypeData = cmbResourceType.getSelectedItem().getValue();
+			
+			if (cmbResourceSubType.getSelectedItem() != null) {
+				ComboData selectedSubTypeData = cmbResourceSubType.getSelectedItem().getValue();
 				
+				List<ComboData> resourceComboBoxDatas = itemBD.getAllResourceTypeDataByResourceTypeAndSubTypeId(selectedTypeData.getId(),selectedSubTypeData.getId(),getViewEntityId());
+				if(resourceComboBoxDatas!=null && !resourceComboBoxDatas.isEmpty()){
+					cmbResource.setModel(new ListModelList<ComboData>(resourceComboBoxDatas));
+					cmbResource.setItemRenderer(new ComboItemDataRenderer());
 				}
+			}
+			
+		}	
+		
+	}
+	
+	public void onChange$cmbResourceType(Event e) throws InterruptedException {
+
+		List<ComboData> comboBoxDatas = null;
+		ItemBD itemBD = new ItemBD(getBDSessionContext());
+
+		cmbResourceSubType.setSelectedItem(null);
+		cmbResource.setSelectedItem(null);
+		
+		if (cmbResourceType.getSelectedItem() != null) {
+			ComboData selectedData = cmbResourceType.getSelectedItem().getValue();
+			
+			List<ComboData> resourceComboBoxDatas = itemBD.getAllResourceTypeDataByResourceTypeId(selectedData.getId(),getViewEntityId());
+			if(resourceComboBoxDatas!=null && !resourceComboBoxDatas.isEmpty()){
+				cmbResource.setModel(new ListModelList<ComboData>(resourceComboBoxDatas));
+				cmbResource.setItemRenderer(new ComboItemDataRenderer());
+			}
+			
+			Logger.logInfo("WAREHOUSE", "ComboData :" + selectedData.getId()+ "::" + selectedData.getName());
+			comboBoxDatas = resultMap.get(selectedData);
+			
+			
+
+			cmbResourceSubType.setModel(new ListModelList<ComboData>(comboBoxDatas));
+			cmbResourceSubType.setItemRenderer(new ComboItemDataRenderer());
+
+		}
+
+	}
 			public void onChange$cmbThresholdType(Event e) throws InterruptedException{
 				if(cmbThresholdType.getSelectedItem() != null){
 
@@ -164,41 +223,13 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 					}
 				
 				}
-		
-////		Logger.logInfo("WAREHOUSE", "size of warehouse list :"+comboBoxDatas.size());
-//		cmbResourceType.setModel(new ListModelList<ComboData>(comboBoxDatas));
-//		cmbResource.setItemRenderer(new ComboItemDataRenderer());
-//		
-//		List<ComboData> comboBoxDatas1 = wareHouseBD.getAllWarehouseTypeData();
-//		cmbWHTypename.setModel(new ListModelList<ComboData>(comboBoxDatas1));
-//		cmbWHTypename.setItemRenderer(new ComboItemDataRenderer());
-		
-	//	populateData(data);
-		
-//	}
-	
-/*	private void populateData(WarehouseVO data){
-		
-		if(data != null){
-			txtName.setValue(data.getName());
-			txtLocation.setValue(data.getLocation());
-			txtDesc.setValue(data.getDescription());
-			
-			cmbParentWHname.setValue(data.getParentWarehouseName());
-			if(data.getWarehouseType() != null){
-				cmbWHTypename.setValue(data.getWarehouseType().getName());
-			}
-		}
-		
-	}*/
-			
+
 			
 			public void onClick$btnSubmit(Event e) throws InterruptedException{
 				Logger.logTrace("Warehouse","Into  onClick$btnSubmit()");
 				
 				
 				List<ConfigureThresholdVO> receivedConfigureThresholdVOs=null;
-			//	IBDSessionContext sessionContext = getBDSessionContext();
 				
 			try{	
 				
@@ -267,6 +298,16 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 						configureThresholdVO.setResourceSubTypeName(selectedData.getName());
 						
 					}
+					
+					
+					if(cmbResource.getSelectedItem() != null){
+						
+						ComboData selectedData = cmbResource.getSelectedItem().getValue();
+						configureThresholdVO.setItemId(selectedData.getId());
+						configureThresholdVO.setResourceName(selectedData.getName());
+						
+					}
+					
 					if(cmbThresholdType.getSelectedItem() != null){
 						
 						ComboBoxData comboBoxData = cmbThresholdType.getSelectedItem().getValue();
@@ -296,6 +337,16 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 					return;
 				}
 				
+				if(cmbAutomaticOrder.getSelectedItem() != null){
+					
+					ComboBoxData selectedData = cmbAutomaticOrder.getSelectedItem().getValue();
+					configureThresholdVO.setAutomaticOrder(selectedData.getName());
+					
+				} else {
+					MessageUtility.successInformation("Error", "Please Enter select Automatic Order");
+					return;
+				}
+				
 				if(txtQuantity.getValue()!=null && txtQuantity.getValue()==0) {
 					MessageUtility.successInformation("Order Quantity", "Please Enter valid Quantity");
 					return;
@@ -306,19 +357,21 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 				configureThresholdVO.setMobile(txtMobile.getValue());
 				
 				
-			//	wareHouseBD.saveThreshold(configureThresholdVO);
-				
-			//	MessageUtility.successInformation("Success", "Threshold Configured Successfully");
-//				ListModel<ConfigureThresholdVO> testModel=configThresholdGrid.getModel();
-//				for(ListModelList<configureThresholdVO> testModel:configThresholdGrid.getModel()){
-//					
-//				}
-				///////////////////////////////////////////////////////////////////////
 				configureThresholdVOs=(List<ConfigureThresholdVO>)configThresholdGrid.getModel();
-				Logger.logTrace("Threshold","New Threshold Config VO:"+ configureThresholdVO );
 				if(configureThresholdVOs!=null && !configureThresholdVOs.isEmpty()){
 					for(ConfigureThresholdVO thresholdVO:configureThresholdVOs){
-						Logger.logTrace("Threshold","Existing Threshold Config VO:"+ thresholdVO );
+						
+						String key = GeneralUtility.blankDisplayValueIfNull(configureThresholdVO.getResourceSubTypeName())+"#"+GeneralUtility.blankDisplayValueIfNull(configureThresholdVO.getResourceTypeName())+"#"+GeneralUtility.blankDisplayValueIfNull(configureThresholdVO.getResourceName());
+						
+						System.out.println("KEY ::" + key + "   Grid Key :: "+ thresholdVO.getKey());
+						
+						if(key.equals(thresholdVO.getKey())) {
+							MessageUtility.failureInformation("Threshold", "Threshold Already Configured");
+							flag=true;
+							break;
+						}
+						
+						/*Logger.logTrace("Threshold","Existing Threshold Config VO:"+ thresholdVO );
 						
 						if(thresholdVO.getResourceSubTypeName()!=null && configureThresholdVO.getResourceSubTypeName()!=null){
 							Logger.logTrace("Threshold","Inside on click Add New button Inside first if block" );
@@ -339,35 +392,28 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 						}
 						
 						if(flag)
-						break;
+						break;*/
 						
 					}
-					//configureThresholdVOs.add(configureThresholdVO);
 				}
 				
-				//////////////////////////////////////////////////////////////////
-			//	configureThresholdVOs=(List<ConfigureThresholdVO>)configThresholdGrid.getModel();
 				if(!flag){
-					if (configureThresholdVOs != null && !configureThresholdVOs.isEmpty()) {
-						configureThresholdVOs.add(configureThresholdVO);
-					} else {
-						configureThresholdVOs = new ArrayList<ConfigureThresholdVO>();
-						configureThresholdVOs.add(configureThresholdVO);
-					}
+					
 					//--Added Rinkal
-					addVOList.add(configureThresholdVO);
+					thresholdModel.add(configureThresholdVO);
 				}
-				System.out.println("::::::::addVOList:::::::::"+addVOList);
+				System.out.println("::::::::addVOList:::::::::"+thresholdModel);
 				
-			if (configureThresholdVOs != null && !configureThresholdVOs.isEmpty()) {
 				configThresholdGrid.setVisible(true);
 				configThresholdGrid.setMultiple(true);
-				configThresholdGrid.setModel(new ListModelList<ConfigureThresholdVO>(configureThresholdVOs));
+				configThresholdGrid.setModel(thresholdModel);
 				configThresholdGrid.setItemRenderer(new SearchListItemRenderer());
+				
+			/*if (configureThresholdVOs != null && !configureThresholdVOs.isEmpty()) {
 			} else {
 				//configThresholdGrid.setModel(new ListModelList<ConfigureThresholdVO>());
 				configThresholdGrid.setVisible(false);
-			}
+			}*/
 			Logger.logTrace("Inside Add New()","configureThresholdVO::"+ configureThresholdVO );
 			txtThreshold.setValue(0);
 			reset();
@@ -382,11 +428,8 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 			
 			public void onClick$btnSave(Event e) throws InterruptedException{
 				Logger.logTrace("Warehouse","Inside onClick event of Save ");
-				btnAddNew.setDisabled(true);
-				 cmbResourceType.setDisabled(false);
-				 cmbResourceSubType.setDisabled(false);
-				 cmbThresholdType.setDisabled(false);
-				ConfigureThresholdVO configureThresholdVO=new ConfigureThresholdVO();
+				
+				ConfigureThresholdVO configureThresholdVO=this.editConfigureThresholdVO;
 				IBDSessionContext sessionContext = getBDSessionContext();
 				List<ConfigureThresholdVO> configureThresholdVOs=null;
 				boolean flag=false;
@@ -398,6 +441,15 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 				if(cmbResourceType.getSelectedItem() != null){
 					ComboData resourceTypeSelectedData = cmbResourceType.getSelectedItem().getValue();
 					configureThresholdVO.setResourceTypeName(resourceTypeSelectedData.getName());
+					
+					if(cmbResource.getSelectedItem() != null){
+						
+						ComboData selectedData = cmbResource.getSelectedItem().getValue();
+						configureThresholdVO.setItemId(selectedData.getId());
+						configureThresholdVO.setResourceName(selectedData.getName());
+						
+					}
+					
 					if(cmbResourceSubType.getSelectedItem() != null){
 						
 						ComboData selectedData = cmbResourceSubType.getSelectedItem().getValue();
@@ -417,6 +469,16 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 					MessageUtility.successInformation("Threshold", "Please Select Resource Type");
 					return;
 				}
+				
+				if(cmbAutomaticOrder.getSelectedItem() != null){
+					ComboBoxData comboBoxData = cmbAutomaticOrder.getSelectedItem().getValue();
+					configureThresholdVO.setAutomaticOrder(comboBoxData.getName());
+					
+				} else {
+					MessageUtility.failureInformation("Error", "Please Enter select Automatic Order");
+					return;
+				}
+				
 				if(Long.parseLong(txtThreshold.getValue().toString())>0){
 					if(configureThresholdVO.getThresholdType().equals("Percentage")){
 						
@@ -446,10 +508,22 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 				configureThresholdVO.setMobile(txtMobile.getValue());
 					
 				Logger.logTrace("Inside Save()","configureThresholdVO:::"+ configureThresholdVO );
-				configureThresholdVOs=(List<ConfigureThresholdVO>)configThresholdGrid.getModel();
+				/*configureThresholdVOs=(List<ConfigureThresholdVO>)configThresholdGrid.getModel();
 				if(configureThresholdVOs!=null && !configureThresholdVOs.isEmpty()){
 					for(ConfigureThresholdVO thresholdVO:configureThresholdVOs){
 						Logger.logTrace("Inside Save() before:","thresholdVO:::"+ thresholdVO );
+						
+						String key = GeneralUtility.blankDisplayValueIfNull(configureThresholdVO.getResourceSubTypeName())+"#"+GeneralUtility.blankDisplayValueIfNull(configureThresholdVO.getResourceTypeName())+"#"+GeneralUtility.blankDisplayValueIfNull(configureThresholdVO.getResourceName());
+						
+						System.out.println("KEY ::" + key + "   Grid Key :: "+ thresholdVO.getKey());
+						
+						if(key.equals(thresholdVO.getKey())) {
+							MessageUtility.failureInformation("Threshold", "Threshold Already Configured");
+							flag=true;
+							break;
+						}
+						
+						
 						if(thresholdVO.getResourceSubTypeName()!=null && configureThresholdVO.getResourceSubTypeName()!=null){
 						if(thresholdVO.getResourceSubTypeName().equals(configureThresholdVO.getResourceSubTypeName()) && thresholdVO.getResourceTypeName().equals(configureThresholdVO.getResourceTypeName())){
 							
@@ -487,27 +561,46 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 			} else {
 				//configThresholdGrid.setModel(new ListModelList<ConfigureThresholdVO>());
 					configThresholdGrid.setVisible(false);
-				}
+			}
+			*/
+				
+			
+			thresholdModel.remove(this.editIndex);
+			thresholdModel.add(this.editIndex, configureThresholdVO);
+			configThresholdGrid.setModel(thresholdModel);
+			configThresholdGrid.setItemRenderer(new SearchListItemRenderer());
+			
 			txtThreshold.setValue(0);
-			reset();
+			
 			Collection<ComboData> resourceTypecomboBoxDatas = resultMap.keySet();
 			cmbResourceType.setModel(new ListModelList<ComboData>(resourceTypecomboBoxDatas));
 			cmbResourceType.setItemRenderer(new ComboItemDataRenderer());
 //			cmbThresholdType.setModel(new ListModelList<ComboBoxData>(thresholdType));
 //			cmbThresholdType.setItemRenderer(new ComboBoxItemDataRenderer());
+
+			btnAddNew.setDisabled(true);
+			cmbResourceType.setDisabled(false);
+			cmbResourceSubType.setDisabled(false);
+			cmbThresholdType.setDisabled(false);
+			cmbResource.setDisabled(false);
+			
+			
+			reset();
 			
 			}catch (Exception exp) {
 				exp.printStackTrace();
 				MessageUtility.failureInformation("ERROR", exp.getMessage());
 			}
-					
+			
+			
 		}
 			
 			
 			private void reset(){
 				
-				resetComponents(txtThreshold,cmbResourceType,cmbResourceSubType,cmbThresholdType,txtEmail,txtMobile,txtQuantity);
+				resetComponents(txtThreshold,cmbResourceType,cmbResourceSubType,cmbResource,cmbThresholdType,txtEmail,txtMobile,txtQuantity,cmbAutomaticOrder);
 				cmbResourceSubType.setModel(null);
+				cmbResource.setModel(null);
 				btnSave.setDisabled(true);
 				btnAddNew.setDisabled(false);
 				btnSave.setVisible(false);
@@ -518,6 +611,7 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 			private class SearchListItemRenderer implements ListitemRenderer<ConfigureThresholdVO>{
 
 				private EventListener<Event> editItemListener,editHoverListner,editOutListener,removeItemListener,removeHoverListner,removeOutListener;
+				private static final String THRESHOLD_DATA="THRESHOLD_DATA";
 				
 				public SearchListItemRenderer() {
 					
@@ -525,8 +619,8 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 					editItemListener = new EventListener<Event>() {
 						@Override
 						public void onEvent(Event event) throws Exception {
-						//	Image img = (Image) event.getTarget();
-							clickEdit();
+							Image img = (Image) event.getTarget();
+							clickEdit((Integer) img.getAttribute(THRESHOLD_DATA));
 						}
 
 					};
@@ -551,8 +645,8 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 					removeItemListener = new EventListener<Event>() {
 						@Override
 						public void onEvent(Event event) throws Exception {
-						//	Image img = (Image) event.getTarget();
-							clickRemove();
+							Image img = (Image) event.getTarget();
+							clickRemove((Integer) img.getAttribute(THRESHOLD_DATA));
 						}
 
 					};
@@ -582,13 +676,23 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 					Logger.logTrace("WAREHOUSE", "Data received:"+data);
 					
 					int no = index+1;
+					
+					String key = GeneralUtility.blankDisplayValueIfNull(data.getResourceSubTypeName())+"#"+GeneralUtility.blankDisplayValueIfNull(data.getResourceTypeName())+"#"+GeneralUtility.blankDisplayValueIfNull(data.getResourceName());
+					data.setKey(key);
+					
 					item.appendChild(new Listcell(String.valueOf(no)));
 					
 					item.appendChild(new Listcell(data.getResourceTypeName()));
 					
 					item.appendChild(new Listcell(GeneralUtility.displayValueIfNull(data.getResourceSubTypeName())));
+					item.appendChild(new Listcell(GeneralUtility.displayValueIfNull(data.getResourceName())));
+					
+					
 					item.appendChild(new Listcell(data.getThresholdType()));
 					item.appendChild(new Listcell(String.valueOf(data.getThresholdValue())));
+					
+					item.appendChild(new Listcell(data.getAutomaticOrder()));
+					
 					if(data.getQuantity()!=null) {
 						item.appendChild(new Listcell(String.valueOf(data.getQuantity())));
 					} else {
@@ -604,6 +708,7 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 					edit.addEventListener(Events.ON_MOUSE_OVER, editHoverListner);
 					edit.addEventListener(Events.ON_MOUSE_OUT, editOutListener);
 					edit.addEventListener(Events.ON_CLICK, editItemListener);
+					edit.setAttribute(THRESHOLD_DATA, index);
 					
 					operationCell.appendChild(edit);
 					item.appendChild(operationCell);
@@ -613,6 +718,7 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 					remove.addEventListener(Events.ON_MOUSE_OVER, removeHoverListner);
 					remove.addEventListener(Events.ON_MOUSE_OUT, removeOutListener);
 					remove.addEventListener(Events.ON_CLICK, removeItemListener);
+					remove.setAttribute(THRESHOLD_DATA, index);
 					
 					removeOperationCell.appendChild(remove);
 					item.appendChild(removeOperationCell);
@@ -621,9 +727,14 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 				}
 				
 			}
-			public void clickEdit(){
+			public void clickEdit(int index){
 				
 				Logger.logTrace("WAREHOUSE", "in clickEdit function...");
+				
+				this.editIndex= index;
+				this.editMode =true;
+				this.editConfigureThresholdVO= thresholdModel.get(index);
+				
 				ConfigureThresholdVO editVO;
 				List<ComboData> comboBoxDatas=null;
 				Collection<ComboData> resourceTypecomboBoxDatas=null;
@@ -670,7 +781,19 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 						}
 						txtQuantity.setValue(editVO.getQuantity());
 						
+						List<ComboData> comboitem = new ArrayList<ComboData>();
+						comboitem.add(new ComboData(editVO.getItemId(), editVO.getResourceName()));
+						cmbResource.setModel(new ListModelList<ComboData>(comboitem));
+						cmbResource.setItemRenderer(new ComboItemDataRenderer());
+						cmbResource.setValue(editVO.getResourceName());
+						cmbResource.setDisabled(true);
+						
 						btnSave.setVisible(true);
+						
+						//this should be placed Last du to junk Data
+						if(editVO.getAutomaticOrder()!=null && !editVO.getAutomaticOrder().isEmpty()) {
+							cmbAutomaticOrder.setValue(editVO.getAutomaticOrder());
+						}
 						
 					}
 				}catch(Exception ex){
@@ -684,9 +807,16 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 			
 			
 			
-			public void clickRemove(){
+			public void clickRemove(int index){
 				Logger.logTrace("WAREHOUSE", "in clickRemove function...");
-				ConfigureThresholdVO removeVO=null;
+				
+				if(thresholdModel!=null){
+					thresholdModel.remove(index);
+					configThresholdGrid.setModel(thresholdModel);
+					configThresholdGrid.setItemRenderer(new SearchListItemRenderer());
+				}
+				
+				/*ConfigureThresholdVO removeVO=null;
 				if(configThresholdGrid.getSelectedItem()!=null){
 					 removeVO =(ConfigureThresholdVO) configThresholdGrid.getSelectedItem().getValue();
 					Logger.logTrace("WAREHOUSE","Selected cell to be remove:"+removeVO);
@@ -717,7 +847,7 @@ public class ConfigureThresholdComposer extends BaseModuleViewComposer{
 			}catch (Exception exp) {
 				exp.printStackTrace();
 				MessageUtility.failureInformation("ERROR", exp.getMessage());
-			}
+			}*/
 				
 			}
 			

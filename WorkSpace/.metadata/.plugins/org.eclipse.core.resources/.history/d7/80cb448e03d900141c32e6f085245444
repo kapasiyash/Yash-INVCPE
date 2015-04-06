@@ -1,0 +1,181 @@
+<zk>
+<window  id="uploadInventorycsvformat" title="${labels.inventory.csvformat}" border="normal" width="800px" height="400px" 
+position="center,center" closable="true" style="overflow-x:hidden;overflow-y:auto;" apply="com.elitecore.cpe.web.composer.inventory.UploadInventoryCSVFormatComposer">
+		  
+	<hlayout height="100%" width="100%" style="overflow-x:hidden;overflow-y:auto;">
+			 <vlayout width="740px" >
+				<hbox width="100%" style="border: 1px solid #ccc;border-width: 0 1px;">
+<!-- 		            <div align="right"> -->
+<!-- 		                <menubar id="actionMenubar" autodrop="true" width="798px" sclass="top-menu"/> -->
+<!-- 		            </div> -->
+		        </hbox>
+		    	
+	            <separator bar="false" />
+				<div sclass="sectionTitle" width="740px">
+					<label value="${labels.inventory.csvformat}" style="font-weight: bold;" />
+				</div>
+		        <separator bar="false" />
+		        <hlayout width="100%">
+					<vlayout width="740px">
+						<grid id="csvformatgrid" width="700px"  oddRowSclass="non-odd" sclass="viewGrid" zclass="none">
+							<columns>
+								<column width="50px" />
+			                    <column width="150px" />
+			                    <column width="150px" />
+			                    <column width="100px" />
+			                      <column width="100px" />
+			                       <column width="50px" />
+			                        <column width="150px" />
+							</columns>
+							<rows id="rows">
+								<row  align="top">
+									<label value="${labels.global.sr.no}"  style="text-align: left;font-weight: bold;" />
+<!-- 									<label style="text-align: left;" id="lblSrNo"/> -->
+<!-- 								</row> -->
+<!-- 								<row spans="1, 3" align="top"> -->
+<!-- 									<label value="Parameter Type" style="text-align: left;" /> -->
+<!-- 									<label style="text-align: left;" id="lblParamtype"/> -->
+<!-- 								</row> -->
+<!-- 								<row spans="1, 3" align="top"> -->
+									<label value="Parameter Name" style="text-align: left;font-weight: bold;" />
+<!-- 									<label style="text-align: left;" id="lblparamname"/> -->
+<!-- 								</row> -->
+<!-- 								<row spans="1, 3" align="top"> -->
+									<label value="Parameter Description" style="text-align: left;font-weight: bold;" />
+<!-- 									<label style="text-align: left;" id="lblParamDesc"/> -->
+<!-- 								</row> -->
+<!-- 								<row spans="1, 3" align="top"> -->
+									<label value="Mandatory" style="text-align: left;font-weight: bold;" />
+<!-- 									<label style="text-align: left;" id="lblMandatory"/> -->
+<!-- 								</row> -->
+<!-- 								<row spans="1, 3" align="top"> -->
+									<label value="Unique" style="text-align: left;font-weight: bold;" />
+									
+									<label value="Size" style="text-align: left;font-weight: bold;" />
+									
+<!-- 									<label style="text-align: left;" id="lblUnique"/> -->
+									<label value="Sample Value" style="text-align: left;font-weight: bold;" />
+								</row>
+								<row  align="top">
+									<label value="1." style="text-align: left;" />
+<!-- 									<label value="Sr.No" style="text-align: left;" /> -->
+									<label value="Sr.No" style="text-align: left;" />
+									<label value="Serial number and should not be duplicate." style="text-align: left;" />
+									<label value="Y" style="text-align: left;" />
+									<label value="Y" style="text-align: left;" />
+									<label value="-" style="text-align: left;" />
+									<label value="1,2,etc." style="text-align: left;" />
+									
+								</row>
+								<row  align="top">
+									<label value="2." style="text-align: left;" />
+<!-- 									<label value="Batch Number Information" style="text-align: left;" /> -->
+									<label value="External Batch No" style="text-align: left;" />
+									<label value="External System Batch number (OFA Batch Number)" style="text-align: left;" />
+									<label value="N" style="text-align: left;" />
+									<label value="N" style="text-align: left;" />
+									<label value="20" style="text-align: left;" />
+									<label value="BTC00001" style="text-align: left;" />
+									
+								</row>
+								<row  align="top">
+									<label value="3." style="text-align: left;" />
+<!-- 									<label value="Warehouse Information" style="text-align: left;" /> -->
+									<label value="Warehouse" style="text-align: left;" />
+									<label value="Warehouse name" style="text-align: left;" />
+									<label value="Y" style="text-align: left;" />
+									<label value="N" style="text-align: left;" />
+									<label value="-" style="text-align: left;" />
+									<label value="Central" style="text-align: left;" />
+								</row>
+								<row  align="top">
+									<label value="4." style="text-align: left;" />
+<!-- 									<label value="Resource Number Information" style="text-align: left;" /> -->
+									<label value="Resource Number" style="text-align: left;" />
+									<label value="CPE Generated unique resource number" style="text-align: left;" />
+									<label value="Y" style="text-align: left;" />
+									<label value="N" style="text-align: left;" />
+									<label value="-" style="text-align: left;" />
+									<label value="EXT0000000001" style="text-align: left;" />
+								</row>
+								
+								<row  align="top">
+									<label value="5." style="text-align: left;" />
+									<label value="Inventory Number" style="text-align: left;" />
+									<label value="Inventory Number is mandatory and unique if Inventory Number Generation type is manual for particular resource and non-mandatory for automatic generation" style="text-align: left;" />
+									<label value="Y/N" style="text-align: left;" />
+									<label value="Y" style="text-align: left;" />
+									<label value="20" style="text-align: left;" />
+									<label value="INV00000001" style="text-align: left;" />
+									
+								</row>
+								
+								<row  align="top">
+									<label value="6." style="text-align: left;" />
+									<label value="GuranteeWarrantyMode" style="text-align: left;" />
+									<label value="GuranteeWarrantyMode will have either value as Guarantee or Warranty" style="text-align: left;" />
+									<label value="Y" style="text-align: left;" />
+									<label value="Y" style="text-align: left;" />
+									<label value="-" style="text-align: left;" />
+									<label value="Gurantee/Warranty" style="text-align: left;" />
+									
+								</row>
+								
+								<row  align="top">
+									<label value="7." style="text-align: left;" />
+									<label value="Warrantydate" style="text-align: left;" />
+									<label value="Warrantydate is mandatory if GuranteeWarrantyMode is Warranty" style="text-align: left;" />
+									<label value="Y/N" style="text-align: left;" />
+									<label value="N" style="text-align: left;" />
+									<label value="-" style="text-align: left;" />
+									<label value="20/01/2015 (dd/MM/yyyy format)" style="text-align: left;" />
+									
+								</row>
+								
+								<row  align="top">
+									<label value="8." style="text-align: left;" />
+									<label value="Warrantytype" style="text-align: left;" />
+									<label value="Warrantytype is mandatory in case if GuranteeWarrantyMode is Warranty" style="text-align: left;" />
+									<label value="Y/N" style="text-align: left;" />
+									<label value="N" style="text-align: left;" />
+									<label value="20" style="text-align: left;" />
+									<label value="Supplier date/Purchase date" style="text-align: left;" />
+									
+								</row>
+								
+								<!-- <row  align="top">
+									<label value="9." style="text-align: left;" />
+									<label value="Attribute Information" style="text-align: left;" />
+									<label value="Serial Number" style="text-align: left;" />
+									<label value="Serial Number Information(Attributes attached with the resource)" style="text-align: left;" />
+									<label value="N" style="text-align: left;" />
+									<label value="N" style="text-align: left;" />
+									<label value="50" style="text-align: left;" />
+									<label value="123456" style="text-align: left;" />
+									
+								</row>
+								
+								<row  align="top">
+									<label value="10." style="text-align: left;" />
+									<label value="MAC Address" style="text-align: left;" />
+									<label value="MAC Address Information(Attributes attached with the resource)" style="text-align: left;" />
+									<label value="N" style="text-align: left;" />
+									<label value="N" style="text-align: left;" />
+									<label value="50" style="text-align: left;" />
+									<label value="Test Value" style="text-align: left;" />
+								</row> -->
+							</rows>
+						</grid>
+						<separator bar="false" />
+						<separator bar="false" />
+					<label id="lblMessage" value="Note:Attribute(s) configured at resource must be present with the same name in the CSV file at the time of upload inventory." style="text-align: left;color: red;" />
+					<label id="lblMessageq" value="Warehouse Name and Resource Number must present in the system" style="text-align: left;color: red;" />
+						<div id="viewActionContent"  width="100%" />
+												
+						</vlayout>
+				</hlayout>
+			</vlayout>
+		</hlayout>
+
+</window>
+</zk>

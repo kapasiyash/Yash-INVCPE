@@ -30,7 +30,9 @@ import com.elitecore.cpe.bl.entity.inventory.inventorymgt.ResourceAttributeRel;
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 @Table(name = "TBLMRESOURCE")
 @NamedQueries({ 
-	@NamedQuery(name = "ItemData.findItem",query ="select o from ItemData o where o.name = :name and o.resourceType.name=:resourceType and o.resourceSubTypeData.name=:resourceSubTypeData and  o.systemgenerated = 'N'")
+	@NamedQuery(name = "ItemData.findItem",query ="select o from ItemData o where o.name = :name and o.resourceType.name=:resourceType and o.resourceSubTypeData.name=:resourceSubTypeData and  o.systemgenerated = 'N'"),
+	@NamedQuery(name = "ItemData.checkUnique",query ="select o from ItemData o where o.resourceTypeId = :resourceTypeId and o.resourceSubTypeId =:resourceSubTypeId and o.modelnumber =:modelnumber and  o.vendor = :vendor"),
+	@NamedQuery(name = "ItemData.checkUniqueIgnoringResource",query ="select o from ItemData o where o.resourceTypeId = :resourceTypeId and o.resourceSubTypeId =:resourceSubTypeId and o.modelnumber =:modelnumber and  o.vendor = :vendor and o.itemId not in :itemId")
 })
 public class ItemData implements Serializable {
 

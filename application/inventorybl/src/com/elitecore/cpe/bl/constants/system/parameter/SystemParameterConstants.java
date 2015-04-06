@@ -32,7 +32,8 @@ public class SystemParameterConstants {
 	public static final String DATE_BOX = "CFT04";
 	public static final String LIST_BOX = "CFT05";
 	public static final String BAND_BOX = "CFT06";
-	
+	public static final String PASSWORD = "CFT07";
+
 	
 	public static final String ROUNDING_DEFAULT = "Default";//Default,Lower,Upper
 	public static final String ROUNDING_LOWER = "Lower";
@@ -50,5 +51,15 @@ public class SystemParameterConstants {
 	
 	public static final String THRESHOLD_AUTOMATIC_RE_ORDER="THRESHOLD_AUTOMATIC_RE_ORDER";
 	public static final String THRESHOLD_RE_ORDER_QUANTITY="THRESHOLD_RE_ORDER_QUANTITY";
+//--added for notification	
+	public static final String ADMINISTRATOR_EMAILID="ADMINISTRATOR_EMAILID";
+	public static final String ADMINISTRATOR_PASSWORD="ADMINISTRATOR_PASSWORD";
+	public static final String SMTP_HOST_IP_ADDRESS="SMTP_HOST_IP_ADDRESS";
+	public static final String SMTP_PORT="SMTP_PORT";
+	public static final String ENABLE_EMAIL_NOTIFICATION="ENABLE_EMAIL_NOTIFICATION";
+	public static final String ENABLE_SMS_NOTIFICATION="ENABLE_SMS_NOTIFICATION";
+	public static final String MOBILE_NO_FOR_RESOURCE_SMS_NOTIFICATION="MOBILE_NO_FOR_RESOURCE_SMS_NOTIFICATION";
+	
+	public static final String MIN_DAYS_OF_PENDING_ORDER = "MIN_DAYS_OF_PENDING_ORDER";
 	
 }

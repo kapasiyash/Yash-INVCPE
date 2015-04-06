@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_ChangeInventoryStatusResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>err-211032</responseCode>
+         <responseMessage>Not able to change status , find details in response object. INV0uy00002: Inventory TransferStatus is in progress, so can't change the Status,
+INV00yu00011: Central Warehouse Inventory can not be changed to Reserved,Allocated,Delivered or Recovered</responseMessage>
+      </NICE_ChangeInventoryStatusResponse>
+   </soap:Body>
+</soap:Envelope>

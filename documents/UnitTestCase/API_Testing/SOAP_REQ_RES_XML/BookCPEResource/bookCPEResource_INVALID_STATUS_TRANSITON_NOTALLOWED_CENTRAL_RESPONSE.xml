@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <ns2:bookCPEResourceResponse xmlns:ns2="http://ws.bl.cpe.elitecore.com/">
+         <return>
+            <responseCode>err-211037</responseCode>
+            <responseMessage>Some of Inventory not found in Available Status. Please try again later.D00000000002:Central Warehouse Inventory can not be changed to Reserved,Allocated,Delivered or Recovered</responseMessage>
+         </return>
+      </ns2:bookCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

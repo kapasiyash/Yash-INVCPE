@@ -2,13 +2,27 @@ package com.elitecore.cpe.bl.ws.data.input.request;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NICE_CheckCPEResourceRequest", propOrder = {
+	    "warehouseName",
+	    "resourceId",
+	    "warehouseCode"
+	})
 public class ResourceAvailibilityRequestData implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	
+	
 	private String warehouseName;
+	
+	
+	@XmlElement(required=true,name="rfsCode")
 	private String resourceId;  // which will uniquely generated, in our system there is resourceNumber
 	private String warehouseCode;
 	
@@ -19,7 +33,6 @@ public class ResourceAvailibilityRequestData implements Serializable{
 		this.warehouseName = warehouseName;
 	}
 	
-	@XmlElement(required=true)
 	public String getResourceId() {
 		return resourceId;
 	}
@@ -41,17 +54,9 @@ public class ResourceAvailibilityRequestData implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("ResourceAvailibilityRequestData [" );
-		if(warehouseName!=null){
-		builder.append(	"warehouseName=").append(warehouseName);
-		}
-		if(resourceId!=null){
-		builder.append(", resourceId=").append(resourceId);
-		}
-		
-		builder.append("]");
-		return builder.toString();
+		return "ResourceAvailibilityRequestData [warehouseName="
+				+ warehouseName + ", resourceId=" + resourceId
+				+ ", warehouseCode=" + warehouseCode + "]";
 	}
 	
 	

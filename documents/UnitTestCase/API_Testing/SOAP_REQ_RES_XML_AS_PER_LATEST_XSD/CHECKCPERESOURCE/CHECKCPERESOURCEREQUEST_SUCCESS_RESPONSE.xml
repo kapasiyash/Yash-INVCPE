@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_CheckCPEResourceResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>0</responseCode>
+         <responseMessage>Success</responseMessage>
+         <NICE_CheckResourceAvailabilityList>
+            <NICE_CheckResourceAvailability>
+               <warehouseName>TestWH2</warehouseName>
+               <productName>Modem19</productName>
+               <resourceType>DemoTest</resourceType>
+               <resourceSubType>DemoTest</resourceSubType>
+               <model>asd34453</model>
+               <vendor>MD34</vendor>
+               <rfsID>RES0000000095</rfsID>
+               <noOfResource>1</noOfResource>
+               <warehouseCode>TESTWH2</warehouseCode>
+            </NICE_CheckResourceAvailability>
+         </NICE_CheckResourceAvailabilityList>
+      </NICE_CheckCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

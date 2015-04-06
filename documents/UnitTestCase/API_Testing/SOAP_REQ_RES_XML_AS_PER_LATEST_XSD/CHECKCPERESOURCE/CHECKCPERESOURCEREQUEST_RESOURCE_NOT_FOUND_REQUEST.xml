@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:NICE_CheckCPEResourceRequest>
+         <!--Optional:-->
+         <man:warehouseName/>
+         <man:rfsCode>RES0000000080</man:rfsCode>
+         <!--Optional:-->
+         <man:warehouseCode/>
+      </man:NICE_CheckCPEResourceRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

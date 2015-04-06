@@ -16,11 +16,14 @@ import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.Doc
 import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.DocumentTemplateDetail;
 import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.NotificationAudit;
 import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.SMSDocumentTemplateDetail;
+import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.ThresholdNotificationHistoryDetail;
+import com.elitecore.cpe.bl.entity.inventory.inventorymgt.OrderData;
 import com.elitecore.cpe.bl.exception.CreateBLException;
 import com.elitecore.cpe.bl.exception.SearchBLException;
 import com.elitecore.cpe.bl.exception.UpdateBLException;
 import com.elitecore.cpe.bl.session.BaseSessionBean;
 import com.elitecore.cpe.bl.vo.configuration.notification.CheckValidDateForTemplateVO;
+import com.elitecore.cpe.bl.vo.order.OrderDetailVo;
 import com.elitecore.cpe.util.logger.Logger;
 /**
  * 
@@ -360,6 +363,7 @@ public class NotificationSessionBean extends BaseSessionBean implements Notifica
 		}
 		try {			
 			getEntityManager().persist(notificationAudit);
+			getEntityManager().flush();
 			if(isTraceLevel()){
 				Logger.logTrace(MODULE, "returning createNotificationAudit");
 			}
@@ -372,5 +376,160 @@ public class NotificationSessionBean extends BaseSessionBean implements Notifica
 			throw new CreateBLException("Create NotificationAudit  Operation Failed, Reason : " + e.getMessage(), e);
 		}
 		return notificationAudit;
+	}
+
+	@Override
+	public ThresholdNotificationHistoryDetail createThresholdNotificationHistoryDetail(
+			ThresholdNotificationHistoryDetail thresholdNotificationHistoryDetail)
+			throws CreateBLException {
+		
+		if(isTraceLevel()){
+			Logger.logTrace(MODULE, "inside createThresholdNotificationHistoryDetail");
+		}
+		try {			
+			 getEntityManager().persist(thresholdNotificationHistoryDetail);
+			 getEntityManager().flush();
+			if(isTraceLevel()){
+				Logger.logTrace(MODULE, "returning createThresholdNotificationHistoryDetail");
+			}
+			
+		}catch(Exception e) {			
+			e.printStackTrace();
+			if(isErrorLevel())
+				logError(MODULE, "Error in createThresholdNotificationHistoryDetail Reason" +e.getMessage());
+			getSessionContext().setRollbackOnly();
+			throw new CreateBLException("Create createThresholdNotificationHistoryDetail  Operation Failed, Reason : " + e.getMessage(), e);
+		}
+		return thresholdNotificationHistoryDetail;
+	}
+
+	@Override
+	public ThresholdNotificationHistoryDetail findNotificationHistoryById(
+			Long notificationHistoryId) throws SearchBLException {
+		
+		if(isTraceLevel())
+			logTrace(MODULE, "inside  findNotificationHistoryById");
+		try {
+			ThresholdNotificationHistoryDetail  historyDetail = (ThresholdNotificationHistoryDetail) getEntityManager().createNamedQuery("ThresholdNotificationHistoryDetail.findById")
+					.setParameter("notificationHistoryId", notificationHistoryId)
+					.getSingleResult();
+		 return historyDetail;
+		}catch(NoResultException e) {
+			return null;
+		}catch(Exception e) {
+			e.printStackTrace();
+			if(isErrorLevel())
+				logError(MODULE, "Error in findNotificationHistoryById Reason" +e.getMessage());
+			throw new SearchBLException("Find NotificationHistoryById operation failed, reason: " + e.getMessage(), e);
+		}
+
+	}
+
+	@Override
+	public ThresholdNotificationHistoryDetail updateThresholdNotificationHistoryDetail(
+			ThresholdNotificationHistoryDetail historyDetail)
+			throws UpdateBLException {
+		
+		if(isTraceLevel()){
+			Logger.logTrace(MODULE, "inside updateThresholdNotificationHistoryDetail");
+		}
+		try {			
+			getEntityManager().merge(historyDetail);
+			if(isTraceLevel()){
+				Logger.logTrace(MODULE, "returning updateThresholdNotificationHistoryDetail");
+			}
+			
+		}catch(Exception e) {			
+			e.printStackTrace();
+			if(isErrorLevel())
+				logError(MODULE, "Error in updateThresholdNotificationHistoryDetail Reason" +e.getMessage());
+	    	   getSessionContext().setRollbackOnly();
+	    	   
+			throw new UpdateBLException("Update ThresholdNotificationHistoryDetail  Operation Failed, Reason : " + e.getMessage(), e);
+		}
+		return historyDetail;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean isNotificationEligible(Long thresholdID,
+			Long resourceTypeId, Long resourceSubTypeId, Long itemId) {
+	
+		boolean result  = true;
+		try {
+			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
+			String date = dateFormat.format(dateFormat.parse(dateFormat.format(getCurrentTimestamp())));
+			
+			String query = "select o from ThresholdNotificationHistoryDetail o where o.warehouseThresholdId=:warehouseThresholdId and o.resourceTypeId=:resourceTypeId and o.notificationSent ='Y' and TO_DATE(:date,'DD-MM-YY')=TRUNC( o.createDate)";
+			
+			if(resourceSubTypeId!=null) {
+				query = query + " and o.resourceSubTypeId='"+resourceSubTypeId+"' ";
+			} else {
+				query = query + " and o.resourceSubTypeId is null ";
+			}
+			
+			
+			if(itemId!=null) {
+				query = query + " and o.itemId='"+itemId+"' ";
+			} else {
+				query = query + " and o.itemId is null ";
+			}
+			
+			
+			List<ThresholdNotificationHistoryDetail> notificationDetailHistoryDatas = getEntityManager().createQuery(query)
+			.setParameter("warehouseThresholdId", thresholdID)
+			.setParameter("resourceTypeId", resourceTypeId)
+			.setParameter("date", date)
+			.getResultList();
+			
+			if(notificationDetailHistoryDatas!=null && !notificationDetailHistoryDatas.isEmpty()) {
+				result = false;
+			}
+			
+			
+		}catch (NoResultException e) {
+			result  = true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			result  = true;
+		}
+		
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean isEligiblePendingOrderNotification(
+			OrderDetailVo orderDetailVo) throws SearchBLException {
+		
+		boolean result  = true;
+		try {
+			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
+			String date = dateFormat.format(dateFormat.parse(dateFormat.format(getCurrentTimestamp())));
+			
+			String query = "select o from OrderAgentHistoryData o where o.orderId=:orderId and o.orderType=:orderType and TO_DATE(:date,'DD-MM-YY')=TRUNC( o.emailSendDate) ";
+			
+			
+			List<OrderData> orderDatas = getEntityManager().createQuery(query)
+			.setParameter("orderId", orderDetailVo.getOrderId())
+			.setParameter("orderType", orderDetailVo.getOrderType())
+			.setParameter("date", date)
+			.getResultList();
+			
+			if(orderDatas!=null && !orderDatas.isEmpty()) {
+				result = false;
+			}
+			
+			
+		}catch (NoResultException e) {
+			result  = true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			result  = true;
+		}
+		
+		return result;
 	}
 }

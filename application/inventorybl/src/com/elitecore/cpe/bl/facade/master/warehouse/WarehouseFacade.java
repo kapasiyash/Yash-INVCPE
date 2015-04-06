@@ -21,6 +21,7 @@ import com.elitecore.cpe.bl.constants.user.UserConstants;
 import com.elitecore.cpe.bl.data.common.ComboData;
 import com.elitecore.cpe.bl.data.notification.NotificationData;
 import com.elitecore.cpe.bl.data.system.audit.AuditSummaryDetail;
+import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.ThresholdNotificationHistoryDetail;
 import com.elitecore.cpe.bl.entity.inventory.inventorymgt.InventoryData;
 import com.elitecore.cpe.bl.entity.inventory.master.ConfigureThresholdData;
 import com.elitecore.cpe.bl.entity.inventory.master.ItemData;
@@ -41,6 +42,7 @@ import com.elitecore.cpe.bl.facade.system.systemparameter.SystemParameterFacadeL
 import com.elitecore.cpe.bl.facade.system.user.UserFacadeLocal;
 import com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBeanLocal;
 import com.elitecore.cpe.bl.session.master.warehouse.WarehouseSessionBeanLocal;
+import com.elitecore.cpe.bl.session.notification.NotificationSessionBeanLocal;
 import com.elitecore.cpe.bl.session.system.internal.SystemInternalSessionBeanLocal;
 import com.elitecore.cpe.bl.session.system.systemparameter.SystemParameterSessionBeanLocal;
 import com.elitecore.cpe.bl.vo.inventorymgt.PlaceOrderVO;
@@ -70,6 +72,7 @@ public class WarehouseFacade extends BaseFacade implements WarehouseFacadeRemote
 	@EJB private  SystemParameterFacadeLocal systemParameterFacadeLocal;
 	@EJB private UserFacadeLocal userFacadeLocal;
 	@EJB private SystemParameterSessionBeanLocal systemParameterSessionBeanLocal;
+	@EJB private NotificationSessionBeanLocal notificationSessionBeanLocal;
 	
 	
 	
@@ -787,22 +790,25 @@ public class WarehouseFacade extends BaseFacade implements WarehouseFacadeRemote
 	public NotificationData calculateThreasholdValue(ConfigureThresholdVO thresholdVO) throws Exception {
 		
 		try {
+			IBDSessionContext sessionContext = null;
+			sessionContext = userFacadeLocal.doLogin("agent", "agent", "127.0.0.1");
 			
 			NotificationData notificationData = null;
 			
-			ConfigureThresholdData thresholdData = warehouseSessionBeanLocal.findThresholdValue(thresholdVO.getWarehouseID(),thresholdVO.getResourceTypeID(),thresholdVO.getResourceSubTypeID());
+			ConfigureThresholdData thresholdData = warehouseSessionBeanLocal.findThresholdValue(thresholdVO.getThresholdID());
+			
+			Logger.logTrace(MODULE, "thresholdData :: "+thresholdData);
 			if(thresholdVO!=null) {
-				Map<String,Object> fieldValueMap = new LinkedHashMap<String, Object>();
-				fieldValueMap.put("systemgenerated", 'N');
-				fieldValueMap.put("itemData.resourceTypeId", thresholdVO.getResourceTypeID());
-				fieldValueMap.put("warehouseId", thresholdVO.getWarehouseID());
+				String query = "select o from InventoryData o where o.systemgenerated='N' and o.warehouseId='"+thresholdVO.getWarehouseID()+"' and o.itemData.resourceTypeId='"+thresholdVO.getResourceTypeID()+"' ";
+				
 				if(thresholdVO.getResourceSubTypeID()!=null) {
-					fieldValueMap.put("itemData.resourceSubTypeId", thresholdVO.getResourceSubTypeID());
+					query = query + " and o.itemData.resourceSubTypeId='"+ thresholdVO.getResourceSubTypeID()+"' ";
+				}
+				if(thresholdVO.getItemId()!=null) {
+					query = query + " and o.itemData.itemId='"+ thresholdVO.getItemId()+"' ";
 				}
 				
-				
-				
-				List filterList = warehouseSessionBeanLocal.getFilterDataBy(EntityConstants.INVENTORY_DATA, fieldValueMap);
+				List filterList = warehouseSessionBeanLocal.getQueryData(query);
 				ItemData data = null;
 				
 				if(filterList!=null && !filterList.isEmpty()) {
@@ -842,78 +848,217 @@ public class WarehouseFacade extends BaseFacade implements WarehouseFacadeRemote
 								}
 							}
 						}
+						String orderNo = "";
+						
 						if(result) {
 							Logger.logTrace(MODULE, "FCK :: "+" Adding Threashold"+thresholdData.getWarehousedata()+ " Available :: "+available+" Total : "+total);
 							 
 							 
-							 String orderNo = "";
-							//Place Order
-								try {
-									SystemParameter thresholdAutomaticReorder = systemParameterSessionBeanLocal.getSystemParameter(SystemParameterConstants.THRESHOLD_AUTOMATIC_RE_ORDER);
-									if(thresholdAutomaticReorder!=null) {
-										if(thresholdAutomaticReorder.getValue().equals("Yes")) {
-											
-											Integer quantity = 0;
-											if(thresholdData.getQuantity()!=null) {
-												quantity = thresholdData.getQuantity().intValue();
-											} else {
-												SystemParameter thresholdReorderQuantity = systemParameterSessionBeanLocal.getSystemParameter(SystemParameterConstants.THRESHOLD_RE_ORDER_QUANTITY);
-												if(thresholdReorderQuantity!=null) {
-													 quantity = Integer.parseInt(thresholdReorderQuantity.getValue());
-												}
-											}
-											
-											PlaceOrderVO orderVO = new PlaceOrderVO();
-											orderVO.setQuantity(quantity.longValue());
-											orderVO.setFromwarehouseId(thresholdData.getWarehouseId());
-											if(thresholdData.getWarehousedata().getParentWarehouse()!=null) {
-												orderVO.setTowarehouseId(thresholdData.getWarehousedata().getParentWarehouse().getWarehouseId());
-											}
-											orderVO.setCreateDate(getCurrentTimestamp());
-											orderVO.setResourceTypeId(thresholdData.getResourceTypeId());
-											orderVO.setResourceSubTypeId(thresholdData.getResourceSubTypeId());
-											orderVO.setRemark("Automatic Place order by Threshold Agent");
-											orderVO.setCreatedby(UserConstants.AGENT_USERID);
-											orderVO.setOrderType(CPECommonConstants.AUTOMATIC_PLACEORDER);
-											
-											IBDSessionContext sessionContext = null;
-											sessionContext = userFacadeLocal.doLogin("agent", "agent", "127.0.0.1");
-											/*Map<String, UserVO> mapUser = UserFactory.findAllUser();
-											
-											if(mapUser!=null && mapUser.containsKey(UserConstants.ADMIN_USERID)) {
-												UserVO admin = mapUser.get(UserConstants.ADMIN_USERID);
-												
-												try {
-													sessionContext = userFacadeLocal.doLogin(admin.getUsername(), admin.getPassword(), "127.0.0.1");
-												} catch (Exception e) {
-													e.printStackTrace();
-													sessionContext = userFacadeLocal.doLogin("agent", "agent", "127.0.0.1");
-												}
-											} else {
-												 sessionContext = userFacadeLocal.doLogin("agent", "agent", "127.0.0.1");
-											}*/
-											
-											 orderNo = inventoryManagementFacadeLocal.placeOrder(orderVO, sessionContext.getBLSession());
-											
-										}
-									}
-								} catch (Exception e) {
-									e.printStackTrace();
-								}
 							 
-								notificationData = WarehouseUtil.convertThresholdVO(thresholdData,(data!=null?data.getName():""),available,commonEmail,orderNo);
+							 if( !thresholdData.getWarehousedata().getAlias().equals("CENTRAL")) {
+								 
+								 //Place Order
+								 
+								 boolean isPlaceOrderEligible = inventoryManagementSessionBeanLocal.isEligiblePlaceOrder(thresholdData.getWarehouseId(),thresholdData.getResourceTypeId(),thresholdData.getResourceSubTypeId(),thresholdData.getItemId());
+								 if(isPlaceOrderEligible) {
+									 
+									 try {
+										 SystemParameter thresholdAutomaticReorder = systemParameterSessionBeanLocal.getSystemParameter(SystemParameterConstants.THRESHOLD_AUTOMATIC_RE_ORDER);
+										 if(thresholdAutomaticReorder!=null) {
+											 if(thresholdAutomaticReorder.getValue().equals("Yes")) {
+												 
+												 if(thresholdData.getAutomaticOrder()!=null && thresholdData.getAutomaticOrder().equals('Y')) {
+													 
+													 Integer quantity = 0;
+													 if(thresholdData.getQuantity()!=null) {
+														 quantity = thresholdData.getQuantity().intValue();
+													 } else {
+														 SystemParameter thresholdReorderQuantity = systemParameterSessionBeanLocal.getSystemParameter(SystemParameterConstants.THRESHOLD_RE_ORDER_QUANTITY);
+														 if(thresholdReorderQuantity!=null) {
+															 quantity = Integer.parseInt(thresholdReorderQuantity.getValue());
+														 }
+													 }
+													 
+													 PlaceOrderVO orderVO = new PlaceOrderVO();
+													 orderVO.setQuantity(quantity.longValue());
+													 orderVO.setFromwarehouseId(thresholdData.getWarehouseId());
+													 if(thresholdData.getWarehousedata().getParentWarehouse()!=null) {
+														 orderVO.setTowarehouseId(thresholdData.getWarehousedata().getParentWarehouse().getWarehouseId());
+													 }
+													 orderVO.setCreateDate(getCurrentTimestamp());
+													 orderVO.setResourceTypeId(thresholdData.getResourceTypeId());
+													 orderVO.setResourceSubTypeId(thresholdData.getResourceSubTypeId());
+													 orderVO.setItemId(thresholdData.getItemId());
+													 orderVO.setRemark("Automatic Place order by Threshold Agent");
+													 orderVO.setCreatedby(UserConstants.AGENT_USERID);
+													 orderVO.setOrderType(CPECommonConstants.AUTOMATIC_PLACEORDER);
+													 
+													 orderNo = inventoryManagementFacadeLocal.placeOrder(orderVO, sessionContext.getBLSession());
+													 
+												 }
+												 
+											 }
+										 }
+									 } catch (Exception e) {
+										 e.printStackTrace();
+									 }
+								 }
+							 }
+							 
+							//Notification
+							 boolean isNotificationEligible = notificationSessionBeanLocal.isNotificationEligible(thresholdData.getThresholdID(),thresholdData.getResourceTypeId(),thresholdData.getResourceSubTypeId(),thresholdData.getItemId());
+							 if(isNotificationEligible) {
+								 notificationData = WarehouseUtil.convertThresholdVO(thresholdData,(data!=null?data.getName():""),available,commonEmail,orderNo);
+							 }
 								
 						} else {
 							Logger.logTrace(MODULE, "FCK :: "+" Not Threashold"+thresholdData.getWarehousedata()+ " Available :: "+available+" Total : "+total);
 						}
 						
+						//Notification History
+						ThresholdNotificationHistoryDetail historyDetail = new ThresholdNotificationHistoryDetail();
+						historyDetail.setWarehouseThresholdId(thresholdData.getThresholdID());
+						historyDetail.setResourceTypeId(thresholdData.getResourceTypeId());
+						historyDetail.setResourceSubTypeId(thresholdData.getResourceSubTypeId());
+						historyDetail.setItemId(thresholdData.getItemId());
+						historyDetail.setCreateDate(getCurrentTimestamp());
+						historyDetail.setCreatedBy(sessionContext.getBLSession().getSessionUserId());
+						if(notificationData!=null) {
+							historyDetail.setNotificationSent('Y');
+						} else {
+							historyDetail.setNotificationSent('N');
+						}
+						if(orderNo!=null && !orderNo.isEmpty()) {
+							historyDetail.setPlaceOrderGenerated('Y');
+							historyDetail.setPlaceOrderNo(orderNo);
+						} else {
+							historyDetail.setPlaceOrderGenerated('N');
+						}
+						historyDetail = notificationSessionBeanLocal.createThresholdNotificationHistoryDetail(historyDetail);
 						
-						
-//						emailVO.setThreshold(result);
-//						emailVO.setResourceName(itemData.getName());
+						if(notificationData!=null) {
+							notificationData.setNotificationHistoryId(historyDetail.getNotificationHistoryId());
+						}
 						
 						return notificationData;
 					}
+				}  else {
+					
+					// If no Inventory Present with the Threshold Configured.
+					
+					String commonEmail = null;
+					List<WarehouseVO> wareHouseData = getAllWareHouseData();
+					if(wareHouseData!=null && !wareHouseData.isEmpty()) {
+						for(WarehouseVO warehouseVO : wareHouseData) {
+							if(warehouseVO.getAlias().equals("CENTRAL")) {
+								commonEmail = warehouseVO.getEmailId();
+							}
+						}
+					}
+					
+					
+					Map<String,Object> fieldValueMapItem = new LinkedHashMap<String, Object>();
+					fieldValueMapItem.put("systemgenerated", "N");
+					fieldValueMapItem.put("resourceTypeId", thresholdVO.getResourceTypeID());
+					if(thresholdVO.getResourceSubTypeID()!=null) {
+						fieldValueMapItem.put("resourceSubTypeId", thresholdVO.getResourceSubTypeID());
+					}
+					if(thresholdVO.getItemId()!=null) {
+						fieldValueMapItem.put("itemId", thresholdVO.getItemId());
+					}
+					List filterItemList = warehouseSessionBeanLocal.getFilterDataBy(EntityConstants.ITEM_DATA, fieldValueMapItem);
+					if(filterItemList!=null && !filterItemList.isEmpty()) {
+						data = (ItemData) filterItemList.get(0);
+					}
+					
+					 String orderNo = "";
+					 
+					 if( !thresholdData.getWarehousedata().getAlias().equals("CENTRAL")) {
+						 
+						 
+						 boolean isPlaceOrderEligible = inventoryManagementSessionBeanLocal.isEligiblePlaceOrder(thresholdData.getWarehouseId(),thresholdData.getResourceTypeId(),thresholdData.getResourceSubTypeId(),thresholdData.getItemId());
+						 if(isPlaceOrderEligible) {
+							 
+							 //Place Order
+							 try {
+								 SystemParameter thresholdAutomaticReorder = systemParameterSessionBeanLocal.getSystemParameter(SystemParameterConstants.THRESHOLD_AUTOMATIC_RE_ORDER);
+								 if(thresholdAutomaticReorder!=null) {
+									 if(thresholdAutomaticReorder.getValue().equals("Yes")) {
+										 
+										 if(thresholdData.getAutomaticOrder()!=null && thresholdData.getAutomaticOrder().equals('Y')) {
+											 
+											 Integer quantity = 0;
+											 if(thresholdData.getQuantity()!=null) {
+												 quantity = thresholdData.getQuantity().intValue();
+											 } else {
+												 SystemParameter thresholdReorderQuantity = systemParameterSessionBeanLocal.getSystemParameter(SystemParameterConstants.THRESHOLD_RE_ORDER_QUANTITY);
+												 if(thresholdReorderQuantity!=null) {
+													 quantity = Integer.parseInt(thresholdReorderQuantity.getValue());
+												 }
+											 }
+											 
+											 PlaceOrderVO orderVO = new PlaceOrderVO();
+											 orderVO.setQuantity(quantity.longValue());
+											 orderVO.setFromwarehouseId(thresholdData.getWarehouseId());
+											 if(thresholdData.getWarehousedata().getParentWarehouse()!=null) {
+												 orderVO.setTowarehouseId(thresholdData.getWarehousedata().getParentWarehouse().getWarehouseId());
+											 }
+											 orderVO.setCreateDate(getCurrentTimestamp());
+											 orderVO.setResourceTypeId(thresholdData.getResourceTypeId());
+											 orderVO.setResourceSubTypeId(thresholdData.getResourceSubTypeId());
+											 orderVO.setItemId(thresholdData.getItemId());
+											 orderVO.setRemark("Automatic Place order by Threshold Agent");
+											 orderVO.setCreatedby(UserConstants.AGENT_USERID);
+											 orderVO.setOrderType(CPECommonConstants.AUTOMATIC_PLACEORDER);
+											 
+											 orderNo = inventoryManagementFacadeLocal.placeOrder(orderVO, sessionContext.getBLSession());
+											 
+										 }
+										 
+									 }
+								 }
+							 } catch (Exception e) {
+								 e.printStackTrace();
+							 }
+						 }
+						 
+					 }
+					 
+					//Notification
+					 boolean isNotificationEligible = notificationSessionBeanLocal.isNotificationEligible(thresholdData.getThresholdID(),thresholdData.getResourceTypeId(),thresholdData.getResourceSubTypeId(),thresholdData.getItemId());
+					 if(isNotificationEligible) {
+						 notificationData = WarehouseUtil.convertThresholdVO(thresholdData,(data!=null?data.getName():""),0,commonEmail,orderNo);
+					 }
+						
+						
+						
+						//Notification History
+						ThresholdNotificationHistoryDetail historyDetail = new ThresholdNotificationHistoryDetail();
+						historyDetail.setWarehouseThresholdId(thresholdData.getThresholdID());
+						historyDetail.setResourceTypeId(thresholdData.getResourceTypeId());
+						historyDetail.setResourceSubTypeId(thresholdData.getResourceSubTypeId());
+						historyDetail.setItemId(thresholdData.getItemId());
+						historyDetail.setCreateDate(getCurrentTimestamp());
+						historyDetail.setCreatedBy(sessionContext.getBLSession().getSessionUserId());
+						if(notificationData!=null) {
+							historyDetail.setNotificationSent('Y');
+						} else {
+							historyDetail.setNotificationSent('N');
+						}
+						if(orderNo!=null && !orderNo.isEmpty()) {
+							historyDetail.setPlaceOrderGenerated('Y');
+							historyDetail.setPlaceOrderNo(orderNo);
+						} else {
+							historyDetail.setPlaceOrderGenerated('N');
+						}
+						historyDetail = notificationSessionBeanLocal.createThresholdNotificationHistoryDetail(historyDetail);
+						
+						if(notificationData!=null) {
+							notificationData.setNotificationHistoryId(historyDetail.getNotificationHistoryId());
+						}
+						
+						
+						return notificationData;
 				}
 			}
 			

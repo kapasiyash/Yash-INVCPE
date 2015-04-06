@@ -20,7 +20,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import com.elitecore.cpe.bl.entity.inventory.master.ResourceCategory;
+import com.elitecore.cpe.bl.entity.inventory.master.ItemData;
 import com.elitecore.cpe.bl.entity.inventory.master.ResourceSubTypeData;
 import com.elitecore.cpe.bl.entity.inventory.master.ResourceTypeData;
 import com.elitecore.cpe.bl.entity.inventory.master.WarehouseData;
@@ -48,6 +48,8 @@ public class OrderData implements Serializable{
 	private Long toWarehouseId;
 	private Long resourceTypeId;
 	private Long resourceSubTypeId;
+	private Long itemId;
+	
 	private Long quantity;
 	private String orderStatusId;
 	private String remarks;
@@ -63,7 +65,7 @@ public class OrderData implements Serializable{
 	private WarehouseData toWarehouseData;
 	private ResourceTypeData resourceType;
 	private ResourceSubTypeData resourceSubTypeData;
-
+	private ItemData itemData;
 	
 	
 	@SequenceGenerator(name="generator", sequenceName="TBLMORDER_SEQ", allocationSize=1)
@@ -147,6 +149,27 @@ public class OrderData implements Serializable{
 	}
 	public void setResourceSubTypeId(Long resourceSubTypeId) {
 		this.resourceSubTypeId = resourceSubTypeId;
+	}
+	
+	
+	@Column(name = "RESOURCEID")
+	public Long getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
+	}
+
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="RESOURCEID",insertable=false,updatable=false)
+	public ItemData getItemData() {
+		return itemData;
+	}
+
+	public void setItemData(ItemData itemData) {
+		this.itemData = itemData;
 	}
 	
 	 @Column(name="QUANTITY")

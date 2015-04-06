@@ -109,23 +109,36 @@ public class ItemFacade extends BaseFacade implements ItemFacadeRemote,ItemFacad
 				itemdata.setResourceAttributeRels(resourceAttributeRels);
 			}
 			if(!(ItemSessionBeanLocal.isResourceExist(itemdata.getName()))){
-			itemdata = ItemSessionBeanLocal.createItem(itemdata);
-			itemVo.setItemId(itemdata.getItemId());
-			// Audit entry
-			Map<String,Object> mapAudit = new HashMap<String, Object>();
-			mapAudit.put(AuditTagConstant.NAME,itemVo.getName());
-			mapAudit.put(AuditTagConstant.REFERENCEID,itemVo.getReferenceID());
 				
-			addToAuditDynamicMessage(AuditConstants.CREATE_RESOURCE, "Creating Resource  ",AuditConstants.CREATE_AUDIT_TYPE, mapAudit, iblSession);
-			
-			String toEmail = systemParameterFacadeLocal.getSystemParameterValue(SystemParameterConstants.EMAIL_ALIAS_RESOURCE_TO);
-			String ccEmail = systemParameterFacadeLocal.getSystemParameterValue(SystemParameterConstants.EMAIL_ALIAS_RESOURCE_CC);
-			
-			//Notification Data
-			
-			
-			NotificationData data = ItemUtil.prepareNotificationDataOnResourceCreation(itemdata,toEmail,ccEmail,"Resource Created in CPE");
-			sendNotification(data);
+				boolean isUnique = ItemSessionBeanLocal.isUniqueFourExistsinResource(itemdata.getResourceTypeId(),itemdata.getResourceSubTypeId(),itemdata.getModelnumber(),itemdata.getVendor(),null);
+				
+				if(!isUnique) {
+					itemdata = ItemSessionBeanLocal.createItem(itemdata);
+					itemVo.setItemId(itemdata.getItemId());
+					// Audit entry
+					Map<String,Object> mapAudit = new HashMap<String, Object>();
+					mapAudit.put(AuditTagConstant.NAME,itemVo.getName());
+					mapAudit.put(AuditTagConstant.REFERENCEID,itemVo.getReferenceID());
+						
+					addToAuditDynamicMessage(AuditConstants.CREATE_RESOURCE, "Creating Resource  ",AuditConstants.CREATE_AUDIT_TYPE, mapAudit, iblSession);
+					
+					String toEmail = systemParameterFacadeLocal.getSystemParameterValue(SystemParameterConstants.EMAIL_ALIAS_RESOURCE_TO);
+					String ccEmail = systemParameterFacadeLocal.getSystemParameterValue(SystemParameterConstants.EMAIL_ALIAS_RESOURCE_CC);
+					String mobileNo = systemParameterFacadeLocal.getSystemParameterValue(SystemParameterConstants.MOBILE_NO_FOR_RESOURCE_SMS_NOTIFICATION);
+					
+					//Notification Data
+					
+					
+					NotificationData data = ItemUtil.prepareNotificationDataOnResourceCreation(itemdata,toEmail,ccEmail,mobileNo,"Resource Created in CPE");
+					sendNotification(data);
+				} else {
+					
+					throw new CreateBLException(" Resource already exists with combination of \n Resource Type :  "+itemVo.getResourceTypeVO().getResourceTypeName() + 
+							 "\n Resource Subtype : "+itemVo.getResourceTypeVO().getResourceSubTypeVO().getResourceSubTypeName()  + "" +
+							 "\n Model Number : "+ itemVo.getModelnumber()+
+							 "\n Vendor : "+itemVo.getVendor());
+					
+				}
 			
 			
 			}else{
@@ -218,6 +231,19 @@ public class ItemFacade extends BaseFacade implements ItemFacadeRemote,ItemFacad
 					throw new UpdateBLException("Resource Name " + itemVo.getName() +" Already Exists");
 				}
 			}
+			
+			
+			boolean isUnique = ItemSessionBeanLocal.isUniqueFourExistsinResource(itemVo.getResourceTypeVO().getResourceTypeId(),itemVo.getResourceTypeVO().getResourceSubTypeVO().getResourceSubTypeId(),itemVo.getModelnumber(),itemVo.getVendor(),itemVo.getItemId());
+			
+			if(!isUnique) { 
+				
+			} else {
+				throw new UpdateBLException(" Resource already exists with combination of \n Resource Type :  "+itemVo.getResourceTypeVO().getResourceTypeName() + 
+						 "\n Resource Subtype : "+itemVo.getResourceTypeVO().getResourceSubTypeVO().getResourceSubTypeName()  + "" +
+						 "\n Model Number : "+ itemVo.getModelnumber()+
+						 "\n Vendor : "+itemVo.getVendor());
+			}
+
 			
 			Map<String,Object> fieldValueMap = new LinkedHashMap<String, Object>();
 			fieldValueMap.put("systemgenerated", "N");
@@ -847,6 +873,47 @@ public class ItemFacade extends BaseFacade implements ItemFacadeRemote,ItemFacad
 		
 		
 		return ItemSessionBeanLocal.checkInventoryInWarehouse(inventoryNumber,warehouseId,inventoryStatus);
+		
+	}
+
+	@Override
+	public List<ComboData> getAllResourceTypeDataByResourceTypeId(
+			Long resourceTypeId,Long warehouseId) throws SearchBLException {
+		
+		List<ComboData> comboDatas = null;
+		
+		
+		List<ItemData> filterList = ItemSessionBeanLocal.getAllResourceTypeDataByResourceTypeId(resourceTypeId,warehouseId);
+		
+		if(filterList!=null && !filterList.isEmpty()) {
+			comboDatas = new ArrayList<ComboData>();
+			
+			for(ItemData itemData :filterList) {
+				comboDatas.add(new ComboData(itemData.getItemId(), itemData.getName()));
+			}
+		}
+		
+		return comboDatas;
+	}
+
+	@Override
+	public List<ComboData> getAllResourceTypeDataByResourceTypeAndSubTypeId(
+			Long resourceTypeId, Long resourceSubTypeId,Long warehouseId)
+			throws SearchBLException {
+		
+		List<ComboData> comboDatas = null;
+		
+		List<ItemData> filterList = ItemSessionBeanLocal.getAllResourceTypeDataByResourceTypeAndSubTypeId(resourceTypeId,resourceSubTypeId,warehouseId);
+		
+		if(filterList!=null && !filterList.isEmpty()) {
+			comboDatas = new ArrayList<ComboData>();
+			
+			for(ItemData itemData :filterList) {
+				comboDatas.add(new ComboData(itemData.getItemId(), itemData.getName()));
+			}
+		}
+		
+		return comboDatas;
 		
 	}
 }

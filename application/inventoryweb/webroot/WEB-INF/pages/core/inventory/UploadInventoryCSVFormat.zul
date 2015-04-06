@@ -1,9 +1,9 @@
 <zk>
-<window  id="uploadInventorycsvformat" title="${labels.inventory.csvformat}" border="normal" width="740px" height="400px" 
+<window  id="uploadInventorycsvformat" title="${labels.inventory.csvformat}" border="normal" width="800px" height="400px" 
 position="center,center" closable="true" style="overflow-x:hidden;overflow-y:auto;" apply="com.elitecore.cpe.web.composer.inventory.UploadInventoryCSVFormatComposer">
 		  
 	<hlayout height="100%" width="100%" style="overflow-x:hidden;overflow-y:auto;">
-			 <vlayout width="740px" >
+			 <vlayout width="800px" >
 				<hbox width="100%" style="border: 1px solid #ccc;border-width: 0 1px;">
 <!-- 		            <div align="right"> -->
 <!-- 		                <menubar id="actionMenubar" autodrop="true" width="798px" sclass="top-menu"/> -->
@@ -11,13 +11,13 @@ position="center,center" closable="true" style="overflow-x:hidden;overflow-y:aut
 		        </hbox>
 		    	
 	            <separator bar="false" />
-				<div sclass="sectionTitle" width="740px">
+				<div sclass="sectionTitle" width="800px">
 					<label value="${labels.inventory.csvformat}" style="font-weight: bold;" />
 				</div>
 		        <separator bar="false" />
 		        <hlayout width="100%">
-					<vlayout width="740px">
-						<grid id="csvformatgrid" width="700px"  oddRowSclass="non-odd" sclass="viewGrid" zclass="none">
+					<vlayout width="800px">
+						<grid id="csvformatgrid" width="750px"  oddRowSclass="non-odd" sclass="viewGrid" zclass="none">
 							<columns>
 								<column width="50px" />
 			                    <column width="150px" />

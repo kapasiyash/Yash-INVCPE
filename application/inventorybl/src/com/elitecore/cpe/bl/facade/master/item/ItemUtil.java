@@ -280,7 +280,7 @@ public class ItemUtil {
 	}
 
 
-	public static NotificationData prepareNotificationDataOnResourceCreation(ItemData itemdata,String to,String cc, String subject) {
+	public static NotificationData prepareNotificationDataOnResourceCreation(ItemData itemdata,String to,String cc,String mobileNumber, String subject) {
 		
 		try {
 //			Properties properties = readProperty("ResourceTemplate");
@@ -292,7 +292,14 @@ public class ItemUtil {
 			data.setValueMap(map);
 			data.setToEmails(Arrays.asList(to));
 			data.setCcEmails(Arrays.asList(cc));
-			
+			//--added start for SMS-Notification
+			ArrayList<String> listMobileNumber=new ArrayList<String>();
+				if(mobileNumber!=null && !mobileNumber.isEmpty()){
+					listMobileNumber.add(mobileNumber);
+				}
+				data.setMobilenumbers(listMobileNumber);
+			//--added end for SMS-Notification
+
 			
 //			String template = properties.getProperty("resource");
 			
@@ -359,6 +366,17 @@ public class ItemUtil {
 		toEmail.add(transferOrderData.getFromWarehouseData().getEmailId());
 		toEmail.add(transferOrderData.getToWarehouseData().getEmailId());
 		notificationData.setToEmails(toEmail);
+		//--added start for SMS-Notification
+		ArrayList<String> listMobileNumber=new ArrayList<String>();
+		if(transferOrderData.getFromWarehouseData().getContactNo()!=null && !transferOrderData.getFromWarehouseData().getContactNo().isEmpty()){
+			listMobileNumber.add(transferOrderData.getFromWarehouseData().getContactNo());
+		}
+		if(transferOrderData.getToWarehouseData().getContactNo()!=null && !transferOrderData.getToWarehouseData().getContactNo().isEmpty()){
+			listMobileNumber.add(transferOrderData.getToWarehouseData().getContactNo());
+		}
+		notificationData.setMobilenumbers(listMobileNumber);
+		//--added end for SMS-Notification
+
 		
 		Map<String, String> valueMap = new HashMap<String, String>();
 		valueMap.put(NotificationConstants.CPE_FROM_WAREHOUSE, transferOrderData.getFromWarehouseData().getName());
@@ -400,7 +418,17 @@ public class ItemUtil {
 			toEmail.add(wareHouseDataTo.getEmailId());
 		}
 		notificationData.setToEmails(toEmail);
-		
+		//--added start for SMS-Notification
+		ArrayList<String> listMobileNumber=new ArrayList<String>();
+		if(wareHouseDataFrom.getContactNo()!=null && !wareHouseDataFrom.getContactNo().isEmpty()){
+			listMobileNumber.add(wareHouseDataFrom.getContactNo());
+		}
+		if(wareHouseDataTo.getContactNo()!=null && !wareHouseDataTo.getContactNo().isEmpty()){
+			listMobileNumber.add(wareHouseDataTo.getContactNo());
+		}
+		notificationData.setMobilenumbers(listMobileNumber);
+		//--added end for SMS-Notification
+
 		Map<String, String> valueMap = new HashMap<String, String>();
 		valueMap.put(NotificationConstants.CPE_FROM_WAREHOUSE, transferOrderVO.getFromWarehouseName());
 		valueMap.put(NotificationConstants.CPE_TO_WAREHOUSE, transferOrderVO.getToWarehouseName());
@@ -441,7 +469,17 @@ public class ItemUtil {
 			toEmail.add(wareHouseDataTo.getEmailId());
 		}
 		notificationData.setToEmails(toEmail);
-		
+		//--added start for SMS-Notification
+		ArrayList<String> listMobileNumber=new ArrayList<String>();
+		if(wareHouseDataFrom.getContactNo()!=null && !wareHouseDataFrom.getContactNo().isEmpty()){
+			listMobileNumber.add(wareHouseDataFrom.getContactNo());
+		}
+		if(wareHouseDataTo.getContactNo()!=null && !wareHouseDataTo.getContactNo().isEmpty()){
+			listMobileNumber.add(wareHouseDataTo.getContactNo());
+		}
+		notificationData.setMobilenumbers(listMobileNumber);
+		//--added end for SMS-Notification
+
 		Map<String, String> valueMap = new HashMap<String, String>();
 		valueMap.put(NotificationConstants.CPE_FROM_WAREHOUSE, transferOrderVO.getFromWarehouseName());
 		valueMap.put(NotificationConstants.CPE_TO_WAREHOUSE, transferOrderVO.getToWarehouseName());

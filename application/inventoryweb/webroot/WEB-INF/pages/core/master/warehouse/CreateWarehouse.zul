@@ -35,7 +35,7 @@
 												   <label value="*" style="color:red;" />
 													
 												</cell>
-												<cell colspan="3" > <textbox id="txtWareHouseCodeName" width="140px" maxlength="50" constraint="/^[a-zA-Z0-9_ ]*/  : Please enter proper alphanumeric Warehouse Code."/></cell>
+												<cell colspan="3" > <textbox id="txtWareHouseCodeName" width="140px" maxlength="50" constraint="no empty,/^[a-zA-Z0-9_. ]*/  : Please enter proper alphanumeric Warehouse Code."/></cell>
 											</row>
 											<row>
 												<cell>

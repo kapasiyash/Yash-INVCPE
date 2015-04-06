@@ -16,8 +16,29 @@ public class NotificationData implements Serializable {
 	private List<String> toEmails;
 	private List<String> ccEmails;
 	private Map<String, String> valueMap;
+	
+	//Used only for Threshold Notification
+	private Long notificationHistoryId;
+	
+	
+	
+
+	public Long getNotificationHistoryId() {
+		return notificationHistoryId;
+	}
+	public void setNotificationHistoryId(Long notificationHistoryId) {
+		this.notificationHistoryId = notificationHistoryId;
+	}
 
 	//--added start
+	private List<String> mobilenumbers;
+
+	public List<String> getMobilenumbers() {
+		return mobilenumbers;
+	}
+	public void setMobilenumbers(List<String> mobilenumbers) {
+		this.mobilenumbers = mobilenumbers;
+	}
 	private String mobileNumber;
 	public String getMobileNumber() {
 		return mobileNumber;

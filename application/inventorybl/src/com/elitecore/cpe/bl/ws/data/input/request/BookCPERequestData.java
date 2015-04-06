@@ -3,30 +3,38 @@ package com.elitecore.cpe.bl.ws.data.input.request;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 import com.elitecore.cpe.bl.ws.data.input.vo.ReserveAllocateRequestVO;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NICE_BookCPEResourceRequest", propOrder = {
+    "orderLineItemID",
+    "operationType",
+    "isResourceRecoverable",
+    "bookInventoryList"
+})
 public class BookCPERequestData implements Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
 
 	private String orderLineItemID;
+	@XmlElement(required=true)
 	private Integer operationType;
 	private String isResourceRecoverable;
-/*	private String resourceId;
-	private Integer noOfResource;
-  	private String warehouseName;
-	private String warehouseCode;
-*/	private List<ReserveAllocateRequestVO> ReserveAllocateRequestVO;
+	@XmlElement(name = "NICE_BookInventoryList")
+	private BookInventoryList bookInventoryList;
 	
-	public List<ReserveAllocateRequestVO> getReserveAllocateRequestVO() {
-		return ReserveAllocateRequestVO;
+	
+	public BookInventoryList getBookInventoryList() {
+		return bookInventoryList;
 	}
-	public void setReserveAllocateRequestVO(
-			List<ReserveAllocateRequestVO> reserveAllocateRequestVO) {
-		ReserveAllocateRequestVO = reserveAllocateRequestVO;
+	public void setBookInventoryList(BookInventoryList bookInventoryList) {
+		this.bookInventoryList = bookInventoryList;
 	}
 	public String getIsResourceRecoverable() {
 		return isResourceRecoverable;
@@ -41,7 +49,7 @@ public class BookCPERequestData implements Serializable{
 		this.orderLineItemID = orderLineItemID;
 	}
 	
-	@XmlElement(required=true)
+	
 	public Integer getOperationType() {
 		return operationType;
 	}
@@ -76,23 +84,15 @@ public class BookCPERequestData implements Serializable{
 		this.warehouseCode = warehouseCode;
 	}
 		*/
-	
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("BookCPERequestData [");
-		if(orderLineItemID!=null){
-		builder.append("orderLineItemID=").append(orderLineItemID);
-		}
-		if(operationType!=null){
-		builder.append(", operationType=").append(operationType);
-		}
-		if(ReserveAllocateRequestVO!=null){
-		builder.append(", ReserveAllocateRequestVO=").append(ReserveAllocateRequestVO);
-		}
-		builder.append("]");
-		return builder.toString();
+		return "BookCPERequestData [orderLineItemID=" + orderLineItemID
+				+ ", operationType=" + operationType
+				+ ", isResourceRecoverable=" + isResourceRecoverable
+				+ ", bookInventoryList=" + bookInventoryList + "]";
 	}
+	
+	
 	
 	
 }

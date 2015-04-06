@@ -1,0 +1,25 @@
+package com.elitecore.cpe.bl.vo.order;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+public class TransferOrderVO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Long transferOrderId;
+	private String transferOrderNo;
+	private Timestamp createdate;
+	private Timestamp updatedate;
+	private String createdby;
+	private String updatedby;	
+	private Long fromWarehouseId;
+	private Long toWarehouseId;
+	
+	private String inventoryOrderStatusId;
+	private String remarks;
+
+}

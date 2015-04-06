@@ -29,6 +29,7 @@ import org.zkoss.zul.Tabbox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
+import com.elitecore.cpe.bl.constants.policy.CPECommonConstants;
 import com.elitecore.cpe.bl.delegates.inventorymgt.InventoryManagementBD;
 import com.elitecore.cpe.bl.vo.inventorymgt.InventoryUploadVO;
 import com.elitecore.cpe.bl.vo.inventorymgt.PlaceOrderVO;
@@ -213,8 +214,19 @@ public class SearchPlaceOrderDetailComposer extends BaseModuleViewComposer{
 			//item.appendChild(new Listcell(data.getOrderNo()));
 			item.appendChild(new Listcell(data.getFromwarehouse()));
 			item.appendChild(new Listcell(data.getTowarehouse()));
+			if(data.getOrderType()!=null) {
+				if(data.getOrderType() == CPECommonConstants.AUTOMATIC_PLACEORDER) {
+					item.appendChild(new Listcell("Automatic"));
+				} else if(data.getOrderType() == CPECommonConstants.MANUAL_PLACEORDER) {
+					item.appendChild(new Listcell("Manual"));
+				}
+			} else {
+				item.appendChild(new Listcell("-"));
+			}
+			
 			item.appendChild(new Listcell(data.getResourceType()));
 			item.appendChild(new Listcell(GeneralUtility.displayValueIfNull((data.getResourceSubtype()))));
+			item.appendChild(new Listcell(GeneralUtility.displayValueIfNull((data.getResourceName()))));
 			item.appendChild(new Listcell(data.getQuantity().toString()));
 			
 			item.appendChild(new Listcell(data.getStatus()));
@@ -250,7 +262,7 @@ public class SearchPlaceOrderDetailComposer extends BaseModuleViewComposer{
 					edit.setAttribute("ACTION",  "ACCEPT_TRANSFER");
 					
 					edit.setId(data.getOrderNo()+"_"+data.getFromwarehouse()+"_"+data.getTowarehouse()+"_"+
-					data.getQuantity()+"_"+data.getResourceType()+"_"+data.getResourceSubtype());
+					data.getQuantity()+"_"+data.getResourceType()+"_"+data.getResourceSubtype()+"_"+data.getResourceName());
 					operationCell.appendChild(edit);
 					item.appendChild(new Listcell(""));
 					item.appendChild(operationCell);
@@ -384,6 +396,7 @@ public class SearchPlaceOrderDetailComposer extends BaseModuleViewComposer{
 			argMap.put("QUANTITY",ids[3]);
 			argMap.put("RESOURCETYPE",ids[4]);
 			argMap.put("RESOURCESUBTYPE",ids[5]);
+			argMap.put("RESOURCE",ids[6]);
 			argMap.put("placeOrderSummaryObj",this);
 			
 			Set<Long> userWarehouses = getBDSessionContext().getBLSession().getUserWarehouseMappings();

@@ -95,8 +95,8 @@
 										</grid>
 										<separator bar="false" />
 										<separator bar="false" />
-										<listbox visible="false" id="searchResultGrid"  mold="paging" height="150px" pagingPosition="top" pageSize="${$composer.pageSize}"   
-												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="99%">
+										<listbox visible="false" id="searchResultGrid"  mold="paging" height="350px" pagingPosition="top" pageSize="${$composer.pageSize}"   
+												 style="padding-left:1px;padding-top:0px;margin:0px;" sclass="formList" oddRowSclass="non odd"  width="95%">
 										<listhead sizable="true">
 											<listheader label="${labels.global.sr.no}" width="45px" />
 											<listheader label="${labels.transfer.batchNumber}" width="12%" sort="auto(batchNumber)" />

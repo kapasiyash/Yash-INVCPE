@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_MarkCPEAsFaultyWithOwnerChangResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>0</responseCode>
+         <responseMessage>Success</responseMessage>
+         <responseVo>
+            <inventoryNumber>INVMIG117</inventoryNumber>
+            <inventoryStatus>Faulty</inventoryStatus>
+         </responseVo>
+         <responseVo>
+            <inventoryNumber>INV90000016</inventoryNumber>
+            <inventoryStatus>Faulty</inventoryStatus>
+         </responseVo>
+      </NICE_MarkCPEAsFaultyWithOwnerChangResponse>
+   </soap:Body>
+</soap:Envelope>

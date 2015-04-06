@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.NamedQuery;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
@@ -652,6 +653,7 @@ public class ItemSessionBean extends BaseSessionBean implements ItemSessionBeanL
 			if(inventoryData.getItemData().getResourceSubTypeData()!=null) {
 				checkInventoryVO.setResourceSubtype(inventoryData.getItemData().getResourceSubTypeData().getName());
 			}
+			checkInventoryVO.setResource(inventoryData.getItemData().getName());
 			checkInventoryVO.setResourceType(inventoryData.getItemData().getResourceType().getName());
 			checkInventoryVO.setWarehouseName(inventoryData.getWarehousedata().getName());
 			
@@ -664,6 +666,105 @@ public class ItemSessionBean extends BaseSessionBean implements ItemSessionBeanL
 		
 		
 		return checkInventoryVO;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean isUniqueFourExistsinResource(Long resourceTypeId,
+			Long resourceSubTypeId, String modelnumber, String vendor,Long ignoreResourceId) {
+		
+		Logger.logDebug(MODULE, "inside  isUniqueFourExistsinResource");
+		Boolean flag=false;
+		List<ItemData> data=null;
+		try {
+			
+			if(ignoreResourceId!=null) {
+				
+				data = getEntityManager().createNamedQuery("ItemData.checkUniqueIgnoringResource")
+				.setParameter("resourceTypeId", resourceTypeId)
+				.setParameter("resourceSubTypeId", resourceSubTypeId)
+				.setParameter("modelnumber", modelnumber)
+				.setParameter("itemId", ignoreResourceId)
+				.setParameter("vendor", vendor).getResultList();
+				
+			} else {
+				
+				data = getEntityManager().createNamedQuery("ItemData.checkUnique")
+						.setParameter("resourceTypeId", resourceTypeId)
+						.setParameter("resourceSubTypeId", resourceSubTypeId)
+						.setParameter("modelnumber", modelnumber)
+						.setParameter("vendor", vendor).getResultList();
+			}
+			
+		 
+			
+			
+			
+			if(data!=null && !data.isEmpty()) {
+				flag = true;
+			}
+			
+		
+		}catch(NoResultException e) {
+			return flag;
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		return flag;
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ItemData> getAllResourceTypeDataByResourceTypeId(
+			Long resourceTypeId, Long warehouseId) throws SearchBLException {
+	
+		String query = "select o from ItemData o where o.itemId in (select a.itemId from InventoryData a where a.warehouseId=:warehouseId) and o.resourceTypeId=:resourceTypeId";
+		
+		try {
+			
+			List<ItemData> list = getEntityManager().createQuery(query)
+			.setParameter("warehouseId", warehouseId)
+			.setParameter("resourceTypeId", resourceTypeId)
+			.getResultList();
+			
+			
+			return list;
+		}catch(NoResultException e) {
+			return null;
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new SearchBLException("Search getAllResourceTypeDataByResourceTypeId operation failed, reason: " + e.getMessage(), e);
+		}
+		
+	}
+
+	@Override
+	public List<ItemData> getAllResourceTypeDataByResourceTypeAndSubTypeId(
+			Long resourceTypeId, Long resourceSubTypeId, Long warehouseId)
+			throws SearchBLException {
+		
+		String query = "select o from ItemData o where o.itemId in (select a.itemId from InventoryData a where a.warehouseId=:warehouseId) and o.resourceTypeId=:resourceTypeId and o.resourceSubTypeId=:resourceSubTypeId";
+		
+		try {
+			
+			List<ItemData> list = getEntityManager().createQuery(query)
+			.setParameter("warehouseId", warehouseId)
+			.setParameter("resourceTypeId", resourceTypeId)
+			.setParameter("resourceSubTypeId", resourceSubTypeId)
+			.getResultList();
+			
+			
+			return list;
+		}catch(NoResultException e) {
+			return null;
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new SearchBLException("Search getAllResourceTypeDataByResourceTypeAndSubTypeId operation failed, reason: " + e.getMessage(), e);
+		}
+		
+		
 	}
 
 }

@@ -89,7 +89,7 @@ public class WarehouseData implements Serializable{
 
 	
 	
-	@Column(name="WAREHOUSECODE")
+	@Column(name="WAREHOUSECODE",unique=true)
 	public String getWarehouseCode() {
 		return warehouseCode;
 	}

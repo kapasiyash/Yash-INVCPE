@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_ReleaseCPEResourceResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>err-211044</responseCode>
+         <responseMessage>Invalid Operation Type, Possible value is Release</responseMessage>
+      </NICE_ReleaseCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

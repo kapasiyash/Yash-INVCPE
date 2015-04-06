@@ -1,30 +1,43 @@
 package com.elitecore.cpe.bl.ws.data.input.request;
 
 import java.io.Serializable;
-import java.util.List;
 
-import com.elitecore.cpe.bl.ws.data.input.vo.CPEInventoryVO;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NICE_MarkCPEAsFaultyWithOwnerChangRequest", propOrder = {
+    "warehouseCode",
+    "faultyInventoryList"
+})
 public class MarkCPEAsFaultyRequestVO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private String warehouseCode;
-	private List<CPEInventoryVO> listCpeInventoryVOs;
+	@XmlElement(name = "NICE_FaultyInventoryList", required = true)
+	private FaultyInventoryList faultyInventoryList;
+	
+	
 	public String getWarehouseCode() {
 		return warehouseCode;
 	}
 	public void setWarehouseCode(String warehouseCode) {
 		this.warehouseCode = warehouseCode;
 	}
-	public List<CPEInventoryVO> getListCpeInventoryVOs() {
-		return listCpeInventoryVOs;
+	public FaultyInventoryList getFaultyInventoryList() {
+		return faultyInventoryList;
 	}
-	public void setListCpeInventoryVOs(List<CPEInventoryVO> listCpeInventoryVOs) {
-		this.listCpeInventoryVOs = listCpeInventoryVOs;
+	public void setFaultyInventoryList(FaultyInventoryList faultyInventoryList) {
+		this.faultyInventoryList = faultyInventoryList;
 	}
 	@Override
 	public String toString() {
 		return "MarkCPEAsFaultyRequestVO [warehouseCode=" + warehouseCode
-				+ ", listCpeInventoryVOs=" + listCpeInventoryVOs + "]";
+				+ ", faultyInventoryList=" + faultyInventoryList + "]";
 	}
+	
+	
+	
 }

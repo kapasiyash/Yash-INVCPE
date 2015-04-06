@@ -1,0 +1,2 @@
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+package com.elitecore.cpe.bl.ws.data.input.vo;

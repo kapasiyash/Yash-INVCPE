@@ -2,6 +2,16 @@ package com.elitecore.cpe.bl.ws.data.input.vo;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NICE_Attribute", propOrder = {
+    "attributeName",
+    "attributeValue"
+})
 public class InventoryAttributeVO implements Serializable{
 
 	
@@ -10,8 +20,12 @@ public class InventoryAttributeVO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@XmlElement(name="name")
 	private String attributeName;
+	@XmlElement(name="value")
 	private String attributeValue;
+	
+	
 	public String getAttributeName() {
 		return attributeName;
 	}

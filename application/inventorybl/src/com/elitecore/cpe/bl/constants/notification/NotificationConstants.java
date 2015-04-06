@@ -37,4 +37,6 @@ public class NotificationConstants implements Serializable {
 	public static final String ACCEPT_REJECT_TRANSFER_ORDER = "ACCEPT-REJECT_TRANSFER_ORDER";
 	public static final String TRANSFER_ORDER_PLACEORDER = "TRANSFER_ORDER_PLACEORDER";
 	
+	public static final String PENDING_ORDER_NOTIFICATION = "PENDING_ORDER_NOTIFICATION";
+	
 }

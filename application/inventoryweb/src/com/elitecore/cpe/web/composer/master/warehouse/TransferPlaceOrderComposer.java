@@ -46,6 +46,7 @@ public class TransferPlaceOrderComposer extends BaseModuleComposer {
 	private Window transferPlaceOrderWin;
 //	private Grid viewwsauditgrid;
 	private Label lblPlaceOrderNoValue,lblPlaceOrderStatus,lblQuantity,lblAcceptQuantity,lblQuantity1,lblAcceptQuantity1;
+	private Label lblResource,lblResourceType,lblResourceSubType;
 	private Textbox txtRemark;
 //	private SearchWsAuditVO auditVO;
 //	lblTransferNo
@@ -78,6 +79,20 @@ public class TransferPlaceOrderComposer extends BaseModuleComposer {
 		if(arg.containsKey("TOWHNAME")) {
 			String toWarehouse = (String) arg.get("TOWHNAME");
 			cmbWarehouse.setValue(toWarehouse);
+			
+		}
+		
+		if(arg.containsKey("RESOURCETYPE")) {
+			lblResourceType.setValue((String) arg.get("RESOURCETYPE"));
+			
+		}
+		if(arg.containsKey("RESOURCESUBTYPE")) {
+			lblResourceSubType.setValue((String) arg.get("RESOURCESUBTYPE"));
+			
+		}
+		
+		if(arg.containsKey("RESOURCE")) {
+			lblResource.setValue((String) arg.get("RESOURCE"));
 			
 		}
 		
@@ -134,10 +149,10 @@ public class TransferPlaceOrderComposer extends BaseModuleComposer {
 		
 		Logger.logDebug(MODULE, "after composer ");
 		Logger.logDebug(MODULE, "order No : "+arg.get("ORDERNO"));
-		PlaceOrderVO placeOrderVO=new PlaceOrderVO();
-		placeOrderVO.setOrderNo(arg.get("ORDERNO").toString());
+		 PlaceOrderVO placeOrderVO1=new PlaceOrderVO();
+		placeOrderVO1.setOrderNo(arg.get("ORDERNO").toString());
 		InventoryManagementBD inventoryMgtBD = new InventoryManagementBD(getBDSessionContext());
-		placeOrderVO=inventoryMgtBD.searchPlaceOrderDataByOrderNo(placeOrderVO);
+		final PlaceOrderVO placeOrderVO = inventoryMgtBD.searchPlaceOrderDataByOrderNo(placeOrderVO1);
 		
 		populateData(placeOrderVO);
 		final Long acceptedQuantity = placeOrderVO.getAcceptquantity();
@@ -167,6 +182,42 @@ public class TransferPlaceOrderComposer extends BaseModuleComposer {
 									MessageUtility.failureInformation("Error", "Inventory Already Added");
 								}
 							}
+							
+							if(checkInventoryVO.getResourceType().equals(placeOrderVO.getResourceType())) {
+								
+								if(placeOrderVO.getResourceSubtype()!=null) {
+									
+									if(!placeOrderVO.getResourceSubtype().equals(checkInventoryVO.getResourceSubtype())) {
+										isPresent = true;
+										MessageUtility.failureInformation("Error", "Please select Inventory with same resource type, subtype and resource name as per place order");
+									}
+									
+								} else {
+									if(placeOrderVO.getResourceName()!=null ) {
+										
+										if(!placeOrderVO.getResourceName().equals(checkInventoryVO.getResource())) {
+											isPresent = true;
+											MessageUtility.failureInformation("Error", "Please select Inventory with same resource type, subtype and resource name as per place order");
+										}
+										
+									}
+								}
+								
+							} else {
+								isPresent = true;
+								MessageUtility.failureInformation("Error", "Please select Inventory with same resource type, subtype and resource name as per place order");
+							}
+							
+							String key1 = checkInventoryVO.getResourceType()+"#"+checkInventoryVO.getResourceSubtype()+"#"+checkInventoryVO.getResource();
+							String key2 = placeOrderVO.getResourceType()+"#"+placeOrderVO.getResourceSubtype()+"#"+placeOrderVO.getResourceName();
+							
+							Logger.logDebug(MODULE, "Inventory Key :: "+key1);
+							Logger.logDebug(MODULE, "PlaceOrder Key :: "+key2);
+							
+							/*if(!key1.equals(key2)) {
+								isPresent = true;
+								MessageUtility.failureInformation("Error", "Inventory Not of same type of Place Order");
+							}*/
 							
 							if(!isPresent) {
 								modelList.add(checkInventoryVO);
@@ -198,15 +249,26 @@ public class TransferPlaceOrderComposer extends BaseModuleComposer {
 				if(txtRemoveInventoryId.getValue()!=null && !txtRemoveInventoryId.getValue().isEmpty()) {
 					
 					if(modelList!=null && !modelList.isEmpty()) {
+						
 						Iterator<CheckInventoryVO> iterator =  modelList.iterator();
+						boolean isPresent = false;
 						while(iterator.hasNext()) {
 							if(iterator.next().getInventoryNumber().equals(txtRemoveInventoryId.getValue())) {
 								iterator.remove();
+								isPresent = true;
+								resetComponents(txtRemoveInventoryId, txtRemoveInventoryId);
 							}
 							
 						}
+						
+						if(!isPresent) {
+							MessageUtility.failureInformation("Error", "No Inventory Added with this Inventory No");
+							resetComponents(txtRemoveInventoryId, txtRemoveInventoryId);
+						}
+						
 						searchResultGrid.setModel(modelList);
 						searchResultGrid.setItemRenderer(new InventoryTransferRenderer());
+					
 					}
 					
 					
@@ -233,6 +295,7 @@ public class TransferPlaceOrderComposer extends BaseModuleComposer {
 			item.appendChild(new Listcell(data.getInventoryNumber()));
 			item.appendChild(new Listcell(data.getInventoryStatus()));
 			item.appendChild(new Listcell(data.getWarehouseName()));
+			item.appendChild(new Listcell(data.getResource()));
 			item.appendChild(new Listcell(data.getResourceType()));
 			item.appendChild(new Listcell(data.getResourceSubtype()));
 		}

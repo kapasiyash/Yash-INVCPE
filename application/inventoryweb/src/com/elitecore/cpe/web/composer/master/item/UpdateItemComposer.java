@@ -356,11 +356,13 @@ public class UpdateItemComposer extends BaseModuleViewComposer{
 			if(cmbResourceType.getSelectedItem() != null){
 				ComboData selectedData = cmbResourceType.getSelectedItem().getValue();
 				resourceTypeVO.setResourceTypeId(selectedData.getId());
+				resourceTypeVO.setResourceTypeName(selectedData.getName());
 			}
 			if(cmbResourceSubType.getSelectedItem() != null){
 				ResourceSubTypeVO subTypeVO = new ResourceSubTypeVO();
 				ComboData selectedData = cmbResourceSubType.getSelectedItem().getValue();
 				subTypeVO.setResourceSubTypeId(selectedData.getId());
+				subTypeVO.setResourceSubTypeName(selectedData.getName());
 				resourceTypeVO.setResourceSubTypeVO(subTypeVO);
 			}
 			

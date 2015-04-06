@@ -1,0 +1,8 @@
+package com.elitecore.cpe.bl.agents.customs;
+
+public class Snippet {
+	public static void main(String[] args) {
+		AgentWorkerProvider
+	}
+}
+

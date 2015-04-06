@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:NICE_BookCPEResourceRequest>
+         <!--Optional:-->
+         <man:orderLineItemID/>
+         <man:operationType>33</man:operationType>
+         <!--Optional:-->
+         <man:isResourceRecoverable/>
+         <!--Optional:-->
+         <man:NICE_BookInventoryList>
+            <!--1 or more repetitions:-->
+            <man:NICE_BookInventory>
+               <!--Optional:-->
+               <man:inventoryNumber>INV90000005</man:inventoryNumber>
+               <!--Optional:-->
+               <man:serialNumber/>
+            </man:NICE_BookInventory>
+         </man:NICE_BookInventoryList>
+      </man:NICE_BookCPEResourceRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

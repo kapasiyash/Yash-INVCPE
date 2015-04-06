@@ -1,9 +1,6 @@
 package com.elitecore.cpe.bl.facade.notification;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -19,7 +16,6 @@ import com.elitecore.cpe.bl.constants.system.audit.AuditConstants;
 import com.elitecore.cpe.bl.constants.system.audit.AuditTagConstant;
 import com.elitecore.cpe.bl.constants.system.parameter.SystemParameterConstants;
 import com.elitecore.cpe.bl.data.common.ComboBoxData;
-import com.elitecore.cpe.bl.data.common.ComboData;
 import com.elitecore.cpe.bl.data.notification.DocumentTemplateDetailWrapperdata;
 import com.elitecore.cpe.bl.data.notification.DocumentTemplateWrapperdata;
 import com.elitecore.cpe.bl.data.notification.MessageTagWrapperData;
@@ -32,6 +28,7 @@ import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.Doc
 import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.MessageTag;
 import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.NotificationAudit;
 import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.SMSDocumentTemplateDetail;
+import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.ThresholdNotificationHistoryDetail;
 import com.elitecore.cpe.bl.exception.CreateBLException;
 import com.elitecore.cpe.bl.exception.SearchBLException;
 import com.elitecore.cpe.bl.exception.UpdateBLException;
@@ -43,7 +40,7 @@ import com.elitecore.cpe.bl.vo.configuration.notification.CheckValidDateForTempl
 import com.elitecore.cpe.bl.vo.configuration.notification.NotificationCategoryVO;
 import com.elitecore.cpe.bl.vo.configuration.notification.SearchDocumentTemplateVO;
 import com.elitecore.cpe.bl.vo.configuration.notification.ViewDocumentTemplateVO;
-import com.elitecore.cpe.bl.vo.master.ItemVO;
+import com.elitecore.cpe.bl.vo.order.OrderDetailVo;
 import com.elitecore.cpe.core.IBLSession;
 import com.elitecore.cpe.util.logger.Logger;
 import com.elitecore.cpe.util.notification.NotificationUtil;
@@ -502,48 +499,140 @@ public class NotificationFacade extends BaseFacade implements NotificationFacade
 	 */
 	@Override
 	public void sendNotificationService(NotificationData data) {
-		
+		Logger.logTrace(MODULE, "in sendNotificationService method");
 		try {
-			
+			//get notification parameter from system parameter -start
+			Map<String, String> systemparameter = systemParameterFacadeLocal.getAllSystemParameterValue();
 			if(data!=null) {
-				
 				List<DocumentTemplate> documentTemplates = notificationSessionBeanLocal.findDocumentTemplateByAliasAndDate(data.getAlias(),getCurrentTimestamp());
 				if(documentTemplates!=null && !documentTemplates.isEmpty()) {
 					DocumentTemplate documentTemplate = documentTemplates.get(0);
-					if(documentTemplate.getDocumentCategory().getEnableEmail()=='Y') {
-						Set<DocumentTemplateDetail> emailTemplate = documentTemplate.getDocumentTemplateDetails();
-						if(emailTemplate!=null && !emailTemplate.isEmpty()) {
-							DocumentTemplateDetail emailDoc = emailTemplate.iterator().next();
-							String body = new String(emailDoc.getTemplate());
-							boolean result = NotificationUtil.sendEmailNotification(data.getToEmails(), data.getCcEmails(), body, emailDoc.getSubject(), data.getValueMap());
-							
-							//Notification Audit
-							NotificationAudit notificationAudit = new NotificationAudit();
-							notificationAudit.setTo(NotificationUtil.prepareCommaSeparatedStringfromList(data.getToEmails()));
-							notificationAudit.setCc(NotificationUtil.prepareCommaSeparatedStringfromList(data.getCcEmails()));
-							notificationAudit.setCreateDate(getCurrentTimestamp());
-							notificationAudit.setDestincationSystem("EMAIL ALERT");
-							notificationAudit.setDocumentCategoryId(emailDoc.getDocumentTemplate().getDocumentCategoryId());
-							notificationAudit.setNotificationType("EMAIL");
-							
-							String emailBody = NotificationUtil.prepareEmailBody(data.getValueMap(),body);
-							String emailSubject = NotificationUtil.prepareEmailBody(data.getValueMap(),emailDoc.getSubject());
-							
-							notificationAudit.setSubject(emailSubject);
-							notificationAudit.setContent(emailBody.getBytes());
-							
-							if(result) {
-								notificationAudit.setDeliveryStatus("SUCCESS");
-							} else {
-								notificationAudit.setDeliveryStatus("FAIL");
+					String adminemaildId = systemparameter.get(SystemParameterConstants.ADMINISTRATOR_EMAILID);
+					String adminpassword = systemparameter.get(SystemParameterConstants.ADMINISTRATOR_PASSWORD);
+					String smtpHost=systemparameter.get(SystemParameterConstants.SMTP_HOST_IP_ADDRESS);
+					String smtpPort=systemparameter.get(SystemParameterConstants.SMTP_PORT);
+					//get notification parameter from system parameter -end
+						if(systemparameter.get(SystemParameterConstants.ENABLE_EMAIL_NOTIFICATION).equals("Yes")){
+								if(documentTemplate.getDocumentCategory().getEnableEmail()=='Y') {
+										Set<DocumentTemplateDetail> emailTemplate = documentTemplate.getDocumentTemplateDetails();
+										if(emailTemplate!=null && !emailTemplate.isEmpty()) {
+											DocumentTemplateDetail emailDoc = emailTemplate.iterator().next();
+											String body = new String(emailDoc.getTemplate());
+											//boolean result = NotificationUtil.sendEmailNotification(data.getToEmails(), data.getCcEmails(), body, emailDoc.getSubject(), data.getValueMap());
+											boolean result = NotificationUtil.sendEmailNotification(data.getToEmails(), data.getCcEmails(), body, emailDoc.getSubject(), data.getValueMap(),adminemaildId,adminpassword,smtpHost,smtpPort);
+				
+											//Notification Audit
+											NotificationAudit notificationAudit = new NotificationAudit();
+											notificationAudit.setTo(NotificationUtil.prepareCommaSeparatedStringfromList(data.getToEmails()));
+											notificationAudit.setCc(NotificationUtil.prepareCommaSeparatedStringfromList(data.getCcEmails()));
+											notificationAudit.setCreateDate(getCurrentTimestamp());
+											notificationAudit.setDestincationSystem("EMAIL ALERT");
+											notificationAudit.setDocumentCategoryId(emailDoc.getDocumentTemplate().getDocumentCategoryId());
+											notificationAudit.setNotificationType("EMAIL");
+											
+											String emailBody = NotificationUtil.prepareEmailBody(data.getValueMap(),body);
+											String emailSubject = NotificationUtil.prepareEmailBody(data.getValueMap(),emailDoc.getSubject());
+											
+											notificationAudit.setSubject(emailSubject);
+											notificationAudit.setContent(emailBody.getBytes());
+											
+											if(result) {
+												notificationAudit.setDeliveryStatus("SUCCESS");
+											} else {
+												notificationAudit.setDeliveryStatus("FAIL");
+											}
+											
+											notificationSessionBeanLocal.createNotificationAudit(notificationAudit);
+											
+											//Only Will be called in case of Threshold
+											if(data.getNotificationHistoryId()!=null) {
+												ThresholdNotificationHistoryDetail historyDetail = notificationSessionBeanLocal.findNotificationHistoryById(data.getNotificationHistoryId());
+												historyDetail.setNotificationAuditId(notificationAudit.getNotificationId());
+												notificationSessionBeanLocal.updateThresholdNotificationHistoryDetail(historyDetail);
+											}
+											
+										}
+								}
+						}
+						else{
+							Logger.logTrace(MODULE,"Email Notification is disabled in System parameter");
+						}
+					//added start for SMS-Notification
+					Logger.logTrace(MODULE,"SMS Notification ::"+systemparameter.get(SystemParameterConstants.ENABLE_SMS_NOTIFICATION).equals("Yes"));
+					if(systemparameter.get(SystemParameterConstants.ENABLE_SMS_NOTIFICATION).equals("Yes")){
+					 if(documentTemplate.getDocumentCategory().getEnableSms()=='Y'){
+						 String smsURL=systemparameter.get("SMS_URL");
+						 System.out.println("::smsurl:::"+smsURL);
+						System.out.println(":::::documentTemplate.getDocumentCategory().getEnableSms()::::"+documentTemplate.getDocumentCategory().getEnableSms());
+						Set<SMSDocumentTemplateDetail> smsTemplate = documentTemplate.getSmsDocumentTemplateDetails();
+						if(smsTemplate!=null && !smsTemplate.isEmpty()) {
+							SMSDocumentTemplateDetail smsDoc = smsTemplate.iterator().next();
+							String body = new String(smsDoc.getTemplate());
+							String smsBody = NotificationUtil.prepareEmailBody(data.getValueMap(),body);
+							ArrayList<String> listMobileNumber =new ArrayList<String>();
+/*							if(data.getAlias().equals((NotificationConstants.CREATE_RESOURCE))){
+								listMobileNumber.add(systemparameter.get("MOBILE_NO_FOR_RESOURCE_SMS_NOTIFICATION"));
+							}else{
+								
 							}
+<<<<<<< .mine
 							
 							notificationSessionBeanLocal.createNotificationAudit(notificationAudit);
 							
+							//Only Will be called in case of Threshold
+							if(data.getNotificationHistoryId()!=null) {
+								ThresholdNotificationHistoryDetail historyDetail = notificationSessionBeanLocal.findNotificationHistoryById(data.getNotificationHistoryId());
+								historyDetail.setNotificationAuditId(notificationAudit.getNotificationId());
+								notificationSessionBeanLocal.updateThresholdNotificationHistoryDetail(historyDetail);
+							}
+							
 						}
+=======
+*/							if(data.getMobilenumbers()!=null && !data.getMobilenumbers().isEmpty()){
+									listMobileNumber.addAll(data.getMobilenumbers());
+							}
+							Logger.logTrace(MODULE, "::::listMobileNumber::::"+listMobileNumber.toString());
+							if(!listMobileNumber.isEmpty()){
+								for(String mobileNumber:listMobileNumber){
+									boolean result = NotificationUtil.sendSMSNotification(smsBody,smsURL,mobileNumber);
+									Logger.logTrace(MODULE,"Message Body::"+body);
+									Logger.logTrace(MODULE,"Replaced Message Body::"+body);
+									Logger.logTrace(MODULE, "SMS STATUS:::"+result);
+									//Notification Audit
+									NotificationAudit notificationAudit = new NotificationAudit();
+									notificationAudit.setCreateDate(getCurrentTimestamp());
+									notificationAudit.setDestincationSystem("SMS ALERT");
+									notificationAudit.setDocumentCategoryId(smsDoc.getDocumentTemplate().getDocumentCategoryId());
+									notificationAudit.setNotificationType("SMS");
+									notificationAudit.setMobileNum(mobileNumber);
+									Logger.logTrace(MODULE,"::::SMS Body::"+smsBody);
+									notificationAudit.setContent(smsBody.getBytes());
+									if(result) {
+										notificationAudit.setDeliveryStatus("SUCCESS");
+									} else {
+										notificationAudit.setDeliveryStatus("FAIL");
+									}
+									
+									notificationSessionBeanLocal.createNotificationAudit(notificationAudit);
+									
+									//Only Will be called in case of Threshold
+									if(data.getNotificationHistoryId()!=null) {
+										ThresholdNotificationHistoryDetail historyDetail = notificationSessionBeanLocal.findNotificationHistoryById(data.getNotificationHistoryId());
+										historyDetail.setNotificationAuditId(notificationAudit.getNotificationId());
+										notificationSessionBeanLocal.updateThresholdNotificationHistoryDetail(historyDetail);
+									}
+									
+								}
+									
+								}else{
+									Logger.logTrace(MODULE, "Mobile Number is not found");
+								}
+							}
 					}
+				}
+					//added end for SMS-Notification
 					else {
-						Logger.logTrace(MODULE, "EMail is Disabled for the Document Category");
+						Logger.logTrace(MODULE, "SMS Notification  is Disabled in system Parameter");
 					}
 				} else {
 					Logger.logTrace(MODULE, "No Document Template found in this current timeframe");
@@ -552,6 +641,20 @@ public class NotificationFacade extends BaseFacade implements NotificationFacade
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}
+		
+	}
+
+
+	@Override
+	public boolean isEligiblePendingOrderNotification(
+			OrderDetailVo orderDetailVo) {
+		
+		try {
+			return notificationSessionBeanLocal.isEligiblePendingOrderNotification(orderDetailVo);
+		} catch (SearchBLException e) {
+			e.printStackTrace();
+			return false;
 		}
 		
 	}

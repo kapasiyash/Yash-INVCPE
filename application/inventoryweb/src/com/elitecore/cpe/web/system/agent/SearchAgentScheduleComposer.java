@@ -32,6 +32,7 @@ import com.elitecore.cpe.bl.exception.TechnicalException;
 import com.elitecore.cpe.bl.vo.system.agent.SearchAgentScheduleVO;
 import com.elitecore.cpe.web.base.ui.core.BaseSearchComposer;
 import com.elitecore.cpe.web.base.ui.module.BaseConstants;
+import com.elitecore.cpe.web.constants.ActionAlias;
 import com.elitecore.cpe.web.constants.Pages;
 import com.elitecore.cpe.web.core.exception.ModuleInitializationException;
 
@@ -85,6 +86,7 @@ public class SearchAgentScheduleComposer extends BaseSearchComposer{
 		/*if(isPermittedAction(ActionAlias.CREATE_AGENT_SCHEDULE)) {
 			btnCreate.setVisible(true);
 		}*/
+		
 		addViewTab("-1", "Create Agent Schedule", searchAgentScheduleTabbox, Pages.CREATE_AGENT_SCHEDULE,null,false);
 		
 		searchTab.setSelected(true);

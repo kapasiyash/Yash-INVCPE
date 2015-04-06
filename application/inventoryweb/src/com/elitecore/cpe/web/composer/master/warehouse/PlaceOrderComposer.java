@@ -18,18 +18,20 @@ import org.zkoss.zul.Listbox;
 import com.elitecore.cpe.bl.constants.policy.CPECommonConstants;
 import com.elitecore.cpe.bl.data.common.ComboData;
 import com.elitecore.cpe.bl.delegates.inventorymgt.InventoryManagementBD;
+import com.elitecore.cpe.bl.delegates.master.ItemBD;
 import com.elitecore.cpe.bl.delegates.master.WareHouseBD;
 import com.elitecore.cpe.bl.vo.inventorymgt.PlaceOrderVO;
 import com.elitecore.cpe.core.IBDSessionContext;
 import com.elitecore.cpe.util.logger.Logger;
 import com.elitecore.cpe.web.base.ui.module.BaseModuleViewComposer;
+import com.elitecore.cpe.web.base.ui.module.BaseModuleViewComposer.ComboItemDataRenderer;
 import com.elitecore.cpe.web.core.exception.ModuleInitializationException;
 import com.elitecore.cpe.web.utils.MessageUtility;
 
 public class PlaceOrderComposer extends BaseModuleViewComposer{
 
 	private Combobox cmbWarhouse;
-	private Combobox cmbResourceType,cmbResourceSubType;
+	private Combobox cmbResourceType,cmbResourceSubType,cmbResource;
 	Map<ComboData,List<ComboData>> resultMap=null;
 	private Intbox txtQuantity;
 	private Listbox viewThresholdGrid;
@@ -94,20 +96,7 @@ public class PlaceOrderComposer extends BaseModuleViewComposer{
 		cmbResourceType.setModel(new ListModelList<ComboData>(resourceTypecomboBoxDatas));
 		cmbResourceType.setItemRenderer(new ComboItemDataRenderer());
 		
-/*		PlaceOrderVO data = new PlaceOrderVO();
-		InventoryManagementBD inventoryManagementBD = new InventoryManagementBD(getBDSessionContext());
-		data.setFromwarehouseId(getViewEntityId());
-		
-		Logger.logTrace(module, "calling BD ");
-		List<PlaceOrderVO> listPlaceOrderVOs = inventoryManagementBD.searchPlaceOrderData(data);
-		Logger.logTrace(module, "after call "+listPlaceOrderVOs);
-		if(listPlaceOrderVOs != null && !listPlaceOrderVOs.isEmpty()){
-			viewPlaceOrderGrid.setModel(new ListModelList<PlaceOrderVO>(listPlaceOrderVOs));
-			
-			viewPlaceOrderGrid.setItemRenderer(new SearchListItemRenderer());
-		}else{
-			viewPlaceOrderGrid.setModel(new ListModelList<PlaceOrderVO>());
-		}  */
+
 		
 	}
 	
@@ -117,24 +106,57 @@ public class PlaceOrderComposer extends BaseModuleViewComposer{
 		Logger.logTrace(module, "Inside onChange$cmbResourceType event handler ");
 		//reset();
 			List<ComboData> comboBoxDatas=null;
-		try{
-			if(cmbResourceType.getSelectedItem() != null){
-			ComboData selectedData = cmbResourceType.getSelectedItem().getValue();
-			Logger.logInfo(module, "ComboData :"+selectedData.getId()+"::"+selectedData.getName());
-			 comboBoxDatas = resultMap.get(selectedData);
-			for(ComboData comboData1:comboBoxDatas){
-				Logger.logInfo(module, "ComboData :"+comboData1.getId()+"::"+comboData1.getName());
-			}
 		
+		
+		ItemBD itemBD = new ItemBD(getBDSessionContext());
+
+		cmbResourceSubType.setSelectedItem(null);
+		cmbResource.setSelectedItem(null);
+		
+		if (cmbResourceType.getSelectedItem() != null) {
+			ComboData selectedData = cmbResourceType.getSelectedItem().getValue();
+			
+			List<ComboData> resourceComboBoxDatas = itemBD.getAllResourceTypeDataByResourceTypeId(selectedData.getId(),getViewEntityId());
+			if(resourceComboBoxDatas!=null && !resourceComboBoxDatas.isEmpty()){
+				cmbResource.setModel(new ListModelList<ComboData>(resourceComboBoxDatas));
+				cmbResource.setItemRenderer(new ComboItemDataRenderer());
+			}
+			
+			Logger.logInfo("WAREHOUSE", "ComboData :" + selectedData.getId()+ "::" + selectedData.getName());
+			comboBoxDatas = resultMap.get(selectedData);
+			
+			
+
 			cmbResourceSubType.setModel(new ListModelList<ComboData>(comboBoxDatas));
 			cmbResourceSubType.setItemRenderer(new ComboItemDataRenderer());
-			
+
 		}
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
+		
 			
 	}
+	
+	
+	public void onChange$cmbResourceSubType(Event e) throws InterruptedException {
+		
+		cmbResource.setSelectedItem(null);
+		ItemBD itemBD = new ItemBD(getBDSessionContext());
+		if (cmbResourceType.getSelectedItem() != null) {
+			ComboData selectedTypeData = cmbResourceType.getSelectedItem().getValue();
+			
+			if (cmbResourceSubType.getSelectedItem() != null) {
+				ComboData selectedSubTypeData = cmbResourceSubType.getSelectedItem().getValue();
+				
+				List<ComboData> resourceComboBoxDatas = itemBD.getAllResourceTypeDataByResourceTypeAndSubTypeId(selectedTypeData.getId(),selectedSubTypeData.getId(),getViewEntityId());
+				if(resourceComboBoxDatas!=null && !resourceComboBoxDatas.isEmpty()){
+					cmbResource.setModel(new ListModelList<ComboData>(resourceComboBoxDatas));
+					cmbResource.setItemRenderer(new ComboItemDataRenderer());
+				}
+			}
+			
+		}	
+		
+	}
+	
 	public void onClick$btnCancel(Event event){
 		//resetComponents(cmbWarhouse,cmbResourceType,cmbResourceSubType);
 		Logger.logTrace(module, "Inside onClick$btnCancel event handler ");
@@ -154,14 +176,25 @@ public class PlaceOrderComposer extends BaseModuleViewComposer{
 			placeOrderVO.setTowarehouseId(selectedData.getId());
 		}
 		placeOrderVO.setFromwarehouseId(getViewEntityId());
-		if(cmbResourceType.getSelectedItem() != null) {
+			if(cmbResourceType.getSelectedItem() != null) {
 			ComboData selectedData = cmbResourceType.getSelectedItem().getValue();
 			placeOrderVO.setResourceTypeId(selectedData.getId());
 				if (cmbResourceSubType.getSelectedItem() != null) {
 					ComboData selectedData2 = cmbResourceSubType.getSelectedItem().getValue();
 					placeOrderVO.setResourceSubTypeId(selectedData2.getId());
 				}
+				
+				if(cmbResource.getSelectedItem() != null){
+					
+					ComboData selectedDataResource = cmbResource.getSelectedItem().getValue();
+					placeOrderVO.setItemId(selectedDataResource.getId());
+					
+				}
+				
 			}
+			
+			
+			
 			if (txtQuantity.getValue() != null) {
 				placeOrderVO.setQuantity(Long.parseLong(txtQuantity.getValue().toString()));
 			}

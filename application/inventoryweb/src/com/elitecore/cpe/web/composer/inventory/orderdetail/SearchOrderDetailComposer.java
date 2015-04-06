@@ -26,6 +26,7 @@ import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Vlayout;
 import org.zkoss.zul.Window;
 
+import com.elitecore.cpe.bl.constants.policy.CPECommonConstants;
 import com.elitecore.cpe.bl.delegates.inventorymgt.InventoryManagementBD;
 import com.elitecore.cpe.bl.delegates.transfer.InventoryTransferBD;
 import com.elitecore.cpe.bl.exception.SearchBLException;
@@ -347,6 +348,16 @@ public void onClick$btnReset(Event event) {
 		
 		item.appendChild(new Listcell(data.getFromwarehouse()));
 		item.appendChild(new Listcell(data.getTowarehouse()));
+		if(data.getOrderType()!=null) {
+			if(data.getOrderType() == CPECommonConstants.AUTOMATIC_PLACEORDER) {
+				item.appendChild(new Listcell("Automatic"));
+			} else if(data.getOrderType() == CPECommonConstants.MANUAL_PLACEORDER) {
+				item.appendChild(new Listcell("Manual"));
+			}
+		} else {
+			item.appendChild(new Listcell("-"));
+		}
+		
 		item.appendChild(new Listcell(data.getResourceType()));
 		item.appendChild(new Listcell(GeneralUtility.displayValueIfNull((data.getResourceSubtype()))));
 		item.appendChild(new Listcell(data.getQuantity().toString()));

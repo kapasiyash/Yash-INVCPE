@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_BookCPEResourceResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>0</responseCode>
+         <responseMessage>Success</responseMessage>
+         <NICE_BookResourceAvailabilityList>
+            <NICE_BookResourceAvailability>
+               <NICE_InventoryList>
+                  <NICE_Inventory>
+                     <inventoryNumber>INV90000005</inventoryNumber>
+                     <inventoryStatus>Reserved</inventoryStatus>
+                  </NICE_Inventory>
+               </NICE_InventoryList>
+            </NICE_BookResourceAvailability>
+         </NICE_BookResourceAvailabilityList>
+      </NICE_BookCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

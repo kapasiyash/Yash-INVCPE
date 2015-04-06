@@ -23,6 +23,9 @@ public class ConfigureThresholdVO implements Serializable{
 	
 	private Long resourceTypeID;
 	private Long resourceSubTypeID;
+	private Long itemId;
+	
+	private String automaticOrder;
 	private Long thresholdValue;
 	private Timestamp createdate;
 	private Timestamp updatedate;
@@ -31,6 +34,7 @@ public class ConfigureThresholdVO implements Serializable{
 	 private String systemgenerated;
 	 private String resourceTypeName;
 	 private String resourceSubTypeName;
+	 private String resourceName;
 	 private String thresholdType;
 	 
 	 private String email;
@@ -38,11 +42,38 @@ public class ConfigureThresholdVO implements Serializable{
 	 private Integer quantity;
 	 
 	 
-	 
+	 //Key to identify based on Subtype-Type and resourcename
+	 private String key;
 	 
 	 
 //	 private String resourceName;
 	 
+	 
+	 
+	public Long getItemId() {
+		return itemId;
+	}
+	public String getAutomaticOrder() {
+		return automaticOrder;
+	}
+	public void setAutomaticOrder(String automaticOrder) {
+		this.automaticOrder = automaticOrder;
+	}
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
+	}
+	public String getResourceName() {
+		return resourceName;
+	}
+	public void setResourceName(String resourceName) {
+		this.resourceName = resourceName;
+	}
 	public String getEmail() {
 		return email;
 	}

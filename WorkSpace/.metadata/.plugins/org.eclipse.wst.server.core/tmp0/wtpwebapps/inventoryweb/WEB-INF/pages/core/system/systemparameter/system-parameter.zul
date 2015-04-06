@@ -34,7 +34,7 @@ background: url('../images/combobtn.gif') no-repeat scroll 0 -1px transparent;
                     <separator bar="true" />
             	</vlayout>
             	<separator bar="true" />
-                    <separator bar="true" />
+                    <separator bar="false" />
 					</tabpanel>
             </tabpanels>
 		</tabbox>

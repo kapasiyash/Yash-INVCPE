@@ -29,6 +29,7 @@ import com.elitecore.cpe.bl.vo.master.AttributeVO;
 import com.elitecore.cpe.util.logger.Logger;
 import com.elitecore.cpe.web.base.ui.core.BaseSearchComposer;
 import com.elitecore.cpe.web.base.ui.module.BaseConstants;
+import com.elitecore.cpe.web.constants.ActionAlias;
 import com.elitecore.cpe.web.constants.CommonConstants;
 import com.elitecore.cpe.web.constants.Pages;
 import com.elitecore.cpe.web.core.exception.ModuleInitializationException;
@@ -61,7 +62,10 @@ public class SearchAttributeComposer  extends BaseSearchComposer {
 		init();
 		
 		searchResultGrid.setVisible(false);
-		addViewTab("-100", "Create Attribute", searchAttributeTabbox, Pages.CREATE_ATTRIBUTE_EVENT,null,false);
+		
+		if(isPermittedAction(ActionAlias.CREATE_ATTRIBUTE)) {
+			addViewTab("-100", "Create Attribute", searchAttributeTabbox, Pages.CREATE_ATTRIBUTE_EVENT,null,false);
+		}
 		searchTab.setSelected(true);
 	}
 

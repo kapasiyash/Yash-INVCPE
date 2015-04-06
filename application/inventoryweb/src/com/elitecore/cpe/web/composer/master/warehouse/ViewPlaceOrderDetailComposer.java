@@ -26,7 +26,7 @@ public class ViewPlaceOrderDetailComposer extends BaseModuleComposer{
 	private static final String MODULE = "VIEW_PLACE_ORDER_DETAIL";
 	private Window viewPlaceOrderDetailWin;
 	
-	private Label lbResourceTypeName,lbResourceSubTypeName;
+	private Label lbResourceTypeName,lbResourceSubTypeName,lbResourceName;
 	private Label lbCreatedDate,lbCreatedBy,lbUpdateDate,lbUpdatedBy;
 	private Label lbOrderNo,lbFrmWh,lbToWh,	lbTotalQty,	lbStatus,lbacceptDate,lbTransferOrderNo,lbAcceptQty,lbRemark,lbTransferRemark;
 	
@@ -85,6 +85,7 @@ public class ViewPlaceOrderDetailComposer extends BaseModuleComposer{
 			if(data.getTransferRemark()!=null){
 			lbTransferRemark.setValue(data.getTransferRemark());
 			}
+			lbResourceName.setValue(data.getResourceName());
 			lbResourceSubTypeName.setValue(data.getResourceSubtype());
 			lbResourceTypeName.setValue(data.getResourceType());
 			lbCreatedBy.setValue(GeneralUtility.displayValueIfNull(data.getCreatedby()));

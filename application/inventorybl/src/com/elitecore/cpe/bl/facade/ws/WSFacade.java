@@ -35,6 +35,7 @@ import com.elitecore.cpe.bl.session.master.attribute.AttributeSessionBeanLocal;
 import com.elitecore.cpe.bl.session.master.warehouse.WarehouseSessionBeanLocal;
 import com.elitecore.cpe.bl.session.system.internal.SystemInternalSessionBeanLocal;
 import com.elitecore.cpe.bl.session.system.systemparameter.SystemParameterSessionBeanLocal;
+import com.elitecore.cpe.bl.ws.data.input.request.AttributeList;
 import com.elitecore.cpe.bl.ws.data.input.request.BookCPERequestData;
 import com.elitecore.cpe.bl.ws.data.input.request.MarkCPEAsFaultyRequestVO;
 import com.elitecore.cpe.bl.ws.data.input.request.ReleaseCPERequestVO;
@@ -42,10 +43,12 @@ import com.elitecore.cpe.bl.ws.data.input.request.ResourceAvailibilityRequestDat
 import com.elitecore.cpe.bl.ws.data.input.response.CPEResponseVO;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusResponseVO;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusVO;
+import com.elitecore.cpe.bl.ws.data.input.response.ResourceAvailabilityVOList;
 import com.elitecore.cpe.bl.ws.data.input.response.ResourceAvailibilityResponseData;
 import com.elitecore.cpe.bl.ws.data.input.vo.CPEInventoryVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.InventoryAttributeVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.InventoryRequestVO;
+import com.elitecore.cpe.bl.ws.data.input.vo.ReleaseInventoryVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.ReserveAllocateRequestVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.ResourceAvailibilityVO;
 import com.elitecore.cpe.bl.ws.data.util.InventoryMgtResponseCode;
@@ -84,11 +87,11 @@ public class WSFacade extends BaseFacade implements WSFacadeLocal,WSFacadeRemote
 	public List<com.elitecore.cpe.bl.ws.data.input.vo.InventoryVO> reserveInventory(BookCPERequestData requestData,IBLSession iblSession) throws SearchBLException{
 		Logger.logDebug(MODULE, " in reserveInventory method called");
 		List<com.elitecore.cpe.bl.ws.data.input.vo.InventoryVO> inventoryVOs = new ArrayList<com.elitecore.cpe.bl.ws.data.input.vo.InventoryVO>();
-		List<ReserveAllocateRequestVO> reserveList=requestData.getReserveAllocateRequestVO();
+		List<ReserveAllocateRequestVO> reserveList=requestData.getBookInventoryList().getReserveAllocateRequestVO();
 		int reserveListsize=reserveList.size();
 		Logger.logTrace(MODULE, ":::reserveListsize"+reserveListsize);
 		List<InventoryRequestVO> inventoryRequestVOs = new ArrayList<InventoryRequestVO>();
-		List<InventoryAttributeVO> wsAttributeV0s=new ArrayList<InventoryAttributeVO>();
+		List<InventoryAttributeVO> wsAttributeV0s=null;
 		List<InventoryStatusVO> statusVoList=new ArrayList<InventoryStatusVO>();
 		try{
 			//--added today start
@@ -175,21 +178,29 @@ public class WSFacade extends BaseFacade implements WSFacadeLocal,WSFacadeRemote
 					List<InventoryReserveDetailData> inventoryReserveDetailDatas = new ArrayList<InventoryReserveDetailData>();
 					for(InventoryStatusVO inventoryStatusVO : inventoryStatusVOs)
 					{	
+						wsAttributeV0s=new ArrayList<InventoryAttributeVO>();
 						com.elitecore.cpe.bl.ws.data.input.vo.InventoryVO inventoryVO=new com.elitecore.cpe.bl.ws.data.input.vo.InventoryVO();
 						if(inventoryStatusVO.getResponseCode().equals("0")){
 							com.elitecore.cpe.bl.vo.inventorymgt.InventoryDetailVO detailVO= inventoryManagementFacadeLocal.searchInventoryDetailDataById(inventoryStatusVO.getInventoryNumber());
 							Map<String,String> attributeMap = new HashMap<String,String>();
 							attributeMap = detailVO.getAttribute();
-							for (Map.Entry<String, String> attributeEntry : attributeMap.entrySet()) {
-								Logger.logTrace(MODULE,"Attribute Name = " + attributeEntry.getKey() + ", Attribute Value = " + attributeEntry.getValue());
-								InventoryAttributeVO invAttributeVO=new InventoryAttributeVO();
-								invAttributeVO.setAttributeName(attributeEntry.getKey());
-								invAttributeVO.setAttributeValue(attributeEntry.getValue());
-								wsAttributeV0s.add(invAttributeVO);
+							
+							if(attributeMap!=null ) {
+								for (Map.Entry<String, String> attributeEntry : attributeMap.entrySet()) {
+									Logger.logTrace(MODULE,"Attribute Name = " + attributeEntry.getKey() + ", Attribute Value = " + attributeEntry.getValue());
+									InventoryAttributeVO invAttributeVO=new InventoryAttributeVO();
+									invAttributeVO.setAttributeName(attributeEntry.getKey());
+									invAttributeVO.setAttributeValue(attributeEntry.getValue());
+									wsAttributeV0s.add(invAttributeVO);
+								}
 							}
-							inventoryVO.setAttributeVOs(wsAttributeV0s);
-							inventoryVO.setInventoryStaus(InventoryStatusConstants.RESERVED_STATUS);
+							if(wsAttributeV0s!=null && !wsAttributeV0s.isEmpty()) {
+								AttributeList attributeList = new AttributeList();
+								attributeList.setAttributeVOs(wsAttributeV0s);
+								inventoryVO.setAttributeList(attributeList);
+							}
 						}
+						inventoryVO.setInventoryStaus(InventoryStatusConstants.RESERVED_STATUS);
 						inventoryVO.setInventoryNumber(inventoryStatusVO.getInventoryNumber());
 						inventoryVOs.add(inventoryVO);
 						if(inventoryStatusVO.getResponseCode().equals("0")){
@@ -214,7 +225,7 @@ public class WSFacade extends BaseFacade implements WSFacadeLocal,WSFacadeRemote
 			
 		}
 		catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return inventoryVOs;
 	}
@@ -391,7 +402,10 @@ public class WSFacade extends BaseFacade implements WSFacadeLocal,WSFacadeRemote
 			for(Entry<Long,ResourceAvailibilityVO> entry : map.entrySet()) {
 				resourceAvailibilityVOs.add(entry.getValue());
 			}
-			responseData.setResourceAvailibilityVOs(resourceAvailibilityVOs);
+			
+			ResourceAvailabilityVOList availabilityVOList = new ResourceAvailabilityVOList();
+			availabilityVOList.setResourceAvailibilityVOs(resourceAvailibilityVOs);
+			responseData.setResourceAvailabilityVOList(availabilityVOList);
 		} else {
 			
 			if(requestData.getWarehouseCode()!=null && !requestData.getWarehouseCode().isEmpty()) {
@@ -917,7 +931,7 @@ public class WSFacade extends BaseFacade implements WSFacadeLocal,WSFacadeRemote
 	public void allocateInventory(BookCPERequestData requestData,IBLSession iblSession) throws SearchBLException{
 		
 		try {
-			List<ReserveAllocateRequestVO> inventoryList = requestData.getReserveAllocateRequestVO();
+			List<ReserveAllocateRequestVO> inventoryList = requestData.getBookInventoryList().getReserveAllocateRequestVO();
 			
 			List<InventoryRequestVO> inventoryRequestVOs = new ArrayList<InventoryRequestVO>();
 			for(ReserveAllocateRequestVO reserveAllocateRequestVO : inventoryList)
@@ -1010,11 +1024,13 @@ public class WSFacade extends BaseFacade implements WSFacadeLocal,WSFacadeRemote
 	public List<InventoryStatusResponseVO> releaseCPEResource(ReleaseCPERequestVO cpeRequestVO, IBLSession iblSession) throws UpdateBLException, SearchBLException{
 		List<InventoryStatusResponseVO> inventoryStatusVOs = new ArrayList<InventoryStatusResponseVO>();
 		List<InventoryRequestVO> validRequestVO = new ArrayList<InventoryRequestVO>();
-		List<CPEInventoryVO> inventoryVos =new ArrayList<CPEInventoryVO>();
-		inventoryVos =  cpeRequestVO.getInventoryVOs();
+		List<ReleaseInventoryVO> inventoryVos =new ArrayList<ReleaseInventoryVO>();
+		if(cpeRequestVO.getReleaseInventoryList()!=null) {
+			inventoryVos =  cpeRequestVO.getReleaseInventoryList().getInventoryList();
+		}
 	try{
 			
-		for(CPEInventoryVO releaseCPEInventoryVO : inventoryVos) {
+		for(ReleaseInventoryVO releaseCPEInventoryVO : inventoryVos) {
 			boolean isAdd = false;
 			InventoryStatusResponseVO statusVO = new InventoryStatusResponseVO();
 			if(releaseCPEInventoryVO!=null) {
@@ -1112,7 +1128,7 @@ public class WSFacade extends BaseFacade implements WSFacadeLocal,WSFacadeRemote
 		List<InventoryStatusResponseVO> inventoryStatusVOs = new ArrayList<InventoryStatusResponseVO>();
 		List<InventoryRequestVO> validRequestVO = new ArrayList<InventoryRequestVO>();
 		try{
-			List<CPEInventoryVO> listInventoryVO = mAsFaultyRequestVO.getListCpeInventoryVOs();
+			List<CPEInventoryVO> listInventoryVO = (mAsFaultyRequestVO.getFaultyInventoryList()!=null?mAsFaultyRequestVO.getFaultyInventoryList().getListCpeInventoryVOs():null);
 			for(CPEInventoryVO inventoryVO:listInventoryVO){
 				boolean isAdd = false;
 				InventoryStatusResponseVO statusVO = new InventoryStatusResponseVO();

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <NICE_ReleaseCPEResourceResponse xmlns="http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd">
+         <responseCode>0</responseCode>
+         <responseMessage>Success</responseMessage>
+         <responseVo>
+            <inventoryNumber>INV00kj0005</inventoryNumber>
+            <inventoryStatus>Recovered</inventoryStatus>
+         </responseVo>
+         <responseVo>
+            <inventoryNumber>INVMIG94</inventoryNumber>
+            <inventoryStatus>Recovered</inventoryStatus>
+         </responseVo>
+         <responseVo>
+            <inventoryNumber>EMA000000002</inventoryNumber>
+            <inventoryStatus>Available</inventoryStatus>
+         </responseVo>
+      </NICE_ReleaseCPEResourceResponse>
+   </soap:Body>
+</soap:Envelope>

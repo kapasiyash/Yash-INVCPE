@@ -24,6 +24,8 @@ import com.elitecore.cpe.bl.vo.inventorymgt.TransferInventorySummaryViewVO;
 import com.elitecore.cpe.bl.vo.inventorymgt.migration.InventoryMigrationResponseVO;
 import com.elitecore.cpe.bl.vo.inventorymgt.migration.InventoryMigrationVO;
 import com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO;
+import com.elitecore.cpe.bl.vo.order.OrderDetailVo;
+import com.elitecore.cpe.bl.vo.order.TransferOrderVO;
 import com.elitecore.cpe.bl.ws.data.input.request.InventoryDetailsRequestData;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryDetailsResponseData;
 import com.elitecore.cpe.core.IBLSession;
@@ -84,4 +86,16 @@ public interface IInventoryManagementFacade {
 	public InventoryMigrationResponseVO uploadMigrationInventory(List<InventoryMigrationVO> inventoryMigrationVOs, boolean isValidate);
 	public InventoryDetailVO searchInventoryDetailDataById(String inventoryId) throws SearchBLException;
 	public int updateInventoryStatusInBulk(BulkChangeInventoryStatusVO statusVO, IBLSession iblSession) throws UpdateBLException;
+	
+	
+	public List<Long> getPendingPlaceOrderMaster() throws SearchBLException;
+	
+	public List<Long> getPendingTransferOrderMaster() throws SearchBLException;
+
+	public Boolean saveOrderNotificationAgentHistory(OrderDetailVo orderDetailVo) throws CreateBLException;
+
+	public List<PlaceOrderVO> getPendingPlaceOrderChild(Long towarehouseid) throws SearchBLException;
+
+	public List<TransferOrderVO> getPendingTransferOrderChild(Long towarehouseid) throws SearchBLException;
+	
 }

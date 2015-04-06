@@ -1,3 +1,4 @@
+
 package com.elitecore.cpe.bl.ws;
 
 
@@ -9,12 +10,13 @@ import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 
-import com.elitecore.cpe.bl.constants.inventorymgt.InventoryStatusConstants;
 import com.elitecore.cpe.bl.constants.master.EntityConstants;
 import com.elitecore.cpe.bl.constants.user.UserConstants;
-import com.elitecore.cpe.bl.entity.inventory.master.ResourceTypeData;
 import com.elitecore.cpe.bl.exception.SearchBLException;
 import com.elitecore.cpe.bl.facade.master.attribute.AttributeFacadeLocal;
 import com.elitecore.cpe.bl.facade.system.user.UserFacadeLocal;
@@ -24,23 +26,25 @@ import com.elitecore.cpe.bl.session.inventorymgt.InventoryManagementSessionBeanL
 import com.elitecore.cpe.bl.session.master.attribute.AttributeSessionBeanLocal;
 import com.elitecore.cpe.bl.session.master.item.ItemSessionBeanLocal;
 import com.elitecore.cpe.bl.session.master.warehouse.WarehouseSessionBeanLocal;
-import com.elitecore.cpe.bl.vo.master.AttributeVO;
 import com.elitecore.cpe.bl.vo.system.user.UserVO;
 import com.elitecore.cpe.bl.ws.data.input.request.BookCPERequestData;
+import com.elitecore.cpe.bl.ws.data.input.request.ChangeInventoryStatusRequest;
 import com.elitecore.cpe.bl.ws.data.input.request.MarkCPEAsFaultyRequestVO;
 import com.elitecore.cpe.bl.ws.data.input.request.ReleaseCPERequestVO;
 import com.elitecore.cpe.bl.ws.data.input.request.ResourceAvailibilityRequestData;
-import com.elitecore.cpe.bl.ws.data.input.request.ResourceRequestData;
 import com.elitecore.cpe.bl.ws.data.input.response.BookCPEResponseData;
 import com.elitecore.cpe.bl.ws.data.input.response.CPEResponseVO;
 import com.elitecore.cpe.bl.ws.data.input.response.ChangeInventoryStatusResponseData;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusResponseVO;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusVO;
 import com.elitecore.cpe.bl.ws.data.input.response.ReleaseCPEResponseVO;
-import com.elitecore.cpe.bl.ws.data.input.response.ResourceAttributeResponseData;
 import com.elitecore.cpe.bl.ws.data.input.response.ResourceAvailibilityResponseData;
+import com.elitecore.cpe.bl.ws.data.input.response.ResourceAvailibilityVOList;
+import com.elitecore.cpe.bl.ws.data.input.vo.BookResourceAvailibilityVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.CPEInventoryVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.InventoryRequestVO;
+import com.elitecore.cpe.bl.ws.data.input.vo.InventoryVOList;
+import com.elitecore.cpe.bl.ws.data.input.vo.ReleaseInventoryVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.ReserveAllocateRequestVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.ResourceAvailibilityVO;
 import com.elitecore.cpe.bl.ws.data.util.InventoryMgtResponseCode;
@@ -58,7 +62,9 @@ import com.elitecore.cpe.util.logger.Logger;
  * @author Yash.Kapasi
  *
  */
-@WebService
+
+@WebService(name = "ManageCPEResource", targetNamespace = "http://xmlns.elitecore.com/mtnice/26/03/2015/ManageCPEResource.xsd")
+@SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 @Stateless
 public class CrestelCPEService extends BaseWebServiceBL {
 
@@ -89,7 +95,8 @@ public class CrestelCPEService extends BaseWebServiceBL {
 	 * @return {@link ResourceAvailibilityResponseData} responseData
 	 */
 	@WebMethod
-	public ResourceAvailibilityResponseData checkCPEResource(ResourceAvailibilityRequestData requestData){
+	@WebResult(name="NICE_CheckCPEResourceResponse")
+	public ResourceAvailibilityResponseData checkCPEResource(@WebParam(name="NICE_CheckCPEResourceRequest") ResourceAvailibilityRequestData requestData){
 		Long startTime = System.currentTimeMillis();
 		ResourceAvailibilityResponseData responseData = new ResourceAvailibilityResponseData();
 		try {
@@ -109,6 +116,7 @@ public class CrestelCPEService extends BaseWebServiceBL {
 			if(requestData.getWarehouseName() != null && !requestData.getWarehouseName().isEmpty() ){
 				Map<String,Object> fieldValueMap = new HashMap<String, Object>();
 				fieldValueMap.put("name", requestData.getWarehouseName());
+				System.out.println("%%%"+requestData.getWarehouseCode());
 				if(requestData.getWarehouseCode()!=null && !requestData.getWarehouseCode().isEmpty()) {
 					fieldValueMap.put("warehouseCode",requestData.getWarehouseCode());
 					List filterList = warehouseSessionBeanLocal.getFilterDataBy(EntityConstants.WAREHOUSE_DATA, fieldValueMap);
@@ -239,7 +247,7 @@ public class CrestelCPEService extends BaseWebServiceBL {
 		return responseData;
 	}
 	
-//	@WebMethod
+/*//	@WebMethod
 	public ResourceAttributeResponseData getAttributes(ResourceRequestData resourceRequestData){
 		Long startTime = System.currentTimeMillis();
 		Logger.logInfo(MODULE, "getAttributes method called");
@@ -289,7 +297,7 @@ public class CrestelCPEService extends BaseWebServiceBL {
 		Logger.logInfo(MODULE, "Time taken in getAttributes :"+(endTime-startTime));
 		return responseData;
 	}
-	
+	*/
 	/*private ResourceAvailibilityVO getAvailableStock(WarehouseData warehouseData,ItemData itemData){
 		
 		
@@ -319,13 +327,14 @@ public class CrestelCPEService extends BaseWebServiceBL {
 	 * @return {@link ChangeInventoryStatusResponseData} responseData
 	 */
 	@WebMethod
-	public ChangeInventoryStatusResponseData changeInventoryStatus(List<InventoryRequestVO> requestData){
+	@WebResult(name="NICE_ChangeInventoryStatusResponse")
+	public ChangeInventoryStatusResponseData changeInventoryStatus(@WebParam(name="NICE_ChangeInventoryStatusRequest")ChangeInventoryStatusRequest requestData){
 		Long startTime = System.currentTimeMillis();
 		Logger.logInfo(MODULE, "changeInventoryStatus method called");
 		ChangeInventoryStatusResponseData statusResponseData = new ChangeInventoryStatusResponseData();
 		
 		List<InventoryStatusVO> responseData = new ArrayList<InventoryStatusVO>();
-		
+		List<InventoryStatusVO> responseData1 = new ArrayList<InventoryStatusVO>();
 		try {
 			
 			IBDSessionContext sessionContext = null;
@@ -344,18 +353,16 @@ public class CrestelCPEService extends BaseWebServiceBL {
 				 sessionContext = userFacadeLocal.doLogin("webservice", "webservice", "127.0.0.1");
 			}*/
 			
-			if(requestData == null || requestData.isEmpty()){
+			if(requestData == null || requestData.getChangeInventoryRequestList()==null || requestData.getChangeInventoryRequestList().getRequestData()==null || requestData.getChangeInventoryRequestList().getRequestData().isEmpty()){
 				throw new SearchBLException(InventoryMgtResponseCode.INVENTORY_DETAILS_REQUEST_NOT_FOUND);
 			}else{
-				for(InventoryRequestVO inventoryRequestVO:requestData){
+				for(InventoryRequestVO inventoryRequestVO:requestData.getChangeInventoryRequestList().getRequestData()){
 					if(inventoryRequestVO.getInventoryNo()==null ||inventoryRequestVO.getInventoryNo().isEmpty()){
 						throw new SearchBLException(InventoryMgtResponseCode.INVENTORYNO_NOT_FOUND);
 					}
 				}
 			}
-			responseData =  wsFacadeLocal.changeInventoryStatus(requestData,sessionContext.getBLSession());
-			
-			
+			responseData =  wsFacadeLocal.changeInventoryStatus(requestData.getChangeInventoryRequestList().getRequestData(),sessionContext.getBLSession());
 			if(responseData!=null && !responseData.isEmpty()) {
 				int totalCount = 0,failed = 0;
 				StringBuilder builder = new StringBuilder("");
@@ -375,9 +382,15 @@ public class CrestelCPEService extends BaseWebServiceBL {
 					throw new SearchBLException(InventoryMgtResponseCode.CHANGE_INVENTORIES_FAILED,InventoryMgtResponseCode.CHANGE_INVENTORIES_FAILED_MESSAGE+builder.toString());
 				}
 				}
+			for(InventoryStatusVO statusVO:responseData){
+				InventoryStatusVO inventoryStatusVO=new InventoryStatusVO();
+				inventoryStatusVO.setInventoryNumber(statusVO.getInventoryNumber());
+				inventoryStatusVO.setInventoryStaus(statusVO.getInventoryStaus());
+				responseData1.add(inventoryStatusVO);
+			}
 			statusResponseData.setResponseMessage("Success");
 			statusResponseData.setResponseCode("0");
-			statusResponseData.setInventoryvos(responseData);
+			statusResponseData.setInventoryvos(responseData1);
 		}catch(SearchBLException ex){
 			ex.printStackTrace();
 			if(ex.getErrorCode() == -1){
@@ -497,7 +510,8 @@ public class CrestelCPEService extends BaseWebServiceBL {
 	 * @return {@link BookCPEResponseData} responseData
 	 */
 	@WebMethod
-	public BookCPEResponseData bookCPEResource(BookCPERequestData requestData){
+	@WebResult(name="NICE_BookCPEResourceResponse")
+	public BookCPEResponseData bookCPEResource(@WebParam(name="NICE_BookCPEResourceRequest")BookCPERequestData requestData){
 		
 		Long startTime = System.currentTimeMillis();
 		Logger.logInfo(MODULE, "BookCPEResource method called");
@@ -513,7 +527,7 @@ public class CrestelCPEService extends BaseWebServiceBL {
 			
 			if(requestData.getOperationType().equals(WsUtil.RESERVE_INT)){
 				
-				Logger.logDebug(MODULE, "requestData.getReserveAllocateRequestVO().toString() :"+requestData.getReserveAllocateRequestVO().toString());
+				Logger.logDebug(MODULE, "requestData.getBookInventoryList().toString() :"+requestData.getBookInventoryList());
 		//		Logger.logDebug(MODULE, "noOfResource :"+requestData.getReserveAllocateRequestVO().toString());
 				/*if(requestData.getWarehouseName() == null || requestData.getWarehouseName().isEmpty() ){
 					throw new SearchBLException(InventoryMgtResponseCode.WAREHOUSE_NOT_FOUND);
@@ -580,11 +594,11 @@ public class CrestelCPEService extends BaseWebServiceBL {
 				if(requestData.getOrderLineItemID() == null || requestData.getOrderLineItemID().isEmpty()){
 					throw new SearchBLException(InventoryMgtResponseCode.ORDERLINEITEM_NOT_FOUND);
 				}
-				else if(requestData.getReserveAllocateRequestVO()== null || requestData.getReserveAllocateRequestVO().isEmpty()){
+				else if(requestData.getBookInventoryList()== null || requestData.getBookInventoryList().getReserveAllocateRequestVO()==null || requestData.getBookInventoryList().getReserveAllocateRequestVO().isEmpty()){
 					throw new SearchBLException(InventoryMgtResponseCode.INVENTORYNO_NOT_FOUND);
 				}
 				
-				for(ReserveAllocateRequestVO reserveAllocateRequestVO :  requestData.getReserveAllocateRequestVO()){
+				for(ReserveAllocateRequestVO reserveAllocateRequestVO :  requestData.getBookInventoryList().getReserveAllocateRequestVO()){
 					if((reserveAllocateRequestVO.getInventoryNo() == null || reserveAllocateRequestVO.getInventoryNo().trim().equals("")) ){
 						throw new SearchBLException(InventoryMgtResponseCode.INVENTORY_NUMBER_NOT_FOUND);
 					}
@@ -610,19 +624,30 @@ public class CrestelCPEService extends BaseWebServiceBL {
 				
 				List<com.elitecore.cpe.bl.ws.data.input.vo.InventoryVO> inventoryVOs = wsFacadeLocal.reserveInventory(requestData,sessionContext.getBLSession());
 				
-				ResourceAvailibilityVO resourceAvailibilityVO = new ResourceAvailibilityVO();
+				System.out.println("::::inventoryVOs in service:::"+inventoryVOs.toString());
+				
 				if(inventoryVOs!=null) {
 					for(com.elitecore.cpe.bl.ws.data.input.vo.InventoryVO vo : inventoryVOs){
 						//vo.setInventoryStaus(InventoryStatusConstants.RESERVED_STATUS);
 						
 					}
 				}
-				resourceAvailibilityVO.setInventoryList(inventoryVOs);
-				responseData.setResourceAvailibilityVO(resourceAvailibilityVO);
+				if(inventoryVOs!=null && !inventoryVOs.isEmpty()) {
+					BookResourceAvailibilityVO resourceAvailibilityVO = new BookResourceAvailibilityVO();
+					InventoryVOList inventoryVOList = new InventoryVOList();
+					inventoryVOList.setInventoryList(inventoryVOs);
+					resourceAvailibilityVO.setInventoryList(inventoryVOList);
+					
+					ResourceAvailibilityVOList  availibilityVOList = new ResourceAvailibilityVOList();
+					List<BookResourceAvailibilityVO> availibilityVOs = new ArrayList<BookResourceAvailibilityVO>();
+					availibilityVOs.add(resourceAvailibilityVO);
+					availibilityVOList.setResourceAvailibilityVO(availibilityVOs);
+					responseData.setResourceAvailibilityVOList(availibilityVOList);
+				}
 				
 			}else if(requestData.getOperationType().equals(WsUtil.ALLOCATE_INT)){
-				if(requestData.getReserveAllocateRequestVO() == null || requestData.getReserveAllocateRequestVO().isEmpty())
-				{
+				if(requestData.getBookInventoryList()== null || requestData.getBookInventoryList().getReserveAllocateRequestVO()==null || requestData.getBookInventoryList().getReserveAllocateRequestVO().isEmpty()){
+				
 					throw new SearchBLException(InventoryMgtResponseCode.INVENTORYNO_NOT_FOUND);
 				}
 				
@@ -638,14 +663,15 @@ public class CrestelCPEService extends BaseWebServiceBL {
 				
 				
 				
-				for(ReserveAllocateRequestVO reserveAllocateRequestVO :  requestData.getReserveAllocateRequestVO()){
+				for(ReserveAllocateRequestVO reserveAllocateRequestVO :  requestData.getBookInventoryList().getReserveAllocateRequestVO()){
 					if((reserveAllocateRequestVO.getInventoryNo() == null || reserveAllocateRequestVO.getInventoryNo().trim().equals("")) 
 							&& (reserveAllocateRequestVO.getSerialNumber()==null || reserveAllocateRequestVO.getSerialNumber().isEmpty())){
 						throw new SearchBLException(InventoryMgtResponseCode.INVENTORYNO_OR_SERIALNUMBER_NOT_FOUND);
 					}
 				}
 				IBDSessionContext sessionContext = null;
-				Map<String, UserVO> map = UserFactory.findAllUser();
+				sessionContext = userFacadeLocal.doLogin("webservice", "webservice", "127.0.0.1");
+				/*Map<String, UserVO> map = UserFactory.findAllUser();
 				if(map!=null && map.containsKey(UserConstants.ADMIN_USERID)) {
 					UserVO admin = map.get(UserConstants.ADMIN_USERID);
 					
@@ -657,7 +683,7 @@ public class CrestelCPEService extends BaseWebServiceBL {
 					}
 				} else {
 					 sessionContext = userFacadeLocal.doLogin("webservice", "webservice", "127.0.0.1");
-				}
+				}*/
 				wsFacadeLocal.allocateInventory(requestData, sessionContext.getBLSession());
 			}else{
 				throw new SearchBLException(InventoryMgtResponseCode.INVALID_OPERATIONTYPE);
@@ -701,14 +727,14 @@ public class CrestelCPEService extends BaseWebServiceBL {
 	 * @return {@link BookCPEResponseData} responseData
 	 */
 	@WebMethod
-
-	public ReleaseCPEResponseVO releaseCPEResource(ReleaseCPERequestVO cpeRequestVO){
+	@WebResult(name="NICE_ReleaseCPEResourceResponse")
+	public ReleaseCPEResponseVO releaseCPEResource(@WebParam(name="NICE_ReleaseCPEResourceRequest")ReleaseCPERequestVO cpeRequestVO){
 		
 		Long startTime = System.currentTimeMillis();
 		Logger.logInfo(MODULE, "ReleaseCPEResource method called");
 		ReleaseCPEResponseVO responseData = new ReleaseCPEResponseVO();
 		List<InventoryStatusResponseVO> responseVo = new ArrayList<InventoryStatusResponseVO>();
-		List<CPEInventoryVO> inventoryVOs=new ArrayList<CPEInventoryVO>();
+		List<ReleaseInventoryVO> inventoryVOs=new ArrayList<ReleaseInventoryVO>();
 		try {
 			
 			IBDSessionContext sessionContext = null;
@@ -736,12 +762,14 @@ public class CrestelCPEService extends BaseWebServiceBL {
 
 			if(cpeRequestVO.getOperationType().equals(WsUtil.RELEASE_INT)){
 				Logger.logDebug(MODULE, "cpeRequestVO.toString() :"+cpeRequestVO.toString());
-				inventoryVOs=cpeRequestVO.getInventoryVOs();
+				if(cpeRequestVO.getReleaseInventoryList()!=null) {
+					inventoryVOs=cpeRequestVO.getReleaseInventoryList().getInventoryList();
+				}
 				if(inventoryVOs == null || inventoryVOs.isEmpty()){
 					throw new SearchBLException(InventoryMgtResponseCode.INVENTORY_DETAILS_REQUEST_NOT_FOUND);
 				}
 				else{
-					for(CPEInventoryVO releaseCPEInventoryVO:inventoryVOs){
+					for(ReleaseInventoryVO releaseCPEInventoryVO:inventoryVOs){
 						if(releaseCPEInventoryVO.getInventoryNo()==null || releaseCPEInventoryVO.getInventoryNo().isEmpty()){
 							throw new SearchBLException(InventoryMgtResponseCode.INVENTORY_NUMBER_NOT_FOUND);
 							
@@ -791,8 +819,8 @@ public class CrestelCPEService extends BaseWebServiceBL {
 	 * @return {@link BookCPEResponseData} responseData
 	 */
 	@WebMethod
-
-	public CPEResponseVO markCPEAsFaultyWithOwnerChang(MarkCPEAsFaultyRequestVO mAsFaultyRequestVO){
+	@WebResult(name="NICE_MarkCPEAsFaultyWithOwnerChangResponse")
+	public CPEResponseVO markCPEAsFaultyWithOwnerChang(@WebParam(name="NICE_MarkCPEAsFaultyWithOwnerChangRequest")MarkCPEAsFaultyRequestVO mAsFaultyRequestVO){
 		
 		Long startTime = System.currentTimeMillis();
 		Logger.logInfo(MODULE, "BookCPEResource method called");
@@ -814,7 +842,7 @@ public class CrestelCPEService extends BaseWebServiceBL {
 			} else {
 				 sessionContext = userFacadeLocal.doLogin("webservice", "webservice", "127.0.0.1");
 			}*/
-			List<CPEInventoryVO> cpeInventoryVOs = mAsFaultyRequestVO.getListCpeInventoryVOs();
+			List<CPEInventoryVO> cpeInventoryVOs = (mAsFaultyRequestVO.getFaultyInventoryList()!=null?mAsFaultyRequestVO.getFaultyInventoryList().getListCpeInventoryVOs():null);
 			if(mAsFaultyRequestVO.getWarehouseCode()==null || mAsFaultyRequestVO.getWarehouseCode().isEmpty()){
 					throw new SearchBLException(InventoryMgtResponseCode.WAREHOUSECODE_NOTFOUND);
 			}

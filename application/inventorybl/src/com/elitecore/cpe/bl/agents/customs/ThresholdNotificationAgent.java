@@ -47,7 +47,7 @@ public class ThresholdNotificationAgent extends BaseAgentRun implements Serializ
 	private static final String EXECUTION = "_ThresholdExe";
 	private static final String WAREHOUSEID = "_WareHouseId";
 	
-	private List<NotificationData> emailVOs = new ArrayList<NotificationData>();
+//	private List<NotificationData> emailVOs = new ArrayList<NotificationData>();
 	
 	@Override
 	public void agentRunStarted() {
@@ -218,7 +218,12 @@ public class ThresholdNotificationAgent extends BaseAgentRun implements Serializ
 				if(result!=null) {
 					Logger.logTrace(MODULE," SENT THE MAIL ");
 					Logger.logTrace(MODULE, result+"");
-					emailVOs.add(result);
+//					emailVOs.add(result);
+					
+					NotificationFacadeRemote notifyFacadeRemote = (NotificationFacadeRemote) lookup(NotificationFacadeRemote.class);
+					notifyFacadeRemote.sendNotificationService(result);
+					
+					
 					
 				} else {
 					Logger.logTrace(MODULE, result+"");
@@ -282,14 +287,14 @@ public class ThresholdNotificationAgent extends BaseAgentRun implements Serializ
 			}
 		}*/
 		
-		NotificationFacadeRemote notifyFacadeRemote = (NotificationFacadeRemote) lookup(NotificationFacadeRemote.class);
+		/*NotificationFacadeRemote notifyFacadeRemote = (NotificationFacadeRemote) lookup(NotificationFacadeRemote.class);
 		
 		if(emailVOs!=null && !emailVOs.isEmpty()) {
 			for(NotificationData emailVO : emailVOs) {
 				notifyFacadeRemote.sendNotificationService(emailVO);
 			}
 //			WarehouseUtil.processThresholdNotificationEmailCommon(emailVOs,commonEmail);
-		}
+		}*/
 	}
 
 	/* (non-Javadoc)

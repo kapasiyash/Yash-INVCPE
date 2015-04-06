@@ -29,6 +29,7 @@ import com.elitecore.cpe.bl.vo.master.ResourceTypeVO;
 import com.elitecore.cpe.util.logger.Logger;
 import com.elitecore.cpe.web.base.ui.core.BaseSearchComposer;
 import com.elitecore.cpe.web.base.ui.module.BaseConstants;
+import com.elitecore.cpe.web.constants.ActionAlias;
 import com.elitecore.cpe.web.constants.Pages;
 import com.elitecore.cpe.web.core.exception.ModuleInitializationException;
 import com.elitecore.cpe.web.utils.GeneralUtility;
@@ -99,7 +100,10 @@ public class SearchItemComposer  extends BaseSearchComposer {
 		
 		
 		searchResultGrid.setVisible(false);
-		addViewTab("-100", "Create Resource", searchItemTabbox, Pages.CREATE_ITEM_EVENT,null,false);
+		
+		if(isPermittedAction(ActionAlias.CREATE_RESOURCE)) {
+			addViewTab("-100", "Create Resource", searchItemTabbox, Pages.CREATE_ITEM_EVENT,null,false);
+		}
 		searchTab.setSelected(true);
 	}
 

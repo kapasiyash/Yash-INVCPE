@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.bl.cpe.elitecore.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:checkCPEResource>
+         <!--Optional:-->
+         <arg0>
+            <resourceId>RES0000000027</resourceId>
+            <!--Optional:-->
+            <warehouseCode>12</warehouseCode>
+            <!--Optional:-->
+            <warehouseName/>
+         </arg0>
+      </ws:checkCPEResource>
+   </soapenv:Body>
+</soapenv:Envelope>

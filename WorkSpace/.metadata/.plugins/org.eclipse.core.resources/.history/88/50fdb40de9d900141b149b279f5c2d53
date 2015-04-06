@@ -1,0 +1,14 @@
+package com.elitecore.cpe.bl.vo.order;
+
+import java.io.Serializable;
+
+public class TransferOrderVO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+
+}

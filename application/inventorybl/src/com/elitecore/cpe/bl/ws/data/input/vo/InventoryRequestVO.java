@@ -1,8 +1,22 @@
 package com.elitecore.cpe.bl.ws.data.input.vo;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NICE_ChangeInventoryStatus", propOrder = {
+    "inventoryNo",
+    "oldStatus",
+    "newStatus",
+    "remarks",
+    "serialNumber",
+    "orderLineItemID"
+})
 public class InventoryRequestVO implements Serializable{
 
 	/**
@@ -11,6 +25,8 @@ public class InventoryRequestVO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String serialNumber;
+	
+	@XmlElement(name="inventoryNumber")
 	private String inventoryNo;
 	private Integer oldStatus;
 	private Integer newStatus;
@@ -68,29 +84,18 @@ public class InventoryRequestVO implements Serializable{
 		this.remarks = remarks;
 	}
 
+	@Override
+	public String toString() {
+		return "InventoryRequestVO [serialNumber=" + serialNumber
+				+ ", inventoryNo=" + inventoryNo + ", oldStatus=" + oldStatus
+				+ ", newStatus=" + newStatus + ", remarks=" + remarks
+				+ ", orderLineItemID=" + orderLineItemID + "]";
+	}
+
 	/* 
 	 * 
 	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("InventoryRequestVO [" );
-		if(inventoryNo!=null){
-		builder.append("inventoryNo=").append(inventoryNo);
-		}
-		if(oldStatus!=null){
-		builder.append(", oldStatus=").append(oldStatus);
-		}
-		if(newStatus!=null){
-		builder.append(", newStatus=").append(newStatus);
-		}
-		if(remarks!=null){
-		builder.append(", remarks=").append(remarks);
-		}
-		builder.append("]");
-		return builder.toString();
-	}
-
+	
 	
 	
 }

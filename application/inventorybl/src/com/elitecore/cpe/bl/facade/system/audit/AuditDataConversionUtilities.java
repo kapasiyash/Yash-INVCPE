@@ -436,13 +436,12 @@ public static AuditSummaryDetail prepareChangeStatusUpdateAudit(int newStatus,In
 	AuditSummaryDetail data = new AuditSummaryDetail();
 
 	
-	data.appendChanged(AuditConstants.TBLMINVENTORY, AuditConstants.TBLMINVENTORY_STATUSID, typeData.getInventoryStatusId(),newStatus);
-	data.appendChanged(AuditConstants.TBLMINVENTORY, AuditConstants.TBLMINVENTORY_UPDATEDBY,typeData.getUpdatedby(),session.getSessionUserId());
+	data.appendChanged(AuditConstants.TBLMINVENTORY, AuditConstants.TBLMINVENTORY_STATUSID,typeData.getInventoryStatusId(),newStatus);
+	data.appendChanged(AuditConstants.TBLMINVENTORY, AuditConstants.TBLMINVENTORY_UPDATEDBY,typeData.getUpdatedby(),session.getUsername());
 	data.appendChanged(AuditConstants.TBLMINVENTORY, AuditConstants.TBLMINVENTORY_UPDATEDATE,typeData.getUpdatedate(),getCurrentTimestamp());
 	
 	return data;
 }
-
 
 public static AuditSummaryDetail prepareChangeSubStatusUpdateAudit(ChangeInventorySubStatusVO statusVO,InventoryData typeData,IBLSession session) {
 	

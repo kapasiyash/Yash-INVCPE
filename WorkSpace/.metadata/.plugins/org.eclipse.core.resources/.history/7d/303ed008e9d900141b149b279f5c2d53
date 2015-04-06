@@ -1,0 +1,7 @@
+package com.elitecore.cpe.bl.vo.order;
+
+import java.io.Serializable;
+
+public class TransferOrderVO implements Serializable {
+
+}

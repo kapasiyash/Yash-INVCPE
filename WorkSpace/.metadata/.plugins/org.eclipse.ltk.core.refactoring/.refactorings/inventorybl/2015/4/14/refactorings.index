@@ -1,0 +1,18 @@
+1427880694280	Rename local variable 'isPlaceOrderEligible'
+1427880981289	Rename local variable 'orderDatas'
+1428040355952	Delete element
+1428040735852	Delete element
+1428041948187	Rename local variable 'Result'
+1428042949424	Rename local variable 'resourceIds'
+1428043786735	Rename local variable 'resourceId'
+1428045457731	Rename field 'strModule'
+1428054166484	Rename local variable 'childdata'
+1428054188982	Rename local variable 'placeOrderVOs'
+1428054355601	Rename local variable 'warehouseIds'
+1428054363169	Rename local variable 'warehouseIds'
+1428055149474	Rename field 'EXECUTION1'
+1428055167029	Rename field 'EXECUTION2'
+1428056156618	Rename local variable 'placeOrderVO'
+1428056666289	Rename local variable 'placeOrderVO'
+1428057561527	Rename type 'AgentHistoryData'
+1428062764667	Rename local variable 'placeOrderVO'

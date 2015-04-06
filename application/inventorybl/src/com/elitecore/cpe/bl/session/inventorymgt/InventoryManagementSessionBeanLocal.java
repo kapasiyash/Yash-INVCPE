@@ -1,6 +1,5 @@
 package com.elitecore.cpe.bl.session.inventorymgt;
 
-import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -29,11 +28,13 @@ import com.elitecore.cpe.bl.vo.inventorymgt.SearchTransferInventory;
 import com.elitecore.cpe.bl.vo.inventorymgt.SearchWarehouseInventoryStatusVO;
 import com.elitecore.cpe.bl.vo.inventorymgt.TransferInventorySummaryViewVO;
 import com.elitecore.cpe.bl.vo.inventorytransfer.PartialAcceptRejectTransferOrderVO;
+import com.elitecore.cpe.bl.vo.order.OrderDetailVo;
 import com.elitecore.cpe.bl.ws.data.input.request.InventoryDetailsRequestData;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusResponseVO;
 import com.elitecore.cpe.bl.ws.data.input.response.InventoryStatusVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.CPEInventoryVO;
 import com.elitecore.cpe.bl.ws.data.input.vo.InventoryRequestVO;
+import com.elitecore.cpe.bl.ws.data.input.vo.ReleaseInventoryVO;
 import com.elitecore.cpe.core.IBLSession;
 import com.sun.rowset.CachedRowSetImpl;
 
@@ -85,7 +86,15 @@ public interface InventoryManagementSessionBeanLocal {
 	public List<OrderData> searchPlaceOrderDetail(PlaceOrderVO placeOrderVO,IBLSession blSession) throws SearchBLException;
 	public boolean isAvailable(Long warehouseId, Long itemId) ;
 	public List<InventoryData> checkCPEInventory(String inventoryNumber,SystemParameter systemParameter) throws  SearchBLException;
-	public List<InventoryStatusResponseVO> releaseCPEResource(List<CPEInventoryVO> inventoryVos ,IBLSession iblSession) throws UpdateBLException;
+	public List<InventoryStatusResponseVO> releaseCPEResource(List<ReleaseInventoryVO> inventoryVos ,IBLSession iblSession) throws UpdateBLException;
 	public List<InventoryStatusResponseVO> markCPEAsFaultyWithOwnerChange(List<CPEInventoryVO> inventoryVOs,String warehouseCode,IBLSession blSession)throws UpdateBLException;
 	public long  getTotaltransferrableInventory(Long warehouseId,Long resourceSubTypeId,Long resourceTypeId) throws SearchBLException;
+	public boolean isEligiblePlaceOrder(Long warehouseId, Long resourceTypeId,Long resourceSubTypeId, Long itemId) throws SearchBLException;
+	
+	public Boolean saveOrderNotificationAgentHistory(OrderDetailVo orderDetailVo) throws CreateBLException;
+	public List<Long> getPendingPlaceOrderMaster(String minDays) throws SearchBLException;
+	public List<OrderData> getPendingPlaceOrderChild(String minDays,Long warehouseid) throws SearchBLException;
+	public List<TransferOrderData> getPendingTransferOrderChild(String minDays,Long warehouseid) throws SearchBLException;
+	public List<Long> getPendingTransferOrderMaster(String minPendingDays) throws SearchBLException;
+	
 }

@@ -201,7 +201,7 @@ public class DocumentTemplate  implements java.io.Serializable {
     }*/
 
 @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY, mappedBy="documentTemplate")
-    public Set<DocumentTemplateDetail> getDocumentTemplateDetails() {
+public Set<DocumentTemplateDetail> getDocumentTemplateDetails() {
         return this.documentTemplateDetails;
     }
     

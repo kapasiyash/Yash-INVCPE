@@ -101,6 +101,8 @@ INSERT INTO TBLSINVSUBSTATUSTRANSITION(SUBSTATUSTRANSITIONID,STATUSID, ALLOWEDSU
 
 alter table tblmorder add (ordertype NUMBER(1,0));
 
+ALTER TABLE TBLMRESOURCE DROP CONSTRAINT "TBLMITEM_NAME";
+
 commit;
 
 ---------------------Partner Fire Query----------------------------

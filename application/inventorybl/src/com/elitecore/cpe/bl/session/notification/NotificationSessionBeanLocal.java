@@ -10,10 +10,12 @@ import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.Doc
 import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.DocumentTemplateDetail;
 import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.NotificationAudit;
 import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.SMSDocumentTemplateDetail;
+import com.elitecore.cpe.bl.entity.inventory.core.configuration.notification.ThresholdNotificationHistoryDetail;
 import com.elitecore.cpe.bl.exception.CreateBLException;
 import com.elitecore.cpe.bl.exception.SearchBLException;
 import com.elitecore.cpe.bl.exception.UpdateBLException;
 import com.elitecore.cpe.bl.vo.configuration.notification.CheckValidDateForTemplateVO;
+import com.elitecore.cpe.bl.vo.order.OrderDetailVo;
 /**
  * @author Yash.Kapasi
  *
@@ -46,4 +48,14 @@ public interface NotificationSessionBeanLocal {
 	
 	public NotificationAudit createNotificationAudit(NotificationAudit notificationAudit) throws CreateBLException;
 
+	public ThresholdNotificationHistoryDetail createThresholdNotificationHistoryDetail(ThresholdNotificationHistoryDetail thresholdNotificationHistoryDetail) throws CreateBLException;
+
+	public ThresholdNotificationHistoryDetail findNotificationHistoryById(Long notificationHistoryId) throws SearchBLException;
+
+	public ThresholdNotificationHistoryDetail updateThresholdNotificationHistoryDetail(ThresholdNotificationHistoryDetail historyDetail) throws UpdateBLException;
+
+	public boolean isNotificationEligible(Long thresholdID,Long resourceTypeId, Long resourceSubTypeId, Long itemId) ;
+
+	public boolean isEligiblePendingOrderNotification(OrderDetailVo orderDetailVo) throws SearchBLException;
+	
 }

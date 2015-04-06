@@ -73,6 +73,8 @@ public class WarehouseSessionBean extends BaseSessionBean implements WarehouseSe
 	        			throw new CreateBLException("Name " + warehouseData.getName() +" Already Exists");
 	        	   }else if(constraintViolationException.getConstraintName().toUpperCase().contains("WHNAME")){
 	        		   throw new CreateBLException("Name " + warehouseData.getName() +" Already Exists");
+	        	   }else if(constraintViolationException.getConstraintName().toUpperCase().contains("TBLMWAREHOUSE_UK_WHCODE")){
+	        		   throw new CreateBLException("Warehouse Code" + warehouseData.getWarehouseCode() +" Already Exists");
 	        	   }
 	    	   }
 			
@@ -148,6 +150,9 @@ public class WarehouseSessionBean extends BaseSessionBean implements WarehouseSe
 	        	   
 	        	   if(constraintViolationException.getConstraintName().toUpperCase().contains("ALIAS")){
 	        			throw new UpdateBLException("Name " + warehouseData.getName() +" Already Exists");
+	        	   }
+	        	   else if(constraintViolationException.getConstraintName().toUpperCase().contains("WHCODE")){
+	        			throw new UpdateBLException("Warehouse Code " + warehouseData.getWarehouseCode() +" Already Exists");
 	        	   }
 	    	   }
 			
@@ -705,14 +710,33 @@ public class WarehouseSessionBean extends BaseSessionBean implements WarehouseSe
 
 	
 	@Override
-	public ConfigureThresholdData findThresholdValue(Long wareHouseId, Long resourceTypeId,
-			Long resourceSubTypeId) throws SearchBLException {
+	public ConfigureThresholdData findThresholdValue(Long thresholdId) throws SearchBLException {
 
 		try {
 			ConfigureThresholdData data = null;
+			String query = "select o from ConfigureThresholdData o where o.systemgenerated = 'N' and o.thresholdID=:thresholdID ";
 			
-			try {
+			
+		/*	if(resourceSubTypeId!=null) {
+				query = query + " and o.resourceSubTypeId='"+resourceSubTypeId+"' ";
+			}
+			
+			if(resourceTypeId!=null) {
+				query = query + " and o.resourceTypeId='"+resourceTypeId+"' ";
+			}
+			
+			if(resourceId!=null) {
+				query = query + " and o.itemId='"+resourceId+"' ";
+			}*/
+			
+			Logger.logTrace(MODULE, query);
+			data = (ConfigureThresholdData) getEntityManager().createQuery(query).setParameter("thresholdID", thresholdId).getSingleResult();
+			
+			/*try {
+				
 				if(resourceSubTypeId!=null) {
+					
+					query = query + " and o.resourceSubTypeId='"+resourceSubTypeId+"' ";
 
 					data =(ConfigureThresholdData) getEntityManager().createNamedQuery("ConfigureThresholdData.findByThreeId")
 							.setParameter("warehouseId",wareHouseId)
@@ -730,7 +754,7 @@ public class WarehouseSessionBean extends BaseSessionBean implements WarehouseSe
 						 .setParameter("warehouseId",wareHouseId)
 						 .setParameter("resourceTypeId",resourceTypeId)
 						 .getSingleResult();
-			}
+			}*/
 			
 			
 		 return data;
